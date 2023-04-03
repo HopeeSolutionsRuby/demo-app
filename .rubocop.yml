@@ -1,0 +1,13 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  DisplayCopNames: true
+  NewCops: enable
+  SuggestExtensions: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/RedundantConstantBase:
+  Enabled: false
