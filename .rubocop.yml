@@ -1,13 +1,28 @@
-require:
+require: 
   - rubocop-rails
 
 AllCops:
   DisplayCopNames: true
   NewCops: enable
   SuggestExtensions: false
+  Exclude:
+    - 'Rakefile'
+    - 'config.ru'
+    - 'spec/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'test/**/*'
 
 Style/Documentation:
   Enabled: false
 
 Style/RedundantConstantBase:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
