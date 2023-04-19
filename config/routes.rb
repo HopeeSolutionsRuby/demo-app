@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  namespace :admin do
-    # route for admin
-    resources :admins
+  namespace :administrator do
+    # route for administrator
+    root 'index#index'
   end
   # route for frontend
   resources :users

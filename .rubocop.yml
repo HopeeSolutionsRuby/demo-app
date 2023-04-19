@@ -25,4 +25,3 @@ Metrics/MethodLength:
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: never
-

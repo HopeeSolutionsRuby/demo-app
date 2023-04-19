@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <title>BeautyCare</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "admin/application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "admin/application" %>
+    <%= javascript_include_tag "admin/application", 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
+  <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
+    <div class="wrapper">
+      <%= render partial: '/shared/partials/navbar'%>
+      <%= render partial: '/shared/partials/left_menu'%>
+      <%= render partial: '/shared/partials/footer'%>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -5,18 +5,18 @@ default: &default
 
 development:
   <<: *default
-  database: beauty_care_development
+  database: beauty_care_development_0101
   username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'Anh@071293' } %>
 
 test:
   <<: *default
-  database: beauty_care_test
+  database: beauty_care_test_0101
   username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'Anh@071293' } %>
 
 production:
   <<: *default
-  database: beauty_care_production
+  database: beauty_care_production_0101
   username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'Anh@071293' } %>
