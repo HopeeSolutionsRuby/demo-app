@@ -136,9 +136,10 @@
         <span>Lock Screen</span>
         </a>
         <!-- item-->
-        <a href="javascript:void(0);" class="dropdown-item notify-item">
-        <i class="mdi mdi-logout me-1"></i>
-        <span>Logout</span>
+        <a href="javascript:void(0);">
+          <span>
+            <%= link_to "Logout", destroy_admin_session_path, class: "mdi mdi-logout me-1  dropdown-item notify-item" %>
+          </span>
         </a>
       </div>
     </li>

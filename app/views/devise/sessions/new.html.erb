@@ -1,0 +1,56 @@
+<section class="ftco-section">
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-md-6 text-center mb-5">
+            <h2 class="heading-section">LOGIN</h2>
+         </div>
+      </div>
+      <div class="row justify-content-center">
+         <div class="col-md-7 col-lg-5">
+            <div class="wrap">
+               <div class="img" style="background-image: url(/assets/style/images/bg_1.jpg);"></div>
+               <div class="login-wrap p-4 p-md-5">
+                  <div class="d-flex">
+                     <div class="w-100">
+                        <h3 class="mb-4">Sign In</h3>
+                     </div>
+                     <div class="w-100">
+                        <p class="social-media d-flex justify-content-end">
+                           <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                           <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                        </p>
+                     </div>
+                  </div>
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "signin-form"}) do |f| %>
+                  <div class="form-group mt-3"> 
+                     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true %>
+                     <label class="form-control-placeholder" for="username">Email</label> 
+                  </div>
+                  <div class="form-group"> 
+                     <%= f.password_field :password, autocomplete: "current-password", class: "form-control", required: true, id: "password-field" %> 
+                     <label class="form-control-placeholder" for="password">Password</label> 
+                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span> 
+                  </div>
+                  <div class="form-group d-md-flex">
+                     <% if devise_mapping.rememberable? %> 
+                     <div class="w-50 text-left">
+                        <%= f.check_box :remember_me, checked: true, class: "form-control-input" %>
+                        <%= f.label :remember_me, class: "form-control-label" do %> Remember Me <% end %>
+                     </div>
+                     <% end %>
+                     <div class="w-50 text-md-right">
+                        <%= link_to "Forgot Password", new_password_path(resource_name), class: "form-control-link" %>
+                     </div>
+                  </div>
+                  <div class="form-group"> <%= f.submit "Sign In", class: "form-control btn btn-primary rounded submit px-3" %> 
+                  </div>
+                  <% end %>
+               </div>
+            </div>
+            </form>                       
+         </div>
+      </div>
+   </div>
+   </div>
+   </div>
+</section>

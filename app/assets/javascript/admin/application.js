@@ -2,3 +2,4 @@
 //= require ../admin/js/app.min
 //= require ../admin/js/vendor/fullcalendar.min
 //= require ../admin/js/pages/demo.calendar
+//= require ../admin/js/main

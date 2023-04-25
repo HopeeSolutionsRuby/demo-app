@@ -15,6 +15,10 @@
       <%= render partial: '/shared/partials/left_menu'%>
       <%= render partial: '/shared/partials/footer'%>
     </div>
-    <%= yield %>
+    <div class="content-page">
+      <div class="content">
+        <%= yield %>
+      </div>
+    </div>    
   </body>
 </html>
