@@ -1,0 +1,37 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.header {
+  background-color: gray;
+  padding: 50px 20px;
+  border-bottom: 3px solid red;
+  background-image: linear-gradient(to bottom, #524f4f, #494949);
+}
+
+.logo-img {
+  background-color: red;
+  padding: 25px;
+  border-radius: 50%;
+}
+
+.nav-bar {
+  .nav-link {
+    color: #bcb5b5;
+    font-size: 16px;
+    padding: 8px 16px;
+    font-weight: 500;
+  }
+  .nav-link:not(:last-child) {
+    border-right: 1px solid #726868;
+  }
+
+  .nav-link:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .active {
+    color: white
+  }
+}
