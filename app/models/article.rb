@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Article < ApplicationRecord
   belongs_to :user
   validates :title, presence: true, length: { minimum: 6, maximum: 10 }, uniqueness: true
 
-  #custom validate
+  # custom validate
   validate :description_blank
   before_validation :title_upcase
 
@@ -13,6 +15,6 @@ class Article < ApplicationRecord
   end
 
   def description_blank
-  	errors.add(:description, 'description is blank') if description.empty?
+    errors.add(:description, 'description is blank') if description.empty?
   end
 end
