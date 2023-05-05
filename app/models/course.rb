@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+class Course < ApplicationRecord
+  has_many :teaching_assistants, as: :ta_duty, dependent: :destroy
+  belongs_to :user
+  belongs_to :professor
+  before_commit :notify_user, on: :create
+  after_commit :send_welcome_email
+
+  private
+
+  def notify_user
+    flash[:notice] = "Bạn đã đăng ký khóa học này" if self.course.users.include?(self.user)
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_now
+  end
+end

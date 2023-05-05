@@ -2,7 +2,7 @@
 
 class Product < ApplicationRecord
   validate :blank
-  has_many :cart
+
   private
 
   def blank

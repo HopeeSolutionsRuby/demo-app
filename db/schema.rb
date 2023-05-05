@@ -10,55 +10,86 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_101200) do
-  create_table 'articles', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
-    t.string 'title'
-    t.text 'description'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'author'
-    t.integer 'user_id'
+ActiveRecord::Schema[7.0].define(version: 2023_05_05_074108) do
+  create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "author"
+    t.integer "user_id"
   end
 
-  create_table 'carts', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
-    t.integer 'quantity'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'product_id'
-    t.integer 'user_id'
+  create_table "carts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_id"
+    t.integer "user_id"
   end
 
-  create_table 'payments', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
-    t.integer 'amount'
-    t.boolean 'Paid', default: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'user_id'
+  create_table "courses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "student_number"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'products', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
-    t.string 'product_name'
-    t.integer 'price'
-    t.integer 'discount_price'
-    t.string 'description'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "labs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "subject"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'profiles', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
-    t.string 'date_of_birth'
-    t.string 'address'
-    t.string 'sex'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "amount"
+    t.boolean "Paid", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
-  create_table 'users', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
-    t.string 'name'
-    t.string 'phone'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'password'
+  create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "product_name"
+    t.integer "price"
+    t.integer "discount_price"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "professors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "major"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "date_of_birth"
+    t.string "address"
+    t.string "sex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teaching_assistants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "ta_duty_id"
+    t.string "ta_duty_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password"
   end
 
 end

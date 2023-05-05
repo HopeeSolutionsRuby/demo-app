@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative cart
 
 class Payment < ApplicationRecord
@@ -7,7 +8,7 @@ class Payment < ApplicationRecord
   after_commit :send_inform_email, on: :create
   after_commit :check_product_quantity, on: [:create]
 
-  private 
+  private
 
   def delete_cart
     cart.destroy
@@ -15,10 +16,8 @@ class Payment < ApplicationRecord
 
   def check_product_quantity
     order_items.each do |item|
-      if item.product.quantity < item.quantity
-        raise ActiveRecord::Rollback
-      end
-    end 
+      raise ActiveRecord::Rollback if item.product.quantity < item.quantity
+    end
   end
 
   def after_rollback
@@ -27,11 +26,12 @@ class Payment < ApplicationRecord
   end
 
   def send_inform_email
-  	PaymentMailer.payment_confirmation(self).deliver_now
+    PaymentMailer.payment_confirmation(self).deliver_now
+  end
 end
 
 class PaymentMailer < ApplicationMailer
-  def order_confirmation(order)
+  def order_confirmation(payment)
     @payment = payment
     mail(to: cart.user_id.email, subject: 'Xác nhận đặt hàng')
   end
