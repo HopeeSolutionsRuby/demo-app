@@ -33,6 +33,6 @@ end
 class PaymentMailer < ApplicationMailer
   def order_confirmation(payment)
     @payment = payment
-    mail(to: cart.user_id.email, subject: 'Xác nhận đặt hàng')
+    mail(to: cart.user_id.email, subject: 'Order confirm')
   end
 end

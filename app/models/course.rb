@@ -10,7 +10,7 @@ class Course < ApplicationRecord
   private
 
   def notify_user
-    flash[:notice] = "Bạn đã đăng ký khóa học này" if self.course.users.include?(self.user)
+    flash[:notice] = 'You had rolled into this course' if course.user_id.include?(user_id)
   end
 
   def send_welcome_email
