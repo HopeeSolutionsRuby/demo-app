@@ -2,6 +2,7 @@
 
 class Product < ApplicationRecord
   validate :blank
+  has_many :images, as: :imageable, dependent: :destroy
 
   private
 

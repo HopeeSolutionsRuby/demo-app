@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :payments, dependent: :destroy
   has_many :course, dependent: :destroy
   has_many :lab, dependent: :destroy
+  has_many :images, as: :imageable, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_one :teaching_assistants, dependent: :destroy
   has_one :professor, dependent: :destroy
