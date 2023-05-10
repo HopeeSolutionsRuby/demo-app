@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_09_082829) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_10_091209) do
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -46,6 +46,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_082829) do
     t.integer "professor_id"
   end
 
+  create_table "images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "imageable_type", null: false
+    t.bigint "imageable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
+  end
+
   create_table "labs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "subject"
@@ -57,6 +65,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_082829) do
     t.string "start_date"
     t.integer "course_id"
     t.integer "professor_id"
+  end
+
+  create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.string "descriptions"
+    t.string "release_year"
+    t.string "language"
+    t.integer "rate"
+    t.string "length"
+    t.string "actor"
+    t.string "category"
+    t.integer "course_id"
+    t.integer "lab_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -88,6 +111,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_09_082829) do
     t.string "date_of_birth"
     t.string "address"
     t.string "sex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "location"
+    t.string "staff"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,6 +3,7 @@
 class Course < ApplicationRecord
   has_many :teaching_assistants, as: :ta_duty, dependent: :destroy
   belongs_to :user
+  has_many :movies, as: :movable
   has_many :comments, as :commentable
   belongs_to :professor
   before_commit :notify_user, on: :create

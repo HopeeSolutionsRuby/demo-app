@@ -4,6 +4,7 @@ class Lab < ApplicationRecord
   belongs_to :user
   belongs_to :professor
   belongs_to :course
+  has_many :movies, as: :movable
   has_many :teaching_assistants, as: :ta_duty, dependent: :destroy
   before_commit :check_status
   validate :start_date_cannot_be_in_the_past
