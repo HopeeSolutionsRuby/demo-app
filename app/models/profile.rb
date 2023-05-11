@@ -3,7 +3,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
   validate :contain_letter
-  before_save :update_profile
+  # before_save :update_profile
 
   private
 
@@ -11,11 +11,14 @@ class Profile < ApplicationRecord
     return false if date_of_birth.match(/[a-zA-Z]/)
   end
 
-  def update_profile
-    profile = build_profile unless self.profile
-    profile.date_of_birth = date_of_birth
-    profile.sex = sex
-    profile.address = address
-    profile.save
-  end
+#   def update_profile
+#   profile = build_profile if self.profile.nil?
+#   profile.assign_attributes(
+#     date_of_birth: date_of_birth,
+#     sex: sex,
+#     address: address
+#   )
+#   profile.save
+# end
+
 end

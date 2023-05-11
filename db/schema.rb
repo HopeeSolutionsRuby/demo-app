@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_10_091209) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_083747) do
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_091209) do
     t.bigint "commentable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
 
@@ -88,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_091209) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "cart_id"
   end
 
   create_table "products", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -113,6 +115,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_091209) do
     t.string "sex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "stores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -120,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_091209) do
     t.string "staff"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "teaching_assistants", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

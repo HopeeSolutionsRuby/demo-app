@@ -2,12 +2,12 @@
 
 class Store < ApplicationRecord
   validates :name, presence: true, uniqueness: true
-  validates :address, presence: true
-  before_save :normalize_address
+  validates :location, presence: true
+  before_validation :normalize_location, if: :location?
 
    private
 
-  def normalize_address
-    self.address = address.strip.titleize
+  def normalize_location
+    self.location = location.strip.titleize
   end
 end

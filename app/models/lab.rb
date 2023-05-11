@@ -4,10 +4,10 @@ class Lab < ApplicationRecord
   belongs_to :user
   belongs_to :professor
   belongs_to :course
-  has_many :movies, as: :movable
+  has_many :movies, as: :movable, dependent: :destroys
   has_many :teaching_assistants, as: :ta_duty, dependent: :destroy
   before_commit :check_status
-  validate :start_date_cannot_be_in_the_past
+  before_save :start_date_cannot_be_in_the_past
 
   private
 
@@ -16,7 +16,7 @@ class Lab < ApplicationRecord
   end
 
   def start_date_cannot_be_in_the_past
-    if start_date.present? && start_date < Date.today
+    if start_date.present? && Date.strptime(start_date, "%d/%m/%Y") < Date.today
       errors.add(:start_date, "can't be in the past")
     end
   end

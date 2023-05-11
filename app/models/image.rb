@@ -8,6 +8,6 @@ class Image < ApplicationRecord
   private
 
   def update_file_size
-    self.file_size = self.image_file_size
+    file_size = image_file_size
   end
 end
