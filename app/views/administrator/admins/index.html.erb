@@ -1,0 +1,96 @@
+<%  content_for :css do %>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<% end %>
+<div class="container-fluid">
+   <%= render partial: 'administrator/shared/partials/page_title' %>
+   <div class="row">
+      <div class="col-12">
+         <div class="card">
+            <div class="card-body">
+               <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="flex-grow-1">
+                     <%= link_to new_administrator_admin_path, class: 'btn btn-danger btn-sm mb-2' do %>
+                     <i class="mdi mdi-plus-circle me-2"></i> Add Admins
+                     <% end %>
+                  </div>
+                  <div class="col-sm-12 col-md-6 d-flex justify-content-end flex-shrink-1">
+                     <div id="products-datatable_filter" class="dataTables_filter">
+                        <%= form_tag administrator_admins_path, method: :get, class: "form-inline my-2 my-lg-0" do %>
+                        <%= text_field_tag :search, params[:search], class: "form-control-sm rounded-pill me-2", placeholder: "Search by name or email", aria: { label: "Search" } %>
+                        <%= button_tag "Search", class: 'btn btn-sm btn-primary rounded-pill', type: "submit" %>
+                        <% end %>
+                     </div>
+                  </div>
+               </div>
+               <div class="table-responsive">
+                  <div id="products-datatable_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                     <div class="row">
+                        <div class="col-sm-12">
+                           <table class="table table-centered table-striped dt-responsive nowrap w-100 dataTable no-footer dtr-inline" id="products-datatable" role="grid" aria-describedby="products-datatable_info" style="width: 1479px;">
+                              <thead>
+                                 <tr role="row">
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 237.8px;" aria-label="STT">Index</th>
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 172.8px;" aria-label="FirstName">FirstName</th>
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 248.8px;" aria-label="LastName">LastName</th>
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 156.8px;" aria-label="Phone">Phone</th>
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 156.8px;" aria-label="Email">Email</th>
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 156.8px;" aria-label="Role">Role</th>
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 86.8px;" aria-label="Status">Status</th>
+                                    <th  tabindex="0" aria-controls="products-datatable" rowspan="1" colspan="1" style="width: 140.8px;" aria-sort="ascending" aria-label="Create Date">Create Date</th>
+                                    <th style="width: 75.6px;"  rowspan="1" colspan="1" aria-label="Action">Action</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <% @admins.each_with_index do |admin, index| %>
+                                 <tr>
+                                    <td><%= create_index params[:page], index, 10 %></td>
+                                    <td ><%= admin.first_name %></td>
+                                    <td ><%= admin.last_name %></td>
+                                    <td><%= admin.phone %></td>
+                                    <td><%= admin.email %></td>
+                                    <td>
+                                       <% if admin.admin? %>
+                                       <span class="badge badge-danger-lighten">admin</span>
+                                       <% else %>
+                                       <span class="badge badge-success-lighten">customer_service</span>
+                                       <% end %>
+                                    </td>
+                                    <td>
+                                       <% if admin.active? %>
+                                       <span class="badge badge-success-lighten">active</span>
+                                       <% else %>
+                                       <span class="badge badge-danger-lighten">inactive</span>
+                                       <% end %>
+                                    </td>
+                                    <td><%= admin.created_at.strftime("%m/%d/%Y") %></td>
+                                    <td class="table-action">
+                                       <div class="d-flex">
+                                          <%= link_to '', administrator_admin_path(admin), class: 'action-icon mdi mdi-eye me-2' %>
+                                          <%= link_to '', edit_administrator_admin_path(admin), class: 'action-icon mdi mdi-square-edit-outline me-2' %>
+                                          <%= button_to '', administrator_admin_path(admin), onclick: "return confirm('Are you sure you want to delete?')", method: :delete , class: 'action-icon mdi mdi-delete me-2', style: 'background:none; border:none;' %>
+                                       </div>
+                                    </td>
+                                 </tr>
+                                 <% end %>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="flickr_pagination d-flex justify-content-between">
+                        <div class="page_info">
+                           <%= page_entries_info @admins %>
+                        </div>
+                        <div>
+                           <%= will_paginate @admins, :container => false %>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- end card-body-->
+         </div>
+         <!-- end card-->
+      </div>
+      <!-- end col -->
+   </div>
+</div>

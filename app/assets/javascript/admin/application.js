@@ -3,3 +3,9 @@
 //= require ../admin/js/vendor/fullcalendar.min
 //= require ../admin/js/pages/demo.calendar
 //= require ../admin/js/main
+//= require ../admin/js/vendor/jquery.dataTables.min
+//= require ../admin/js/vendor/dataTables.bootstrap5
+//= require ../admin/js/vendor/dataTables.responsive.min
+//= require ../admin/js/vendor/responsive.bootstrap5.min
+//= require ../admin/js/vendor/dataTables.checkboxes.min
+//= require ../admin/js/pages/demo.customers

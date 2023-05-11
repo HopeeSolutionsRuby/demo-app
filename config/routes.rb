@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     # route for administrator
     root 'dashboard#index'
     resources :admins
-
   end
-  # route for frontend
-  resources :users
+  
 end

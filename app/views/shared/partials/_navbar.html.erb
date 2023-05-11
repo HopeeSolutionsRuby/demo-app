@@ -13,13 +13,13 @@
     </li>
     <li class="dropdown notification-list topbar-dropdown">
       <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-      <img src="assets/style/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12"> 
+      <%= image_tag("flags/us.jpg", alt: "user-image", class: "me-0 me-sm-1", height: 12) %>
       <span class="align-middle d-none d-sm-inline-block">English</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu">
         <!-- item-->
         <a href="javascript:void(0);" class="dropdown-item notify-item">
-        <img src="assets/style/images/flags/vietnam.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Vietnam</span>
+        <%= image_tag("flags/vietnam.jpg", alt: "user-image", class: "me-1", height: 12) %><span class="align-middle">Vietnam</span>
         </a>
       </div>
     </li>
@@ -54,19 +54,19 @@
           <div class="row g-0">
             <div class="col">
               <a class="dropdown-icon-item" href="#">
-              <img src="assets/style/images/brands/slack.png" alt="slack">
+              <%= image_tag("brands/slack.png", alt: "slack") %>
               <span>Slack</span>
               </a>
             </div>
             <div class="col">
               <a class="dropdown-icon-item" href="#">
-              <img src="assets/style/images/brands/github.png" alt="Github">
+              <%= image_tag("brands/github.png", alt: "Github") %>
               <span>GitHub</span>
               </a>
             </div>
             <div class="col">
               <a class="dropdown-icon-item" href="#">
-              <img src="assets/style/images/brands/dribbble.png" alt="dribbble">
+              <%= image_tag("brands/dribbble.png", alt: "dribbble") %>
               <span>Dribbble</span>
               </a>
             </div>
@@ -74,19 +74,19 @@
           <div class="row g-0">
             <div class="col">
               <a class="dropdown-icon-item" href="#">
-              <img src="assets/style/images/brands/bitbucket.png" alt="bitbucket">
+              <%= image_tag("brands/bitbucket.png", alt: "bitbucket") %>
               <span>Bitbucket</span>
               </a>
             </div>
             <div class="col">
               <a class="dropdown-icon-item" href="#">
-              <img src="assets/style/images/brands/dropbox.png" alt="dropbox">
+              <%= image_tag("brands/dropbox.png", alt: "dropbox") %>
               <span>Dropbox</span>
               </a>
             </div>
             <div class="col">
               <a class="dropdown-icon-item" href="#">
-              <img src="assets/style/images/brands/g-suite.png" alt="G Suite">
+              <%= image_tag("brands/g-suite.png", alt: "G Suite") %>
               <span>G Suite</span>
               </a>
             </div>
@@ -103,11 +103,11 @@
     <li class="dropdown notification-list">
       <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
       <span class="account-user-avatar"> 
-      <img src="assets/style/images/users/avatar_1.jpg" alt="user-image" class="rounded-circle">
+      <%= image_tag("users/avatar_1.jpg", alt: "user-image", class: "rounded-circle") %>
       </span>
       <span>
-      <span class="account-user-name">Hopee</span>
-      <span class="account-position">Founder</span>
+      <span class="account-user-name"></span>
+      <span class="account-position"></span>
       </span>
       </a>
       <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -183,7 +183,7 @@
         <!-- item-->
         <a href="javascript:void(0);" class="dropdown-item notify-item">
           <div class="d-flex">
-            <img class="d-flex me-2 rounded-circle" src="assets/style/images/users/avatar_1.jpg" alt="Generic placeholder image" height="32">
+            <%= image_tag("users/avatar_1.jpg", alt: "Generic placeholder image", class: "d-flex me-2 rounded-circle", height: 32) %>
             <div class="w-100">
               <h5 class="m-0 font-14">Erwin Brown</h5>
               <span class="font-12 mb-0">UI Designer</span> 
@@ -193,7 +193,7 @@
         <!-- item-->
         <a href="javascript:void(0);" class="dropdown-item notify-item">
           <div class="d-flex">
-            <img class="d-flex me-2 rounded-circle" src="assets/style/images/users/avatar_1.jpg" alt="Generic placeholder image" height="32">
+            <%= image_tag("users/avatar_1.jpg", alt: "Generic placeholder image", class: "d-flex me-2 rounded-circle", height: 32) %>
             <div class="w-100">
               <h5 class="m-0 font-14">Jacob Deo</h5>
               <span class="font-12 mb-0">Developer</span>

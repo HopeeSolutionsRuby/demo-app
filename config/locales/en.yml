@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  flash:
+    admin:
+      success:
+        create: 'Successfully created admin account' 
+        update: 'Successfully updated admin account'

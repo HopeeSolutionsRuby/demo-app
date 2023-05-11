@@ -84,6 +84,8 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    breadcrumbs_on_rails (4.1.0)
+      railties (>= 5.0)
     builder (3.2.4)
     capybara (3.39.0)
       addressable
@@ -177,9 +179,14 @@ GEM
     parallel (1.22.1)
     parser (3.2.2.0)
       ast (~> 2.4.1)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
+    pundit (2.3.0)
+      activesupport (>= 3.0.0)
     racc (1.6.2)
     rack (2.2.6.4)
     rack-test (2.1.0)
@@ -198,6 +205,10 @@ GEM
       activesupport (= 7.0.4.3)
       bundler (>= 1.15.0)
       railties (= 7.0.4.3)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -312,6 +323,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   bootstrap-sass
+  breadcrumbs_on_rails
   capybara
   debug
   devise
@@ -323,8 +335,11 @@ DEPENDENCIES
   letter_opener
   letter_opener_web
   mysql2
+  pry
   puma (~> 5.0)
+  pundit
   rails (~> 7.0.4, >= 7.0.4.3)
+  rails-controller-testing
   redis (~> 4.0)
   rspec-rails
   rubocop

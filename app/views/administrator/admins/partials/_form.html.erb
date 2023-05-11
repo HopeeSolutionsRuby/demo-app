@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="account-settings">
+          <div class="user-profile">
+            <div class="user-avatar"><%= image_tag("avatar7.png", alt: "Admin") %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= form_for @admin, url: url, method: method do |f| %>
+    <% if @admin.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @admin.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h6 class="mb-2 text-primary">Admin Details</h6>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :first_name, "First Name" %> <%= f.text_field :first_name, class: "form-control", id: "firstName", placeholder: "Enter first name" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :last_name, "Last Name" %> <%= f.text_field :last_name, class: "form-control", id: "lastName", placeholder: "Enter last name" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :email, "Email" %> <%= f.email_field :email, class: "form-control", id: "eMail", placeholder: "Enter email ID" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :phone, "Phone" %> <%= f.text_field :phone, class: "form-control", id: "phone", placeholder: "Enter phone number" %></div>
+          </div>
+        </div>
+        <div class="row gutters">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :password, "Password" %> <%= f.password_field :password, class: "form-control", id: "password", placeholder: "Enter Password" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :status, "Status" %> <%= f.select :status, options_for_select([['Active', 'active'], ['Inactive', 'inactive']]), {}, class: "form-control" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :role, "Role" %> <%= f.select :role, options_for_select([['Admin', 'admin'], ['Customer Service', 'customer_service']]), {}, class: "form-control" %></div>
+          </div>
+        </div>
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="text-right">
+              <%= f.submit method == :post ? 'Create' : 'Update', class: "btn btn-primary" %> 
+              <%= link_to "Cancel", administrator_admins_path, class: "btn btn-secondary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

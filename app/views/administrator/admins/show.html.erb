@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <%= render partial: 'administrator/shared/partials/page_title' %>
+  <section class="bg-light">
+    <div>
+      <div class="row">
+        <div class="col-lg-12 mb-4 mb-sm-5">
+          <div class="card card-style1 border-0">
+            <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+              <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0"> <%= image_tag("avatar7.png", alt: "Admin", :class => "img_tag") %> </div>
+                <div class="col-lg-6 px-xl-10">
+                  <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                    <h3 class="h2 text-white mb-0"><%= "#{@admin.first_name}" + " " + "#{@admin.last_name}" %></h3>
+                    <span class="text-primary"><strong><%= @admin.email %></strong></span>
+                  </div>
+                  <ul class="list-unstyled mb-1-9">
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">First Name:</span>
+                      <strong><%= @admin.first_name %></strong>
+                    </li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Last Name:</span> 
+                      <strong><%= @admin.last_name %></strong>
+                    </li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> 
+                      <strong><%= @admin.email %></strong>
+                    </li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span> 
+                      <strong><%= @admin.phone %></strong>
+                    </li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Status:</span> 
+                      <strong><%= @admin.status %></strong>
+                    </li>
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Role:</span> 
+                      <strong><%= @admin.role %></strong>
+                    </li>
+                    <li class="mb-2 mb-xl-3 display-28">
+                      <div class="text-end"> <%= link_to "Return", administrator_admins_path, class: "btn-a btn-secondary" %> </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
