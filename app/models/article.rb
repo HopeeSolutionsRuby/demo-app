@@ -17,6 +17,6 @@ class Article < ApplicationRecord
   end
 
   def description_blank
-    errors.add(:description, 'description is blank') if description.empty?
+    errors.add(:description, 'description is blank') if description.blank?
   end
 end

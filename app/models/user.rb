@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def to_numeric?
-    errors.add(:password, 'Your password contains only digits, please try again') if password&.match?(/\A\d+\z/)
+    errors.add(:password, 'Your password contains only digits, please try again') unless password&.match?(/\A\d+\z/)
   end
 
   # def normalize_phone_number
