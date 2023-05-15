@@ -5,7 +5,7 @@ class Store < ApplicationRecord
   validates :location, presence: true
   before_validation :normalize_location, if: :location?
 
-   private
+  private
 
   def normalize_location
     self.location = location.strip.titleize

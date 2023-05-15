@@ -1,26 +1,51 @@
 # frozen_string_literal: true
 require "cart"
+require "storage"
 
 class Payment < ApplicationRecord
   belongs_to :user
   belongs_to :cart
   after_save :delete_cart
   # after_commit :send_inform_email, on: :create
+  after_commit :decrease_product_quantity
   after_commit :check_product_quantity, on: [:create]
 
   private
 
   def delete_cart
-    cart = Cart.find_by(id: cart_id, user_id: user_id)
+    cart = Cart.find_by(id: cart_id, user_id:)
     cart.destroy if cart.present?
+  end
+
+  def decrease_product_quantity
+    product = Product.find_by(id: cart.product_id)
+    return if product.blank?
+
+    storage = product.storage
+    return if storage.blank?
+
+    perform_decrease = false
+
+    Payment.transaction do
+      begin
+        storage.with_lock do
+          storage.update!(product_quantity: storage.product_quantity - cart.quantity)
+          perform_decrease = true
+        end
+      rescue => e
+        raise ActiveRecord::Rollback
+        puts "Có ngoại lệ xảy ra: #{e.message}"
+      end
+    end
   end
 
   def check_product_quantity
     product = Product.find_by(id: cart.product_id)
-    raise ActiveRecord::Rollback if product.nil? || product.quantity < cart.quantity
+    storage = product.storage if product.present?
+    Payment.transaction do
+      raise ActiveRecord::Rollback if product.nil? || (storage.present? && storage.product_quantity < cart.quantity)
+    end
   end
-
-
 
   # def after_rollback
   #   # send an email to the administrator

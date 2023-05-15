@@ -6,9 +6,9 @@ class TeachingAssistant < ApplicationRecord
   belongs_to :ta_duty, polymorphic: true
   after_commit :send_welcome_email
 
-  private
+  # private
 
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver_now
-  end
+  # def send_welcome_email
+  #   UserMailer.welcome_email(self).deliver_now
+  # end
 end

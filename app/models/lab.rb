@@ -6,14 +6,15 @@ class Lab < ApplicationRecord
   belongs_to :course
   has_many :movies, as: :movable, dependent: :destroy
   has_many :teaching_assistants, as: :ta_duty, dependent: :destroy
+  belongs_to :storage, dependent: :destroy
   before_commit :check_status
   before_save :start_date_cannot_be_in_the_past
 
   private
 
-  def check_status
-    flash[:notice] = 'You had submit this lab' if submit_status == true && !user_id.nil?
-  end
+  # def check_status
+  #   flash[:notice] = 'You had submit this lab' if submit_status == true && !user_id.nil?
+  # end
 
   def start_date_cannot_be_in_the_past
     if start_date.present? && Date.strptime(start_date, "%d/%m/%Y") < Date.today

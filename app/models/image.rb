@@ -2,6 +2,7 @@
 
 class Image < ApplicationRecord
   belongs_to :imageable, polymorphic: true
+  belongs_to :storage
   validates :url, format: { with: /\.(png|jpg|jpeg)\z/i, message: "must be a URL for PNG, JPG or JPEG image." }
   before_save :update_file_size
 

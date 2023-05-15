@@ -3,8 +3,9 @@
 class Cart < ApplicationRecord
   belongs_to :user
   belongs_to :product
+  belongs_to :storage
   before_save :check_and_update_quantity
-  has_one :payment, dependent: :destroy
+  has_one :payment, dependent: :none
 
   private
 

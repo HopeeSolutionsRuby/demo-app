@@ -5,11 +5,12 @@ class Course < ApplicationRecord
   belongs_to :user
   has_many :movies, as: :movable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  belongs_to :storage, dependent: :destroy
   belongs_to :professor
   # before_commit :notify_user, on: :create
   # after_commit :send_welcome_email
 
-  private
+  # private
 
   # def notify_user
   #   flash[:notice] = 'You had rolled into this course' if course.user_id.include?(user_id)

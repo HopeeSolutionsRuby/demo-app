@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   private
 
-  def blank                         
+  def blank
     errors.add(:password, 'please insert your password') if password.blank?
   end
 

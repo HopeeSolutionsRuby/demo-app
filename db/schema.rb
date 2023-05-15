@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_11_083747) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_032136) do
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_083747) do
     t.datetime "updated_at", null: false
     t.integer "product_id"
     t.integer "user_id"
+    t.integer "storage_id"
   end
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_083747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "professor_id"
+    t.integer "storage_id"
   end
 
   create_table "images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_083747) do
     t.string "start_date"
     t.integer "course_id"
     t.integer "professor_id"
+    t.integer "storage_id"
   end
 
   create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -99,6 +102,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_083747) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "storage_id"
   end
 
   create_table "professors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -116,6 +120,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_11_083747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+  end
+
+  create_table "storages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "course_id"
+    t.integer "lab_id"
+    t.string "product_name"
+    t.integer "product_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
