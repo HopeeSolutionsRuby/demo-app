@@ -5,7 +5,7 @@ class Course < ApplicationRecord
   belongs_to :user
   has_many :movies, as: :movable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
-  belongs_to :storage, dependent: :destroy
+  belongs_to :storage, dependent: :destroy  
   belongs_to :professor
   # before_commit :notify_user, on: :create
   # after_commit :send_welcome_email

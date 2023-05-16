@@ -1,0 +1,48 @@
+<% content_for :title, "User list" %>
+
+<h1>User list</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Created_at</th>
+      <th>Updated_at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.phone %></td>
+      <td><%= user.created_at %></td>
+      <td><%= user.updated_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<style>
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+  }
+
+  table {
+    border: 1px solid black;
+    width: 50%%;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  thead {
+    background-color: aliceblue;
+  }
+
+</style>

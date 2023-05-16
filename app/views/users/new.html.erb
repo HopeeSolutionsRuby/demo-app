@@ -1,0 +1,70 @@
+<% provide(:title, 'Sign up') %>
+<h1>Sign up</h1>
+
+<div class="row">
+  <div class="col">
+    <%= form_for(@users) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :confirm_password, "Confirmation" %>
+      <%= f.password_field :confirm_password, class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<style>
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+  }
+
+  label {
+    font-size: 1.5rem;
+  }
+
+  .row {
+    height: 100%;
+  }
+
+  .col {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .form-control {
+    margin: 10px 0;
+    height: 10%;
+    font-size: 1.5rem;
+  }
+
+  .new_user{
+    display: flex;
+    height: 100%;
+    width: 50%;
+    flex-direction: column;
+  }
+
+  .btn {
+    background-color: skyblue;
+    font-size: 1rem;
+    width: 20%;
+    height: 10%;
+  }
+</style>

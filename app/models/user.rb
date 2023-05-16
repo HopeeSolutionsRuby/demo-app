@@ -5,8 +5,8 @@ class User < ApplicationRecord
   # before_validation :ensure_profile_exists
   validate :to_numeric?
   # before_validation :normalize_phone_number
-  before_save :check_password_changed
-  after_create :send_welcome_email
+  # before_save :check_password_changed
+  # after_create :send_welcome_email
   before_destroy :clear_cart
   has_many :articles, dependent: :destroy
   has_many :carts, dependent: :destroy
@@ -40,16 +40,16 @@ class User < ApplicationRecord
     cart_items.destroy_all
   end
 
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver_now
-  end
+  # def send_welcome_email
+  #   UserMailer.welcome_email(self).deliver_now
+  # end
 
-  def check_password_changed
-    if password_changed?
-      if encrypted_password == encrypted_password_was
-        errors.add(:password, 'cannot be the same as the previous password')
-        throw(:abort)
-      end
-    end
-  end
+  # def check_password_changed
+  #   if password_changed?
+  #     if encrypted_password == encrypted_password_was
+  #       errors.add(:password, 'cannot be the same as the previous password')
+  #       throw(:abort)
+  #     end
+  #   end
+  # end
 end

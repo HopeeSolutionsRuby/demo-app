@@ -48,7 +48,7 @@ class Payment < ApplicationRecord
   end
 
   # def after_rollback
-  #   # send an email to the administrator
+  #   send an email to the administrator
   #   AdminMailer.order_error(self).deliver_later
   # end
 
