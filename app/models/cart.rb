@@ -4,17 +4,23 @@ class Cart < ApplicationRecord
   belongs_to :user
   belongs_to :product
   belongs_to :storage
-  before_save :increase_product_quantity
+  after_commit :increase_product_quantity
+  # after_commit :destroy_new_cart, on: :create
   has_one :payment
 
   private
 
   def increase_product_quantity
-    cart = Cart.find_by(product_id:, user_id:)
-    if cart
-      cart.quantity += 1
-    else
-      self.cart.create(:user_id => user.id, :product_id => product.id, :quantity => 1)
+    existing_cart = Cart.find_by(product_id: self.product_id, user_id: self.user_id)
+    if existing_cart && existing_cart != self
+      self.quantity += existing_cart.quantity
     end
+    existing_cart.destroy
+    self.save
   end
+
+  # def destroy_new_cart
+  #   self.cart.destroy if self.cart && self.cart.new_record?
+  # end
+
 end

@@ -1,4 +1,10 @@
+require 'sessions_helper'
+
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
+
   # CRUD create read update delete
   # def index
   #   list
@@ -40,6 +46,11 @@ class UsersController < ApplicationController
     render :index
   end
 
+  def show
+    @user = User.find(params[:id])
+    render :show
+   end 
+
   def new
     @users = User.new
   end
@@ -49,7 +60,7 @@ class UsersController < ApplicationController
     if @users.save
       log_in @users
       flash[:success] = "Welcome to the Ecomm App!"
-      # redirect_to @users
+      redirect_to @users
     else
       render :new
     end
@@ -69,7 +80,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to users_url
+  end
+
   private
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 
     def user_params
       params.require(:user).permit(:name, :phone, :password, :confirm_password)

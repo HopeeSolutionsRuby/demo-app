@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_064736) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_083047) do
   create_table "articles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -155,6 +155,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_064736) do
     t.datetime "updated_at", null: false
     t.string "password"
     t.string "confirm_password"
+    t.string "password_digest"
+    t.boolean "admin", default: false
   end
 
 end
