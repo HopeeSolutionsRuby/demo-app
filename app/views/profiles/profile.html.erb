@@ -1,0 +1,70 @@
+<% provide(:title, "Your profile") %>
+<h1>Your profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@profile) do |f| %>
+
+      <%= f.label :date_of_birth, "Date of birth" %>
+      <%= f.text_field :date_of_birth, class: 'form-control' %>
+
+
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
+
+      <%= f.label :sex %>
+      <%= f.text_field :sex, class: 'form-control' %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
+
+<style>
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+  }
+
+  label {
+    font-size: 1.5rem;
+  }
+
+  .row {
+    height: 100%;
+  }
+
+  .col-md-6 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .form-control {
+    margin: 10px 0;
+    height: 10%;
+    font-size: 1.5rem;
+  }
+
+  .edit_profile{
+    display: flex;
+    height: 100%;
+    width: 50%;
+    flex-direction: column;
+  }
+
+  .btn {
+    background-color: skyblue;
+    font-size: 1rem;
+    width: 20%;
+    height: 10%;
+  }
+
+</style>

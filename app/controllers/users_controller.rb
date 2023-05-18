@@ -2,7 +2,7 @@ require 'sessions_helper'
 
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
+  # before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
   # CRUD create read update delete
@@ -68,12 +68,13 @@ class UsersController < ApplicationController
 
   def edit
     @users = User.find(params[:id])
+    @profile = Profile.find_by(user_id: params[:user_id])
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Acount updated"
       redirect_to @user
     else
       render 'edit'
@@ -100,7 +101,11 @@ class UsersController < ApplicationController
     redirect_to(root_url) unless current_user.admin?
   end
 
-    def user_params
-      params.require(:user).permit(:name, :phone, :password, :confirm_password)
-    end
+  def user_params
+    params.require(:user).permit(:name, :phone, :password, :confirm_password)
+  end
+
+  def user_profile_params
+    params.require(:profile).permit(:date_of_birth, :address, :sex)
+  end
 end
