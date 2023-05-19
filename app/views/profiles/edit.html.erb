@@ -3,20 +3,23 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@profile) do |f| %>
+    <% if @profile %>
+      <%= form_for(@profile) do |f| %>
 
-      <%= f.label :date_of_birth, "Date of birth" %>
-      <%= f.text_field :date_of_birth, class: 'form-control' %>
+        <%= f.label :date_of_birth, "Date of birth" %>
+        <%= f.text_field :date_of_birth, class: 'form-control' %>
 
-      <%= f.label :address %>
-      <%= f.text_field :address, class: 'form-control' %>
+        <%= f.label :address %>
+        <%= f.text_field :address, class: 'form-control' %>
 
-      <%= f.label :sex %>
-      <%= f.text_field :sex, class: 'form-control' %>
+        <%= f.label :sex %>
+        <%= f.text_field :sex, class: 'form-control' %>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
+        <%= f.submit "Save changes", class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <p>Your profile doesn't exist.</p>
     <% end %>
-
   </div>
 </div>
 
