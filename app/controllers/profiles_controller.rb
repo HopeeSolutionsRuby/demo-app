@@ -1,12 +1,12 @@
 class ProfilesController < ApplicationController
-  before_action :set_user, only: [:show]
 
   # def index 
   #   @profiles = Profile.all
   #   render :index
-  # end 
+  # end
 
   def show
+    @user = User.find(params[:user_id])
     @profile = Profile.find_by(user_id: params[:user_id])
   end
 
@@ -24,16 +24,9 @@ class ProfilesController < ApplicationController
     else
       render 'edit'
     end
-    puts params
-    puts profile_params
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
 
   def profile_params
     params.require(:profile).permit(:address, :sex, :date_of_birth)

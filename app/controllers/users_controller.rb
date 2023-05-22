@@ -3,7 +3,7 @@ require 'sessions_helper'
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   # before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   # CRUD create read update delete
   # def index
@@ -39,6 +39,10 @@ class UsersController < ApplicationController
   #   delete User
   #   Delete  /tasks/{taskId}   Task  Delete a task
   # end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
 
   def index
     @users = User.all
@@ -97,15 +101,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
-  end
-
   def user_params
     params.require(:user).permit(:name, :phone, :password, :confirm_password)
   end
 
   def user_profile_params
     params.require(:profile).permit(:date_of_birth, :address, :sex)
+  end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
   end
 end

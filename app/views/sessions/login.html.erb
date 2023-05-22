@@ -9,8 +9,8 @@
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :password %>
+      <td><%= link_to "(forgot password)", new_pass_word_reset_path %></td>
       <%= f.password_field :password, class: 'form-control' %>
-
       <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
   </div>

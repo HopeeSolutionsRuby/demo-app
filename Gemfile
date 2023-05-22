@@ -54,6 +54,7 @@ gem 'rubocop-rails'
 
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'will_paginate', '~> 3.3'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
 

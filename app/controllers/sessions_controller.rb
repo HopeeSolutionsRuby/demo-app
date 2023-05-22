@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :admin_user, only: :destroy
+
   def show
     @user = User.find(params[:id])
   end
@@ -8,7 +10,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(name: params[:session][:name].downcase)
+    user = User.find_by(name: params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       log_in user
       # params[:session][:remember_me] == '1' ? remember(user) : forget(user)
@@ -26,7 +28,11 @@ class SessionsController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :password)
-    end
+  def admin_user
+    redirect_to(login_url) unless current_user.admin?
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :password)
+  end
 end
