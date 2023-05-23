@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'products/index'
+  get 'products/show'
+  get 'products/edit'
+  get 'products/create'
+  get 'products/update'
+  get 'products/destroy'
   get 'pass_word_resets/new'
   get 'pass_word_resets/edit'
   get 'sessions/new'
@@ -12,11 +18,11 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
   get 'users/:id/profiles/edit', to: 'profiles#edit', as: 'profile'
   patch 'users/:id/profiles/edit', to: 'profiles#update', as: 'update_profile'
-  get '/pass_word_resets/edit', to: 'password_resets#edit', as: 'edit_password_reset'
-  # patch '/pass_word_resets/edit', to: 'password_resets#update', as: 'update_password_reset'
+  post '/pass_word_resets/new', to: 'pass_word_resets#create'
   resources :users, only: [:index, :new, :show, :edit, :update, :destroy]
   resources :users, only: [:index, :new, :show, :edit, :update, :destroy] do
     resource :profiles, only: [:index, :show, :edit, :update]
   end
   resources :pass_word_resets, only: [:new, :create, :edit, :update]
+  resources :products
 end

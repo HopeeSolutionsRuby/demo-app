@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :admin_user, only: :destroy
 
   def show
     @user = User.find(params[:id])
@@ -27,10 +26,6 @@ class SessionsController < ApplicationController
   end
 
   private
-
-  def admin_user
-    redirect_to(login_url) unless current_user.admin?
-  end
 
   def user_params
     params.require(:user).permit(:name, :password)

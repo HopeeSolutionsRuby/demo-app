@@ -6,18 +6,18 @@ class ProfilesController < ApplicationController
   # end
 
   def show
-    @user = User.find(params[:user_id])
     @profile = Profile.find_by(user_id: params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def edit
-    @user = User.find_by(id: params[:user_id])
     @profile = Profile.find_by(user_id: params[:id])
+    @user = User.find_by(id: params[:user_id])
   end
 
   def update
-    @user = User.find_by(id: params[:user_id])
     @profile = Profile.find_by(user_id: params[:id])
+    @user = User.find_by(id: params[:user_id])
     if @profile.update(profile_params)
       flash[:success] = "Profile updated"
       redirect_to profile_path
