@@ -5,11 +5,20 @@ require "storage"
 class Payment < ApplicationRecord
   belongs_to :user
   belongs_to :cart
+  belongs_to :product
   after_save :delete_cart
   # after_commit :send_inform_email, on: :create
   after_commit :decrease_product_quantity
   after_commit :check_product_quantity, on: [:create]
 
+  def total
+    if product.discounted_price == 0
+      product.price * quantity
+    else
+      product.discounted_price * quantity
+    end 
+  end
+  
   private
 
   def delete_cart

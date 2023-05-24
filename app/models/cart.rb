@@ -2,9 +2,13 @@
 
 class Cart < ApplicationRecord
   belongs_to :user
-  belongs_to :product
-  belongs_to :storage
-  has_one :payment
+  has_many :payments
+  belongs_to :storages
+  has_many :products, through: :payments
+
+  def total
+    payments.to_a.sum {|payments| payments.total}
+  end
 
   def add_product(product_id)
     current_item = Product.find_by(product_id: product_id)

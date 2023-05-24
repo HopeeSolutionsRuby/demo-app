@@ -2,8 +2,9 @@
 
 class Product < ApplicationRecord
   validate :blank
-  has_many :carts, dependent: :destroy
+  has_many :carts, dependent: :destroy, through: :payments
   has_many :images, as: :imageable, dependent: :destroy
+  has_many :payments, dependent: :destroy
   belongs_to :storage
 
   private
