@@ -4,6 +4,7 @@ class PassWordResetsController < ApplicationController
   # before_action :check_expiration, only: [:edit, :update]
 
   def new
+    @user = User.new
   end
 
   def create
@@ -11,7 +12,7 @@ class PassWordResetsController < ApplicationController
       @user.create_reset_digest
       UserMailer.password_reset(@user).deliver_now
       flash[:info] = "Email sent with password reset instructions"
-    elsif @user = User.find_by(mail: params[:mail])
+    elsif @user = User.find_by(email: params[:email])
       @user.create_reset_digest
       UserMailer.password_reset(@user).deliver_now
       flash[:info] = "Email sent with password reset instructions"
@@ -23,7 +24,7 @@ class PassWordResetsController < ApplicationController
   end
 
   def edit
-    if @user = current_user || @user = User.find_by(mail: params[:mail])
+    if @user = current_user || @user = User.find_by(email: params[:email])
       render 'edit'
     else
       flash[:danger] = "Invalid or expired password reset token"
@@ -32,7 +33,7 @@ class PassWordResetsController < ApplicationController
   end
 
   def update
-    if @user = current_user || @user = User.find_by(mail: params[:mail])
+    if @user = current_user || @user = User.find_by(mail: params[:email])
       if @user.update(user_params)
         flash[:success] = "Password has been reset."
         redirect_to @user
@@ -52,7 +53,7 @@ class PassWordResetsController < ApplicationController
   end
 
   def get_user
-    @user = User.find_by(mail: params[:mail])
+    @user = User.find_by(mail: params[:email])
   end
 
   def valid_user

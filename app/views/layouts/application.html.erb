@@ -17,7 +17,7 @@
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <% if @user == current_user %>
+    <% if current_user %>
     <div class="collapse navbar-collapse px-5" id="navbarSupportedContent">
       <%= form_tag("/search", method: "get", class: "d-flex w-50") do %>
       <%= text_field_tag "search", nil, placeholder: "search", class: "form-control me-2" %>
@@ -28,13 +28,13 @@
       <li class="nav-item dropdown mx-2">
           <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
           data-bs-toggle="dropdown" aria-expanded="false">
-          <%= @user.name.capitalize %>
+          <%= @user.email.capitalize %>
           </a>
         <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-          <li><a class="dropdown-item"><%= link_to "Profile", profile_path(@user) %></a></li>
-          <li><a class="dropdown-item"><%= link_to "Orders" %></a></li>
-          <li><a class="dropdown-item"><%= link_to "Change Password", edit_pass_word_reset_url %></a></li>
-          <li><a class="dropdown-item"><%= link_to "Logout", destroy_user_session %></a></li>
+          <li><%= link_to "Profile", profile_path(@user) %></li>
+          <li><%= link_to "Orders" %></li>
+          <li><%= link_to "Change Password", new_user_password_path %></li>
+          <li><%= link_to "Logout", logout_path %></li>
         </ul>
       </li>
     <li>
@@ -52,7 +52,7 @@
 <div class="collapse navbar-collapse" id="navbarSupportedContentnotAuth">
   <ul class="navbar-nav me-5 mx-5 mb-2 mb-lg-0">
     <li class="nav-item">
-      <%= link_to "Home", root_path, class: "nav-link active", "aria-current" => "page" %>
+      <%= link_to "Home", class: "nav-link active", "aria-current" => "page" %>
     </li>
 </ul>
 <form action="/search" role="search" class="d-flex w-50">
@@ -62,7 +62,7 @@
 </div>
 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
   <li class="nav-item mx-2">
-    <%= link_to "Log in", new_user_session, method: "create" %>
+    <%= link_to "Log in", login_path, method: "create" %>
   </li>
   <li class="nav-item mx-2">
     <%= link_to "Registeration", new_user_path, method: "new" %>

@@ -1,70 +1,28 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<h2>Sign up</h2>
 
-<div class="row">
-  <div class="col">
-    <%= form_for(@users) do |f| %>
+<%= form_for(@users) do |f| %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :phone %>
-      <%= f.text_field :phone, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :confirm_password, "Confirmation" %>
-      <%= f.password_field :confirm_password, class: 'form-control' %>
-
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-</div>
 
-<style>
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
 
-  html {
-    height: 100%;
-  }
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
 
-  body {
-    height: 100%;
-  }
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
 
-  label {
-    font-size: 1.5rem;
-  }
-
-  .row {
-    height: 100%;
-  }
-
-  .col {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-  }
-
-  .form-control {
-    margin: 10px 0;
-    height: 10%;
-    font-size: 1.5rem;
-  }
-
-  .new_user{
-    display: flex;
-    height: 100%;
-    width: 50%;
-    flex-direction: column;
-  }
-
-  .btn {
-    background-color: skyblue;
-    font-size: 1rem;
-    width: 20%;
-    height: 10%;
-  }
-</style>
+<%= render "users/shared/links" %>

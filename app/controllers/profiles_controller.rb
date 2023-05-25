@@ -11,8 +11,12 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = Profile.find_by(user_id: params[:id])
-    @user = User.find_by(id: params[:user_id])
+    if current_user
+      @profile = Profile.find_by(user_id: params[:id])
+      @user = User.find_by(id: params[:user_id])
+    else
+      redirect_to login_url
+    end
   end
 
   def update

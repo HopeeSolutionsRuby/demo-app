@@ -6,11 +6,13 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+
+    render 'login'
   end
 
   def create
-    user = User.find_by(name: params[:session][:name])
-    if user && user.authenticate(params[:session][:password])
+    user = User.find_by(email: params[:session][:email])
+    if user
       log_in user
       # params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       redirect_back_or user
@@ -22,12 +24,12 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to root_url
+    redirect_to login_url
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :password)
+    params.require(:user).permit(:email, :password)
   end
 end

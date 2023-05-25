@@ -1,13 +1,15 @@
-<% provide(:title, "Forgot password") %>
-<h1>Forgot password</h1>
+<h2>Forgot your password?</h2>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with model: @user do |f| %>
-      <%= f.label :mail %>
-      <%= f.email_field :mail, class: 'form-control' %>
+<%= form_with model: @user do |f| %>
 
-      <%= f.submit "Submit", class: "btn btn-primary" %>
-    <% end %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-</div>
+
+  <div class="actions">
+    <%= f.submit "Send me reset password instructions" %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>
