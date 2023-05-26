@@ -5,9 +5,10 @@
       <h1>
         Welcome <%= @user.email %>
       </h1>
-      <td><%= link_to "Profile", profile_path(@user) %></td>
-      <td><%= link_to "Log out", logout_path, method: "delete" %></td>
-      <td><%= link_to "Change Password", edit_pass_word_reset_url %></td>
+      <!-- <td>< link_to "Profile", profile_path(@user) %></td> -->
+      <td><%= link_to "Log out", destroy_user_session_path, method: "delete", data: { confirm: "Are you sure?" }, class: "btn btn-primary", redirect_to: user_session_path %></td>
+
+      <td><%= link_to "Change Password", edit_user_password_path %></td>
     </section>
   </aside>
 </div>

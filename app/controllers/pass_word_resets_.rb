@@ -56,12 +56,12 @@ class PassWordResetsController < ApplicationController
     @user = User.find_by(mail: params[:email])
   end
 
-  def valid_user
-    unless (@user && @user.activated? &&
-        @user.authenticated?(:reset, params[:id]))
-      redirect_to root_url
-    end
-  end
+  # def valid_user
+  #   unless (@user && @user.activated? &&
+  #       @user.authenticated?(:reset, params[:id]))
+  #     redirect_to root_url
+  #   end
+  # end
 
   # def check_expiration
   #   if @user.password_reset_expired?

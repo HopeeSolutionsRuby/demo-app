@@ -23,24 +23,24 @@ class User < ApplicationRecord
   has_one :professor, dependent: :destroy
   has_secure_password
   validates :password, presence: true
-  def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
-  end
+  # def send_password_reset_email
+  #   UserMailer.password_reset(self).deliver_now
+  # end
 
-  def self.find_by_password_reset_token!(reset_token)
-    find_by!(reset_password_token: reset_token)
-  end
+  # def self.find_by_password_reset_token!(reset_token)
+  #   find_by!(reset_password_token: reset_token)
+  # end
 
-  def create_reset_digest
-    self.reset_token = generate_reset_token
-    self.reset_password_token = User.digest(reset_token)
-    update_columns(reset_password_token: reset_password_token)
-  end
+  # def create_reset_digest
+  #   self.reset_token = generate_reset_token
+  #   self.reset_password_token = User.digest(reset_token)
+  #   update_columns(reset_password_token: reset_password_token)
+  # end
 
-  private
+  # private
 
-  def generate_reset_token
-    SecureRandom.urlsafe_base64
-  end
+  # def generate_reset_token
+  #   SecureRandom.urlsafe_base64
+  # end
 
 end

@@ -1,2 +1,10 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<% provide(:title, "Product Details") %>
+<h1>Product Detail</h1>
+  <div class="entry">
+    <h3><%= @product.product_name %></h3>
+    <%= sanitize(@product.description) %>
+      <div class="price_line">
+        <span class="price"><%= number_to_currency(@product.price) %></span> 
+        <button><%= link_to 'Add to Cart', carts_path, method: :post, form: { action: new_cart_path, method: :get } %></button>
+      </div>
+  </div>

@@ -1,7 +1,6 @@
-# frozen_string_literal: true
+#frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  devise_for :users, controllers: { sessions: 'users/sessions' }
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -10,14 +9,15 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+    redirect_to user_session_path
+  end
 
   # protected
 
