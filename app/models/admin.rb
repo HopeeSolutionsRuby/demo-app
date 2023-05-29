@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Admin < ApplicationRecord
+  require 'carrierwave/orm/activerecord'
   before_save { self.email = email.downcase }
   before_save { self.phone = phone.to_s }
 
@@ -14,6 +15,8 @@ class Admin < ApplicationRecord
 
   enum status: { active: 0, inactive: 1 }
   enum role: { admin: 0, customer_service: 1 }
+  mount_uploader :avatar, AvatarUploader
+  serialize :avatars, JSON
 
   def active_for_authentication?
     super && active?

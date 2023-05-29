@@ -9306,3 +9306,13 @@ span.sep {
   padding:0 5px;
   color:green;
 }
+
+.dripicons-upload {
+  top: 45%;
+    left: 51%;
+    background: white;
+    width: 2rem;
+    border: 1px solid;
+    cursor: pointer;
+    position: absolute;
+}
