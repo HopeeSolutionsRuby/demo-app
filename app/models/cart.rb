@@ -4,7 +4,8 @@ class Cart < ApplicationRecord
   belongs_to :user
   has_many :payments
   belongs_to :storage
-  has_many :products, through: :payments
+  # has_many :products, through: :payments
+  belongs_to  :product
 
   def total
     payments.to_a.sum {|payments| payments.total}

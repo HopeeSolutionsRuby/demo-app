@@ -1,30 +1,45 @@
 class CartsController < ApplicationController
   def index
-    @carts = current_user.carts.all
+    carts = Cart.all
+    @cart = current_user.carts.includes(:product)
+    product = Product.find_by(id: params[:id])
+    @amount = 0
+    cart_empty = false
+    if @cart.exists?
+      @cart.each do |p|
+        if p.product.discount_price != 0
+          value = p.quantity * p.product.discount_price
+          @amount += value
+          cart_empty = false
+        else
+          value = p.quantity * p.product.price
+          @amount += value
+          cart_empty = false
+        end
+      end
+    else
+      value = 0
+      @amount += value
+      cart_empty = true
+    end
+    @totalamount = @amount + 40
   end
 
   def create
-    user = current_user
-    product_id = params[:product_id]
-    @cart = Cart.find_by(product_id: product_id, user_id: user.id)
-    if @cart
-      @cart.quantity += 1
-      @cart.save
+    carts = Cart.all
+    @cart = current_user.carts.includes(:product)
+    product = Product.find_by(id: params[:id])
+    if Cart.exists?(product: product_id)
+      c = Cart.find_by(product: product_id, user: request.user)
+      c.quantity += 1
+      c.save
+      amount = 0
+      redirect '/cart'
     else
       product = Product.find(product_id)
-      @cart = Cart.new(cart_params)
-      @cart.save
-    end
-    redirect_to carts_path
-  end
-
-  def update
-    @cart = Cart.find(params[:id])
-    if @cart.update(cart_params)
-      redirect_to carts_path, notice: 'Cart was successfully updated.'
-    else
-      render :edit
-    end
+      Cart.create(user: user, product: product)
+      redirect '/cart'
+    end 
   end
 
   def destroy

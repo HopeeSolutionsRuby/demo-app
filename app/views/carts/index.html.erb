@@ -1,7 +1,6 @@
 <% provide(:title, 'Cart') %>
 <h1 class="text-center mb-5">Shopping Cart</h1>
 <div style="display: flex" class="container my-5">
-  <% if @cart %>
     <div style="margin-right: 20px" class="col-sm-8">
       <div style="border:none" class="card">
         <div class="cart-body">
@@ -20,7 +19,7 @@
                   </div>
                   <div class="d-flex justify-content-between">
                     <a pid="<%= item.product.id %>" class="remove-cart btn btn-sm btn-secondary mr-3">Remove item</a>
-                    <% if item.product.discounted_price == 0 %>
+                    <% if item.product.discount_price == 0 %>
                       <p class="mb-0"><span><strong style="margin-right: 20px"><%= number_with_precision(item.product.price, precision: 0) %>$</strong></span></p>
                     <% else %>
                       <p class="mb-0"><span><strong style="margin-right: 20px"><%= number_with_precision(item.product.discount_price, precision: 0) %>$</strong></span></p>
@@ -40,23 +39,20 @@
           <h3>The Total Amount Of</h3>
           <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center px-0 border-0 pb-0">
-              Amount <span><strong id="amount"><%= number_with_precision(amount, precision: 0) %></strong><strong>$</strong></span>
+              Amount <span><strong id="amount"><%= number_with_precision(@amount, precision: 0) %></strong><strong>$</strong></span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping <span>40$</span></li>
             <li class="list-group-item d-flex justify-content-between align-items-center px-0 border-0 mb-3">
               <div>
                 <strong>Total USD</strong>
               </div>
-              <span><strong id="totalamount"><%= number_with_precision(total_amount, precision: 0) %></strong><strong>$</strong></span>
+              <span><strong id="totalamount"><%= number_with_precision(@totalamount, precision: 0) %></strong><strong>$</strong></span>
             </li>
           </ul>
           <div class="d-grid">
-            <%= link_to "Place Order", checkout_path, class: "btn btn-primary" %>
+            <%= link_to "Place Order", class: "btn btn-primary" %>
           </div>
         </div>
       </div>
     </div>
-  <% else %>
-    <h3>Cart is empty</h3>
-  <% end %>
 </div>
