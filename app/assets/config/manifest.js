@@ -6,3 +6,4 @@
 //= link frontend/application.css
 //= link_directory ../javascript/frontend .js
 //= link admin/application.css
+//= link admin/application.css

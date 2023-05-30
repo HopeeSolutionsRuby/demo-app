@@ -1091,10 +1091,7 @@ mark,
 .table {
   width: 100%;
   margin-bottom: 1rem;
-<<<<<<< HEAD
-=======
   color: #6c757d!important;
->>>>>>> f4027a4137f3b89412133ac3f38ceb39b6280f23
 }
 .table th,
 .table td {
@@ -4283,11 +4280,8 @@ input[type="button"].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-<<<<<<< HEAD
   border-radius: 0.25rem;
-=======
-    border-radius: 0.25rem;
->>>>>>> f4027a4137f3b89412133ac3f38ceb39b6280f23
+  border-radius: 0.25rem;
 }
 .breadcrumb-item + .breadcrumb-item {
   padding-left: 0.5rem;

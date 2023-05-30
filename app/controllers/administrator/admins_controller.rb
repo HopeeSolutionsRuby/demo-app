@@ -60,7 +60,7 @@ module Administrator
     private
 
     def admin_params
-      params.require(:admin).permit(:first_name, :last_name, :email, :password, :phone, :avatar)
+      params.require(:admin).permit(:avatar, :first_name, :last_name, :email, :phone, :password)
     end
 
     def set_admin

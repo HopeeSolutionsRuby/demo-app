@@ -18,21 +18,21 @@
 
 $(document).ready(function() {
   // Lắng nghe sự kiện thay đổi trường tệp
-  $('#avatar-upload').on('change', function() {
+  $('input[type="file"]').on('change', function() {
     var fileInput = $(this);
     var file = fileInput[0].files[0];
-
+    
     if (file) {
       // Tạo đường dẫn tới file tải lên
       var fileReader = new FileReader();
       fileReader.onload = function(e) {
         // Thay đổi hình ảnh hiển thị thành avatar tải lên
-        $('#avatar-preview img').attr('src', e.target.result);
+        $('#avatar-preview').attr('src', e.target.result);
       };
       fileReader.readAsDataURL(file);
     } else {
       // Nếu không có file được chọn, hiển thị avatar mặc định
-      $('#avatar-preview img').attr('src', '/path/to/default/avatar.png');
+      $('#avatar-preview').attr('src', '/path/to/default/avatar.png');
     }
   });
 });
