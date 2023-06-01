@@ -23,23 +23,23 @@
                     <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">First Name:</span>
                       <strong><%= @admin.first_name %></strong>
                     </li>
-                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Last Name:</span> 
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Last Name:</span>
                       <strong><%= @admin.last_name %></strong>
                     </li>
-                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> 
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span>
                       <strong><%= @admin.email %></strong>
                     </li>
-                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span> 
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span>
                       <strong><%= @admin.phone %></strong>
                     </li>
-                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Status:</span> 
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Status:</span>
                       <strong><%= @admin.status %></strong>
                     </li>
-                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Role:</span> 
+                    <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Role:</span>
                       <strong><%= @admin.role %></strong>
                     </li>
-                    <li class="mb-2 mb-xl-3 display-28">
-                      <div class="text-end"> <%= link_to "Return", administrator_admins_path, class: "btn-a btn-secondary" %> </div>
+                    <li class="d-flex mb-2 mb-xl-3 display-28">
+                      <div class="text-end"> <%= link_to "Return", products_path, class: "btn-a btn-secondary" %> </div>
                     </li>
                   </ul>
                 </div>
@@ -51,3 +51,8 @@
     </div>
   </section>
 </div>
+<style>
+  .btn-a {
+    margin-right: 1rem;
+  }
+</style>

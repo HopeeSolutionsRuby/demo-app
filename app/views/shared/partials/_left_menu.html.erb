@@ -2,7 +2,7 @@
 <!-- Left sidebar start -->
 <div class="leftside-menu">
   <!-- LOGO -->
-  <a href="#" class="logo text-center logo-light">
+  <a href="<%= products_path %>" class="logo text-center logo-light">
   <span class="logo-lg">
   <%= image_tag("zyro-image.png", alt: "", height: 66) %>
   </span>
@@ -11,7 +11,7 @@
   </span>
   </a>
   <!-- LOGO -->
-  <a href="#" class="logo text-center logo-dark">
+  <a href="<%= administrator_root_path %>" class="logo text-center logo-dark">
   <span class="logo-lg">
   <%= image_tag("zyro-image.png", alt: "", height: 66) %>
   </span>
@@ -24,21 +24,16 @@
     <ul class="side-nav">
       <li class="side-nav-title side-nav-item">Navigation</li>
       <li class="side-nav-item">
-        <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
-        <i class="uil-home-alt"></i>
-        <span> Dashboards </span>
+        <a href="<%= products_path %>" class="side-nav-link">
+          <i class="uil-streering"></i>
+          <span> Dash Board </span>
         </a>
-      </li>
+      </li>   
       <li class="side-nav-item">
         <a href="<%= administrator_admins_path %>" class="side-nav-link">
           <i class="uil-streering"></i>
           <span> Admins </span>
-          <% if defined?(current_admin) && current_admin.admin? %>
-      <li>
-      <%= link_to '', administrator_admins_path %>
-      </li>
-      <% end %>
-      </a>
+        </a>
       </li>   
     </ul>
     <!-- End Sidebar -->

@@ -1,4 +1,8 @@
 <div class="container-fluid">
 <%= render partial: 'administrator/shared/partials/page_title' %>
 </div>
-<%= render partial: 'administrator/admins/partials/form', locals: { method: :put, url: administrator_admin_path(@admin) } %>
+<% if current_admin.role == 'admin' %>
+  <%= render partial: 'administrator/admins/partials/form', locals: { method: :put, url: administrator_admin_path } %>
+<% else %>
+  <%= render partial: 'administrator/admins/partials/none_admin_form', locals: { method: :put, url: administrator_admin_path } %>
+<% end %>

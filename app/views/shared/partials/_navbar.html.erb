@@ -116,12 +116,12 @@
           <h6 class="text-overflow m-0">Welcome !</h6>
         </div>
         <!-- item-->
-        <a href="javascript:void(0);" class="dropdown-item notify-item">
-        <i class="mdi mdi-account-circle me-1"></i>
-        <span>My Account</span>
+        <a href="<%= administrator_admin_path(current_admin) %>" class="dropdown-item notify-item">
+          <i class="mdi mdi-account-circle me-1"></i>
+          <span>My Account </span>
         </a>
         <!-- item-->
-        <a href="javascript:void(0);" class="dropdown-item notify-item">
+        <a href="<%= edit_administrator_admin_path(current_admin) %>" class="dropdown-item notify-item">
         <i class="mdi mdi-account-edit me-1"></i>
         <span>Settings</span>
         </a>

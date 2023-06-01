@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="account-settings">
+          <div class="user-profile">
+            <%= form_for @category do |f| %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <% if @category.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h6 class="mb-2 text-primary">Category Details</h6>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :name, "Category Name" %> <%= f.text_field :name, class: "form-control", id: "Name", placeholder: "Enter category name" %></div>
+          </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :images, "Images" %>
+              <%= f.file_field :images %></div>
+          </div>
+          </div>
+        </div>
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="text-right">
+              <%= f.submit "Change category", class: "btn btn-primary" %>
+              <%= link_to "Cancel", administrator_admins_path, class: "btn btn-secondary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <% end %>
+</div>
+<style>
+  .form-group {
+    display: flex;
+    flex-direction: column
+  }
+</style>

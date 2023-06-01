@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="account-settings">
+          <div class="user-profile">
+            <%= form_for @product do |f| %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <h6 class="mb-2 text-primary">Product Details</h6>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :name, "Product Name" %> <%= f.text_field :name, class: "form-control", id: "Name", placeholder: "Enter product name" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :description, "Product Description" %> <%= f.text_field :description, class: "form-control", id: "description", placeholder: "Enter product description" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :price, "Product price" %> <%= f.number_field :price, class: "form-control", id: "Price", placeholder: "Enter product price" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :discount_price, "Discount_price" %> <%= f.number_field :discount_price, class: "form-control", id: "discount_price", placeholder: "Enter product discount_price" %></div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group">
+                <%= f.label :category_id, "Category" %>
+                <%= f.select :category_id, options_for_select(@categories.map { |category| [category.name, category.id] }), {}, class: "form-control" %>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group"><%= f.label :images, "Images" %>
+              <%= f.file_field :images, multiple: true %></div>
+          </div>
+            
+           
+          </div>
+        </div>
+        <div class="row gutters">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="text-right">
+              <%= f.submit "Change product", class: "btn btn-primary" %>
+              <%= link_to "Cancel", administrator_admins_path, class: "btn btn-secondary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <% end %>
+</div>

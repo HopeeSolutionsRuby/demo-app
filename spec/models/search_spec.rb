@@ -3,28 +3,24 @@ require 'capybara/rspec'
 
 RSpec.feature 'User', type: :feature do
   describe 'search' do
-    context 'when search with valid input' do
-      let(:admin) { build(:admin, email: 'anvu523@gmail.com', phone: 12345678900) }
-      before(:each) do
-        admin.save!
-      end
+    let(:admin) { create(:admin, email: 'anvu523@gmail.com', phone: '12345678900') }
+    
+    before do
+      admin.save!
     end
 
     it 'fills in the search field' do
-      visit administrator_admins_url
-      find('#search', wait: 10).set('An')
+      visit 'http://127.0.0.1:3001/administrator/admins'
+      find("#search").set('thien')
       click_button 'Search'
-
       expect(page).to have_content('An')
     end
 
     it 'displays no results if no matching products' do
-      visit administrator_admins_url
-      find('#search', wait: 10).set('An')
+      visit 'http://127.0.0.1:3001/administrator/admins'
+      fill_in 'search', with: ''
       click_button 'Search'
-
-      admins = all('.admin')
-      expect(admins.count).to eq(Admin.count)
+      expect(page).to have_content('No results')
     end
   end
 end

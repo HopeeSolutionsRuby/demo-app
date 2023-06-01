@@ -14,7 +14,7 @@ class Admin < ApplicationRecord
   validates :phone, format: { with: /\A[0-9+]+\z/ }
 
   enum status: { active: 0, inactive: 1 }
-  enum role: { admin: 0, customer_service: 1 }
+  enum role: { admin: 0, user: 1 }
   mount_uploader :avatar, AvatarUploader
   serialize :avatars, JSON
 

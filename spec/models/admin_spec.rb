@@ -56,30 +56,4 @@ RSpec.describe Admin, type: :model do
       end
     end
   end
-
-  describe 'search' do
-    context 'when search with valid input' do
-      let(:admin) { build(:admin, email: 'anvu523@gmail.com', phone: 12345678900) }
-      before(:each) do
-        admin.save!
-      end
-    end
-
-    it 'displays search results' do
-      visit 'dashboard#index'
-      fill_in 'search', with: 'An'
-      click_button 'Search'
-
-      expect(page).to have_content('user')
-      expect(page).to_not have_content('user')
-    end
-
-    it 'displays no results if no matching products' do
-      visit 'dashboard#index'
-      fill_in 'search', with: 'asdas'
-      click_button 'Search'
-
-      expect(page).to have_content('No results found')
-    end
-  end
 end
