@@ -2,21 +2,22 @@ default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  host: localhost
 
 development:
   <<: *default
   database: beauty_care_development
-  username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  username: <%= ENV.fetch("DB_USERNAME") { 'vy' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'password' } %>
 
 test:
   <<: *default
   database: beauty_care_test
-  username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  username: <%= ENV.fetch("DB_USERNAME") { 'vy' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'password' } %>
 
 production:
   <<: *default
   database: beauty_care_production
-  username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
-  password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %>
+  username: <%= ENV.fetch("DB_USERNAME") { 'vy' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'password' } %>
