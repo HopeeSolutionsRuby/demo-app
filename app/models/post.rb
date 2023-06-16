@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user, class_name: 'User'
+  around_save :log_save
   #validate the tile and body
   #validate that the title has a length of at least 5
   validates :title, presence: true,length: { minimum: 5, maximum: 7 }
@@ -19,5 +20,11 @@ class Post < ApplicationRecord
 
   def title_must_be_unique
     errors.add(:title, 'must be unique') if title.present? && Post.exists?(title: title)
+  end
+
+  def log_save
+  	puts "Before saving the post"
+  	yield
+  	puts "After saving the post"
   end
 end
