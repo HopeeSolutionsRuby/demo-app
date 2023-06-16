@@ -2,13 +2,49 @@
 require 'factory_bot'
 require 'faker'
 include FactoryBot::Syntax::Methods
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-5.times do 
-  create(:admin)
+
+Faker::Config.locale = 'vi'
+# Seed faculties
+5.times do
+  Faculty.create(
+    name: Faker::Games::Dota.hero,
+    year: rand(1998..2015)
+  )
+end
+
+# Seed students
+50.times do
+  Student.create(
+    name: Faker::Name.unique.name,
+    year: Faker::Number.between(from: 1, to: 4),
+    faculty_id: Faculty.pluck(:id).sample
+  )
+end
+
+# Seed subjects
+15.times do
+  Subject.create(
+    name: Faker::Job.position,
+    credit: rand(2..5),
+    faculty_id: Faculty.pluck(:id).sample
+  )
+end
+
+# Seed terms 
+15.times do
+  Term.create(
+    subject_id: Subject.pluck(:id).sample,
+    semester: rand(1..2),
+    year: rand(2019..2024),
+    teacher: Faker::Sports::Football.player
+  )
+end
+
+# Seed results
+25.times do
+  Result.create(
+    student_id: Student.pluck(:id).sample,
+    term_id: Term.pluck(:id).sample,
+    point: sprintf('%.2f', rand(0.0..10.0))
+  )
 end
