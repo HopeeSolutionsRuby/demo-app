@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Student < ApplicationRecord
   include ActiveModel::Validations
 
@@ -5,6 +7,10 @@ class Student < ApplicationRecord
   validates_associated :results
   belongs_to :faculty
 
+  scope :year, ->(year) { where(year: year) }
+  scope :in_faculty, ->(faculty_name) {
+    joins(:faculty).where(faculties: { name: faculty_name })
+  }
   validates :name, presence: true, uniqueness: true, name: true
   validates :year, numericality: { in: 1..4 }
 

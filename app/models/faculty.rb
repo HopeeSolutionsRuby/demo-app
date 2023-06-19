@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Faculty < ApplicationRecord
   has_many :students
   validates :name, presence: true, uniqueness: true

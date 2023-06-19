@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class Result < ApplicationRecord
   belongs_to :student
   belongs_to :term
 
   validates :point, numericality: { in: 0..10 }
 
-  around_save :say_something
   after_validation :notifi
+  around_save :say_something
 
   def say_something
     Rails.logger.debug 'Try hard to get high point'
