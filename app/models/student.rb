@@ -8,7 +8,7 @@ class Student < ApplicationRecord
   belongs_to :faculty
 
   scope :year, ->(year) { where(year: year) }
-  scope :in_faculty, ->(faculty_name) {
+  scope :in_faculty, lambda { |faculty_name|
     joins(:faculty).where(faculties: { name: faculty_name })
   }
   validates :name, presence: true, uniqueness: true, name: true
