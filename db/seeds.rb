@@ -11,7 +11,7 @@ include FactoryBot::Syntax::Methods
 #   Character.create(name: "Luke", movie: movies.first)
 SIZE_PRODUCT = 20
 SIZE_CATEGORY = 5
-SIZE_ORDER = 10
+SIZE_ORDER = 100
 SIZE_ORDER_LINE = 5
 SIZE_USER = 10
 
@@ -32,7 +32,7 @@ end
 end
 
 (1..SIZE_ORDER).each do
-  Order.create(date: Faker::Date.between(from: '2014-09-23', to: '2015-09-25'),
+  Order.create(date: Faker::Date.between(from: '2014-09-23', to: '2023-05-25'),
   total: Faker::Number.within(range: 100000..1000000),
   admin_id: rand(1..SIZE_USER))
 end

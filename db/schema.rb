@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_074445) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_19_090533) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_074445) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "orders_count"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["phone"], name: "index_admins_on_phone", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
@@ -34,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_074445) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "products_count"
   end
 
   create_table "order_lines", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
