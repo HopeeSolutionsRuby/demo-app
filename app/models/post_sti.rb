@@ -1,0 +1,2 @@
+class PostSti < ApplicationRecord
+end

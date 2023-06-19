@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_063615) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_19_072131) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -33,6 +33,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_063615) do
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "post_stis", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_sti_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_sti_id"], name: "index_post_stis_on_user_sti_id"
   end
 
   create_table "results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -73,6 +80,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_063615) do
     t.index ["subject_id"], name: "index_terms_on_subject_id"
   end
 
+  create_table "user_stis", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "type", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "post_stis", "user_stis"
   add_foreign_key "results", "students"
   add_foreign_key "results", "terms"
   add_foreign_key "students", "faculties"
