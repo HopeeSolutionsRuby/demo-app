@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_19_072131) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_19_075952) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -35,6 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_072131) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "post_polies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "postable_id", null: false
+    t.string "postable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "post_stis", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_sti_id", null: false
     t.datetime "created_at", null: false
@@ -50,6 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_072131) do
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_results_on_student_id"
     t.index ["term_id"], name: "index_results_on_term_id"
+  end
+
+  create_table "student_polies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "faculty"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -68,6 +82,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_072131) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["faculty_id"], name: "index_subjects_on_faculty_id"
+  end
+
+  create_table "teacher_polies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "department"
+    t.integer "year_of_experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "terms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -3,7 +3,7 @@
 class Student < ApplicationRecord
   include ActiveModel::Validations
 
-  has_many :results
+  has_many :results, dependent: :restrict_with_exception
   validates_associated :results
   belongs_to :faculty
 
