@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Student < ApplicationRecord
-  include ValidateCallback
+  include StudentCallback
 
   has_many :results, dependent: :restrict_with_exception
   validates_associated :results
