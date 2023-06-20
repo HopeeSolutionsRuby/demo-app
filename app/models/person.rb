@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
+# Class model for Person
 class Person < ApplicationRecord
   validates :name, :age, presence: true
-  validates_with MyValidator
-  
-  before_create :message 
-  
-  def message
-    puts "you will create a model"
-  end
-  
-end
+  #validates_with MyValidator
 
+  before_create :message
+
+  def message
+    puts 'you will create a model'
+  end
+end

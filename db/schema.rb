@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_19_135710) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_20_092653) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -20,6 +20,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_135710) do
     t.string "title"
     t.text "content"
     t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.integer "page"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "games", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.string "dev"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.string "director"
+    t.integer "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,6 +59,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_135710) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.string "rvtable_type", null: false
+    t.bigint "rvtable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rvtable_type", "rvtable_id"], name: "index_reviews_on_rvtable"
   end
 
   create_table "student_projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -57,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_135710) do
     t.date "dob"
     t.string "contact_number"
     t.string "address"
+    t.integer "blogs_count", default: 0, null: false
   end
 
   add_foreign_key "student_projects", "projects"
