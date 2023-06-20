@@ -2,6 +2,9 @@
 
 class UserSti < ApplicationRecord
   has_many :posts, dependent: :restrict_with_exception
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end
 
 class StudentSti < UserSti

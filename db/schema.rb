@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_20_063520) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_20_071334) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_063520) do
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_student"
   end
 
   create_table "post_polies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
