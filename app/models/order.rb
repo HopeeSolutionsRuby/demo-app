@@ -3,14 +3,19 @@
 class Order < ApplicationRecord
   include OrderActivities
 
-  belongs_to :admin, counter_cache: true
+  belongs_to :user, counter_cache: true, inverse_of: :orders
 
-  has_many :order_lines, dependent: :destroy, inverse_of: :order
+  has_one :bill, dependent: :restrict_with_exception, inverse_of: :order
+
+  has_many :order_lines, dependent: :restrict_with_exception, inverse_of: :order
   has_many :products, through: :order_lines, inverse_of: :orders
 
+  has_many :payment_lines, dependent: :restrict_with_exception, inverse_of: :order
+  has_many :payments, through: :payment_lines, inverse_of: :orders
+
   validates :date, :total, presence: true
-  validates :total, numericality: true
+  validates :total, numericality: { greater_than: 0 }
   validates :date, comparison: { less_than_or_equal_to: Date.current }
 
-  validates_associated :admin
+  validates_associated :user
 end

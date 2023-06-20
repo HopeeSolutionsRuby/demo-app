@@ -3,13 +3,10 @@
 module ProductActivities
   extend ActiveSupport::Concern
 
-  included do 
+  included do
     before_validation :before_validation
     after_touch :after_touch
     before_save :before_save
-    before_destroy :before_destroy
-    after_destroy :after_destroy
-    after_rollback :after_rollback
 
     def method_missing(method_name, *_arg)
       Rails.logger.debug { "Error: #{method_name} method is not defined" }
@@ -21,7 +18,7 @@ module ProductActivities
   end
 
   def self.best_seller
-    where('price > ?', 10000)
+    where('price > ?', 10_000)
   end
 
   def before_validation
@@ -30,29 +27,10 @@ module ProductActivities
   end
 
   def after_touch
-    Rails.logger.debug 'after_touch Product'
+    Rails.logger.debug { "after_touch Product #{name}" }
   end
 
   def before_save
-    self.price = 0 if price.negative?
-    Rails.logger.debug 'before_validation Product'
-  end
-
-  def before_destroy
-    Rails.logger.debug 'before_destroy Product'
-  end
-
-  def after_destroy
-    Rails.logger.debug 'after_destroy Product'
-  end
-
-  def after_rollback
-    Rails.logger.debug 'after_rollback Product'
-  end
-
-  private
-
-  def price_positive?
-    price.positive?
+    Rails.logger.debug 'before_save Product'
   end
 end

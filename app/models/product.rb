@@ -3,11 +3,13 @@
 class Product < ApplicationRecord
   include ProductActivities
 
-  belongs_to :category, touch: true, counter_cache: true
+  belongs_to :category, touch: true, counter_cache: true, inverse_of: :products
 
-  has_many :order_lines, inverse_of: :product, dependent: :destroy
+  has_many :order_lines, inverse_of: :product, dependent: :restrict_with_exception
   has_many :orders, through: :order_lines, inverse_of: :products
+  has_many :images, as: :imageable, dependent: :restrict_with_exception, inverse_of: :imageable
+  has_many :comments, as: :commentable, dependent: :restrict_with_exception, inverse_of: :commentable
 
   validates :name, :price, presence: true
-  validates :price, numericality: true
+  validates :price, numericality: { greater_than: 0 }
 end

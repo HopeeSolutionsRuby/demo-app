@@ -6,7 +6,8 @@ class Category < ApplicationRecord
   has_many :products, dependent: :destroy, inverse_of: :category
 
   validates :name, presence: true
-  validates :name, length: {maximun: 50}
+  # uniqueness: { case_sensitive: false },
+  # format: { with: /\A[A-Za-z0-9_\-]+\z/ }
 
   validates_associated :products
 end

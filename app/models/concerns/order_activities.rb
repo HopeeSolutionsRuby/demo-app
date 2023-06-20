@@ -4,8 +4,9 @@ module OrderActivities
   extend ActiveSupport::Concern
 
   included do
-    after_create_commit :after_create_commit
-    after_update_commit :after_update_commit
+    after_create :after_create
+    after_update :after_update
+    after_destroy :after_destroy
 
     def method_missing(method_name, *_arg)
       Rails.logger.debug { "Error: #{method_name} method is not defined" }
@@ -16,11 +17,15 @@ module OrderActivities
     end
   end
 
-  def after_create_commit
-    Rails.logger.debug { "after_commit_create #{id} - send email create" }
+  def after_create
+    Rails.logger.debug { "after_create #{id} - send email create" }
   end
 
-  def after_update_commit
-    Rails.logger.debug { "after_commit_update #{id} - send email update" }
+  def after_update
+    Rails.logger.debug { "after_update #{id} - send email update" }
+  end
+
+  def after_destroy
+    Rails.logger.debug { "after_destroy #{id} - send email destroy" }
   end
 end

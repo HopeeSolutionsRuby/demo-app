@@ -4,9 +4,9 @@ module CategoryActivities
   extend ActiveSupport::Concern
 
   included do
-    before_save :before_save_refresh_name
-    after_save :after_save_notify
-    before_destroy :before_destroy_notify
+    before_save :before_save
+    after_save :after_save
+    before_destroy :before_destroy
 
     def method_missing(method_name, *_arg)
       Rails.logger.debug { "Error: #{method_name} method is not defined" }
@@ -17,20 +17,16 @@ module CategoryActivities
     end
   end
 
-  def before_save_refresh_name
-    self.name = 'NOOOO' if name.downcase == 'loop'
-    Rails.logger.debug { "before_save category #{id} - refresh name" }
+  def before_save
+    self.name = name.split.map(&:capitalize).join(' ') if name.present?
+    Rails.logger.debug { "before_save category #{name} - refresh name" }
   end
 
-  def after_save_notify
-    Rails.logger.debug { "after_save #{category.name}" }
+  def after_save
+    Rails.logger.debug { "after_save #{name}" }
   end
 
-  def before_destroy_notify
-    if name.downcase == 'faked'
-      Rails.logger.debug 'before_destroy "faked"'
-    else
-      Rails.logger.debug 'before_destroy'
-    end
+  def before_destroy
+    Rails.logger.debug { "before_destroy #{name}" }
   end
 end
