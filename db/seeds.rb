@@ -14,34 +14,36 @@ include FactoryBot::Syntax::Methods
 # end
 # user = User.find_by(id: 6)
 # post = user.posts.create(title: "TITLE", body: "Contentttttt")
-User.destroy_all
 
-10.times do
-  User.create!(
-    name: Faker::Games::StreetFighter.unique.character,
-    email: Faker::Internet.unique.email
-  )
-end
+# User.destroy_all
+
+# 10.times do
+#   User.create!(
+#     name: Faker::Games::StreetFighter.unique.character,
+#     email: Faker::Internet.unique.email
+#   )
+# end
 
 
-Post.destroy_all
+# Post.destroy_all
 
-20.times do
-  Post.create!(
-    title: Faker::Games::StreetFighter.unique.stage,
-    body: Faker::Games::StreetFighter.quote
-  )
-end
+# 20.times do
+#   Post.create!(
+#     title: Faker::Games::StreetFighter.unique.stage,
+#     body: Faker::Games::StreetFighter.quote
+#   )
+# end
 
-Profile.destroy_all
+# Profile.destroy_all
 
-users = User.all
+# users = User.all
 
-users.each do |user|
-  profile = Profile.new
-  profile.user = user
-  profile.name = user.name
-  profile.birthday = Faker::Date.birthday
-  profile.address = Faker::Games::StreetFighter.stage
-  profile.save
-end
+# users.each do |user|
+#   profile = Profile.new
+#   profile.user = user
+#   profile.name = user.name
+#   profile.birthday = Faker::Date.birthday
+#   profile.address = Faker::Games::StreetFighter.stage
+#   profile.save
+# end
+

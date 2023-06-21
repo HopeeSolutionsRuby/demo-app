@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :books
-  resources :authors
-  resources :users
   # resources :posts
   # devise_for :admins, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }
   # mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
