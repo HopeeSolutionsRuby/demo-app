@@ -12,6 +12,6 @@ class Admin < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
   enum role: { admin: 0, customer_service: 1 }
 
-  has_many :images, as: :imageable, dependent: :restrict_with_exception
-  has_many :blogs, dependent: :destroy, inverse_of: :admin
+  has_many :images, as: :imageable, dependent: :restrict_with_exception, inverse_of: :imageable
+  has_many :blogs, dependent: :restrict_with_exception, inverse_of: :admin
 end

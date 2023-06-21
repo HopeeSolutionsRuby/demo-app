@@ -1,31 +1,41 @@
 # frozen_string_literal: true
 
 module OrderActivities
-  extend ActiveSupport::Concern
+  module CallBacks
+    extend ActiveSupport::Concern
 
-  included do
-    after_create :after_create
-    after_update :after_update
-    after_destroy :after_destroy
+    included do
+      after_create :after_create
+      after_update :after_update
+      after_destroy :after_destroy
 
-    def method_missing(method_name, *_arg)
-      Rails.logger.debug { "Error: #{method_name} method is not defined" }
+      def method_missing(method_name, *_arg)
+        Rails.logger.debug { "Error: #{method_name} method is not defined" }
+      end
+
+      def respond_to_missing?(method_name, include_private = false)
+        super
+      end
     end
 
-    def respond_to_missing?(method_name, include_private = false)
-      super
+    def after_create
+      Rails.logger.debug { "after_create #{id} - send email create" }
+    end
+
+    def after_update
+      Rails.logger.debug { "after_update #{id} - send email update" }
+    end
+
+    def after_destroy
+      Rails.logger.debug { "after_destroy #{id} - send email destroy" }
     end
   end
+  
+  module Scope
+    extend ActiveSupport::Concern
 
-  def after_create
-    Rails.logger.debug { "after_create #{id} - send email create" }
-  end
-
-  def after_update
-    Rails.logger.debug { "after_update #{id} - send email update" }
-  end
-
-  def after_destroy
-    Rails.logger.debug { "after_destroy #{id} - send email destroy" }
+    included do
+      
+    end
   end
 end

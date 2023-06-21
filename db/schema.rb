@@ -73,10 +73,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_071421) do
     t.bigint "commentable_id", null: false
     t.string "owner_type", null: false
     t.bigint "owner_id", null: false
+    t.integer "replies_count"
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["owner_type", "owner_id"], name: "index_comments_on_owner"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
   end
 
   create_table "images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -120,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_071421) do
     t.string "name"
     t.decimal "price", precision: 10
     t.text "description"
+    t.integer "quantity"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

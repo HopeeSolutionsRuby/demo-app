@@ -3,7 +3,7 @@
 class Category < ApplicationRecord
   include CategoryActivities
 
-  has_many :products, dependent: :destroy, inverse_of: :category
+  has_many :products, dependent: :restrict_with_exception, inverse_of: :category
 
   validates :name, presence: true
   # uniqueness: { case_sensitive: false },

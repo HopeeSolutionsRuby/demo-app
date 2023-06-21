@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
-  include OrderActivities
+  include OrderActivities::CallBacks
 
   belongs_to :user, counter_cache: true, inverse_of: :orders
 
@@ -18,4 +18,6 @@ class Order < ApplicationRecord
   validates :date, comparison: { less_than_or_equal_to: Date.current }
 
   validates_associated :user
+
+  enum status: { pending: 0, confirmed: 1, shipped: 2, delivered: 3 }
 end

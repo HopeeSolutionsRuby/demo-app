@@ -10,7 +10,7 @@ include FactoryBot::Syntax::Methods
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-SIZE_PRODUCT = 30
+SIZE_PRODUCT = 20
 SIZE_CATEGORY = 10
 SIZE_ORDER = 50
 SIZE_ORDER_LINE = 5
@@ -36,7 +36,8 @@ end
   Product.create(name: Faker::Book.title, 
     price: Faker::Number.within(range: 5000..100000),
     description: Faker::Book.author, 
-    category_id: rand(1..SIZE_CATEGORY))
+    category_id: rand(1..SIZE_CATEGORY),
+    quantity: rand(1..100))
 end
 
 Payment.create(name: "Cash")
@@ -54,7 +55,7 @@ end
 
 (1..SIZE_ORDER).each do |i|
   # Bills faked
-  Bill.create(date: Faker::Date.between(from: '2014-09-23', to: '2023-05-25'), order_id: i, status: rand(0..3))
+  Bill.create(date: Faker::Date.between(from: '2014-09-23', to: '2023-05-25'), order_id: i, status: rand(0..2))
 end
 
 (1..SIZE_ORDER).each do |i|
@@ -87,10 +88,18 @@ end
 end
 
 # Comments faked
-(1..SIZE_USER).each do |i|
-  Comment.create(content: "comment#{i}", commentable_type: %w[Product Blog].sample, commentable_id: i, owner_type: 'User', owner_id: rand(1..SIZE_USER))
-end
-
-(1..SIZE_USER).each do |i|
-  Comment.create(content: "comment#{i}", commentable_type: "Comment", commentable_id: i, owner_type: %w[Admin User].sample, owner_id: rand(1..SIZE_USER))
+(1..SIZE_USER*2).each do |i|
+  i < SIZE_USER ? type = 'Blog' : type = 'Product'
+  if i == 1
+    Comment.create(content: "comment#{i}",
+      commentable_type: type,
+      commentable_id: i, owner_type: 'User',
+      owner_id: rand(1..SIZE_USER))
+  else
+    Comment.create(content: "comment#{i}",
+      commentable_type: type,
+      commentable_id: i, owner_type: 'User',
+      owner_id: rand(1..SIZE_USER),
+      parent_id: rand(1...i))
+  end
 end

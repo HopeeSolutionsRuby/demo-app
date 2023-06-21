@@ -7,4 +7,6 @@ class Bill < ApplicationRecord
   has_many :payments, through: :bill_lines, inverse_of: :bills
 
   validates :date, comparison: { less_than_or_equal_to: Date.current }
+
+  enum status: { pending: 0, processing: 1, finished: 2 }
 end

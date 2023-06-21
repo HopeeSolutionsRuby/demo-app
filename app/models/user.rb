@@ -8,9 +8,9 @@ class User < ApplicationRecord
   validates :phone, phone: true
   validates :email, email: true
 
-  has_many :orders, dependent: :restrict_with_exception, inverse_of: :user
-  has_many :images, as: :imageable, dependent: :restrict_with_exception, inverse_of: :imageable
-  has_many :comments, as: :owner, dependent: :restrict_with_exception, inverse_of: :owner
+  has_many :orders, inverse_of: :user, dependent: :restrict_with_exception
+  has_many :images, as: :imageable, inverse_of: :imageable, dependent: :restrict_with_exception
+  has_many :comments, as: :owner, inverse_of: :owner, dependent: :restrict_with_exception
 
   enum status: { active: 0, inactive: 1 }
   enum role: { admin: 0, customer_service: 1 }
