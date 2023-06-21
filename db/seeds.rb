@@ -25,6 +25,16 @@ mj = Artist.create(name: 'Michael Jackson')
 
 rap = Genre.create(name: 'Rap')
 pop = Genre.create(name: 'Pop')
+action = Genre.create!(name: "Action")
+comedy = Genre.create!(name: "Comedy")
+drama = Genre.create!(name: "Drama")
+romance = Genre.create!(name: "Romance")
+thriller = Genre.create!(name: "Thriller")
+fantasy = Genre.create!(name: "Fantasy")
+documentary = Genre.create!(name: "Documentary")
+adventure = Genre.create!(name: "Adventure")
+animation = Genre.create!(name: "Animation")
+scifi = Genre.create!(name: "Sci-Fi")
 
 hotline_bling.artist = drake
 thriller.artist = mj
