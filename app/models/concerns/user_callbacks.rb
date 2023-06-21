@@ -1,22 +1,17 @@
+# frozen_string_literal: true
+
 module UserCallbacks
   extend ActiveSupport::Concern
 
   included do
-    before_validation :normalize_name
-    before_save :normalize_email
-    around_save :log_save
+    before_create :build_profile_if_none
   end
-  def log_save
-    Rails.logger.debug 'Before saving the user'
-    yield
-    Rails.logger.debug 'After saving the user'
-  end
-
-  def normalize_name
-    self.name = name.downcase if name.present?
-  end
-
-  def normalize_email
-    self.email = email.downcase if email.present?
+  def build_profile_if_none
+    if profile.nil?
+      build_profile(name: name, age: rand(18..60))
+    else
+      Rails.logger.debug 'User already has a Profile'
+      throw(:abort)
+    end
   end
 end

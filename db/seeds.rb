@@ -2,6 +2,7 @@
 require 'factory_bot'
 require 'faker'
 include FactoryBot::Syntax::Methods
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -46,4 +47,6 @@ include FactoryBot::Syntax::Methods
 #   profile.address = Faker::Games::StreetFighter.stage
 #   profile.save
 # end
+
+
 
