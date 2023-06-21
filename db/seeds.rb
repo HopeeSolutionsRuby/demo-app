@@ -13,7 +13,7 @@ Faker::Config.locale = 'vi'
 end
 
 # Seed students
-50.times do
+10.times do
   Student.create(
     name: Faker::Name.unique.name,
     year: Faker::Number.between(from: 1, to: 4),
@@ -22,7 +22,7 @@ end
 end
 
 # Seed subjects
-15.times do
+5.times do
   Subject.create(
     name: Faker::Job.position,
     credit: rand(2..5),
@@ -31,7 +31,7 @@ end
 end
 
 # Seed terms 
-15.times do
+4.times do
   Term.create(
     subject_id: Subject.pluck(:id).sample,
     semester: rand(1..2),

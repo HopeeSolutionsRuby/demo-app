@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SaveCallback
   extend ActiveSupport::Concern
 
@@ -10,7 +12,7 @@ module SaveCallback
     self.name = "F_#{name}"
   end
 
-  def say_something    
+  def say_something
     Rails.logger.debug 'Ok nice try'
   end
 end

@@ -4,7 +4,6 @@ class Student < ApplicationRecord
   include StudentCallback
 
   has_many :results, dependent: :restrict_with_exception
-  validates_associated :results
   belongs_to :faculty, counter_cache: true
 
   scope :year, ->(year) { where(year: year) }
