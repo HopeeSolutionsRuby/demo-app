@@ -7,11 +7,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "faker"
 
-Student.all.each do |student|
-  puts 'creating blogs'
-  student.blogs.create(
-    title: "this is student #{student.id} blog",
-    content: 'this is my custom content'
-  )
+30.times do
+  books = Book.create(
+    title: Faker::Book.title,
+    author: Faker::Book.author,
+    page: Faker::Number.number(digits: 3),
+    status: Faker::Number.within(range: 0..3)
+    )
 end
