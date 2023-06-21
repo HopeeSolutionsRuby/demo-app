@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   validates :name, presence: true, length: { maximum: 50 }
   scope :age_over, ->(age) { joins(:profile).where('profiles.age > ?', age) }
+  scope :youngest, -> {joins(:profile).order('profiles.age ASC').limit(5)}
 end

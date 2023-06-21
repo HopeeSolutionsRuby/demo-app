@@ -1,0 +1,2 @@
+host = Host.find_by(name: 'Tên host cần tìm')
+profiles = host.users.map(&:profile)

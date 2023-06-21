@@ -6,3 +6,6 @@ ta.update_attribute(:ta_duty, c)
  => true
 Course.last.teaching_assistants.last.name
  => "ta_name"
+
+ name = Faker::Name.name
+truncated_name = name[0, 15]

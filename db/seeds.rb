@@ -3,6 +3,30 @@ require 'factory_bot'
 require 'faker'
 include FactoryBot::Syntax::Methods
 
+Host.destroy_all 
+
+5.times do 
+	Host.create!(name: Faker::Computer.unique.platform.upcase)
+end
+
+User.destroy_all
+
+hosts = Host.all 
+
+hosts.each do |host|
+	10.times do 
+		host.users.create!(
+			name: Faker::Name.unique.name
+		)
+	end
+end 
+
+
+
+
+
+
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
