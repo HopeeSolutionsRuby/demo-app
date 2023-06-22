@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class Genre < ApplicationRecord
+  has_many :songs
+  has_many :artists, through: :songs
 
-	has_many :songs
-	has_many :artists, through: :songs
+  after_touch :log_genre
 
-	after_touch :log_genre 
+  private
 
-	private 
-	def log_genre
-		puts "This genre was touched"
-	end  
+  def log_genre
+    Rails.logger.debug 'This genre was touched'
+  end
 end
