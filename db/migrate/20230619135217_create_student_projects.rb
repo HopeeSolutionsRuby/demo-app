@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# E
 class CreateStudentProjects < ActiveRecord::Migration[7.0]
   def change
     create_table :student_projects do |t|

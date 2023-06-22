@@ -7,13 +7,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require "faker"
+require 'faker'
 
 30.times do
-  books = Book.create(
+  Book.create(
     title: Faker::Book.title,
     author: Faker::Book.author,
     page: Faker::Number.number(digits: 3),
     status: Faker::Number.within(range: 0..3)
-    )
+  )
 end

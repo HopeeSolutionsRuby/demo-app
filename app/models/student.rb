@@ -2,18 +2,18 @@
 
 # Class model for Student
 class Student < ApplicationRecord
-  #include Basicvalidate
+  # include Basicvalidate
 
   has_many :blogs, dependent: :destroy
-  has_many :student_projects
+  has_many :student_projects, dependent: :destroy
   has_many :projects, through: :student_projects
 
   validates :first_name, :last_name, :contact_number, :email, presence: true
   validates :contact_number, :email, uniqueness: true
   validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/,
                                                message: 'only allows letters' }
-  
-  scope :student_name_duc, -> {where('first_name' => 'Duc')}
+
+  scope :student_name_duc, -> { where('first_name' => 'Duc') }
 
   after_create :display_student_age
   after_commit :upcase_name, if: :name_is_duc?

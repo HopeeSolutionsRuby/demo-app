@@ -3,7 +3,7 @@
 # Class model for Person
 class Person < ApplicationRecord
   validates :name, :age, presence: true
-  #validates_with MyValidator
+  # validates_with Myvalidator
 
   before_create :message
 

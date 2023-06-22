@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Custom validate
 module Basicvalidate
   extend ActiveSupport::Concern
 

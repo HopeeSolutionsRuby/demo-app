@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Model for book
 class Book < ApplicationRecord
   has_many :reviews, as: :rvtable, dependent: :destroy
 

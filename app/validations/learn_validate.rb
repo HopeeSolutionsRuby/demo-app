@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Class model for MyValidator
-class MyValidator < ActiveModel::Validator
+class Myvalidator < ActiveModel::Validator
   def validate(record)
     return if record.name.start_with? 'X'
 

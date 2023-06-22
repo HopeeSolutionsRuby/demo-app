@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller project
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy]
 
