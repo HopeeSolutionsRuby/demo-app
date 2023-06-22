@@ -9,3 +9,7 @@ Course.last.teaching_assistants.last.name
 
  name = Faker::Name.name
 truncated_name = name[0, 15]
+
+host = Host.find(host_id)
+profiles = host.users.map(&:profile)
+

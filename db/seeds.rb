@@ -6,7 +6,7 @@ include FactoryBot::Syntax::Methods
 Host.destroy_all 
 
 5.times do 
-	Host.create!(name: Faker::Computer.unique.platform.upcase)
+  Host.create!(name: Faker::Computer.unique.platform.upcase)
 end
 
 User.destroy_all
@@ -14,11 +14,12 @@ User.destroy_all
 hosts = Host.all 
 
 hosts.each do |host|
-	10.times do 
-		host.users.create!(
-			name: Faker::Name.unique.name
-		)
-	end
+  rand(3..10).times do 
+    host.users.create!(
+      name: Faker::Name.unique.name,
+      status: Faker::Boolean.boolean
+    )
+  end
 end 
 
 
@@ -71,6 +72,3 @@ end
 #   profile.address = Faker::Games::StreetFighter.stage
 #   profile.save
 # end
-
-
-

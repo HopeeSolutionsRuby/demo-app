@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_21_072110) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_22_064159) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -35,12 +35,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_072110) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.text "body"
+    t.integer "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "age"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -49,9 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_072110) do
     t.bigint "host_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: true
+    t.integer "posts_count"
     t.index ["host_id"], name: "index_users_on_host_id"
   end
 
+  add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "hosts"
 end
