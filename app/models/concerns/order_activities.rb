@@ -30,12 +30,22 @@ module OrderActivities
       Rails.logger.debug { "after_destroy #{id} - send email destroy" }
     end
   end
-  
-  module Scope
+
+  module Scopes
     extend ActiveSupport::Concern
 
     included do
-      
+      # scope :delivered, -> { where(status: 3) }
+    end
+  end
+
+  module Methods
+    extend ActiveSupport::Concern
+
+    included do
+      def self.total_paid
+        sum(:total)
+      end
     end
   end
 end

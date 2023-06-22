@@ -2,6 +2,8 @@
 
 class Order < ApplicationRecord
   include OrderActivities::CallBacks
+  include OrderActivities::Scopes
+  include OrderActivities::Methods
 
   belongs_to :user, counter_cache: true, inverse_of: :orders
 

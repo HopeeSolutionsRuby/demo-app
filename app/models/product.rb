@@ -2,6 +2,7 @@
 
 class Product < ApplicationRecord
   include ProductActivities
+  include Searchable
 
   belongs_to :category, touch: true, counter_cache: true, inverse_of: :products
 
@@ -12,4 +13,7 @@ class Product < ApplicationRecord
 
   validates :name, :price, presence: true
   validates :price, :quantity, numericality: { greater_than_or_equal_to: 0 }
+
+  scope :best_sell, ->(id) { where(category_id: id) }
+  # Ex:- scope :active, -> {where(:active => true)}
 end
