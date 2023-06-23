@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_23_080617) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_23_094529) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -65,6 +65,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_080617) do
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_results_on_student_id"
     t.index ["term_id"], name: "index_results_on_term_id"
+  end
+
+  create_table "serializes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "student_polies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
