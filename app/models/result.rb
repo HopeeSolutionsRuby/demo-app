@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class Result < ApplicationRecord
-  include SaveCallback
-
-  belongs_to :student, counter_cache: :results_count
+  belongs_to :student, counter_cache: true
   belongs_to :term
 
   validates :point, numericality: { in: 0..10 }
@@ -12,4 +10,5 @@ class Result < ApplicationRecord
   scope :top, ->(limit) { order(point: :desc).limit(limit) }
   scope :point_range, ->(min, max) { where(point: min..max) }
   scope :by_student, ->(student_id) { where(student_id: student_id) }
+  scope :y9pass, -> { joins(:student).merge(Student.y9_active).passing }
 end

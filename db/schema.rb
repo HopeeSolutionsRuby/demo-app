@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_21_090157) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_23_025614) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_090157) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "results_count"
+    t.integer "status", default: 0
     t.index ["faculty_id"], name: "index_students_on_faculty_id"
     t.index ["name"], name: "index_students_on_name", unique: true
   end
@@ -110,6 +111,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_090157) do
     t.string "type", null: false
     t.string "first_name"
     t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SaveCallback
+module FacultyCallback
   extend ActiveSupport::Concern
 
   included do

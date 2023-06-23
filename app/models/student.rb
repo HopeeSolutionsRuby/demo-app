@@ -2,14 +2,13 @@
 
 class Student < ApplicationRecord
   include StudentCallback
+  enum status: { active: 0, deactive: 1 }
 
-  has_many :results, dependent: :restrict_with_exception
+  has_many :results, dependent: :destroy
   belongs_to :faculty, counter_cache: true
 
   scope :year, ->(year) { where(year: year) }
-  scope :in_faculty, lambda { |faculty_name|
-    joins(:faculty).where(faculties: { name: faculty_name })
-  }
+  scope :y9_active, -> { joins(:faculty).merge(Faculty.year09).active }
 
   validates :name, presence: true, uniqueness: true, name: true
   validates :year, numericality: { in: 1..4 }
