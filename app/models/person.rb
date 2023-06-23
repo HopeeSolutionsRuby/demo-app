@@ -5,9 +5,9 @@ class Person < ApplicationRecord
   validates :name, :age, presence: true
   # validates_with Myvalidator
 
-  before_create :message
+  after_commit :message
 
   def message
-    puts 'you will create a model'
+    Rails.logger.debug { "User created: #{Person.inspect}" }
   end
 end
