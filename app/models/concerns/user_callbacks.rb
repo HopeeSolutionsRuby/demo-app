@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'faker'
 
 module UserCallbacks
@@ -16,7 +17,10 @@ module UserCallbacks
       throw(:abort)
     end
   end
+
   def build_post
-    posts.build(title: "WELCOME TO  #{host.name} ", body: "introduction", state: 1)
+    rand(3..5).times do
+      posts.build(title: Faker::Book.unique.title, body: Faker::Lorem.paragraph, state: rand(0..2))
+    end
   end
 end
