@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Serialize < ApplicationRecord
   serialize :data, Duration
   delegate :hours, :hours=, :minutes, :minutes=, :seconds, :seconds=, to: :data

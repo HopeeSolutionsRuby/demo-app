@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 class Duration
   class << self
     def load(duration)
-      self.new(duration || 0)
+      new(duration || 0)
     end
 
     def dump(obj)
       unless obj.is_a?(self)
         raise ::ActiveRecord::SerializationTypeMismatch,
-          "Attribute was supposed to be a #{self}, but was a #{obj.class}. -- #{obj.inspect}"
+              "Attribute was supposed to be a #{self}, but was a #{obj.class}. -- #{obj.inspect}"
       end
 
       obj.length
