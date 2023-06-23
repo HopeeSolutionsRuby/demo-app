@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_064159) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_23_101339) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -28,6 +28,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_064159) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "hosts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.integer "users_count", default: 0
@@ -35,13 +45,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_064159) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "post_stis", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_stis_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_stis_id"], name: "index_post_stis_on_user_stis_id"
+  end
+
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
     t.text "body"
-    t.integer "state"
+    t.integer "state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "comments_count", default: 0
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -55,6 +73,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_064159) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "user_stis", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "type", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "host_id", null: false
@@ -62,9 +87,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_064159) do
     t.datetime "updated_at", null: false
     t.boolean "status", default: true
     t.integer "posts_count"
+    t.string "password_digest"
+    t.string "recovery_password_digest"
+    t.text "properties"
+    t.text "preferences"
     t.index ["host_id"], name: "index_users_on_host_id"
   end
 
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
+  add_foreign_key "post_stis", "user_stis", column: "user_stis_id"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "users", "hosts"
