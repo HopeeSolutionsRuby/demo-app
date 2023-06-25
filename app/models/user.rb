@@ -14,4 +14,6 @@ class User < ApplicationRecord
 
   enum status: { active: 0, inactive: 1 }
   enum role: { admin: 0, customer_service: 1 }
+
+  has_one :vip_user, inverse_of: :user
 end
