@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_20_071421) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_25_074545) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_071421) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "orders_count"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["phone"], name: "index_admins_on_phone", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
@@ -112,6 +113,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_071421) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "payment_lines", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "payment_id", null: false
+    t.decimal "amount", precision: 10, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payment_lines_on_order_id"
+    t.index ["payment_id"], name: "index_payment_lines_on_payment_id"
+  end
+
   create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -145,6 +156,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_071421) do
     t.integer "orders_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["phone"], name: "index_users_on_phone", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -157,5 +169,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_20_071421) do
   add_foreign_key "order_lines", "orders"
   add_foreign_key "order_lines", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "payment_lines", "orders"
+  add_foreign_key "payment_lines", "payments"
   add_foreign_key "products", "categories"
 end
