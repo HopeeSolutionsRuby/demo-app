@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_25_085432) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_25_121400) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -138,6 +138,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_25_085432) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "properties"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 

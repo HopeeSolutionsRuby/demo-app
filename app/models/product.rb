@@ -16,4 +16,6 @@ class Product < ApplicationRecord
 
   scope :best_sell, ->(id) { where(category_id: id) }
   # Ex:- scope :active, -> {where(:active => true)}
+
+  serialize :properties, JSON
 end
