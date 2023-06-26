@@ -24,6 +24,7 @@ gem 'sprockets-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'will_paginate'
 gem 'caracal', '~> 1.4', '>= 1.4.1'
+gem 'ransack', :github => 'activerecord-hackery/ransack', :branch => 'main'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]

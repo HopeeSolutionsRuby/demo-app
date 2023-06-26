@@ -22,4 +22,8 @@ class Order < ApplicationRecord
   validates_associated :user
 
   enum status: { pending: 0, confirmed: 1, shipped: 2, delivered: 3 }
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[created_at date id status total updated_at user_id]
+  end
 end

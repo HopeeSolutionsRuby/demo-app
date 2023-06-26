@@ -10,4 +10,8 @@ class Category < ApplicationRecord
   # format: { with: /\A[A-Za-z0-9_\-]+\z/ }
 
   validates_associated :products
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[created_at description id name products_count updated_at]
+  end
 end

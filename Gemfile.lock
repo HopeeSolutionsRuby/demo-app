@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/activerecord-hackery/ransack.git
+  revision: 4b036f01ba85992a057d76d7c20db96503f90bdf
+  branch: main
+  specs:
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -348,6 +358,7 @@ DEPENDENCIES
   pundit
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-controller-testing
+  ransack!
   redis (~> 4.0)
   rspec-rails
   rubocop

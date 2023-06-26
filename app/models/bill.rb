@@ -12,6 +12,10 @@ class Bill < ApplicationRecord
 
   enum status: { pending: 0, processing: 1, finished: 2 }
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[created_at date id order_id status updated_at]
+  end
+
   def printer
     @printer ||= BillPrinter.new(self)
   end

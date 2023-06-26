@@ -18,4 +18,8 @@ class Product < ApplicationRecord
   # Ex:- scope :active, -> {where(:active => true)}
 
   serialize :properties, JSON
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[category_id created_at description id name price properties quantity updated_at]
+  end
 end
