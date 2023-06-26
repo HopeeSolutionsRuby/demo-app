@@ -65,7 +65,6 @@ funk = Genre.create(name: 'Funk')
 electronic = Genre.create(name: 'Electronic')
 
 
-
 pop.songs << thriller
 rap.songs << hotline_bling
 rock.songs << bohemian_rhapsody
@@ -82,7 +81,6 @@ alternative.songs << wonderwall
 ballad.songs << someone_like_you
 funk.songs << hey_ya
 electronic.songs << imagine_dragons
-
 
 
 hotline_bling.artist = drake
