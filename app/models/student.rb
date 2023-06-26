@@ -5,7 +5,7 @@ class Student < ApplicationRecord
   enum status: { active: 0, deactive: 1 }
 
   has_many :results, dependent: :destroy
-  belongs_to :faculty, counter_cache: true
+  belongs_to :faculty, counter_cache: true, autosave: true
 
   scope :year, ->(year) { where(year: year) }
   scope :y9_active, -> { joins(:faculty).merge(Faculty.year09).active }
