@@ -18,6 +18,7 @@ gem 'mysql2'
 gem 'puma', '~> 5.0'
 gem 'pundit'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'redis', '~> 4.0'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false

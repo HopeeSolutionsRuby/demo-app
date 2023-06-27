@@ -6,6 +6,13 @@ class Genre < ApplicationRecord
 
   after_touch :log_genre
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[created_at id name updated_at]
+  end
+
+  scope :songs, -> { where(songs: true) }
+  scope :artists, -> { where(artists: 'Adele') }
+
   private
 
   def log_genre
