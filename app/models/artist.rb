@@ -4,7 +4,6 @@ class Artist < ApplicationRecord
   has_many :songs, dependent: :destroy
   has_many :genre, through: :songs
 
-
   def self.ransackable_attributes(_auth_object = nil)
     %w[created_at id name updated_at]
   end
