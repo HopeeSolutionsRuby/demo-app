@@ -1,0 +1,41 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont, "Product name" %>
+  <%= f.search_field :name_cont %>
+  <%= f.label :price_gt, "Price >" %>
+  <%= f.search_field :price_gt %>
+  <%= f.submit "Search" %>
+<% end %>
+<p> <%=@csrf_token%> </p>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Id</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Category</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each_with_index do |product, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.quantity %></td>
+        <td><%= product.category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="<%= products_path(page: 1) %>"><%="First"%></a></li>
+      <% (@displayed_pages).each do |page| %>
+        <li class="page-item"><a class="page-link" href="<%= products_path(page: page) %>"><%=page%></a></li>
+      <% end %>
+      <li class="page-item"><a class="page-link" href="<%= products_path(page: @total_pages) %>"><%="Last"%></a></li>
+  </ul>
+</nav>

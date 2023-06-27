@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     root 'dashboard#index'
     resources :admins
   end
-  
+
+  resources :products
 end
