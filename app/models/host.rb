@@ -7,6 +7,8 @@ class Host < ApplicationRecord
   validate :name_upcase
   validate :name_unique
 
+  scope :users_by_host_id, ->(host_id) { joins(:users).merge(User.ransack(status_eq: true,host_id_eq: host_id).result.select('users.*')) }
+
   private
 
   def name_upcase
@@ -16,4 +18,6 @@ class Host < ApplicationRecord
   def name_unique
     errors.add(:name, 'already') if name.present? && Host.exists?(name: name)
   end
+
+
 end

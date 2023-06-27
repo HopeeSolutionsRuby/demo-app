@@ -11,7 +11,7 @@ module UserCallbacks
   end
   def build_profile_if_none
     if profile.nil?
-      build_profile(name: name, age: rand(18..60), email: Faker::Internet.unique.email)
+      build_profile(name: name, age: rand(18..60), email: Faker::Internet.unique.email(name: name, domain: 'gmail.com'))
     else
       Rails.logger.debug 'User already has a Profile'
       throw(:abort)

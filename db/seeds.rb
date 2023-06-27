@@ -16,7 +16,7 @@ hosts = Host.all
 hosts.each do |host|
   rand(3..10).times do
     host.users.create!(
-      name: Faker::Name.unique.name,
+      name: Faker::Name.unique.last_name,
       status: Faker::Boolean.boolean,
       password: 'pass1',
       password_confirmation: 'pass1',
