@@ -8,7 +8,7 @@ module Validators
     validates :first_name, :last_name, :contact_number, :email, presence: true
     validates :contact_number, :email, uniqueness: true
     validates :first_name, :last_name, format: { with: /\A[a-zA-Z]+\z/,
-                                               message: 'only allows letters' }
+                                                 message: 'only allows letters' }
 
     def display_student_age
       if dob.present?

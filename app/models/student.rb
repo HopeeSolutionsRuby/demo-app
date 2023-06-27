@@ -12,7 +12,8 @@ class Student < ApplicationRecord
   after_create :display_student_age
   after_commit :upcase_name, if: :name_is_duc?
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["address", "blogs_count", "contact_number", "created_at", "dob", "email", "first_name", "id", "last_name", "updated_at"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[address blogs_count contact_number created_at dob email first_name id last_name
+       updated_at]
   end
 end
