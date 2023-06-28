@@ -1,0 +1,31 @@
+<h1>Hello Bro</h1>
+<%= form_with model: @user, url: register_path do |form| %>
+	<% if @user.errors.any? %>
+	<div class="alert alert-danger">
+		<% @user.errors.full_messages.each do |error| %>
+		<%= error %>
+		<br>
+		<% end %>
+	</div>
+	<% end %>
+	
+	<div class="mb-3">
+		<%= form.label :name %>
+		<%= form.text_field :name, class: "form-control", placeholder: "Steven Jobs" %>
+	</div>
+	<div class="mb-3">
+		<%= form.label :email %>
+		<%= form.text_field :email,class: "form-control", placeholder: "zuck@facebook.com" %>
+	</div>
+	<div class="mb-3">
+		<%= form.label :password %>
+		<%= form.password_field :password,class: "form-control", placeholder: "password" %>
+	</div>
+	<div class="mb-3">
+		<%= form.label :password_confirmation %>
+		<%= form.password_field :password_confirmation,class: "form-control", placeholder: "password" %>
+	</div>
+	<div class="mb-3">
+		<%= form.submit "Register", class: "btn btn-primary" %>
+	</div>
+<% end %>
