@@ -4,20 +4,9 @@ class ProductsController < ApplicationController
   include PaginationHelper
 
   def index
-    @page = params[:page].to_i.zero? ? 1 : params[:page].to_i
-    per_page = 14
-    total_items = Product.all.size
-    @total_pages = total_pages(total_items, per_page)
-    @displayed_pages = get_displayed_pages(@page, @total_pages, 10)
-
+    paginate
     @q = Product.includes(:category).ransack(params[:q])
-    @products = @q.result(distinct: true).custom_paginate(@page, per_page)
-  
-    @csrf_token = form_authenticity_token
-    respond_to do |format|
-      format.html # Render the HTML view as usual
-      format.json { render json: @products } # Respond with JSON data for AJAX request
-    end
+    @products = @q.result(distinct: true).custom_paginate(@page, @per_page)
   end
 
   def show; end
@@ -43,7 +32,14 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    # params.require(:product).permit(:name, :price, :quantity, :category_id, :properties)
-    params.fetch(:product, {})
+    params.require(:product).permit(:name, :price, :quantity, :category_id, :properties)
+    # params.fetch(:product, {})
+  end
+
+  def paginate
+    @page = params[:page].to_i.zero? ? 1 : params[:page].to_i
+    @per_page = 14
+    @total_pages = total_pages(Product.all.size, @per_page)
+    @displayed_pages = get_displayed_pages(@page, @total_pages, 10)
   end
 end

@@ -1,4 +1,5 @@
 <%= javascript_include_tag 'products' %>
+<%=render 'search' %>
 <h3>PRODUCTS TABLE</h3>
 <table class="product">
   <thead>
@@ -9,7 +10,7 @@
       <th>Price</th>
       <th>Quantity</th>
       <th>Category</th>
-      <td>Detail</td>
+      <th>Detail</th>
     </tr>
   </thead>
   <tbody>
@@ -26,8 +27,6 @@
     <% end %>
   </tbody>
 </table>
-
-<button class="ajax-link">click me</button>
 <nav aria-label="Page navigation">
   <ul class="pagination">
     <li class="page-item"><a class="page-link page-link-ajax" href="<%= products_path(page: 1) %>"><%="First"%></a></li>

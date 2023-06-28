@@ -7,15 +7,7 @@
   </header>
   <nav></nav>
   <section class="container">
-    <%= link_to "New Products", new_product_path %>
-    <%= search_form_for @q do |f| %>
-      <%= f.label :name_cont, "Product name" %>
-      <%= f.search_field :name_cont %>
-      <%= f.label :price_gt, "Price >" %>
-      <%= f.search_field :price_gt %>
-      <%= f.submit "Search" %>
-    <% end %>
-    <%= link_to "New Products", new_product_path %>
+    <%= link_to "New Products", new_product_path, remote: true, class: 'btn btn-success' %>
     <div id="product-container">
       <%= render 'products_table' %>
     </div>

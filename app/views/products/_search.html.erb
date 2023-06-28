@@ -1,0 +1,7 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont, "Product name" %>
+  <%= f.search_field :name_cont %>
+  <%= f.label :price_gt, "Price >" %>
+  <%= f.search_field :price_gt %>
+  <%= f.submit "Search" %>
+<% end %>
