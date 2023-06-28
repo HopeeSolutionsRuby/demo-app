@@ -15,9 +15,10 @@ class User < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
   enum role: { admin: 0, customer_service: 1 }
 
-  has_one :vip_user, inverse_of: :user
+  has_one :vip_user, inverse_of: :user, dependent: :restrict_with_exception
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "email", "encrypted_password", "first_name", "id", "last_name", "orders_count", "phone", "remember_created_at", "reset_password_sent_at", "reset_password_token", "role", "status", "updated_at"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[created_at email encrypted_password first_name id last_name orders_count phone
+       remember_created_at reset_password_sent_at reset_password_token role status updated_at]
   end
 end

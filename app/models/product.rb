@@ -15,7 +15,7 @@ class Product < ApplicationRecord
   validates :price, :quantity, numericality: { greater_than_or_equal_to: 0 }
 
   scope :best_sell, ->(id) { where(category_id: id) }
-  scope :custom_paginate, ->(current, per_page) { offset((current -1) * per_page).limit(per_page) }
+  scope :custom_paginate, ->(current, per_page) { offset((current - 1) * per_page).limit(per_page) }
   # Ex:- scope :active, -> {where(:active => true)}
 
   serialize :properties, JSON
@@ -24,7 +24,7 @@ class Product < ApplicationRecord
     %w[category_id created_at description id name price properties quantity updated_at]
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    ["category", "comments", "images", "order_lines", "orders"]
+  def self.ransackable_associations(_auth_object = nil)
+    %w[category comments images order_lines orders]
   end
 end
