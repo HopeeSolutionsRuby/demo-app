@@ -1,20 +1,23 @@
+# frozen_string_literal: true
+
 class RegisterController < ApplicationController
   def new
     @user = User.new
   end
+
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path notice: "Register Successfully"
+      redirect_to root_path notice: 'Register Successfully'
     else
-      flash[:alert] = "Something was wrong"
+      flash[:alert] = 'Something was wrong'
       render :new, status: :unprocessable_entity
     end
   end
 
-  private 
+  private
 
   def user_params
-   params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
