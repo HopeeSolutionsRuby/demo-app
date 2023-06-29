@@ -1,27 +1,44 @@
-$(document).off('click', '.page-link-ajax').on('click', '.page-link-ajax', function(e) {
-  e.preventDefault();
-  
-  var $this = $(this);
-  
-  // if an AJAX request is running
-  if ($this.data('ajax-in-progress')) {
-    return; // Ignore the click event if a request is already running
-  }
-  
-  $this.data('ajax-in-progress', true); // Set the flag to indicate an AJAX request is starting
+$(document)
+  .off("click", ".page-link-ajax")
+  .on("click", ".page-link-ajax", function (e) {
+    e.preventDefault();
 
-  var url = $this.attr('href');
-  console.log(url);
+    var $this = $(this);
 
-  $.ajax({
-    url: url,
-    type: 'GET',
-    dataType: 'script'
-  })
-    .done(function(response) {
-      $this.data('ajax-in-progress', false);
+    // if an AJAX request is running
+    if ($this.data("ajax-in-progress")) {
+      return; // Ignore the click event if a request is already running
+    }
+
+    $this.data("ajax-in-progress", true); // Set the flag to indicate an AJAX request is starting
+
+    var url = $this.attr("href");
+    console.log(url);
+
+    $.ajax({
+      async: true,
+      url: url,
+      type: "GET",
+      dataType: "script",
     })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-      $this.data('ajax-in-progress', false);
-    });
-});
+      .done(function (response) {
+        $this.data("ajax-in-progress", false);
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        $this.data("ajax-in-progress", false);
+      });
+  });
+// products.js
+function reloadProducts() {
+  $.ajax({
+    url: "<%= your_action_path %>", // Replace with the actual path to your action
+    type: "GET",
+    dataType: "script", // This tells Rails to execute the returned JavaScript response
+    success: function () {
+      console.log("Products reloaded successfully.");
+    },
+    error: function () {
+      console.error("Failed to reload products.");
+    },
+  });
+}

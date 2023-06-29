@@ -1,20 +1,6 @@
-<head>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-</head>
-<body>
-  <header>
-    Header
-  </header>
-  <nav></nav>
-  <section class="container">
-    <%= link_to "New Products", new_product_path, remote: true, class: 'btn btn-success' %>
-    <div id="product-container">
-      <%= render 'products_table' %>
-    </div>
-  </section>
-  <aside></aside>
-  <footer class="footer">
-    This is footer
-  </footer>
-</body>
-
+<section class="container">
+  <div id="product-container">
+    <%= render 'products_table' %>
+  </div>
+</section>
+<div id="error-container"></div>

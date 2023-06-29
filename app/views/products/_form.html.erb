@@ -1,10 +1,12 @@
-<%= form_with(model: product) do |form| %>
+<%= form_for @product, remote: true, html: { id: 'product-form' } do |form| %>
   <% if product.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
       <ul>
         <% product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <div class="alert alert-danger fs-10 display-100" role="alert">
+          <%= error.full_message %>
+        </div>
         <% end %>
       </ul>
     </div>
@@ -28,6 +30,11 @@
   </div>
   
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-success' %>
   </div>
 <% end %>
+<script type="text/javascript">
+  $(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert-danger").slideUp(500);
+  });
+</script>
