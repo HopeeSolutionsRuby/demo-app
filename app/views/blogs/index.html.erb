@@ -1,9 +1,9 @@
 <h1>Blog home page</h1>
 
 <div>
-	<% @blogs.each do |blog| %>
-	<h2><%= link_to blog.title, blog_path(blog.id) %></h2>
-	<%= blog.content %>
-	<% end %>
+<% @blogs.each do |blog| %>
+  <h2><%= link_to blog.title, blog_path(blog.id) %></h2>
+  <%= blog.content %>
+  <% end %>
 </div>
 
