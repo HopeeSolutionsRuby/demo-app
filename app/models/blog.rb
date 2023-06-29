@@ -3,4 +3,6 @@
 # Class model for blog
 class Blog < ApplicationRecord
   belongs_to :student, counter_cache: true
+
+  validates :title, :content, :student_id, presence: true
 end

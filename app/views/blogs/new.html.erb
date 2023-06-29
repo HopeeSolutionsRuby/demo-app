@@ -1,0 +1,29 @@
+<h1>Create a new Blog</h1>
+
+<div>
+  <%= form_with model: @blog do |form| %>
+  <% if form.object.errors.any? %>
+    <div>
+    <% form.object.errors.full_messages.each do |msg| %>
+      <div><%= msg %></div>
+    <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <div>
+    <%= form.label :student_id %>
+    <%= form.text_field :student_id %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+  <% end %>
+</div>
