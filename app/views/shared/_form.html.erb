@@ -1,0 +1,29 @@
+<%= form_with model: model, url: url do |form| %>
+<% if flash[:alert] %>
+<%flash[:alert].each do |flash| %>
+	<div class= "alert alert-danger">
+		<%= flash %> 
+	</div>
+	<% end %>
+<% end %>
+<div class="mb-3">
+	<%= form.label :name %>
+	<%= form.text_field :name, class: "form-control", placeholder: "Steven Jobs" %>
+</div>
+<div class="mb-3">
+	<%= form.label :email %>
+	<%= form.text_field :email, class: "form-control", placeholder: "steve@apple.com" %>
+</div>
+<div class="mb-3">
+	<%= form.label :password %>
+	<%= form.text_field :password, class: "form-control", placeholder: "password" %>
+</div>
+<div class="mb-3">
+	<%= form.label :password_confirmation %>
+	<%= form.text_field :password_confirmation, class: "form-control", placeholder: "password" %>
+</div>
+<div class="mb-3">
+	<%= form.submit :Create, class: "btn btn-primary"%>
+</div>
+
+<% end %>
