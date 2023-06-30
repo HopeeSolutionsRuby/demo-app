@@ -16,6 +16,7 @@ gem 'mysql2'
 gem 'puma', '~> 5.0'
 gem 'pundit'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
+gem 'ransack'
 gem 'redis', '~> 4.0'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
@@ -23,7 +24,7 @@ gem 'sass-rails'
 gem 'sprockets-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'will_paginate'
-gem 'ransack'
+gem 'turbo-rails', '~> 1.4'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]

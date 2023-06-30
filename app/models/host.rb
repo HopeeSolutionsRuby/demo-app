@@ -6,8 +6,11 @@ class Host < ApplicationRecord
   validates :name, presence: true, length: { maximum: 15 }
   validate :name_upcase
   validate :name_unique
+  # validates_associated :users
 
-  scope :users_by_host_id, ->(host_id) { joins(:users).merge(User.ransack(status_eq: true,host_id_eq: host_id).result.select('users.*')) }
+  scope :users_by_host_id, lambda { |host_id|
+                             joins(:users).merge(User.ransack(status_eq: true, host_id_eq: host_id).result.select('users.*'))
+                           }
 
   private
 
@@ -18,6 +21,4 @@ class Host < ApplicationRecord
   def name_unique
     errors.add(:name, 'already') if name.present? && Host.exists?(name: name)
   end
-
-
 end

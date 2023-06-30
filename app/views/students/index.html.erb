@@ -1,0 +1,28 @@
+<h1>Listing Students</h1>
+<%= link_to 'New', new_student_path %>
+<table class="table">
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th colspan="3">Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @students.each do |student| %>
+			<tr>
+				<td><%= student.first_name%></td>
+				<td><%= student.last_name%></td>
+				<td><%= student.email%></td>
+				<td>
+					<div style="display: flex;">
+						<%= link_to 'View', student, method: 'get', class: 'btn btn-primary me-3'%>
+						<%= link_to 'Edit', edit_student_path(student), class: 'btn btn-primary' %>
+						<%= button_to 'Delete', student, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-primary ms-3' %>
+					</div>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

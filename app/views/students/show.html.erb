@@ -1,0 +1,19 @@
+<h1>Student details</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @student.first_name%></td>
+			<td><%= @student.last_name%></td>
+			<td><%= @student.email%></td>
+		</tr>
+	</tbody>
+</table>
+<%= link_to 'Back', students_path, class: 'btn btn-primary' %>

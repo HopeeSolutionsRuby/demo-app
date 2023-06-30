@@ -4,14 +4,14 @@ require 'faker'
 include FactoryBot::Syntax::Methods
 
 Host.destroy_all
+User.destroy_all
+hosts = Host.all
+posts = Post.all
+users = User.all
 
 5.times do
   Host.create!(name: Faker::Computer.unique.platform.upcase)
 end
-
-User.destroy_all
-
-hosts = Host.all
 
 hosts.each do |host|
   rand(3..10).times do
@@ -23,25 +23,8 @@ hosts.each do |host|
       recovery_password: "42password"
     )
   end
+  # puts "User #{host+1} create successfully."
 end
-
-# users = User.all
-
-# users.each do |user|
-#   rand(3..5).times do
-#     user.posts.create!(title: Faker::Book.unique.title, body: Faker::Lorem.paragraph, state: rand(0..2))
-#   end
-# end
-
-posts = Post.all
-
-# Comment.destroy_all
-
-# posts.each do |post|
-#   post.comments.create(content: Faker::Games::StreetFighter.unique.quote, commentable: post.user)
-# end
-
-users = User.all
 
 100.times do
   user = users.sample
@@ -53,6 +36,20 @@ users = User.all
   )
 end
 
+# users = User.all
+
+# users.each do |user|
+#   rand(3..5).times do
+#     user.posts.create!(title: Faker::Book.unique.title, body: Faker::Lorem.paragraph, state: rand(0..2))
+#   end
+# end
+
+
+# Comment.destroy_all
+
+# posts.each do |post|
+#   post.comments.create(content: Faker::Games::StreetFighter.unique.quote, commentable: post.user)
+# end
 
 
 
