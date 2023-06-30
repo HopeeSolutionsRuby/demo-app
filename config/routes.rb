@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :users 
-
-  # do
+  resources :users do
+    resources :posts 
+  end
   #   collection do
 
   #   end
@@ -17,5 +17,4 @@ Rails.application.routes.draw do
 
   # # Defines the root path route ("/")
   root "main#index"
-
 end

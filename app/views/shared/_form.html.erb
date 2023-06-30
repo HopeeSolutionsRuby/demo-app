@@ -1,19 +1,17 @@
-<%= form_with model: model, url: url do |form| %>
-<% if flash[:alert] %>
-<%flash[:alert].each do |flash| %>
-	<div class= "alert alert-danger">
-		<%= flash %> 
-	</div>
-	<% end %>
-<% end %>
+<%= form_with url: url, method: method do |form| %>
+
+<%= render partial: 'shared/flash' %>
+
 <div class="mb-3">
-	<%= form.label :name %>
-	<%= form.text_field :name, class: "form-control", placeholder: "Steven Jobs" %>
+  <%= form.label :name %>
+  <%= form.text_field :name, class: "form-control", placeholder: "Steven Jobs", value: (old&.name) %>
 </div>
 <div class="mb-3">
-	<%= form.label :email %>
-	<%= form.text_field :email, class: "form-control", placeholder: "steve@apple.com" %>
+  <%= form.label :email %>
+  <%= form.text_field :email, class: "form-control", placeholder: "steve@apple.com", value: (old&.email) %>
 </div>
+
+<% unless old.present? %>
 <div class="mb-3">
 	<%= form.label :password %>
 	<%= form.text_field :password, class: "form-control", placeholder: "password" %>
@@ -22,8 +20,10 @@
 	<%= form.label :password_confirmation %>
 	<%= form.text_field :password_confirmation, class: "form-control", placeholder: "password" %>
 </div>
+<% end %>
+
 <div class="mb-3">
-	<%= form.submit :Create, class: "btn btn-primary"%>
+  <%= form.submit :Submit, class: "btn btn-primary"%>
 </div>
 
 <% end %>

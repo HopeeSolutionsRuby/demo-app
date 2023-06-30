@@ -1,0 +1,8 @@
+<h1> This is your post</h1>
+<h3 class="mt-3"> Title: <%= @post.title %></h3>
+<h5>Content: </h5>
+<p> <%= @post.content %></p>
+
+<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+<%= link_to "Back", user_path(@post.user_id), class: 'btn btn-primary' %>
+</div>

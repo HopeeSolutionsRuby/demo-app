@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_29_063012) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_30_043221) do
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name", default: ""
     t.string "last_name", default: ""
@@ -55,6 +55,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_063012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_sti_id"], name: "index_post_stis_on_user_sti_id"
+  end
+
+  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "results", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -134,9 +143,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_063012) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "posts_count"
   end
 
   add_foreign_key "post_stis", "user_stis"
+  add_foreign_key "posts", "users"
   add_foreign_key "results", "students"
   add_foreign_key "results", "terms"
   add_foreign_key "students", "faculties"

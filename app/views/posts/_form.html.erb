@@ -1,0 +1,16 @@
+<%= form_with url: url, method: method do |form| %>
+
+<%= render partial: 'shared/flash' %>
+
+<div class="mb-3">
+  <%= form.label :title %>
+  <%= form.text_field :title, class: "form-control", placeholder: "How does it work ?", value: (old&.title) %>
+</div>
+<div class="mb-3">
+  <%= form.label :content %>
+  <%= form.text_area :content,size: '50x10', class: "form-control", placeholder: "Type content here", value: (old&.content) %>
+</div>
+<div class="mb-3">
+  <%= form.submit 'Submit', class: 'btn btn-primary' %>
+</div>
+<% end %>
