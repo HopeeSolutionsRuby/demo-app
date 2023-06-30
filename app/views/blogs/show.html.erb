@@ -1,3 +1,5 @@
 <h1><%= @blog.title %></h1>
 <%= @blog.content %>
 <p>Author: student with id <%= @blog.student_id %></p>
+<%= button_to "Delete this project", @blogs, method: :delete %>
+<%= button_to "Edit this project", @blog, method: :put %>

@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'blogs#index'
   # get "/blogs/:id", to: "blogs#show", as: :blog_page
-  # post "/blogs", to: "blogs#create"
+  # post "/blogs", to: "blogs#create", as: :blog_page
 end
