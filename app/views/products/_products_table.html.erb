@@ -1,10 +1,15 @@
 <%= javascript_include_tag 'products' %>
+<% if flash[:success] %>
+  <%= render partial: '/shared/partials/notice', locals: { title: 'success', content: flash[:success] } %>
+<% end %>
+<% if flash[:error] %>
+  <%= render partial: '/shared/partials/notice', locals: { title: 'error', content: flash[:error] } %>
+<% end %>
 <%= render 'search' %>
-
 <h3>PRODUCTS TABLE</h3>
-<div class="d-flex flex-column">
-  <table class="table table-striped table-hover">
-    <thead class="table-success">
+<div class='d-flex flex-column'>
+  <table class='table table-striped table-hover'>
+    <thead class='table-success'>
       <tr>
         <th>#</th>
         <th>ID</th>
@@ -12,30 +17,42 @@
         <th>Price</th>
         <th>Quantity</th>
         <th>Category</th>
+        <th>Description</th>
+        <th>Latest Updated</th>
         <th>Detail</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       <% @products.each_with_index do |product, index| %>
         <tr>
-          <td><%= index + 1 %></td>
-          <td><%= product.id %></td>
-          <td><%= product.name %></td>
-          <td><%= product.price %></td>
-          <td><%= product.quantity %></td>
-          <td><%= product.category.name %></td>
-          <td><%= link_to "Show", product_path(product), remote: true, class: 'text-black link-underline-light' %></td>
+          <td class='align-middle'><%= index + 1 %></td>
+          <td class='align-middle'><%= product.id %></td>
+          <td class='align-middle'><%= product.name %></td>
+          <td class='align-middle'><%= number_to_currency(product.price, :unit => '', precision: 0, :delimiter => ',') %></td>
+          <td class='align-middle'><%= product.quantity %></td>
+          <td class='align-middle'><%= product.category.name %></td>
+          <td class='text-truncate align-middle' style='max-width: 100px'><%= product.description %></td>
+          <td class='align-middle'><%= product.updated_at %></td>
+          <td class='align-middle'><%= link_to 'Show', product_path(product), remote: true, class: 'text-black link-underline-light' %></td>
+          <td class='align-middle'>
+            <%= link_to product, method: :delete, remote: true, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger ms-1'  do%>
+              <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+                <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/>
+              </svg>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <nav aria-label="Page navigation" class="d-flex align-self-end">
-    <ul class="pagination">
-      <li class="page-item"><a class="page-link page-link-ajax text-success" href="<%= products_path(page: 1) %>"><%="First"%></a></li>
+  <nav aria-label='Page navigation' class='d-flex align-self-end'>
+    <ul class='pagination'>
+      <li class='page-item'><a class='page-link page-link-ajax text-success' href='<%= products_path(page: 1) %>'><%='First'%></a></li>
       <% @displayed_pages.each do |page| %>
-        <li class="page-item"><a class="page-link page-link-ajax text-black" href="<%= products_path(page: page) %>"><%= page %></a></li>
+        <li class='page-item'><a class='page-link page-link-ajax text-black' href='<%= products_path(page: page) %>'><%= page %></a></li>
       <% end %>
-      <li class="page-item"><a class="page-link page-link-ajax text-success" href="<%= products_path(page: @total_pages) %>"><%="Last"%></a></li>
+      <li class='page-item'><a class='page-link page-link-ajax text-success' href='<%= products_path(page: @total_pages) %>'><%='Last'%></a></li>
     </ul>
   </nav>
 </div>

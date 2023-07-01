@@ -4,7 +4,7 @@ module ProductActivities
   extend ActiveSupport::Concern
 
   included do
-    before_validation :before_validation
+    after_validation :after_validation
     after_touch :after_touch
     before_save :before_save
 
@@ -21,9 +21,9 @@ module ProductActivities
     where('price > ?', 10_000)
   end
 
-  def before_validation
+  def after_validation
     self.name = name.split.map(&:capitalize).join(' ') if name.present?
-    Rails.logger.debug 'before_validation Product'
+    Rails.logger.debug 'after_validation Product'
   end
 
   def after_touch
