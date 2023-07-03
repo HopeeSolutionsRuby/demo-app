@@ -1,4 +1,4 @@
-<%= form_with model: blog, url: blogs_path do |form| %>
+<%= form_with model: blog do |form| %>
   <% if form.object.errors.any? %>
 
     <% form.object.errors.full_messages.each do |msg| %>

@@ -2,7 +2,7 @@
 
 # Blog controller
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[show edit destroy]
+  before_action :set_blog, only: %i[show edit update destroy]
 
   def index
     @blogs = Blog.all
@@ -32,6 +32,18 @@ class BlogsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to blogs_path, notice: 'Blog was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @blog.update(blog_params)
+        format.html { redirect_to blog_url(@blog), notice: 'Project was successfully updated.' }
+        format.json { render :show, status: :ok, location: @blog }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @blog.errors, status: :unprocessable_entity }
+      end
     end
   end
 
