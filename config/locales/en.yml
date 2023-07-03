@@ -36,3 +36,16 @@ en:
       success:
         create: 'Successfully created admin account' 
         update: 'Successfully updated admin account'
+en:
+  flash:
+    notices:
+      register_success: "Register successfully!"
+      create_success: "Create successfully !"
+      update_success: "Updated successfully!"
+      delete_success: "Deleted!"
+    alerts:
+      register_failure: "Registration failed. Please fix the following errors:"
+      create_failure: "Create failed. Please fix the following errors:"
+      update_failure: "Update failed. Please fix the following errors:"
+      delete_failure: "Something wrong"
+

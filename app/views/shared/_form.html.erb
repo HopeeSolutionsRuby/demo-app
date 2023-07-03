@@ -14,11 +14,11 @@
 <% unless old.present? %>
 <div class="mb-3">
 	<%= form.label :password %>
-	<%= form.text_field :password, class: "form-control", placeholder: "password" %>
+	<%= form.password_field :password, class: "form-control", placeholder: "password" %>
 </div>
 <div class="mb-3">
 	<%= form.label :password_confirmation %>
-	<%= form.text_field :password_confirmation, class: "form-control", placeholder: "password" %>
+	<%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
 </div>
 <% end %>
 

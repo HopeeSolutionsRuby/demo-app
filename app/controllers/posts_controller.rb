@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_param)
     if @post.save
-      flash[:notice] = 'Create Post successfully !'
+      flash[:notice] = t('flash.notices.create_success')
       redirect_to user_path(params[:user_id])
     else
       flash[:alert] = @post.errors.full_messages
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_param)
-      flash[:notice] = 'Updated successfully !'
+      flash[:notice] = t('flash.notices.update_success')
       redirect_to user_path(params[:user_id])
     else
       flash[:alert] = @post.errors.full_messages
@@ -40,9 +40,9 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find_by(id: params[:id])
     if @post.destroy
-      flash[:notice] = 'Deleted Post successfully !'
+      flash[:notice] = t('flash.notices.delete_success')
     else
-      flash[:alert] = 'Something wrong !'
+      flash[:alert] = t('flash.alerts.delete_failure')
     end
     redirect_to user_path(params[:user_id])
   end

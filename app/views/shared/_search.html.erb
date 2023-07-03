@@ -1,0 +1,4 @@
+<%= search_form_for @q, class: 'd-flex py-3' do |f| %>
+  <%= f.search_field type, class: 'form-control me-2',placeholder: 'Search ...' %>
+  <%= f.submit class: 'btn btn-outline-success' %>
+<% end %>

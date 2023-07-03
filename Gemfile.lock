@@ -176,6 +176,7 @@ GEM
     nokogiri (1.14.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (6.0.4)
     parallel (1.22.1)
     parser (3.2.2.0)
       ast (~> 2.4.1)
@@ -339,6 +340,7 @@ DEPENDENCIES
   letter_opener
   letter_opener_web
   mysql2
+  pagy (~> 6.0, >= 6.0.4)
   pry
   puma (~> 5.0)
   pundit
