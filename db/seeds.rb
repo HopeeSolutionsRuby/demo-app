@@ -5,36 +5,77 @@ include FactoryBot::Syntax::Methods
 
 Host.destroy_all
 User.destroy_all
+Student.destroy_all
+ClassRoom.destroy_all
 hosts = Host.all
 posts = Post.all
 users = User.all
+students = Student.all
+class_rooms = ClassRoom.all
 
 5.times do
-  Host.create!(name: Faker::Computer.unique.platform.upcase)
-end
+  class_name = Faker::Educator.course_name
+  class_location = Faker::Educator.university
 
-hosts.each do |host|
-  rand(3..10).times do
-    host.users.create!(
-      name: Faker::Name.unique.last_name,
-      status: Faker::Boolean.boolean,
-      password: 'pass1',
-      password_confirmation: 'pass1',
-      recovery_password: "42password"
-    )
-  end
-  # puts "User #{host+1} create successfully."
-end
-
-100.times do
-  user = users.sample
-  post = posts.sample
-  Comment.create!(
-    content: Faker::Games::StreetFighter.unique.quote,
-    user_id: user.id,
-    post_id: post.id
+  class_room = ClassRoom.create!(
+    name: class_name,
+    location: class_location,
   )
 end
+
+class_rooms.each do |class_room|
+  rand(3..10).times do
+    student_first_name = Faker::Name.unique.first_name
+    student_last_name = Faker::Name.unique.last_name
+    student_email = Faker::Internet.unique.email(name: student_last_name,domain: 'student.edu')
+    student_age = rand(18..22)
+    student_address = Faker::Address.street_address
+    student_city = Faker::Address.city
+    student_province = Faker::Address.state
+    class_room.students.create!(
+      first_name: student_first_name,
+      last_name: student_last_name,
+      email: student_email,
+      age: student_age,
+      address: student_address,
+      city: student_city,
+      province: student_province
+    )
+  end
+#   # puts "User #{host+1} create successfully."
+end
+
+
+
+
+# 5.times do
+#   Host.create!(name: Faker::Computer.unique.platform.upcase)
+# end
+
+# hosts.each do |host|
+#   rand(3..10).times do
+#     host.users.create!(
+#       name: Faker::Name.unique.last_name,
+#       status: Faker::Boolean.boolean,
+#       password: 'pass1',
+#       password_confirmation: 'pass1',
+#       recovery_password: "42password"
+#     )
+#   end
+#   # puts "User #{host+1} create successfully."
+# end
+
+# 100.times do
+#   user = users.sample
+#   post = posts.sample
+#   Comment.create!(
+#     content: Faker::Games::StreetFighter.unique.quote,
+#     user_id: user.id,
+#     post_id: post.id
+#   )
+# end
+
+
 
 # users = User.all
 

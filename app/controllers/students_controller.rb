@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
 class StudentsController < ApplicationController
   before_action :find_student, only: %i[edit update destroy]
+  include Pagy::Backend
   def index
     @students = Student.all
-  end
-
-  def new
-    @student = Student.new
+    @pagy, @students = pagy(@students, items: 5)
   end
 
   def show
@@ -13,16 +13,21 @@ class StudentsController < ApplicationController
     redirect_to students_path if @student.blank?
   end
 
+  def new
+    @student = Student.new
+  end
+
+  def edit; end
+
   def create
     @student = Student.new(student_params)
     if @student.save
+      flash[:notice] = 'Created successfully!!'
       redirect_to students_path
     else
+      flash[:errors] = 'Invalid infomation to create'
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def update
@@ -42,11 +47,10 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :email)
+    params.require(:student).permit(:first_name, :last_name, :email, :age, :address, :city, :province, :class_room_id)
   end
 
   def find_student
     @student = Student.find(params[:id])
   end
-
 end

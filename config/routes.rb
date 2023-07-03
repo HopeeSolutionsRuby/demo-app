@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'class_rooms/index'
+  get 'teachers/index'
   resources :students
+  resources :class_rooms
   root 'welcome#index'
   # resources :posts
   # devise_for :admins, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'signup' }

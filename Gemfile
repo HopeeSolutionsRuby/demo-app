@@ -22,14 +22,15 @@ gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'sass-rails'
 gem 'sprockets-rails'
+gem 'turbo-rails', '~> 1.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'will_paginate'
-gem 'turbo-rails', '~> 1.4'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pagy', '~> 6.0', '>= 6.0.4'
   gem 'pry'
   gem 'rails-controller-testing'
   gem 'rspec-rails'

@@ -1,0 +1,21 @@
+<h1>New class</h1>
+<%= form_with model: @class_room do |form| %>
+	<% if @class_room.errors.any? %>
+		<div class="alert alert-danger">
+			<% @class_room.errors.full_messages.each do |message| %>
+				<div><%= message%></div>
+			<% end %>
+		</div>
+	<% end %>
+	<div class="mb-3">
+		<%= form.label :Class_name%><br>
+		<%= form.text_field :name, class: "form-control"%>
+	</div>
+	<div class="mb-3">
+		<%= form.label :Location%><br>
+		<%= form.text_field :location, class: "form-control"%>
+	</div>
+  <div class="mb-3">
+		<%= form.submit "Create", class: "btn btn-primary" %>
+	</div>
+<% end %>
