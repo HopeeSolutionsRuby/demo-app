@@ -13,7 +13,7 @@ users = User.all
 students = Student.all
 class_rooms = ClassRoom.all
 
-5.times do
+10.times do
   class_name = Faker::Educator.course_name
   class_location = Faker::Educator.university
 
@@ -24,7 +24,7 @@ class_rooms = ClassRoom.all
 end
 
 class_rooms.each do |class_room|
-  rand(3..10).times do
+  rand(15..30).times do
     student_first_name = Faker::Name.unique.first_name
     student_last_name = Faker::Name.unique.last_name
     student_email = Faker::Internet.unique.email(name: student_last_name,domain: 'student.edu')

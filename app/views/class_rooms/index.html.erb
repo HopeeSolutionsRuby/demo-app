@@ -1,5 +1,7 @@
 <h1>Listing Classrooms</h1>
 <%= link_to 'New', new_class_room_path %>
+<%= render partial: 'shared/search', locals: {type: 'name_cont'}%>
+<%= render 'shared/flash' %>
 <table class="table table-dark table-striped">
 	<thead>
 		<tr>
@@ -10,17 +12,25 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @class_rooms.each do |class_room| %>
-			<tr>
-				<td><%= class_room.name%></td>
-				<td><%= class_room.location%></td>
-				<td><%= class_room.students_count%></td>
-				<td>
-					<div style="display: flex;">
-						<%= link_to 'View students', class_room, method: 'get', class: 'btn btn-primary me-3'%>
-					</div>
-				</td>
-			</tr>
+		<%if @class_rooms.any?%>
+			<% @class_rooms.each do |class_room| %>
+				<tr>
+					<td><%= class_room.name%></td>
+					<td><%= class_room.location%></td>
+					<td><%= class_room.students_count%></td>
+					<td>
+						<div style="display: flex;">
+							<%= link_to 'View students', class_room, method: 'get', class: 'btn btn-outline-primary me-3'%>
+							<%= link_to 'Edit', edit_class_room_path(class_room), class: 'btn btn-outline-light' %>
+							<%= button_to 'Delete', class_room, method: 'delete', data: {"turbo-confirm": 'Are you sure?'}, class: 'btn btn-outline-danger ms-3' %>
+						</div>
+					</td>
+				</tr>
 		<% end %>
+		<%else%>
+			<tr>
+				<td colspan="3">No data found</td>
+			</tr>
+		<%end%>
 	</tbody>
 </table>

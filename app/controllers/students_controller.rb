@@ -4,8 +4,9 @@ class StudentsController < ApplicationController
   before_action :find_student, only: %i[edit update destroy]
   include Pagy::Backend
   def index
-    @students = Student.all
-    @pagy, @students = pagy(@students, items: 5)
+    @q = Student.ransack(params[:q])
+    @students = @q.result(distinct: true)
+    @pagy, @students = pagy(@students, items: 10)
   end
 
   def show
@@ -32,16 +33,22 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
+      flash[:notice] = 'Updated successfully!!'
       redirect_to students_path
     else
+      flash[:errors] = 'Invalid infomation to update'
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @student = Student.find(params[:id])
-    @student.destroy
-    redirect_to students_path
+    if @student.destroy
+      flash[:notice] = 'Delete successfully!!'
+      redirect_to students_path
+    else
+      flash[:errors] = 'Invalid infomation to update'
+    end
   end
 
   private

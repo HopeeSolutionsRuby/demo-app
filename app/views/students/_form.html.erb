@@ -7,36 +7,36 @@
 		</div>
 	<% end %>
 	<div class="mb-3">
-		<%= form.label :first_name%><br>
+		<%= form.label :first_name, class: "form-label"%><br>
 		<%= form.text_field :first_name, class: "form-control"%>
 	</div>
 	<div class="mb-3">
-		<%= form.label :last_name%><br>
+		<%= form.label :last_name, class: "form-label"%><br>
 		<%= form.text_field :last_name, class: "form-control"%>
 	</div>
 	<div class="mb-3">
-		<%= form.label :age%><br>
+		<%= form.label :age, class: "form-label"%><br>
 		<%= form.text_field :age, class: "form-control"%>
 	</div>
 	<div class="mb-3">
-		<%= form.label :address%><br>
+		<%= form.label :address, class: "form-label"%><br>
 		<%= form.text_field :address, class: "form-control"%>
 	</div>
 	<div class="mb-3">
-		<%= form.label :city%><br>
+		<%= form.label :city, class: "form-label"%><br>
 		<%= form.text_field :city, class: "form-control"%>
 	</div>
 	<div class="mb-3">
-		<%= form.label :province%><br>
+		<%= form.label :province, class: "form-label"%><br>
 		<%= form.text_field :province, class: "form-control"%>
 	</div>
 	<div class="mb-3">
-		<%= form.label :email%><br>
+		<%= form.label :email, class: "form-label"%><br>
 		<%= form.email_field :email, class: "form-control"%>
 	</div>
 	<div class="mb-3">
 		<%= form.label :class_room%><br>
-		<%= form.collection_select :class_room_id, ClassRoom.all, :id, :name, {}, { class: "form-control" }%>
+		<%= form.collection_select :class_room_id, ClassRoom.all, :id, :name, {}, { class: "form-select" }%>
 	</div>
   <div class="mb-3">
 		<%= form.submit "Submit", class: "btn btn-primary" %>

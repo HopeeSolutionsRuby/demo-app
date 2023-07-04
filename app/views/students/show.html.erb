@@ -1,27 +1,17 @@
-<h1>Student details</h1>
-
-<table class="table table-dark table-striped">
-	<thead>
-		<tr>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Age</th>
-			<th>Address</th>
-			<th>City</th>
-			<th>Province</th>
-			<th>Email</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><%= @student.first_name%></td>
-			<td><%= @student.last_name%></td>
-			<td><%= @student.age%></td>
-			<td><%= @student.address%></td>
-			<td><%= @student.city%></td>
-			<td><%= @student.province%></td>
-			<td><%= @student.email%></td>
-		</tr>
-	</tbody>
-</table>
+<div class="col-lg-10">
+	<div class="card bg-dark bg-gradient text-white rounded-0 shadow my-3">
+		<div class="card-body">
+			<p><% notice %></p>
+			<h1>Student Details</h1>
+			<p><strong>First Name: </strong><%= @student.first_name%></p>
+			<p><strong>Last Name: </strong><%= @student.last_name%></p>
+			<p><strong>Classroom: </strong><%= @student.class_room.name%></p>
+			<p><strong>Age: </strong><%= @student.age%></p>
+			<p><strong>Address: </strong><%= @student.address%></p>
+			<p><strong>City: </strong><%= @student.city%></p>
+			<p><strong>Province: </strong><%= @student.province%></p>
+			<p><strong>Email: </strong><%= @student.email%></p>
+		</div>
+	</div>
+</div>
 <%= link_to 'Back', students_path, class: 'btn btn-primary' %>

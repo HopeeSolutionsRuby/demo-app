@@ -1,33 +1,38 @@
 <h1>Listing Students</h1>
 <%= link_to 'New', new_student_path %>
-<% if flash[:notice] %>
-  <div class= "alert alert-success mt-3">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
 
-<table class="table table-dark table-striped">
+<%= render partial: 'shared/search', locals: {type: 'first_name_cont'}%>
+<%= render 'shared/flash' %>
+<table class="table table-dark table-bordered">
 	<thead>
 		<tr>
 			<th>First Name</th>
 			<th>Last Name</th>
 			<th>Email</th>
+			<th>Classroom</th>
 			<th colspan="3">Action</th>
 		</tr>
 	</thead>
 	<tbody>
-		<% @students.each do |student| %>
+		<%if @students.any? %>
+			<% @students.each do |student| %>
+				<tr>
+					<td><%= student.first_name%></td>
+					<td><%= student.last_name%></td>
+					<td><%= student.email%></td>
+					<td><%= student.class_room.name%></td>
+					<td>
+						<div style="display: flex;">
+							<%= link_to 'About', student, method: 'get', class: 'btn btn-outline-primary me-3'%>
+							<%= link_to 'Edit', edit_student_path(student), class: 'btn btn-outline-light' %>
+							<%= button_to 'Delete', student, method: 'delete', class: 'btn btn-outline-danger ms-3' %>
+						</div>
+					</td>
+				</tr>
+			<% end %>
+		<% else %>
 			<tr>
-				<td><%= student.first_name%></td>
-				<td><%= student.last_name%></td>
-				<td><%= student.email%></td>
-				<td>
-					<div style="display: flex;">
-						<%= link_to 'About', student, method: 'get', class: 'btn btn-primary me-3'%>
-						<%= link_to 'Edit', edit_student_path(student), class: 'btn btn-primary' %>
-						<%= button_to 'Delete', student, method: 'delete', data: { confirm: 'Are you sure?' }, class: 'btn btn-primary ms-3' %>
-					</div>
-				</td>
+				<td colspan="4"> No data found</td>
 			</tr>
 		<% end %>
 	</tbody>
