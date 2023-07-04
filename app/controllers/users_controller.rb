@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       format.json { render json: @users }
     end
   end
+  # devise / sorcery
 
   def show
     @user = User.find_by(id: params[:id])
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
       flash[:notice] = t('flash.notices.register_success')
       redirect_to root_path
     else
-      flash[:alert] = [t('flash.alerts.register_failure')] + @user.errors.full_messages
+      flash[:alert] = @user.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
       flash[:notice] = t('flash.notices.update_success')
       redirect_to users_path
     else
-      flash[:alert] = [t('flash.alerts.update_failure')] + @user.errors.full_messages
+      flash[:alert] = @user.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
@@ -74,4 +75,3 @@ class UsersController < ApplicationController
     params.permit(:name, :email)
   end
 end
-## devise / sorcery

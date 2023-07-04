@@ -1,0 +1,19 @@
+<div class="col-md-12 text-center py-3">
+  <h1 class="align-center">Login</h1>
+</div>
+<%= form_with url: login_path do |form| %>
+<%= render partial: 'shared/flash' %>
+<div class="mb-3">
+  <%= form.label :email %>
+  <%= form.text_field :email, class: "form-control", placeholder: "steve@apple.com" %>
+</div>
+
+<div class="mb-3">
+  <%= form.label :password %>
+  <%= form.password_field :password, class: "form-control", placeholder: "password" %>
+</div>
+
+<div class="mb-3">
+  <%= form.submit :Submit, class: "btn btn-primary"%>
+</div>
+<% end %>

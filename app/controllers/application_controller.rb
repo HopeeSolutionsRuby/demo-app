@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include SessionsHelper
+
   protected
 
   layout :layout_by_resource

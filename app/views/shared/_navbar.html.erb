@@ -12,13 +12,18 @@
       </ul>
     </div>
 
-    <% if @user.present? %>
+    <% if logged_in?  %>
     <div class= "me-5">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><%= @user.name%></a>
+          <a class="nav-link active" aria-current="page" href="#"><%= session[:user]['name']%></a>
         </li>
+        <li><%= button_to 'Log Out', logout_path, class: 'btn btn-secondary', method: 'delete' %></li>
       </ul>
+    </div>
+    <% else %>
+    <div class= "me-5">
+      <%= link_to 'Log In', login_path, class: 'btn btn-secondary' %>
     </div>
     <% end %>
   </div>
