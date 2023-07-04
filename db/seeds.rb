@@ -16,90 +16,102 @@ SIZE_ORDER = 50
 SIZE_ORDER_LINE = 5
 SIZE_USER = 30
 
-SIZE_USER.times do 
-  create(:admin)
-end
+# SIZE_USER.times do 
+#   create(:admin)
+# end
 
-SIZE_USER.times do 
+# count = 0
+# while count < SIZE_USER
+#   User.create(first_name: Faker::Name.first_name, 
+#     last_name: Faker::Name.last_name, 
+#     phone: Faker::PhoneNumber.cell_phone,
+#     email: Faker::Internet.email,
+#     password_digest: Digest::SHA256.hexdigest('v'),
+#     password: '1234',
+#     password_confirmation: '1234') && count+=1
+# end
+
+# (1..SIZE_CATEGORY).each do
+#   Category.create(name: Faker::Book.genre)
+# end
+
+# (1..SIZE_PRODUCT).each do
+#   Product.create(name: Faker::Book.title, 
+#     price: Faker::Number.within(range: 5000..100000),
+#     description: Faker::Book.author, 
+#     category_id: rand(1..SIZE_CATEGORY),
+#     quantity: rand(1..100))
+# end
+
+# Payment.create(name: "Cash")
+# Payment.create(name: "MoMo")
+# Payment.create(name: "ZaloPay")
+# Payment.create(name: "Internet Banking")
+
+# (1..SIZE_ORDER).each do |i|
+#   # Orders faked
+#   Order.create(date: Faker::Date.between(from: '2014-09-23', to: '2023-05-25'),
+#   total: Faker::Number.within(range: 100000..1000000),
+#   user_id: rand(1..SIZE_USER),
+#   status: rand(0..3))
+# end
+
+# (1..SIZE_ORDER).each do |i|
+#   # Bills faked
+#   Bill.create(date: Faker::Date.between(from: '2014-09-23', to: '2023-05-25'), order_id: i, status: rand(0..2))
+# end
+
+# (1..SIZE_ORDER).each do |i|
+#   # Order-lines faked
+#   (1..rand(1..SIZE_ORDER_LINE)).each do
+#     OrderLine.create(order_id: i, product_id: rand(1..SIZE_PRODUCT), quantity: rand(1..10))
+#   end
+# end
+
+# (1..SIZE_ORDER).each do |i|
+#   # Bill-lines faked
+#   (1..rand(1..SIZE_ORDER_LINE)).each do
+#     BillLine.create(bill_id: i, payment_id: rand(1..4), amount: Faker::Number.within(range: 100000..1000000), status: rand(0..3))
+#   end
+# end
+
+# # Images faked
+# (1..SIZE_USER).each do |i|
+#   Image.create(imageable_type: 'User', imageable_id: i, link: "path/to/images/of/user#{i}")
+#   Image.create(imageable_type: 'Admin', imageable_id: i, link: "path/to/images/of/admin#{i}")
+#   Image.create(imageable_type: 'Product', imageable_id: i, link: "path/to/images/of/product#{i}")
+# end
+
+# # Blogs faked
+# (1..SIZE_USER).each do |i|
+#   Blog.create(name: Faker::Quote.famous_last_words,
+#     short_description: Faker::Quote.jack_handey,
+#     content: Faker::Quote.matz,
+#     admin_id: rand(1..SIZE_USER))
+# end
+
+# # Comments faked
+# (1..SIZE_USER*2).each do |i|
+#   i < SIZE_USER ? type = 'Blog' : type = 'Product'
+#   if i == 1
+#     Comment.create(content: "comment#{i}",
+#       commentable_type: type,
+#       commentable_id: i, owner_type: 'User',
+#       owner_id: rand(1..SIZE_USER))
+#   else
+#     Comment.create(content: "comment#{i}",
+#       commentable_type: type,
+#       commentable_id: i, owner_type: 'User',
+#       owner_id: rand(1..SIZE_USER),
+#       parent_id: rand(1...i))
+#   end
+# end
+
+(1..SIZE_USER).each do
   User.create(first_name: Faker::Name.first_name, 
     last_name: Faker::Name.last_name, 
-    phone: Faker::PhoneNumber.cell_phone, 
-    username: Faker::Internet.username,
-    email: Faker::Internet.email)
-end
-
-(1..SIZE_CATEGORY).each do
-  Category.create(name: Faker::Book.genre)
-end
-
-(1..SIZE_PRODUCT).each do
-  Product.create(name: Faker::Book.title, 
-    price: Faker::Number.within(range: 5000..100000),
-    description: Faker::Book.author, 
-    category_id: rand(1..SIZE_CATEGORY),
-    quantity: rand(1..100))
-end
-
-Payment.create(name: "Cash")
-Payment.create(name: "MoMo")
-Payment.create(name: "ZaloPay")
-Payment.create(name: "Internet Banking")
-
-(1..SIZE_ORDER).each do |i|
-  # Orders faked
-  Order.create(date: Faker::Date.between(from: '2014-09-23', to: '2023-05-25'),
-  total: Faker::Number.within(range: 100000..1000000),
-  user_id: rand(1..SIZE_USER),
-  status: rand(0..3))
-end
-
-(1..SIZE_ORDER).each do |i|
-  # Bills faked
-  Bill.create(date: Faker::Date.between(from: '2014-09-23', to: '2023-05-25'), order_id: i, status: rand(0..2))
-end
-
-(1..SIZE_ORDER).each do |i|
-  # Order-lines faked
-  (1..rand(1..SIZE_ORDER_LINE)).each do
-    OrderLine.create(order_id: i, product_id: rand(1..SIZE_PRODUCT), quantity: rand(1..10))
-  end
-end
-
-(1..SIZE_ORDER).each do |i|
-  # Bill-lines faked
-  (1..rand(1..SIZE_ORDER_LINE)).each do
-    BillLine.create(bill_id: i, payment_id: rand(1..4), amount: Faker::Number.within(range: 100000..1000000), status: rand(0..3))
-  end
-end
-
-# Images faked
-(1..SIZE_USER).each do |i|
-  Image.create(imageable_type: 'User', imageable_id: i, link: "path/to/images/of/user#{i}")
-  Image.create(imageable_type: 'Admin', imageable_id: i, link: "path/to/images/of/admin#{i}")
-  Image.create(imageable_type: 'Product', imageable_id: i, link: "path/to/images/of/product#{i}")
-end
-
-# Blogs faked
-(1..SIZE_USER).each do |i|
-  Blog.create(name: Faker::Quote.famous_last_words,
-    short_description: Faker::Quote.jack_handey,
-    content: Faker::Quote.matz,
-    admin_id: rand(1..SIZE_USER))
-end
-
-# Comments faked
-(1..SIZE_USER*2).each do |i|
-  i < SIZE_USER ? type = 'Blog' : type = 'Product'
-  if i == 1
-    Comment.create(content: "comment#{i}",
-      commentable_type: type,
-      commentable_id: i, owner_type: 'User',
-      owner_id: rand(1..SIZE_USER))
-  else
-    Comment.create(content: "comment#{i}",
-      commentable_type: type,
-      commentable_id: i, owner_type: 'User',
-      owner_id: rand(1..SIZE_USER),
-      parent_id: rand(1...i))
-  end
+    phone: Faker::PhoneNumber.cell_phone,
+    email: Faker::Internet.email,
+    password: '1234',
+    password_confirmation: '1234')
 end

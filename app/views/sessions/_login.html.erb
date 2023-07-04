@@ -1,0 +1,65 @@
+<% if flash[:success] %>
+  <%= render partial: '/shared/partials/notice', locals: { title: 'success', content: flash[:success] } %>
+<% end %>
+<% if flash[:error] %>
+  <%= render partial: '/shared/partials/notice', locals: { title: 'error', content: flash[:error] } %>
+<% end %>
+<%= form_for :session, remote: true, url: login_path do |form| %>
+  <div class="text-center mb-3">
+    <p>Sign in with:</p>
+    <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-facebook-f"></i>
+    </button>
+
+    <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-google"></i>
+    </button>
+
+    <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-twitter"></i>
+    </button>
+
+    <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-github"></i>
+    </button>
+  </div>
+
+  <p class="text-center">or:</p>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <%= form.text_field :email, class: 'form-control form-control-lg', name: 'email', id: 'email' %>  
+    <%= form.label :email, class: 'form-label' do%>
+      Email or Phone
+    <% end %>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <%= form.password_field :password, class: 'form-control form-control-lg', name: 'password' %>
+    <%= form.label :password, class: 'form-label' %>
+  </div>
+
+  <!-- 2 column grid layout -->
+  <div class="row mb-4">
+    <div class="col-md-6 d-flex justify-content-center">
+      <!-- Checkbox -->
+      <div class="form-check mb-3 mb-md-0">
+        <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+        <label class="form-check-label" for="loginCheck"> Remember me </label>
+      </div>
+    </div>
+
+    <div class="col-md-6 d-flex justify-content-center">
+      <!-- Simple link -->
+      <a href="#!">Forgot password?</a>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+  <%= form.submit "Login", class: "btn btn-primary mb-4 w-100", name: 'commit' %>
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Not a member? <a href="#!">Register</a></p>
+  </div>
+<% end %>

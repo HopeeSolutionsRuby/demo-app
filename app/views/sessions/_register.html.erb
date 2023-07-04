@@ -1,0 +1,70 @@
+<% if flash[:success] %>
+  <%= render partial: '/shared/partials/notice', locals: { title: 'success', content: flash[:success] } %>
+<% end %>
+<% if flash[:error] %>
+  <%= render partial: '/shared/partials/notice', locals: { title: 'error', content: flash[:error] } %>
+<% end %>
+<%= form_for :session, remote: true, url: login_path do |form| %>
+  <div class="text-center mb-3">
+    <p>Sign up with:</p>
+    <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-facebook-f"></i>
+    </button>
+
+    <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-google"></i>
+    </button>
+
+    <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-twitter"></i>
+    </button>
+
+    <button type="button" class="btn btn-link btn-floating mx-1">
+      <i class="fab fa-github"></i>
+    </button>
+  </div>
+
+  <p class="text-center">or:</p>
+
+  <!-- Name input -->
+  <div class="d-flex justify-content-between">
+    <div class="form-outline mb-4">
+      <%= form.text_field :first_name, class: 'form-control form-control-lg', name: 'first_name' %>  
+      <%= form.label :first_name, class: 'form-label' %> 
+    </div>
+    <div class="form-outline mb-4">
+      <%= form.text_field :last_name, class: 'form-control form-control-lg', name: 'last_name' %>  
+      <%= form.label :last_name, class: 'form-label' %> 
+    </div>
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <%= form.text_field :email, class: 'form-control form-control-lg', name: 'email' %>  
+    <%= form.label :email, class: 'form-label' %> 
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <%= form.password_field :password, class: 'form-control form-control-lg', name: 'password' %>
+    <%= form.label :password, class: 'form-label' %>
+  </div>
+
+  <!-- Repeat Password input -->
+  <div class="form-outline mb-4">
+    <%= form.password_field :password_confirmation, class: 'form-control form-control-lg', name: 'password_confirmation' %>
+    <%= form.label :password_confirmation, class: 'form-label' %>
+  </div>
+
+  <!-- Checkbox -->
+  <div class="form-check d-flex justify-content-center mb-4">
+    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+      aria-describedby="registerCheckHelpText" />
+    <label class="form-check-label" for="registerCheck">
+      I have read and agree to the terms
+    </label>
+  </div>
+
+  <!-- Submit button -->
+    <%= form.submit "Register", class: "btn btn-primary mb-4 w-100", name: 'commit' %>
+<% end %>

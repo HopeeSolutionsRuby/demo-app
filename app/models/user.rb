@@ -2,11 +2,14 @@
 
 class User < ApplicationRecord
   include UserActivities::Register
+  has_secure_password
 
   validates :first_name, :last_name, :email, presence: true
   validates :phone, :email, uniqueness: { case_sensitive: false }
   validates :phone, phone: true
   validates :email, email: true
+  validates :password, presence: true, length: { minimum: 4 }
+  validates :password_confirmation, presence: true, on: :create
 
   has_many :orders, inverse_of: :user, dependent: :restrict_with_exception
   has_many :images, as: :imageable, inverse_of: :imageable, dependent: :restrict_with_exception

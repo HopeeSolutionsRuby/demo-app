@@ -6,7 +6,7 @@ class Admin < ApplicationRecord
 
   validates :first_name, :last_name, :email, presence: true
   validates :phone, :email, uniqueness: true
-  validates :phone, phone: true
+  # validates :phone, phone: true
   validates :email, email: true
 
   enum status: { active: 0, inactive: 1 }
