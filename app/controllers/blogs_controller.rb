@@ -5,7 +5,9 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
 
   def index
-    @blogs = Blog.all
+    @q = Blog.ransack(params[:q])
+    # @blogs = Blog.all
+    @blogs = @q.result(distinct: true)
   end
 
   def show; end
