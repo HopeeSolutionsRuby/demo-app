@@ -3,6 +3,7 @@
 class ClassRoom < ApplicationRecord
   include GeneralCallbacks
   has_many :students, dependent: :destroy
+  accepts_nested_attributes_for :students
   validates :name, :location, presence: true
   def self.ransackable_associations(auth_object = nil)
     ["students"]
