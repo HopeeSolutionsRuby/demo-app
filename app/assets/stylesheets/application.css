@@ -13,6 +13,3 @@
  *= require_tree .
  *= require_self
  */
-@import 'login_footer';
-@import 'custom';
-
