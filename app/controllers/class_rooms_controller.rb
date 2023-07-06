@@ -19,6 +19,8 @@ class ClassRoomsController < ApplicationController
     @class_room = ClassRoom.new
   end
 
+  def edit; end
+
   def create
     @class_room = ClassRoom.new(class_room_params)
     if @class_room.save
@@ -28,9 +30,6 @@ class ClassRoomsController < ApplicationController
       flash[:errors] = 'Invalid infomation to create'
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def edit
   end
 
   def update
