@@ -10,6 +10,8 @@ class Account < ApplicationRecord
 
   enum role: { employee: 0, employer: 1, admin: 2 }
 
+  mount_uploader :avatar, AvatarUploader
+
   private
 
   def downcase_email
