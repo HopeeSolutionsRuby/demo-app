@@ -1,0 +1,17 @@
+<div class="container px-0 position-absolute top-50 start-50 translate-middle shadow-lg text-center" style="width: calc(5em * 5);">
+  <%= form_with do |form| %>
+    <div class="mb-3 mt-5 px-3">
+      <%= form.text_field :email, class: "form-control border-3 bg-light text-center py-3", placeholder: "login" %> 
+    </div>
+    <div class="mb-3 px-3">
+      <%= form.text_field :password, class: "form-control border-3 bg-light text-center py-3", placeholder: "password" %>
+    </div>
+    <div class="d-grid col-5 mx-auto mb-4">
+      <%= form.submit "LOGIN", class: "btn btn-primary rounded-3 py-2" %>
+    </div>
+  <% end %>
+
+  <div class="bg-light py-3 border-top">
+    <%= link_to "Forget Password?", root_path, class: "link-info" %>
+  </div>
+</div>
