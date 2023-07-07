@@ -15,11 +15,12 @@ gem 'rubocop-rails', require: false
 gem 'sass-rails'
 
 gem 'bootsnap', require: false
+gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
 gem 'sprockets-rails'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]#
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'faker'
