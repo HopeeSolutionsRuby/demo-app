@@ -5,9 +5,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-
   version :medium_thumb do
     process resize_to_fill: [250, 250]
     def full_filename(_for_file)
