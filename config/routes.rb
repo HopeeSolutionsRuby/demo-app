@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
+
   devise_for :accounts
 
   as :account do
@@ -12,7 +14,7 @@ Rails.application.routes.draw do
   # Defines the root when authenticated or unauthenticated
   Account.roles.each do |role, _|
     authenticated :account, lambda { |account| account.send("#{role}?") } do
-      root "#{role.downcase}/dashboard#index".underscore, as: "#{role}_root"
+      root "#{role.downcase}s/dashboard#index".underscore, as: "#{role}_root"
     end
   end
 

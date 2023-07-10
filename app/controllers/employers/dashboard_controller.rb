@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-module Employee
+module Employers
   class DashboardController < ApplicationController
-    layout 'employee/layout'
+    layout 'employer/layout'
 
     def index
-      render 'employee/index'
+      render 'employers/index'
     end
   end
 end
