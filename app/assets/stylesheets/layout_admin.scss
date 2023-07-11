@@ -2,27 +2,64 @@
   min-height: 100vh;
   background-color: #edf2f9;
   color: #5e6e82;
-  #admin-container {
-    width: 85%;
-    margin: 0 auto;
-    #header-container {
-      svg {
-        cursor: pointer;
-      }
+  #header-container {
+    i {
+      cursor: pointer;
     }
+  }
+  #admin-container {
+    width: 95%;
+    margin: 0 auto;
     #menu-container {
       transition: opacity 5s ease;
       .navbar-nav {
         .nav-item  {
-          .nav-link {
-            color: #5e6e82;
+          .nav-link {            
             font-weight: 700;
-            span {
-              padding-left: 15px;
+            color: #5e6e82;
+            .rotate {
+              transition: transform 0.3s ease;
+              transform: rotate(0deg);
             }
+            .rotate-back {
+              transition: transform 0.3s ease;
+              transform: rotate(180deg);
+            }
+          }
+          :hover {
+            color: rgba(0, 0, 0, 0.7);
           }
         }
       }
     }
   }
 }
+@media only screen and (max-width: 450px) {
+  #body-container {
+    #admin-container {
+      width: 100%;
+      margin: 0 auto;
+      #header-container {
+        i {
+          cursor: pointer;
+        }
+      }
+    }
+    .hide-on-mobile {
+      display: none;
+    }
+    .none-padding-mobile {
+      padding: 0 !important;
+    }
+    .width-half-mobile {
+      width: 50%;
+    }
+    .width-menu-mobile {
+      width: 15% !important;
+    }
+    .width-content-mobile {
+      width: 85%;
+    }
+  }
+}
+    
