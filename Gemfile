@@ -15,6 +15,8 @@ gem 'rubocop-rails', require: false
 gem 'sass-rails'
 
 gem 'bootsnap', require: false
+gem 'carrierwave', '~> 3.0'
+gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
@@ -28,5 +30,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener'
+  gem 'letter_opener_web'
   gem 'web-console'
 end
