@@ -9,6 +9,8 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 gem 'bootstrap', '~> 5.1.3'
 gem 'factory_bot_rails'
 gem 'figaro'
+gem 'font-awesome-sass', '~> 6.4.0'
+gem 'jquery-rails'
 gem 'mysql2'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false

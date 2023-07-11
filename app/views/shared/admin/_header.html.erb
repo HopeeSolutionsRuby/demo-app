@@ -1,0 +1,26 @@
+<div class="col-lg-2">
+  <div class="d-flex align-items-center">
+    <div id="toggle-button" class="rounded-circle px-2">
+      <%# Menu Icon %>
+      <i class="fa-solid fa-bars fa-xl"></i>    
+    </div>
+    <div class="d-flex justify-content-end">
+      <%= image_tag("logo.png",class: 'p-3 w-100 pointer-events-none') %>
+    </div>
+  </div>
+</div>
+<div class="col-lg-10 h-100">
+  <div class="d-flex align-items-center justify-content-between h-100">
+    # custom search, function button here
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#toggle-button').click(function() {
+      $('.toggle').toggle();
+      $('#menu-container').toggleClass('col-lg-2');
+      $('#content-container').toggleClass('col-lg-10');
+    });
+  });
+</script>

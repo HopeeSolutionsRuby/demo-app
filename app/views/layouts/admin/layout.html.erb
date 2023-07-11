@@ -5,13 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    # Layout Admin
-    <%= yield %>
+    <div id="body-container" class="container-fluid">
+      <div id="admin-container" class="row">
+        <div id="header-container" class="row">
+          <%= render partial: 'shared/admin/header' %>
+        </div>
+        <div class="d-flex">
+          <div id="menu-container" class="col-lg-2 p-3">
+            <%= render partial: 'shared/admin/left_menu' %>
+          </div>
+          <div id="content-container" class="col-lg-10 p-3">
+            <div id="main-container" class="row">
+              <%= yield %>
+            </div>
+            <div id="footer-container" class="row">
+              <%= render partial: 'shared/admin/footer' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

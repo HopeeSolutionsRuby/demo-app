@@ -1,0 +1,28 @@
+#body-container {
+  min-height: 100vh;
+  background-color: #edf2f9;
+  color: #5e6e82;
+  #admin-container {
+    width: 85%;
+    margin: 0 auto;
+    #header-container {
+      svg {
+        cursor: pointer;
+      }
+    }
+    #menu-container {
+      transition: opacity 5s ease;
+      .navbar-nav {
+        .nav-item  {
+          .nav-link {
+            color: #5e6e82;
+            font-weight: 700;
+            span {
+              padding-left: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
