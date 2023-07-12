@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admins do
+    resources :accounts
+  end
+
   unauthenticated do
     root to: redirect('/signin')
   end

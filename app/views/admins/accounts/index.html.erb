@@ -1,0 +1,9 @@
+<h1>Account Dashboard</h1>
+<%= render partial: 'admins/search', locals: { url: admins_accounts_path, queries: 'email_or_phone_cont' } %>
+<div id="not-exist-accounts-search"></div>
+<div id="list-accounts">
+  <%= render partial: 'account_table' %>
+</div>
+<div id="pagination-container">
+  <%= render partial: 'admins/pagination' %>
+</div>
