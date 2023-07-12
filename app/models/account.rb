@@ -6,6 +6,8 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one :employee, inverse_of: :account, dependent: :destroy
+
   validates :phone, phone: true, uniqueness: true, unless: -> { phone.blank? }
 
   after_update :update_avatar_version
