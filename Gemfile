@@ -21,7 +21,10 @@ gem 'carrierwave', '~> 3.0'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'importmap-rails'
 gem 'jbuilder'
+gem 'pagy', '~> 6.0', '>= 6.0.4'
 gem 'puma', '~> 5.0'
+gem 'pundit', '~> 2.3'
+gem 'ransack', '~> 4.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
