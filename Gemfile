@@ -25,6 +25,7 @@ gem 'pagy', '~> 6.0', '>= 6.0.4'
 gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.3'
 gem 'ransack', '~> 4.0'
+gem 'turbo-rails', '~> 1.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
@@ -38,3 +39,6 @@ group :development do
   gem 'letter_opener_web'
   gem 'web-console'
 end
+
+# Use Redis for Action Cable
+gem 'redis', '~> 4.0'

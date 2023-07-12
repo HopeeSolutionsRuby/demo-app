@@ -222,6 +222,7 @@ GEM
       activerecord (>= 6.1.5)
       activesupport (>= 6.1.5)
       i18n
+    redis (4.8.1)
     regexp_parser (2.8.1)
     responders (3.1.0)
       actionpack (>= 5.2)
@@ -269,6 +270,10 @@ GEM
     thor (1.2.2)
     tilt (2.2.0)
     timeout (0.4.0)
+    turbo-rails (1.4.0)
+      actionpack (>= 6.0.0)
+      activejob (>= 6.0.0)
+      railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
@@ -309,9 +314,11 @@ DEPENDENCIES
   pundit (~> 2.3)
   rails (~> 7.0.4, >= 7.0.4.3)
   ransack (~> 4.0)
+  redis (~> 4.0)
   rubocop
   rubocop-rails
   sass-rails
+  turbo-rails (~> 1.4)
   tzinfo-data
   web-console
 
