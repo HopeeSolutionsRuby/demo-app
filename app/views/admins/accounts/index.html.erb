@@ -1,10 +1,10 @@
 <h1>Account Dashboard</h1>
-<%= render partial: 'admins/search', locals: { url: admins_accounts_path, queries: 'email_or_phone_cont', turbo_frame: 'account_result' } %>
+<%= render partial: 'admins/search', locals: { url: admins_accounts_path, queries: 'email_or_phone_cont'} %>
 <div id="not-exist-accounts-search"></div>
 <div id="list-accounts">
-  <%= turbo_frame_tag 'account_result' do%>
+
     <%= render partial: 'account_table' %>
-  <% end %>
+ 
 </div>
 <div id="pagination-container">
   <%= render partial: 'admins/pagination' %>
