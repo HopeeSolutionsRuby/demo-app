@@ -8,9 +8,9 @@ default: &default
   adapter: mysql2
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  host: <%= ENV["HOST"] %>
-  username: <%= ENV["USERNAME"] %>
-  password: <%= ENV["PASSWORD"] %>
+  host: localhost
+  username: root
+  password: hoanglong01
 
 development:
   <<: *default
