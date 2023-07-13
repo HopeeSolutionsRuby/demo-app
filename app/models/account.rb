@@ -5,7 +5,8 @@ class Account < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :phone, phone: true, uniqueness: true, unless: -> { phone.blank? }
+  # validates :phone, phone: true, uniqueness: true, unless: -> { phone.blank? }
+  validates :phone, presence: true
 
   enum role: { employee: 0, employer: 1, admin: 2 }
 
