@@ -4,17 +4,20 @@
 module Admins
   class AccountsController < ApplicationController
     layout 'admin/layout'
-    before_action :authorize_admin, only: :index
+    before_action :authorize_admin
     before_action :set_account, only: %i[show edit update destroy]
 
     def index
+      @url = admins_accounts_path
+      @queries = 'email_or_phone_cont'
+
       @q = Account.ransack(params[:q])
       @account = @q.result(distinct: true)
       @pagy, @records = pagy(@account)
     end
 
     def show; end
-    
+
     def new
       @account = Account.new
     end
@@ -41,7 +44,6 @@ module Admins
 
     def destroy
       @account.destroy
-
       redirect_to admins_accounts_path
     end
 
@@ -60,7 +62,7 @@ module Admins
     end
 
     def set_account
-      @account = Account.find(params[:id])
+      @account = Account.find_by(id: params[:id])
     end
   end
 end

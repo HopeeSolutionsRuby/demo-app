@@ -1,4 +1,4 @@
-<div class="container mx-auto px-5 pt-3 position-absolute top-50 start-50 translate-middle shadow-lg text-center" style="width: calc(6em * 6);">
+<div class="container mx-auto px-5 py-5 my-3 shadow-lg text-center" style="width: calc(6em * 6);">
   <h2>Edit account</h2>
   <%= render "devise/shared/error_messages", resource: @account %>
   <%= form_for @account, url: admins_account_path(@account) do |form| %>
@@ -16,7 +16,7 @@
       <%= form.file_field :avatar, class:"form-control", id:"formFileSm" %>
       </div>
     </div>
-    <div class="d-grid col-4 mx-auto mb-4">
+    <div class="d-grid col-4 mx-auto mb-4 pt-5">
       <%= form.submit class: "btn btn-primary btn-lg rounded-3 py-2" %>
     </div>
   <% end %>

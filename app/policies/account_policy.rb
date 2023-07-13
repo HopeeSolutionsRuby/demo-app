@@ -16,13 +16,13 @@ class AccountPolicy
     admin?
   end
 
-  # def create?
-  #   false
-  # end
+  def create?
+    admin?
+  end
 
-  # def new?
-  #   create?
-  # end
+  def new?
+    admin?
+  end
 
   def update?
     admin?
