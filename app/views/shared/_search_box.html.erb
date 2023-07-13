@@ -1,0 +1,25 @@
+<div class="search-form">
+  <%= form_with do |form| %>
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <%= form.text_field :text, class: "form-control form-input", placeholder: "Search any thing..." %> 
+  <% end %>
+</div>
+<style>
+  .search-form{
+    position: relative;
+  }
+  .search-form .fa-magnifying-glass{
+    position: absolute;
+    top:17px;
+    left: 17px;
+  }
+  .form-input{
+    border: none;
+    height: 50px;
+    text-indent: 35px;
+    border-radius: 15px;
+}
+  .form-input:focus{
+    box-shadow: none;
+  }
+</style>
