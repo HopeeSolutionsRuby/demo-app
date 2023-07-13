@@ -16,7 +16,6 @@ module Admins
     def show; end
 
     def edit
-      authorize @account
     end
 
     def update
