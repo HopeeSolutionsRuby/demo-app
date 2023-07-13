@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get "signin" => "devise/sessions#new"
     post "signin" => "devise/sessions#create"
     delete "signout" => "devise/sessions#destroy"
+    get "signup" => "devise/registrations#new"
+    post "signup" => "devise/registrations#create"
   end
   
   # Defines the root when authenticated or unauthenticated

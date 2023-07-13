@@ -1,2 +1,26 @@
-<%= @account.role%>
-<%= @account.email%>
+<div class="container mx-auto px-5 pt-3 position-absolute top-50 start-50 translate-middle shadow-lg text-center" style="width: calc(6em * 6);">
+  <h2>Edit account</h2>
+  <%= render "devise/shared/error_messages", resource: @account %>
+  <%= form_for @account, url: admins_account_path(@account) do |form| %>
+    <div class="row my-4 mx-5">  
+        <%= form.text_field :email, class:"form-control border-3 bg-light text-center py-3", placeholder: "Email" %>
+    </div>
+    <div class="row mb-4 mx-5">  
+        <%= form.text_field :phone, class:"form-control border-3 bg-light text-center py-3", placeholder: "Phone Number" %>
+    </div>
+    <div class="row g-3 mb-3 mx-5">
+      <div class="col-3">
+      <%= form.label :avatar, for:"formFileLg", class:"form-label fs-4" %>
+      </div>
+      <div class="col-9">
+      <%= form.file_field :avatar, class:"form-control", id:"formFileSm" %>
+      </div>
+    </div>
+    <div class="row input-group my-3 mx-3">
+      <%= form.select :role, ["employee", "employer"], { label: "your role:" }, { class: "form-select fs-6 border-3 mx-4 p-2", style:"width: calc(3em*2);" } %>
+    </div>
+    <div class="d-grid col-4 mx-auto mb-4">
+      <%= form.submit class: "btn btn-primary btn-lg rounded-3 py-2" %>
+    </div>
+  <% end %>
+</div>
