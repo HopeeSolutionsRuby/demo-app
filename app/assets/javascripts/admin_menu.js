@@ -24,3 +24,19 @@ $(document).ready(function () {
     $("#content-container").toggleClass("col-lg-10 col-lg-11");
   });
 });
+
+$(document).ready(function() {
+  // Xử lý dropdown Avatar
+  $(".dropdown-toggle").click(function(e) {
+    e.preventDefault();
+    $(this).siblings(".dropdown-menu").toggleClass("show");
+  });
+
+  // Đóng dropdown Avatar khi click bên ngoài
+  $(document).click(function(e) {
+    var target = e.target;
+    if (!$(target).is(".dropdown-toggle") && !$(target).parents().is(".dropdown-toggle")) {
+      $(".dropdown-menu").removeClass("show");
+    }
+  });
+});

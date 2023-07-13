@@ -4,7 +4,7 @@
 module Admins
   class AccountsController < ApplicationController
     layout 'admin/layout'
-    before_action :authorize_admin
+    before_action :authorize_admin, only: :index
     before_action :set_account, only: %i[show edit update destroy]
 
     def index
@@ -14,11 +14,25 @@ module Admins
     end
 
     def show; end
+    
+    def new
+      @account = Account.new
+    end
 
     def edit; end
 
+    def create
+      @account = Account.new(account_params_create)
+
+      if @account.save
+        redirect_to admins_account_url(@account.id)
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
+
     def update
-      if @account.update(account_params)
+      if @account.update(account_params_update)
         redirect_to admins_account_url(@account)
       else
         render :edit, status: :unprocessable_entity
@@ -33,8 +47,12 @@ module Admins
 
     private
 
-    def account_params
-      params.require(:account).permit(:email, :password, :password_confirmation, :phone, :avatar, :role)
+    def account_params_create
+      params.require(:account).permit(:email, :password, :role)
+    end
+
+    def account_params_update
+      params.require(:account).permit(:phone, :avatar)
     end
 
     def authorize_admin
