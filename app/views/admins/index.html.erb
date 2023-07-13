@@ -1,1 +1,4 @@
 <p>ADMIN</p>
+<%= button_to "manage accounts list", admins_accounts_path, method: :get %>
+<%= link_to "Change your password", edit_account_registration_path %>
+<%= button_to "Log out", destroy_account_session_path, method: :delete %>
