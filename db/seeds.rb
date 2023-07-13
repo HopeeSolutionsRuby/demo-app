@@ -2,7 +2,7 @@
 
 require 'factory_bot'
 require 'faker'
-include FactoryBot::Syntax::Methods
+# include FactoryBot::Syntax::Methods
 
 Faker::Config.locale = 'vi'
 

@@ -21,7 +21,7 @@ module Admins
 
     def update
       if @account.update(account_params)
-        redirect_to admins_account_url(@account), notice: 'Account was successfully updated.'
+        redirect_to admins_account_url(@account)
       else
         render :edit, status: :unprocessable_entity
       end
@@ -30,7 +30,7 @@ module Admins
     def destroy
       @account.destroy
 
-      redirect_to admins_accounts_path, notice: 'Account was successfully destroyed.'
+      redirect_to admins_accounts_path
     end
 
     private
