@@ -1,45 +1,45 @@
 <%= javascript_include_tag 'admin_menu' %>
-<div class="row">
-    <div class="col-lg-6 d-flex justify-content-evenly align-items-center width-half-mobile">
-        <div id="toggle-button" class="p-3">
-            <%# Menu Icon %>
-            <i class="fa-solid fa-bars fa-xl"></i>
-        </div>
-        <div class="text-center px-5 none-padding-mobile">
-            <%= image_tag("logo.png", alt: "logo", height: 70, class: '') %>
-        </div>
-        <div class="navbar-collapse hide-on-mobile" id="navbarSupportedContent">
-            <%= render partial: 'shared/search_box' %>
-        </div>
+<div class="row navbar">
+  <div class="col-lg-6 d-flex justify-content-evenly align-items-center width-half-mobile">
+    <div id="toggle-button" class="p-3">
+      <%# Menu Icon %>
+      <i class="fa-solid fa-bars fa-xl"></i>
     </div>
-    <!-- Right elements -->
-    <div class="col-lg-6 d-flex flex-row-reverse align-items-center width-half-mobile">
-        <!-- Avatar -->
-        <div class="dropdown">
-            <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                <img src="https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj" class="rounded-circle" height="40" alt="Profile image" loading="lazy" />
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                <li><a class="dropdown-item" href="#">My profile</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
-            </ul>
-        </div>
-        <!-- Notifications -->
-        <div class="dropdown">
-            <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                <i class="fa-regular fa-bell fa-xl"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Some news</a></li>
-                <li><a class="dropdown-item" href="#">Another news</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-        </div>
-        <!-- Icon -->
-        <a class="text-reset me-3" href="#">
-            <i class="fa-solid fa-inbox fa-xl"></i>
-        </a>
+    <div class="text-center px-5 none-padding-mobile">
+      <%= image_tag("logo.png", alt: "logo", height: 70, class: '') %>
     </div>
-    <!-- Right elements -->
+    <div class="navbar-collapse hide-on-mobile" id="navbarSupportedContent">
+      <%= render partial: 'shared/search_box' %>
+    </div>
+  </div>
+  <!-- Right elements -->
+  <div class="col-lg-6 d-flex flex-row-reverse align-items-center width-half-mobile">
+    <!-- Avatar -->
+    <div class="dropdown">
+      <a class="mb-2 dropdown-toggle d-flex align-items-center hidden-arrow" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+        <img src="https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj" class="rounded-circle" height="40" alt="Profile image" loading="lazy" />
+      </a>
+      <ul class="position-absolute dropdown-menu dropdown-menu-end" style="position: absolute; right: 0;" >
+        <li><%= link_to "My Profile", admins_account_path(current_account), class:"dropdown-item" %></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><%= button_to "Log out", destroy_account_session_path, method: :delete, class:"dropdown-item" %></li>
+      </ul>
+    </div>
+    <!-- Notifications -->
+    <div class="dropdown">
+      <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+        <i class="fa-regular fa-bell fa-xl"></i>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+        <li><a class="dropdown-item" href="#">Some news</a></li>
+        <li><a class="dropdown-item" href="#">Another news</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+    <!-- Icon -->
+    <a class="text-reset me-3" href="#">
+      <i class="fa-solid fa-inbox fa-xl"></i>
+    </a>
+  </div>
+  <!-- Right elements -->
 </div>
