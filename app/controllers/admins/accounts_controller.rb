@@ -15,8 +15,7 @@ module Admins
 
     def show; end
 
-    def edit
-    end
+    def edit; end
 
     def update
       if @account.update(account_params)

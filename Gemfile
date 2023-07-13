@@ -29,14 +29,16 @@ gem 'turbo-rails', '~> 1.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
+  gem 'factory_bot'
   gem 'faker'
+  gem 'letter_opener'
+  gem 'letter_opener_web'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'letter_opener'
-  gem 'letter_opener_web'
   gem 'web-console'
 end
 

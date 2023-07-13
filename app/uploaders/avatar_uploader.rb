@@ -8,14 +8,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :medium_thumb do
     process resize_to_fill: [250, 250]
     def full_filename(_for_file)
-      "avatar_medium.jpg"
+      'avatar_medium.jpg'
     end
   end
 
   version :small_thumb do
     process resize_to_fill: [50, 50]
     def full_filename(_for_file)
-      "avatar_small.jpg"
+      'avatar_small.jpg'
     end
   end
 
