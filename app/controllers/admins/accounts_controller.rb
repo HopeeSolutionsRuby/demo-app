@@ -50,7 +50,7 @@ module Admins
     private
 
     def account_params_create
-      params.require(:account).permit(:email, :password, :role)
+      params.require(:account).permit(:email, :password, :role, :phone, :avatar)
     end
 
     def account_params_update

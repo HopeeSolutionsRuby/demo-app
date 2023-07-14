@@ -3,7 +3,7 @@
   <%= render "devise/shared/error_messages", resource: @account %>
   <%= form_for @account, url: admins_account_path(@account) do |form| %>
     <div class="row my-4 mx-5">  
-        <%= form.text_field :email, class:"form-control border-3 bg-light text-center py-3", placeholder: "Email", :disabled => true %>
+        <%= form.text_field :email, class:"form-control border-3 bg-secondary-subtle text-center py-3", placeholder: "Email", :disabled => true %>
     </div>
     <div class="row mb-4 mx-5">  
         <%= form.text_field :phone, class:"form-control border-3 bg-light text-center py-3", placeholder: "Phone Number" %>
