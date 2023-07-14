@@ -7,7 +7,5 @@
     <br>
     <%= "role:" + @account.role %>
     <br>
-    <td><%= link_to 'Edit', edit_admins_account_path(@account), class: 'btn btn-outline-primary'%></td>
-    <td><%= button_to 'Change account', edit_account_registration_path, class: 'btn btn-primary',method: 'get'%></td>
     <td><%= button_to 'Back to Accounts List', admins_accounts_path, class: 'btn btn-secondary',method: 'get'%></td>
 </div>

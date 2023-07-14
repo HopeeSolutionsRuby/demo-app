@@ -17,7 +17,11 @@
     <!-- Avatar -->
     <div class="dropdown">
       <a class="mb-2 dropdown-toggle d-flex align-items-center hidden-arrow" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-        <img src="https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj" class="rounded-circle" height="40" alt="Profile image" loading="lazy" />
+      <% if current_account&.avatar %>
+        <%= image_tag("/uploads/account/avatar/#{current_account.id}/avatar_small.jpg", class: "rounded-circle", height: "40", alt:  "Profile image") %>
+      <% else %> 
+        <%= image_tag('/image/default.jpg', class: "rounded-circle", height: "40", alt:  "Profile image") %>
+      <% end %>
       </a>
       <ul class="position-absolute dropdown-menu dropdown-menu-end" style="position: absolute; right: 0;" >
         <li><%= link_to "My Profile", admins_account_path(current_account), class:"dropdown-item" %></li>

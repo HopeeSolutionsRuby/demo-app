@@ -1,7 +1,7 @@
 <ul class="navbar-nav fs-6">
   <%# Dashboard %>
   <li class="nav-item py-2">
-    <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_dashboard" aria-expanded="true" aria-controls="collapse2">
+    <%= content_tag :a, class: 'nav-link row d-flex', href: '#', role: 'button', data: { toggle: 'collapse', target: '#collapse_dashboard', turbo: false }, 'aria-expanded': 'true', 'aria-controls': 'collapse2' do %>
       <div class="col-lg-2">
         <i class="fa-solid fa-gauge-high fa-lg"></i>
       </div>
@@ -12,13 +12,13 @@
           <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
         </div>
       </div>
-    </a>
+    <% end %>
     <div id="collapse_dashboard" class="collapse">
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
           <%# Add after when have feature %>
-          <%= link_to "Analytics", admin_root_path, class: 'nav-link'%>
-          <%= link_to "Management", admin_root_path, class: 'nav-link'%>
+          <%= link_to "Analytics", admin_root_path, class: 'nav-link', data: { turbo: false } %>
+          <%= link_to "Management", admin_root_path, class: 'nav-link', data: { turbo: false } %>
         </li>
       </ul>
     </div>
@@ -26,15 +26,15 @@
 
   <%# an <hr> tag  %>
   <li class="nav-item py-2 toggle hide-on-mobile">
-      <div class="d-flex align-items-center">
-        <span class="pe-3">Feature</span>
-        <hr class="ml-5 w-100">
+    <div class="d-flex align-items-center">
+      <span class="pe-3">Feature</span>
+      <hr class="ml-5 w-100">
     </div>
   </li>
 
- <%# Accounts %>
+  <%# Accounts %>
   <li class="nav-item py-2">
-    <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_accounts" aria-expanded="true" aria-controls="collapse2">
+    <%= content_tag :a, class: 'nav-link row d-flex', href: '#', role: 'button', data: { toggle: 'collapse', target: '#collapse_accounts', turbo: false }, 'aria-expanded': 'true', 'aria-controls': 'collapse2' do %>
       <div class="col-lg-2">
         <i class="fa-solid fa-circle-user fa-lg"></i>
       </div>
@@ -44,13 +44,13 @@
           <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
         </div>
       </div>
-    </a>
+    <% end %>
     <div id="collapse_accounts" class="collapse">
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
           <%# Add after when have feature %>
-          <%= link_to "New account", new_admins_account_path, class: 'nav-link'%>
-          <%= link_to "Account List", admins_accounts_path, class: 'nav-link'%>
+          <%= link_to "New account", new_admins_account_path, class: 'nav-link', data: { turbo: false } %>
+          <%= link_to "Account List", admins_accounts_path, class: 'nav-link', data: { turbo: false } %>
         </li>
       </ul>
     </div>
@@ -58,7 +58,7 @@
 
   <%# Employers %>
   <li class="nav-item py-2">
-    <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_employers" aria-expanded="true" aria-controls="collapse2">
+    <%= content_tag :a, class: 'nav-link row d-flex', href: '#', role: 'button', data: { toggle: 'collapse', target: '#collapse_employers', turbo: false }, 'aria-expanded': 'true', 'aria-controls': 'collapse2' do %>
       <div class="col-lg-2">
         <i class="fa-solid fa-building-user fa-lg"></i>
       </div>
@@ -68,13 +68,13 @@
           <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
         </div>
       </div>
-    </a>
+    <% end %>
     <div id="collapse_employers" class="collapse">
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
           <%# Add after when have feature %>
-          <%= link_to "New account", admin_root_path, class: 'nav-link'%>
-          <%= link_to "Account List", admin_root_path, class: 'nav-link'%>
+          <%= link_to "New account", admin_root_path, class: 'nav-link', data: { turbo: false } %>
+          <%= link_to "Account List", admin_root_path, class: 'nav-link', data: { turbo: false } %>
         </li>
       </ul>
     </div>
@@ -82,7 +82,7 @@
 
   <%# Employees %>
   <li class="nav-item py-2">
-    <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_employees" aria-expanded="true" aria-controls="collapse2">
+    <%= content_tag :a, class: 'nav-link row d-flex', href: '#', role: 'button', data: { toggle: 'collapse', target: '#collapse_employees', turbo: false }, 'aria-expanded': 'true', 'aria-controls': 'collapse2' do %>
       <div class="col-lg-2">
         <i class="fa-solid fa-user-group fa-lg"></i>
       </div>
@@ -93,13 +93,13 @@
           <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
         </div>
       </div>
-    </a>
+    <% end %>
     <div id="collapse_employees" class="collapse">
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
           <%# Add after when have feature %>
-          <%= link_to "New account", admin_root_path, class: 'nav-link'%>
-          <%= link_to "Account List", admin_root_path, class: 'nav-link'%>
+          <%= link_to "New account", admin_root_path, class: 'nav-link', data: { turbo: false } %>
+          <%= link_to "Account List", admin_root_path, class: 'nav-link', data: { turbo: false } %>
         </li>
       </ul>
     </div>

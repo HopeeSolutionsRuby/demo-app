@@ -1,4 +1,4 @@
-<div class="container mx-auto my-5 px-5 py-3 shadow-lg text-center" style="width: calc(6em * 6);">
+<div class="container mx-auto px-5 pt-3 my-5 py-5 shadow-lg text-center" style="width: calc(6em * 6);">
   <h2>Admin create account</h2>
   <%= render "devise/shared/error_messages", resource: @account %>
   <%= form_for @account, url: admins_accounts_path(@account) do |form| %>

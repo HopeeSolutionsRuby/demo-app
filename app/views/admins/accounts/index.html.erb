@@ -1,11 +1,12 @@
-<h1>Account Dashboard</h1>
-<div id="not-exist-accounts-search"></div>
-<div id="list-accounts">
-  <%= turbo_frame_tag 'search_results' do %>
-    <%= render partial: 'account_table' %>
-  <% end %>
-</div>
-<div id="pagination-container">
-  <%= render partial: 'admins/pagination' %>
-</div>
-<td><%= button_to 'Back to Admin page', account_session_path, class: 'btn btn-secondary',method: 'get'%></td>
+<%= turbo_frame_tag 'accounts-frame' do %>
+  <h1>Account Dashboard</h1>
+  <div id="not-exist-accounts-search"></div>
+  <div id="list-accounts">
+    <%= turbo_frame_tag 'search_results' do %>
+      <%= render partial: 'account_table' %>
+    <% end %>
+  </div>
+  <div id="pagination-container">
+    <%= render partial: 'admins/pagination' %>
+  </div>
+<% end %>

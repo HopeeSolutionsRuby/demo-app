@@ -16,13 +16,17 @@ module Admins
       @pagy, @records = pagy(@account)
     end
 
-    def show; end
+    def show
+      render turbo_stream: turbo_stream.replace('accounts-frame', partial: 'admins/accounts/show')
+    end
 
     def new
       @account = Account.new
     end
 
-    def edit; end
+    def edit
+      render turbo_stream: turbo_stream.replace('accounts-frame', partial: 'admins/accounts/edit')
+    end
 
     def create
       @account = Account.new(account_params_create)
@@ -36,7 +40,7 @@ module Admins
 
     def update
       if @account.update(account_params_update)
-        redirect_to admins_account_url(@account)
+        redirect_to admins_accounts_path
       else
         render :edit, status: :unprocessable_entity
       end

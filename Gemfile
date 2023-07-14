@@ -41,6 +41,3 @@ group :development do
   gem 'binding_of_caller'
   gem 'web-console'
 end
-
-# Use Redis for Action Cable
-gem 'redis', '~> 4.0'
