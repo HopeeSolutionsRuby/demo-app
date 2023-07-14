@@ -12,7 +12,7 @@ class Account < ApplicationRecord
   after_destroy :delete_avatar_directory
 
   enum role: { employee: 0, employer: 1, admin: 2 }
-
+  has_one :employer, dependent: destroy
   mount_uploader :avatar, AvatarUploader
 
   def self.ransackable_attributes(_auth_object = nil)

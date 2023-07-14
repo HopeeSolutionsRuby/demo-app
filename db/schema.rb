@@ -12,7 +12,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_712_032_729) do
+ActiveRecord::Schema[7.0].define(version: 20_230_714_064_836) do
+
   create_table 'accounts', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
@@ -40,4 +41,18 @@ ActiveRecord::Schema[7.0].define(version: 20_230_712_032_729) do
   end
 
   add_foreign_key 'employees', 'accounts'
+
+  create_table 'employers', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.bigint 'account_id', null: false
+    t.string 'name', default: '', null: false
+    t.string 'address', default: '', null: false
+    t.integer 'company_size'
+    t.string 'website', default: ''
+    t.text 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['account_id'], name: 'index_employers_on_account_id'
+  end
+
+  add_foreign_key 'employers', 'accounts'
 end
