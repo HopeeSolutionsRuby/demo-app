@@ -7,5 +7,5 @@
     <br>
     <%= "role:" + @account.role %>
     <br>
-    <td><%= button_to 'Back to Accounts List', admins_accounts_path, class: 'btn btn-secondary',method: 'get'%></td>
+    <td><%= button_to 'Back to Accounts List', admins_accounts_path, class: 'btn btn-secondary',method: 'get', data: {turbo: false}%></td>
 </div>

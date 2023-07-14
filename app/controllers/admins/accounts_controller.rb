@@ -19,7 +19,7 @@ module Admins
     def show
       respond_to do |format|
         format.html
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('accounts-frame', partial: 'admins/accounts/show') }
+        # format.turbo_stream { render turbo_stream: turbo_stream.replace('accounts-frame', partial: 'admins/accounts/show') }
       end
     end
 

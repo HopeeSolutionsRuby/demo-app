@@ -1,6 +1,6 @@
 <tr>
   <th scope="row"><%= account.id%></th>
-  <td><%= link_to account.email, admins_account_path(account) %></td>
+  <td><%= link_to account.email, admins_account_path(account), target: '_top' %></td>
   <td><%= account.phone%></td>
   <td>@<%= account.role%></td>
   <td><%= link_to 'Edit', edit_admins_account_path(account), class: 'btn btn-light'%></td>
