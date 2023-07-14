@@ -18,8 +18,9 @@ class Employee < ApplicationRecord
       # employee = Employee.new(first_name: params[:first_name], last_name: params[:last_name], address: params[:address])
       # employee.account = account
       employee = Employee.new(first_name: params[:first_name], last_name: params[:last_name], address: params[:address])
-      #Use build_account instead of creating an Account with Account.create! and assign to employee.account.
-      employee.build_account(email: params[:email], password: params[:password], phone: params[:phone], avatar: params[:avatar])
+      # Use build_account instead of creating an Account with Account.create! and assign to employee.account.
+      employee.build_account(email: params[:email], password: params[:password], phone: params[:phone],
+                             avatar: params[:avatar])
       employee.save!
     end
 

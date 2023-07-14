@@ -3,7 +3,7 @@
 module Admins
   class EmployeesController < ApplicationController
     layout 'admin/layout'
-    before_action :set_employee, only: %i[edit update]
+    before_action :set_employee, only: %i[edit update destroy show]
 
     def index
       @employees = Employee.all
@@ -45,6 +45,14 @@ module Admins
       end
     end
 
+    def destroy
+      @employee.destroy
+      redirect_to admins_employees_path, notice: 'Employee updated successfully!'
+      # respond_to do |format|
+      # format.html {redirect_to admins_employees_path}
+      # end
+    end
+
     private
 
     def employee_params
@@ -55,6 +63,10 @@ module Admins
       params.require(:employee).permit(:first_name, :last_name, :gender, :address, :phone,
                                        account_attributes: %i[email phone avatar])
     end
+
+    # def employee_params_destroy
+    #   params.require(:employee).permit(:first_name, :last_name, :gender, :address, :email, :password, :phone, :avatar)
+    # end
 
     def set_employee
       @employee = Employee.find(params[:id])

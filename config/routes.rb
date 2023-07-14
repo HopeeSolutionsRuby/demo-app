@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :accounts
-    resources :employees
+    resources :employees, except: [:show]
   end
 
   unauthenticated do
