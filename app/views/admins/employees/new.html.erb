@@ -1,0 +1,43 @@
+<%= render partial: 'shared/flash'%>
+<h1>New Employee</h1>
+<%= form_with model: @employee, url: admins_employees_path do |form| %>
+  <div class="mb-3">
+    <%= form.label :first_name, class: "form-label"%><br>
+    <%= form.text_field :first_name, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :last_name, class: "form-label"%><br>
+    <%= form.text_field :last_name, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :gender, class: "form-label" %><br>
+    <%= form.select :gender, [['Male', :male], ['Female', :female], ['Another', :another]], class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :address, class: "form-label"%><br>
+    <%= form.text_field :address, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label"%><br>
+    <%= form.text_field :email, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :phone, class: "form-label"%><br>
+    <%= form.text_field :phone, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :password, class: "form-label"%><br>
+    <%= form.password_field :password, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :password_confirm, class: "form-label"%><br>
+    <%= form.password_field :password_confirmation, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :avatar, for:"formFileLg", class:"form-label" %>
+    <%= form.file_field :avatar, class:"form-control mb-2", id:"formFileSm"%>
+  </div>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

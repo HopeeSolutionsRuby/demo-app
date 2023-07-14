@@ -3,6 +3,9 @@
 class Account < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_update :update_avatar_version
+  after_update :update_avatar_version
+  after_destroy :delete_avatar_directory
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -10,7 +13,6 @@ class Account < ApplicationRecord
 
   validates :phone, phone: true, uniqueness: true, unless: -> { phone.blank? }
 
-  after_update :update_avatar_version
   after_destroy :delete_avatar_directory
 
   enum role: { employee: 0, employer: 1, admin: 2 }

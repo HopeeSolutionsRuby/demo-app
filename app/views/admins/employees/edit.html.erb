@@ -1,0 +1,30 @@
+<h1>Update Page</h1>
+<%= form_with model: @employee, url: admins_employee_path do |form| %>
+  <div class="mb-3">
+    <%= form.label :first_name, class: "form-label"%><br>
+    <%= form.text_field :first_name, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :last_name, class: "form-label"%><br>
+    <%= form.text_field :last_name, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :gender, class: "form-label" %><br>
+    <%= form.select :gender, [['Male', :male], ['Female', :female], ['Another', :another]], class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :address, class: "form-label"%><br>
+    <%= form.text_field :address, class: "form-control"%>
+  </div>
+  <%= form.fields_for :account do |account_form| %>
+    <%= account_form.label :email, class: "form-label" %>
+    <%= account_form.text_field :email, class: "form-control" %>
+    <%= account_form.label :phone, class: "form-label" %>
+    <%= account_form.text_field :phone, class: "form-control" %>
+    <%= account_form.label :avatar, for:"formFileLg", class:"form-label" %>
+    <%= account_form.file_field :avatar, class:"form-control mb-2", id:"formFileSm" %>
+  <% end %>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
