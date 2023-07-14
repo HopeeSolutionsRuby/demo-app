@@ -17,7 +17,10 @@ module Admins
     end
 
     def show
-      render turbo_stream: turbo_stream.replace('accounts-frame', partial: 'admins/accounts/show')
+      respond_to do |format|
+        format.html
+        format.turbo_stream { render turbo_stream: turbo_stream.replace('accounts-frame', partial: 'admins/accounts/show') }
+      end
     end
 
     def new

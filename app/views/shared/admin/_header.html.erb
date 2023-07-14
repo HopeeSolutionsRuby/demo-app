@@ -24,7 +24,7 @@
       <% end %>
       </a>
       <ul class="position-absolute dropdown-menu dropdown-menu-end" style="position: absolute; right: 0;" >
-        <li><%= link_to "My Profile", admins_account_path(current_account), class:"dropdown-item" %></li>
+        <li><%= link_to "My Profile", admins_account_path(current_account), class:"dropdown-item", data: {turbo: false} %></li>
         <li><a class="dropdown-item" href="#">Settings</a></li>
         <li><%= button_to "Log out", destroy_account_session_path, method: :delete, class:"dropdown-item" %></li>
       </ul>
