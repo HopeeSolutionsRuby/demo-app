@@ -12,6 +12,8 @@ gem 'figaro'
 gem 'font-awesome-sass', '~> 6.4.0'
 gem 'jquery-rails'
 gem 'mysql2'
+gem 'pagy', '~> 6.0', '>= 6.0.4'
+gem 'ransack', '~> 4.0'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'sass-rails'
@@ -21,10 +23,8 @@ gem 'carrierwave', '~> 3.0'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'importmap-rails'
 gem 'jbuilder'
-gem 'pagy', '~> 6.0', '>= 6.0.4'
 gem 'puma', '~> 5.0'
 gem 'pundit', '~> 2.3'
-gem 'ransack', '~> 4.0'
 gem 'turbo-rails', '~> 1.4'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 

@@ -8,9 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= turbo_include_tags %>
+    <%= turbo_frame_tag 'turbo-streams' %>
+    <%= javascript_include_tag 'admin_menu', 'data-turbo-track': 'reload' %>
   </head>
 
   <body>
@@ -23,8 +25,8 @@
           <%= render partial: 'shared/admin/left_menu' %>
         </div>
         <div id="content-container" class="col-lg-10 p-3 width-content-mobile">
-          <div id="main-container">
-            <%= turbo_frame_tag 'container-frame' do%>
+          <div id="main-container" >
+            <%= turbo_frame_tag "container-frame" do %>
               <%= render 'shared/toast_flash' %>
               <%= yield %>
             <% end %>

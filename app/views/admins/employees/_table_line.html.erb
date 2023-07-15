@@ -1,0 +1,24 @@
+<tr>
+  <th scope="row"><%= employee.id%></th>
+  <td><%= employee.first_name%></td>
+  <td><%= employee.last_name%></td>
+  <td><%= employee.gender%></td>
+  <td><%= employee.address%></td>
+  <td><%= employee.account.email%></td>
+  <td><%= employee.account.phone%></td>
+  <td>
+    <%= link_to admins_employee_path(employee), class: 'btn btn-success', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-eye"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to edit_admins_employee_path(employee), class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-pen"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= button_to admins_employee_path(employee), method: :delete, class: 'btn btn-danger ms-1', data: { turbo_frame: 'container-frame', turbo_action: 'replace', turbo_confirm: 'Are you sure?' } do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+  </td>
+</tr>

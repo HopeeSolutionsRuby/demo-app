@@ -1,16 +1,16 @@
 <ul class="navbar-nav fs-6">
   <li class="nav-item py-2">
-  <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_dashboard" aria-expanded="true" aria-controls="collapse2">
-      <div class="col-lg-2">
-        <i class="fa-solid fa-gauge-high fa-lg"></i>
-      </div>
-      <div class="col-lg-10 toggle hide-on-mobile">
-        <div class="d-flex justify-content-between align-items-center">
-          <span>Dashboard</span>
-          <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
+    <div class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_dashboard" aria-expanded="true" aria-controls="collapse2">
+        <div class="col-lg-2">
+          <i class="fa-solid fa-gauge-high fa-lg"></i>
         </div>
-      </div>
-  </a>
+        <div class="col-lg-10 toggle hide-on-mobile">
+          <div class="d-flex justify-content-between align-items-center">
+            <span>Dashboard</span>
+            <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
+          </div>
+        </div>
+    </div>
     <div id="collapse_dashboard" class="collapse">
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
@@ -29,7 +29,7 @@
   </li>
 
   <li class="nav-item py-2">
-    <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_accounts" aria-expanded="true" aria-controls="collapse2">
+    <div class="nav-link row d-flex" role="button" data-toggle="collapse" data-target="#collapse_accounts" aria-expanded="true" aria-controls="collapse2">
       <div class="col-lg-2">
         <i class="fa-solid fa-circle-user fa-lg"></i>
       </div>
@@ -39,7 +39,7 @@
           <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
         </div>
       </div>
-    </a>
+    </div>
     <div id="collapse_accounts" class="collapse">
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
@@ -51,7 +51,7 @@
   </li>
 
   <li class="nav-item py-2">
-    <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_employers" aria-expanded="true" aria-controls="collapse2">
+    <div class="nav-link row d-flex" role="button" data-toggle="collapse" data-target="#collapse_employers" aria-expanded="true" aria-controls="collapse2">
       <div class="col-lg-2">
         <i class="fa-solid fa-building-user fa-lg"></i>
       </div>
@@ -61,7 +61,7 @@
           <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
         </div>
       </div>
-    </a>
+    </d>
     <div id="collapse_employers" class="collapse">
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
@@ -73,7 +73,7 @@
   </li>
 
   <li class="nav-item py-2">
-    <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_employees" aria-expanded="true" aria-controls="collapse2">
+    <div class="nav-link row d-flex" role="button" data-toggle="collapse" data-target="#collapse_employees" aria-expanded="true" aria-controls="collapse2">
       <div class="col-lg-2">
         <i class="fa-solid fa-user-group fa-lg"></i>
       </div>
@@ -84,12 +84,12 @@
           <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
         </div>
       </div>
-    </a>
+    </div>
     <div id="collapse_employees" class="collapse">
       <ul class="navbar-nav">
-        <li class="nav-item ps-3">
-          <%= link_to "New Employees", new_admins_employee_path, class: 'nav-link'%>
-          <%= link_to "Employees List", admins_employees_path, class: 'nav-link'%>
+        <li class="nav-item ps-3" >
+          <%= link_to "New Employees", new_admins_employee_path, class: 'nav-link', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+          <%= link_to 'Employees List', admins_employees_path, class: "nav-link", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
         </li>
       </ul>
     </div>

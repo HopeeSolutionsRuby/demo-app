@@ -1,7 +1,7 @@
 <div class="search-form">
   <% if @q %>
     <%= search_form_for @q, url: search_form_url, data: { turbo_frame: 'container-frame' } do |f| %>
-    <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-magnifying-glass"></i>
     <%= f.search_field search_queries, placeholder: 'Search Anything ....', class: "form-control form-input" %>
     <% end %>
   <% end %>
@@ -9,11 +9,12 @@
 
 <style>
   .search-form{
+    cursor: pointer;
     position: relative;
   }
   .search-form .fa-magnifying-glass{
     position: absolute;
-    top:17px;
+    top: 17px;
     left: 17px;
   }
   .form-input{

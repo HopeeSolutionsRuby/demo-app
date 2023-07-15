@@ -1,36 +1,14 @@
-<br>
-<h1>Listing Employees</h1>
-<%= render partial: 'shared/flash'%>
-<table class="table  table-striped">
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Gender</th>
-      <th>Address</th>
-      <th colspan="3">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @employees.each do |employee|%>
-      <tr>
-        <td><%= employee.first_name %></td>
-        <td><%= employee.last_name %></td>
-        <td><%= employee.gender%></td>
-        <td><%= employee.address%></td>
-        <td>
-          <div class="d-grid gap-2 col-4">
-              <%= link_to 'Edit', edit_admins_employee_path(employee), class: 'btn btn-primary' %>
-          </div>
-            <div class="d-grid gap-2 col-4" >
-              <%= link_to 'Show', admins_employee_path(employee), class: 'btn btn-info' %>
-          </div>
-            <div class="d-grid gap-2 col-4" >
-              <%= button_to 'Delete', admins_employee_path(employee), method: :delete, class: 'btn btn-danger', remote: true %>
-          </div>
-
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'shared/toast_flash' %>
+<h4 class="fw-bold">EMPLOYEES LIST</h4>
+<div class="d-flex justify-content-between pb-3">
+  <%= link_to new_admins_employee_path, class: 'd-flex align-items-center text-primary', 
+                                        style: "text-decoration: none;", 
+                                        data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+    <i class="fa-solid fa-circle-plus"></i>&nbsp;New Employee
+  <% end %>
+  <div class="w-50">
+    <%= render partial: 'shared/search_box' %>
+  </div>
+</div>
+<%= render 'table' %>
+<%= render partial: 'shared/pagination' %>
