@@ -1,49 +1,81 @@
-<div class="container text-centre">
-  <div class="row align-items-start">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="card-title">Employee Details</h5>
-        </div>
-        <div class="card-body">
-          <div class="text-center mb-3">
-            <div class="card text-left" style="max-width: 13.5rem; max-height: 14rem; margin: 0 auto;">
-              <img class="card-img-top" src="<%= @employee.account.avatar %>" alt="Avatar">
-              <div class="card-body">
-                <h6 class="card-title text-center">Avatar</h6>
-              </div>
+<div class="d-flex justify-content-between align-items-center">
+  <h4 class="fw-bolder">Detail Page</h4>
+  <div>
+    <%= link_to new_admins_employee_path, class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+    <%= link_to admins_employees_path, class: "btn btn-secondary", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-list-ul"></i>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-center align-items-center">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <% if @previous_employee %>
+          <%= link_to admins_employee_path(@previous_employee.id), data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+            <i class="fa-solid fa-backward"></i>
+          <% end %>
+        <% end %>
+        <h5>Employee Details</h5>
+        <% if @next_employee %>
+          <%= link_to admins_employee_path(@next_employee), data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+            <i class="fa-solid fa-forward"></i>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="card-body position-relative">
+        <%= link_to edit_admins_employee_path(@employee), class: 'btn btn-primary position-absolute top-0 end-0 m-2', style: 'z-index: 1;' , data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+          <i class="fa-solid fa-pen"></i>
+        <% end %>
+        <div class="text-center mb-3">
+          <div class="card text-left" style="max-width: 13.5rem; max-height: 14rem; margin: 0 auto;">
+            <%# <%= image_tag(@employee.account.avatar, alt: 'Avatar', class: "card-img-top") %>
+            <img class="card-img-top" src="<%= @employee.account.avatar %>" alt="Avatar">
+            <div class="card-body">
+              <h6 class="card-title text-center">Avatar</h6>
             </div>
           </div>
-          <br>
-          <table class="table table-bordered">
-            <tbody>
-              <tr>
-                <th scope="row">First Name</th>
-                <td><%= @employee.first_name %></td>
-              </tr>
-              <tr>
-                <th scope="row">Last Name</th>
-                <td><%= @employee.last_name %></td>
-              </tr>
-              <tr>
-                <th scope="row">Gender</th>
-                <td><%= @employee.gender %></td>
-              </tr>
-              <tr>
-                <th scope="row">Email</th>
-                <td><%= @employee.account.email %></td>
-              </tr>
-              <tr>
-                <th scope="row">Address</th>
-                <td><%= @employee.address %></td>
-              </tr>
-              <tr>
-                <th scope="row">Phone Number</th>
-                <td><%= @employee.account.phone %></td>
-              </tr>
-            </tbody>
-          </table>
         </div>
+        <br>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row" class="col-4">Employee ID</th>
+              <td><%= @employee.id %></td>
+            </tr>
+            <tr>
+              <th scope="row">Account ID</th>
+              <td><%= @employee.account.id %></td>
+            </tr>
+            <tr>
+              <th scope="row">First Name</th>
+              <td><%= @employee.first_name %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Last Name</th>
+              <td><%= @employee.last_name %></td>
+            </tr>
+            <tr>
+              <th scope="row">Gender</th>
+              <td><%= @employee.gender %></td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td><%= @employee.account.email %></td>
+            </tr>
+            <tr>
+              <th scope="row">Address</th>
+              <td><%= @employee.address %></td>
+            </tr>
+            <tr>
+              <th scope="row">Phone Number</th>
+              <td><%= @employee.account.phone %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

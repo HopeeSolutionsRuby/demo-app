@@ -1,43 +1,59 @@
-<%= render partial: 'shared/flash'%>
 <h1>New Employee</h1>
-<%= form_with model: @employee, url: admins_employees_path do |form| %>
-  <div class="mb-3">
+<%= form_with model: @employee, url: admins_employees_path, data: { turbo: true, action: new_admins_employee_path } do |form| %>
+<%# First name, last name %>
+<div class="mb-3 d-flex justify-content-between align-items-center">
+  <div class="flex-fill me-1">
     <%= form.label :first_name, class: "form-label"%><br>
     <%= form.text_field :first_name, class: "form-control"%>
   </div>
-  <div class="mb-3">
+  <div class="flex-fill ms-1">
     <%= form.label :last_name, class: "form-label"%><br>
     <%= form.text_field :last_name, class: "form-control"%>
   </div>
-  <div class="mb-3">
+</div>
+<%# Gender, address %>
+<div class="mb-3 d-flex justify-content-between align-items-center">
+  <div class="me-1">
     <%= form.label :gender, class: "form-label" %><br>
-    <%= form.select :gender, [['Male', :male], ['Female', :female], ['Another', :another]], class: "form-control" %>
+    <%= form.select :gender, [['Male', 'male'], ['Female', 'female'], ['Another', 'another']], {}, {class: "form-select"} %>
   </div>
-  <div class="mb-3">
+  <div class="flex-fill ms-1">
     <%= form.label :address, class: "form-label"%><br>
     <%= form.text_field :address, class: "form-control"%>
   </div>
-  <div class="mb-3">
+</div>
+<%# Email, phone %>
+<div class="mb-3 d-flex justify-content-between align-items-center">
+  <div class="flex-fill me-1">
     <%= form.label :email, class: "form-label"%><br>
     <%= form.text_field :email, class: "form-control"%>
   </div>
-  <div class="mb-3">
+  <div class="flex-fill ms-1">
     <%= form.label :phone, class: "form-label"%><br>
     <%= form.text_field :phone, class: "form-control"%>
   </div>
-  <div class="mb-3">
+</div>
+<%# Password %>
+<div class="mb-3 d-flex justify-content-between align-items-center">
+  <div class="flex-fill me-1">
     <%= form.label :password, class: "form-label"%><br>
     <%= form.password_field :password, class: "form-control"%>
   </div>
-  <div class="mb-3">
+  <div class="flex-fill ms-1">
     <%= form.label :password_confirm, class: "form-label"%><br>
     <%= form.password_field :password_confirmation, class: "form-control"%>
   </div>
-  <div class="mb-3">
-    <%= form.label :avatar, for:"formFileLg", class:"form-label" %>
-    <%= form.file_field :avatar, class:"form-control mb-2", id:"formFileSm"%>
-  </div>
-  <div class="mb-3">
-    <%= form.submit class: "btn btn-primary" %>
-  </div>
+</div>
+<%# Avatar %>
+<div class="mb-3">
+  <%= form.label :avatar, for:"formFileLg", class:"form-label" %>
+  <%= form.file_field :avatar, class:"form-control mb-2", id:"formFileSm"%>
+</div>
+<div class="mb-3 d-flex justify-content-between align-items-center py-2">
+  <%= link_to  admins_employees_path, style: "text-decoration: none;", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+    <i class="fa-solid fa-backward"></i>
+    &nbsp;Employees List
+  <% end %>
+  <%= form.submit class: "btn btn-primary", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+</div>
 <% end %>
