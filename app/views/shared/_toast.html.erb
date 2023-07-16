@@ -6,7 +6,7 @@
       <% else %>
         <i class="fa-solid fa-circle-check"></i>
       <% end %>
-      <strong class='me-auto ms-1 text-<%=title == 'error' ? 'danger' : title.downcase %>'>
+      <strong class='me-auto ms-1 text-<%= title == 'error' ? 'danger' : title.downcase %>'>
         <%= title.capitalize %>
       </strong>
       <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>

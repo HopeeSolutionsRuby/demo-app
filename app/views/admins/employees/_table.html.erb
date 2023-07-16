@@ -15,9 +15,7 @@
   </thead>
   <tbody id="employee-table-body">
     <% if @records.size.zero? %>
-      <tr>
-        <td colspan="7">No data</td>
-      </tr>
+      <tr><td colspan="10">No data</td></tr>
     <% else %>
       <%= render partial: 'table_line', collection: @records, as: :employee %>
     <% end %>

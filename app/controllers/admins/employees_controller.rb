@@ -16,23 +16,18 @@ module Admins
     def show
       employees = employee_current_before_after_get
       employee_current_before_after_set(employees)
-      Rails.logger.debug employees.size
-      Rails.logger.debug employees
     end
 
     def new
       @employee = Employee.new
-      @account = Account.new
     end
 
-    def edit
-      @account = @employee.account
-    end
+    def edit; end
 
     def create
       @employee = Employee.create_with_account(employee_params)
       if @employee
-        flash[:success] = ['Invalid employee information!']
+        flash[:success] = ['Employee created successfully!']
         redirect_to admins_employees_path
       else
         flash[:error] = ['Invalid employee information!']
@@ -46,7 +41,7 @@ module Admins
         redirect_to admins_employees_path
       else
         flash[:error] = ['Invalid employee information!']
-        render :edit
+        redirect_to edit_admins_employee_path
       end
     end
 
