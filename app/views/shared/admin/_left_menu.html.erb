@@ -65,8 +65,9 @@
     <div id="collapse_employers" class="collapse">
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
-          <%= link_to "New account", admin_root_path, class: 'nav-link', data: { turbo: false } %>
-          <%= link_to "Account List", admin_root_path, class: 'nav-link', data: { turbo: false } %>
+          <%# Add after when have feature %>
+          <%= link_to "New employer", new_admins_employer_path, class: 'nav-link', data: { turbo: false }%>
+          <%= link_to "Employer List", admins_employers_path, class: 'nav-link', data: { turbo: false }%>
         </li>
       </ul>
     </div>

@@ -1,0 +1,8 @@
+<h1>Employer</h1>
+
+<div>
+  <p> Name: <%= @employer.name %></p>
+  <p> Address: <%= @employer.address %></p> 
+  <p> Company Size: <%= @employer.company_size %> people</p>
+  <td><%= button_to 'Back to Accounts List', admins_employers_path, class: 'btn btn-secondary',method: 'get', data: {turbo: false}%></td>
+</div>

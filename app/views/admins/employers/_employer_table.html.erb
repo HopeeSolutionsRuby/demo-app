@@ -1,0 +1,14 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"> <%= sort_link(@q, :id, "#")  %></th>
+      <th scope="col"><%= sort_link(@q, :name, "Name", default_order: :desc) %></th>
+      <th scope="col"><%= sort_link(@q, :address, "Address", default_order: :desc)%></th>
+      <th scope="col"><%= sort_link(@q, :company_size, "Company Size", default_order: :desc) %></th>
+      <th scope="col"><%= sort_link(@q, :webiste, "Website", default_order: :desc) %></th>
+    </tr>
+  </thead>
+  <tbody id="account-table-body">
+    <%= render partial: "employer", collection: @records, as: :employer %>
+  </tbody>
+</table>

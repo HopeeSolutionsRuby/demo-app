@@ -1,0 +1,9 @@
+<tr>
+  <th scope="row"><%= employer.id%></th>
+  <td><%= link_to employer.name, admins_employer_path(employer), target: '_top' %></td>
+  <td><%= employer.address%></td>
+  <td><%= employer.company_size%></td>
+  <td><%= employer.website%></td>
+  <td><%= link_to 'Edit', edit_admins_employer_path(employer), class: 'btn btn-light'%></td>
+  <td><%= button_to 'Destroy', admins_employer_path(employer), class: 'btn btn-danger',method: 'delete' %></td>
+</tr>
