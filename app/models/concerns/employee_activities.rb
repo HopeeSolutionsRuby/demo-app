@@ -19,11 +19,10 @@ module EmployeeActivities
                                avatar: params[:avatar])
         employee.save!
       end
-
-      employee
+      [employee, nil]
     rescue ActiveRecord::RecordInvalid => e
       Rails.logger.debug e.message
-      nil
+      [nil, e.message]
     end
   end
 

@@ -22,32 +22,30 @@ module Admins
       @employee = Employee.new
     end
 
-    def edit; end
-
     def create
-      @employee = Employee.create_with_account(employee_params)
-      if @employee
-        flash[:success] = ['Employee created successfully!']
-        redirect_to admins_employees_path
-      else
-        flash[:error] = ['Invalid employee information!']
+      @employee, error_message = Employee.create_with_account(employee_params)
+      if @employee.nil?
+        flash[:error] = error_message.split(/[:,]/)[1..-1]
         redirect_to new_admins_employee_path
+      else
+        flash[:success] = ["Employee with id: #{@employee.id} has been created!"]
+        redirect_to admins_employees_path
       end
     end
 
     def update
       if @employee.update(employee_params_update)
-        flash[:success] = ['Employee updated successfully!']
+        flash[:success] = ["Employee with id: #{@employee.id} has been created!"]
         redirect_to admins_employees_path
       else
-        flash[:error] = ['Invalid employee information!']
+        flash[:error] = @employee.errors.full_messages
         redirect_to edit_admins_employee_path
       end
     end
 
     def destroy
       @employee.destroy
-      flash[:success] = ['Employee destroy successfully!']
+      flash[:success] = ["Employee with id: #{@employee.id} has been destroyed!"]
       redirect_to admins_employees_path
     end
 
