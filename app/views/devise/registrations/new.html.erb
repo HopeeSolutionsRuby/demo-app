@@ -1,36 +1,33 @@
-<div class="container mx-auto px-5 pt-3 position-absolute top-50 start-50 translate-middle shadow-lg text-center" style="width: calc(6em * 6);">
+<div class="container mx-auto px-5 py-5 my-3 shadow-lg text-center" style="width: calc(6em * 6);">
   <h2>Create account</h2>
-  <div>
-      <%= render "devise/shared/error_messages", resource: resource %>
-    </div>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
-    <div class="container p-0 m-0">
+  <%= render "devise/shared/error_messages", resource: @account %>
+  <%= form_for @account, url: admins_accounts_path(@account) do |form| %>
     <div class="row my-4 mx-5">  
-        <%= form.text_field :email, class:"form-control border-3 bg-light text-center py-3", placeholder: "Email" %>
+      <%= form.label :email, class:"form-label" %>
+      <%= form.text_field :email, class:"form-control border-3 bg-light text-center py-2", placeholder: "Email" %>
     </div>
-    <div class="row mb-4 mx-5">    
-        <%= form.password_field :password, class: "form-control border-3 bg-light text-center py-3", placeholder: "Password" %>
+    <div class="row mb-4 mx-5">
+      <%= form.label :password, class:"form-label" %>
+      <%= form.password_field :password, class: "form-control border-3 bg-light text-center py-2", placeholder: "Password" %>
     </div>
-    <div class="row mb-4 mx-5">    
-        <%= form.password_field :password_confirmation, class: "form-control border-3 bg-light text-center py-3", placeholder: "Confirm Password" %>
+    <div class="row mb-4 mx-5">
+      <%= form.label :password_confirmation, class:"form-label" %>
+      <%= form.password_field :password_confirmation, class: "form-control border-3 bg-light text-center py-2", placeholder: "Password Confirmation" %>
     </div>
-    <div class="row mb-4 mx-5">  
-        <%= form.text_field :phone, class:"form-control border-3 bg-light text-center py-3", placeholder: "Phone Number" %>
+    <div class="row mb-4 mx-5"> 
+      <%= form.label :phone, class:"form-label" %> 
+      <%= form.text_field :phone, class:"form-control border-3 bg-light text-center py-2", placeholder: "Phone Number" %>
     </div>
-    <div class="row g-3 mb-3 mx-5">
-      <div class="col-3">
-      <%= form.label :avatar, for:"formFileLg", class:"form-label fs-4" %>
-      </div>
-      <div class="col-9">
-      <%= form.file_field :avatar, class:"form-control", id:"formFileSm" %>
-      </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :role, class:"form-label" %>
+      <%= form.select :role, ["employee", "employer"], { label: "your role:" }, { class: "form-select border-3 bg-light text-center py-2" } %>
     </div>
-    <div class="row input-group my-3 mx-3">
-      <%= form.select :role,["employee", "employer"], { label: "your role:" }, { class: "genForm_dropBox fs-6 border-3 mx-4 p-2 text-center", style:"width: calc(5em * 5);" } %>
-    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :avatar, for:"formFileLg", class:"form-label" %>
+      <%= form.file_field :avatar, class:"form-control border-3", id:"formFileSm" %>
     </div>
     <div class="d-grid col-4 mx-auto mb-4">
-      <%= form.submit "SIGN UP", class: "btn btn-primary btn-lg rounded-3 py-2" %>
+      <%= form.submit class: "btn btn-primary btn-lg rounded-3 py-2" %>
     </div>
   <% end %>
 </div>
