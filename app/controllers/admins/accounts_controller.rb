@@ -16,20 +16,13 @@ module Admins
       @pagy, @records = pagy(@account)
     end
 
-    def show
-      respond_to do |format|
-        format.html
-        # format.turbo_stream { render turbo_stream: turbo_stream.replace('accounts-frame', partial: 'admins/accounts/show') }
-      end
-    end
+    def show; end
 
     def new
       @account = Account.new
     end
 
-    def edit
-      render turbo_stream: turbo_stream.replace('accounts-frame', partial: 'admins/accounts/edit')
-    end
+    def edit; end
 
     def create
       @account = Account.new(account_params_create)

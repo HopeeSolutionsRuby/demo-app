@@ -49,8 +49,8 @@
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
           <%# Add after when have feature %>
-          <%= link_to "New account", new_admins_account_path, class: 'nav-link', data: { turbo: false } %>
-          <%= link_to "Account List", admins_accounts_path, class: 'nav-link', data: { turbo: false } %>
+          <%= link_to "New account", new_admins_account_path, class: 'nav-link', data: { turbo_frame: 'container-frame', turbo_action: 'replace'}%>
+          <%= link_to "Account List", admins_accounts_path, class: 'nav-link', data: { turbo: false }%>
         </li>
       </ul>
     </div>

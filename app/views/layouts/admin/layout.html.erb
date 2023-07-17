@@ -23,12 +23,12 @@
           <%= render partial: 'shared/admin/left_menu' %>
         </div>
         <div id="content-container" class="col-lg-10 p-3 width-content-mobile">
-          <%= turbo_frame_tag 'container-frame' do%>
           <div id="main-container">
-            <p><%= render partial: 'shared/flash' %></p>
+            <%= turbo_frame_tag 'container-frame' do%>
             <%= yield %>
+            <% end %>
           </div>
-          <% end %>
+
           <div id="footer-container">
             <%= render partial: 'shared/admin/footer' %>
           </div>
