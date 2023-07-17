@@ -7,6 +7,7 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :phone, phone: true, uniqueness: true, unless: -> { phone.blank? }
+  validates_length_of :phone, is: 10
 
   after_update :update_avatar_version
   after_destroy :delete_avatar_directory
