@@ -22,10 +22,12 @@ module Admins
       @employee = Employee.new
     end
 
+    def edit; end
+
     def create
       @employee, error_message = Employee.create_with_account(employee_params)
       if @employee.nil?
-        flash[:error] = error_message.split(/[:,]/)[1..-1]
+        flash[:error] = error_message.split(/[:,]/)[1..]
         redirect_to new_admins_employee_path
       else
         flash[:success] = ["Employee with id: #{@employee.id} has been created!"]
@@ -35,7 +37,7 @@ module Admins
 
     def update
       if @employee.update(employee_params_update)
-        flash[:success] = ["Employee with id: #{@employee.id} has been created!"]
+        flash[:success] = ["Employee with id: #{@employee.id} has been updated!"]
         redirect_to admins_employees_path
       else
         flash[:error] = @employee.errors.full_messages
