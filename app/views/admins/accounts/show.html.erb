@@ -1,29 +1,29 @@
-<div class="container mx-auto px-5 pt-3 my-5 py-5 shadow-lg text-center" style="width: calc(6em * 6);">
-  <h1>Account information</h1>
+<div class="container mx-auto  my-5 p-5 shadow-lg text-center" style="width: calc(6em * 6);">
+  <h2>Account Information</h2>
     <div class="row g-2 align-items-center">
       <div class="col-auto">
-        <label for="inputPassword6" class="col-form-label fs-3">Email:</label>
+        <label for="inputPassword6" class="col-form-label fs-4 fw-bold ">Email: </label>
       </div>
       <div class="col-auto">
-        <div class="fs-3"><%= @account.email %></div>
+        <div class="fs-5"><%= @account.email %></div>
       </div>
     </div>
     
     <div class="row g-2 align-items-center">  
       <div class="col-auto">
-        <label for="inputPassword6" class="col-form-label fs-3">Phone:</label>
+        <label for="inputPassword6" class="col-form-label fs-4 fw-bold">Phone: </label>
       </div>
       <div class="col-auto">
-        <div class="fs-3"><%= "phone:" + @account.phone %></div>
+        <div class="fs-5"><%= @account.phone %></div>
       </div>
     </div>
 
     <div class="row g-2 align-items-center">  
       <div class="col-auto">
-        <label for="inputPassword6" class="col-form-label fs-3">Role:</label>
+        <label for="inputPassword6" class="col-form-label fs-4 fw-bold">Role: </label>
       </div>
       <div class="col-auto">
-        <div class="fs-3"><%= @account.role %></div>
+        <div class="fs-5"><%= @account.role %></div>
       </div>
     </div>
 

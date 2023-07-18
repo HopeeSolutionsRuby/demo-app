@@ -2,24 +2,24 @@
   <h2>Admin create account</h2>
   <%= render "devise/shared/error_messages", resource: @account %>
   <%= form_for @account, url: admins_accounts_path(@account) do |form| %>
-    <div class="row my-4 mx-5">
-      <%= form.label :email, class:"form-label" %>
-      <%= form.text_field :email, class:"form-control border-3 bg-light text-center py-2", placeholder: "Email" %>
+    <div class="row my-4 mx-5 ">
+      <%= form.label :email, class:"form-label text-dark" %>
+      <%= form.text_field :email, class:"form-control border-3 bg-light text-center py-2", placeholder: "steve@apple.com" %>
     </div>
     <div class="row mb-4 mx-5">
-      <%= form.label :password, class:"form-label" %>
-      <%= form.password_field :password, class: "form-control border-3 bg-light text-center py-2", placeholder: "Password" %>
+      <%= form.label :password, class:"form-label text-dark" %>
+      <%= form.password_field :password, class: "form-control border-3 bg-light text-center py-2", placeholder: "secret password" %>
     </div>
     <div class="row mb-4 mx-5"> 
-      <%= form.label :phone, class:"form-label" %> 
-      <%= form.text_field :phone, class:"form-control border-3 bg-light text-center py-2", placeholder: "Phone Number" %>
+      <%= form.label :phone, class:"form-label text-dark" %> 
+      <%= form.text_field :phone, class:"form-control border-3 bg-light text-center py-2", placeholder: "0234567890" %>
     </div>
     <div class="row mb-4 mx-5">
-      <%= form.label :role, class:"form-label" %>
-      <%= form.select :role, ["employee", "employer"], { label: "your role:" }, { class: "form-select border-3 bg-light text-center py-2" } %>
+      <%= form.label :role, class:"form-label text-dark" %>
+      <%= form.select :role, ["employee", "employer"], { label: "your role:" }, { class: "form-select border-3 bg-light ps-4 text-center py-2" } %>
     </div>
     <div class="row mb-4 mx-5">
-      <%= form.label :avatar, for:"formFileLg", class:"form-label" %>
+      <%= form.label :avatar, for:"formFileLg", class:"form-label text-dark" %>
       <%= form.file_field :avatar, class:"form-control border-3", id:"formFileSm" %>
     </div>
     <div class="d-grid col-4 mx-auto mb-4">
