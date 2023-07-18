@@ -25,7 +25,7 @@ module Admins
       @account = Account.new(account_params_create)
 
       if @account.save
-        redirect_to admins_account_url(@account.id)
+        redirect_to admins_account_url(@account)
       else
         render :new, status: :unprocessable_entity
       end
