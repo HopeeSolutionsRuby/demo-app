@@ -7,7 +7,7 @@ module ApplicationHelper
     "/#{controller_path}"
   end
 
-  def search_queries
+  def search_form_queries
     case controller_path
     when 'admins/accounts'
       'email_or_phone_cont'
