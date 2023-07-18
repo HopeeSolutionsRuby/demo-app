@@ -5,5 +5,4 @@
   <td>@<%= account.role%></td>
   <td><%= link_to 'Edit', edit_admins_account_path(account), class: 'btn btn-light', data: { turbo_frame: 'container-frame', turbo_action: 'replace'}%></td>
   <td><%= button_to 'Destroy', admins_account_path(account), class: 'btn btn-danger',method: 'delete', data: { turbo_frame: 'container-frame', turbo_action: 'replace', turbo_confirm: 'Are you sure?' } %></td>
->>>>>>> 0e40b9d (issue_13: fix flash error with toast)
 </tr>
