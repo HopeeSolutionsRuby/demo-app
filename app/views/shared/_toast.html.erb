@@ -6,15 +6,15 @@
       <% else %>
         <i class="fa-solid fa-circle-check"></i>
       <% end %>
-      <strong class='me-auto ms-1 text-<%=title == 'error' ? 'danger' : title.downcase%>'>
-        <%=title.capitalize%>
+      <strong class='me-auto ms-1 text-<%=title == 'error' ? 'danger' : title.downcase %>'>
+        <%= title.capitalize %>
       </strong>
       <button type='button' class='btn-close' data-bs-dismiss='toast' aria-label='Close'></button>
     </div>
     <div class='toast-body'>
-      <%content.each do |line|%>
-        <%=line%><br>
-      <%end%>
+      <% content.each do |line| %>
+        <%= line %><br>
+      <% end %>
     </div>
   </div>
 </div>
