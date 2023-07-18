@@ -7,7 +7,7 @@
     <%= link_to new_admins_employee_path, class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
       <i class="fa-solid fa-plus"></i>
     <% end %>
-    <%= link_to admins_employees_path, class: "btn btn-secondary", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+    <%= link_to admins_employees_path, class: 'btn btn-secondary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
       <i class="fa-solid fa-list-ul"></i>
     <% end %>
   </div>
@@ -15,42 +15,42 @@
 <%= form_with model: @employee, url: admins_employee_path do |form| %>
   <div class="mb-3 d-flex justify-content-between align-items-center">
     <div class="flex-fill me-1">
-      <%= form.label :first_name, class: "form-label" %><br>
-      <%= form.text_field :first_name, class: "form-control" %>
+      <%= form.label :first_name, class: 'form-label' %><br>
+      <%= form.text_field :first_name, class: 'form-control' %>
     </div>
     <div class="flex-fill ms-1">
-      <%= form.label :last_name, class: "form-label" %><br>
-      <%= form.text_field :last_name, class: "form-control" %>
+      <%= form.label :last_name, class: 'form-label' %><br>
+      <%= form.text_field :last_name, class: 'form-control' %>
     </div>
   </div>
 
   <div class="mb-3 d-flex justify-content-between align-items-center">
     <div class="me-1">
-      <%= form.label :gender, class: "form-label" %><br>
-      <%= form.select :gender, [['Male', 'male'], ['Female', 'female'], ['Another', 'another']], {}, {class: "form-select"} %>
+      <%= form.label :gender, class: 'form-label' %><br>
+      <%= form.select :gender, [['Male', 'male'], ['Female', 'female'], ['Another', 'another']], {}, {class: 'form-select'} %>
     </div>
     <div class="flex-fill ms-1">
-      <%= form.label :address, class: "form-label" %><br>
-      <%= form.text_field :address, class: "form-control" %>
+      <%= form.label :address, class: 'form-label' %><br>
+      <%= form.text_field :address, class: 'form-control' %>
     </div>
   </div>
 
   <%= form.fields_for :account do |account_form| %>
     <div class="mb-3 d-flex justify-content-between align-items-center">
       <div class="flex-fill me-1">
-        <%= account_form.label :email, class: "form-label" %><br>
-        <%= account_form.text_field :email, class: "form-control" %>
+        <%= account_form.label :email, class: 'form-label' %><br>
+        <%= account_form.text_field :email, class: 'form-control' %>
       </div>
       <div class="flex-fill ms-1">
-        <%= account_form.label :phone, class: "form-label" %><br>
-        <%= account_form.text_field :phone, class: "form-control" %>
+        <%= account_form.label :phone, class: 'form-label' %><br>
+        <%= account_form.text_field :phone, class: 'form-control' %>
       </div>
     </div>
 
-    <%= account_form.label :avatar, for:"formFileLg", class:"form-label" %>
-    <%= account_form.file_field :avatar, class:"form-control mb-2", id:"formFileSm" %>
+    <%= account_form.label :avatar, for: 'form-file-lg', class: 'form-label' %>
+    <%= account_form.file_field :avatar, class:"form-control mb-2", id: 'form-file-lg' %>
   <% end %>
   <div class="my-3">
-    <%= form.submit "UPDATE", class: "btn btn-primary", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+    <%= form.submit 'UPDATE', class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
   </div>
 <% end %>
