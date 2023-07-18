@@ -1,0 +1,32 @@
+<div class="container mx-auto  my-5 p-5 shadow-lg text-center" style="width: calc(6em * 6);">
+  <h2>Account Information</h2>
+    <div class="row g-2 align-items-center">
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label fs-4 fw-bold ">Email: </label>
+      </div>
+      <div class="col-auto">
+        <div class="fs-5"><%= @account.email %></div>
+      </div>
+    </div>
+    
+    <div class="row g-2 align-items-center">  
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label fs-4 fw-bold">Phone: </label>
+      </div>
+      <div class="col-auto">
+        <div class="fs-5"><%= @account.phone %></div>
+      </div>
+    </div>
+
+    <div class="row g-2 align-items-center">  
+      <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label fs-4 fw-bold">Role: </label>
+      </div>
+      <div class="col-auto">
+        <div class="fs-5"><%= @account.role %></div>
+      </div>
+    </div>
+
+    <td><%= button_to 'Back to Accounts List', admins_accounts_path, class: 'btn btn-secondary', method: 'get', data: { turbo: false } %></td>
+  </div>
+</div>

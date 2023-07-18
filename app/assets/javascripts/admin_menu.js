@@ -24,3 +24,19 @@ $(document).ready(function () {
     $("#content-container").toggleClass("col-lg-10 col-lg-11");
   });
 });
+
+$(document).ready(function() {
+  // dropdown Avatar
+  $(".dropdown-toggle").click(function(e) {
+    e.preventDefault();
+    $(this).siblings(".dropdown-menu").toggleClass("show");
+  });
+
+  // Close dropdown when click outside
+  $(document).click(function(e) {
+    var target = e.target;
+    if (!$(target).is(".dropdown-toggle") && !$(target).parents().is(".dropdown-toggle")) {
+      $(".dropdown-menu").removeClass("show");
+    }
+  });
+});

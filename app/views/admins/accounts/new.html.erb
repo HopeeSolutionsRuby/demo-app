@@ -1,0 +1,28 @@
+<div class="container mx-auto px-5 pt-3 my-5 py-5 shadow-lg text-center" style="width: calc(6em * 6);">
+  <h2>Admin create account</h2>
+  <%= form_for @account, url: admins_accounts_path(@account) do |form| %>
+    <div class="row my-4 mx-5 ">
+      <%= form.label :email, class:"form-label text-dark" %>
+      <%= form.text_field :email, class:"form-control border-3 bg-light text-center py-2", placeholder: "steve@apple.com" %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :password, class:"form-label text-dark" %>
+      <%= form.password_field :password, class: "form-control border-3 bg-light text-center py-2", placeholder: "secret password" %>
+    </div>
+    <div class="row mb-4 mx-5"> 
+      <%= form.label :phone, class:"form-label text-dark" %> 
+      <%= form.text_field :phone, class:"form-control border-3 bg-light text-center py-2", placeholder: "0234567890" %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :role, class:"form-label text-dark" %>
+      <%= form.select :role, ["employee", "employer"], { label: "your role:" }, { class: "form-select border-3 bg-light ps-4 text-center py-2" } %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :avatar, for:"formFileLg", class:"form-label text-dark" %>
+      <%= form.file_field :avatar, class:"form-control border-3", id:"formFileSm" %>
+    </div>
+    <div class="d-grid col-4 mx-auto mb-4">
+      <%= form.submit class: "btn btn-primary btn-lg rounded-3 py-2", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+    </div>
+  <% end %>
+</div>

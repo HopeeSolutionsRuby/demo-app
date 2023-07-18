@@ -1,0 +1,33 @@
+<div class="container mx-auto px-5 py-5 my-3 shadow-lg text-center" style="width: calc(6em * 6);">
+  <h2>Create account</h2>
+  <%= render "devise/shared/error_messages", resource: @account %>
+  <%= form_for @account, url: admins_accounts_path(@account) do |form| %>
+    <div class="row my-4 mx-5">  
+      <%= form.label :email, class:"form-label" %>
+      <%= form.text_field :email, class:"form-control border-3 bg-light text-center py-2", placeholder: "Email" %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :password, class:"form-label" %>
+      <%= form.password_field :password, class: "form-control border-3 bg-light text-center py-2", placeholder: "Password" %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :password_confirmation, class:"form-label" %>
+      <%= form.password_field :password_confirmation, class: "form-control border-3 bg-light text-center py-2", placeholder: "Password Confirmation" %>
+    </div>
+    <div class="row mb-4 mx-5"> 
+      <%= form.label :phone, class:"form-label" %> 
+      <%= form.text_field :phone, class:"form-control border-3 bg-light text-center py-2", placeholder: "Phone Number" %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :role, class:"form-label" %>
+      <%= form.select :role, ["employee", "employer"], { label: "your role:" }, { class: "form-select border-3 bg-light text-center py-2" } %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :avatar, for:"formFileLg", class:"form-label" %>
+      <%= form.file_field :avatar, class:"form-control border-3", id:"formFileSm" %>
+    </div>
+    <div class="d-grid col-4 mx-auto mb-4">
+      <%= form.submit class: "btn btn-primary btn-lg rounded-3 py-2" %>
+    </div>
+  <% end %>
+</div>

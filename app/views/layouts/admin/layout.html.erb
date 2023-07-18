@@ -10,7 +10,7 @@
     <%= csp_meta_tag %>
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <%= turbo_include_tags %>
   </head>
 
   <body>
@@ -24,8 +24,12 @@
         </div>
         <div id="content-container" class="col-lg-10 p-3 width-content-mobile">
           <div id="main-container">
-            <%= yield %>
+            <%= turbo_frame_tag 'container-frame' do%>
+              <%= render 'shared/toast_flash' %>
+              <%= yield %>
+            <% end %>
           </div>
+
           <div id="footer-container">
             <%= render partial: 'shared/admin/footer' %>
           </div>

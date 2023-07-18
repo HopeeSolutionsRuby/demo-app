@@ -8,14 +8,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :medium_thumb do
     process resize_to_fill: [250, 250]
     def full_filename(_for_file)
-      "avatar_medium.#{file.extension}"
+      'avatar_medium.jpg'
     end
   end
 
   version :small_thumb do
     process resize_to_fill: [50, 50]
     def full_filename(_for_file)
-      "avatar_small.#{file.extension}"
+      'avatar_small.jpg'
     end
   end
 
@@ -25,5 +25,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   def extension_allowlist
     %w[jpg jpeg gif png]
+  end
+
+  def filename
+    'avatar.jpg' if original_filename.present?
   end
 end

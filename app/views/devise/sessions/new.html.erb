@@ -14,4 +14,9 @@
   <div class="bg-light py-3 border-top">
     <%= link_to "Forget Password?", new_password_path(resource_name), class: "link-info" %>
   </div>
+  <div class="bg-light py-3 border-top">
+    Don't have an account?
+    <br>
+    <%= button_to "Register", signup_path, method: :get, class: "btn btn-outline-primary rounded-3 px-5 py-2" %>
+  </div>
 </div>
