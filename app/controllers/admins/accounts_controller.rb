@@ -9,8 +9,8 @@ module Admins
 
     def index
       @q = Account.ransack(params[:q])
-      @account = @q.result(distinct: true)
-      @pagy, @records = pagy(@account)
+      accounts = @q.result(distinct: true)
+      @pagy, @records = pagy(accounts)
     end
 
     def show; end
