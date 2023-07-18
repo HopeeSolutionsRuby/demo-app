@@ -1,6 +1,5 @@
 <div class="container mx-auto px-5 pt-3 my-5 py-5 shadow-lg text-center" style="width: calc(6em * 6);">
   <h2>Admin create account</h2>
-  <%= render "devise/shared/error_messages", resource: @account %>
   <%= form_for @account, url: admins_accounts_path(@account) do |form| %>
     <div class="row my-4 mx-5 ">
       <%= form.label :email, class:"form-label text-dark" %>
@@ -23,7 +22,7 @@
       <%= form.file_field :avatar, class:"form-control border-3", id:"formFileSm" %>
     </div>
     <div class="d-grid col-4 mx-auto mb-4">
-      <%= form.submit class: "btn btn-primary btn-lg rounded-3 py-2" %>
+      <%= form.submit class: "btn btn-primary btn-lg rounded-3 py-2", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
     </div>
   <% end %>
 </div>

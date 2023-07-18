@@ -1,0 +1,9 @@
+<%# Partial toast flash to show sucess and error flash,
+please ensure that flash[:success] or flash[:error] is an ARRAY
+show that can show toast with multiple lines%>
+<% if flash[:success] %>
+  <%= render partial: 'shared/toast', locals: { title: 'success', content: flash[:success] } %>
+<% end %>
+<% if flash[:error] %>
+  <%= render partial: 'shared/toast', locals: { title: 'error', content: flash[:error] } %>
+<% end %>

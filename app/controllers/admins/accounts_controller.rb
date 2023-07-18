@@ -25,22 +25,27 @@ module Admins
       @account = Account.new(account_params_create)
 
       if @account.save
-        redirect_to admins_account_url(@account)
+        flash[:success] = ["Account with id: #{@account.id} has been created!"]
+        redirect_to admins_account_url(@account.id)
       else
-        render :new, status: :unprocessable_entity
+        flash[:error] = @account.errors.full_messages
+        redirect_to new_admins_account_path
       end
     end
 
     def update
       if @account.update(account_params_update)
+        flash[:success] = ["Account with id: #{@account.id} has been updated!"]
         redirect_to admins_accounts_path
       else
-        render :edit, status: :unprocessable_entity
+        flash[:error] = @account.errors.full_messages
+        redirect_to edit_admins_account_path
       end
     end
 
     def destroy
       @account.destroy
+      flash[:success] = ["Account with id: #{@account.id} has been destroyed!"]
       redirect_to admins_accounts_path
     end
 
