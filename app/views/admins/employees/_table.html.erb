@@ -1,7 +1,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col"><%= sort_link(@q, :id, "#", class: 'text-dark text-decoration-none')  %></th>
+      <th scope="col"><%= sort_link(@q, :id, "#", class: 'text-dark text-decoration-none') %></th>
       <th scope="col"><%= sort_link(@q, :first_name, "First Name", default_order: :desc, class: 'text-dark text-decoration-none') %></th>
       <th scope="col"><%= sort_link(@q, :last_name, "Last Name", default_order: :desc, class: 'text-dark text-decoration-none') %></th>
       <th scope="col"><%= sort_link(@q, :gender, "Gender", default_order: :desc, class: 'text-dark text-decoration-none') %></th>
