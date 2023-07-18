@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Employee < ApplicationRecord
-  include EmployeeActivities
-
   belongs_to :account, inverse_of: :employee, dependent: :destroy
 
   accepts_nested_attributes_for :account, update_only: true

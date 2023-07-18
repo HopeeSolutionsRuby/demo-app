@@ -13,17 +13,7 @@
   <div class="col-md-8">
     <div class="card">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <% if @previous_employee %>
-          <%= link_to admins_employee_path(@previous_employee.id), data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
-            <i class="fa-solid fa-backward"></i>
-          <% end %>
-        <% end %>
         <h5>Employee Details</h5>
-        <% if @next_employee %>
-          <%= link_to admins_employee_path(@next_employee), data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
-            <i class="fa-solid fa-forward"></i>
-          <% end %>
-        <% end %>
       </div>
       <div class="card-body position-relative">
         <%= link_to edit_admins_employee_path(@employee), class: 'btn btn-primary position-absolute top-0 end-0 m-2', style: 'z-index: 1;' , data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>

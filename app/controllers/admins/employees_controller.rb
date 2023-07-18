@@ -6,38 +6,42 @@ module Admins
     before_action :set_employee, only: %i[edit update destroy show]
 
     def index
-      @url = admins_employees_path
-      @queries = 'id_or_first_name_or_last_name_or_address_or_account_email_or_account_phone_cont'
       @q = Employee.includes(:account).ransack(params[:q])
-      @employees = @q.result(distinct: true)
-      @pagy, @records = pagy(@employees)
+      @pagy, @records = pagy(@q.result(distinct: true))
     end
 
     def show
-      employees = employee_current_before_after_get
-      employee_current_before_after_set(employees)
+      return if @employee
+
+      flash[:error] = "Not found your path with id #{params[:id]}"
+      redirect_to admins_employees_path
     end
 
     def new
       @employee = Employee.new
     end
 
-    def edit; end
+    def edit
+      return if @employee
+
+      flash[:error] = "Not found your path with id #{params[:id]}"
+      redirect_to admins_employees_path
+    end
 
     def create
-      @employee, error_message = Employee.create_with_account(employee_params)
+      @employee, error_message = EmployeesManager::EmployeeCreator.call(employee_params)
       if @employee.nil?
         flash[:error] = error_message.split(/[:,]/)[1..]
         redirect_to new_admins_employee_path
       else
-        flash[:success] = ["Employee with id: #{@employee.id} has been created!"]
+        flash[:success] = "Employee with id: #{@employee.id} has been created!"
         redirect_to admins_employees_path
       end
     end
 
     def update
       if @employee.update(employee_params_update)
-        flash[:success] = ["Employee with id: #{@employee.id} has been updated!"]
+        flash[:success] = "Employee with id: #{@employee.id} has been updated!"
         redirect_to admins_employees_path
       else
         flash[:error] = @employee.errors.full_messages
@@ -46,9 +50,13 @@ module Admins
     end
 
     def destroy
-      @employee.destroy
-      flash[:success] = ["Employee with id: #{@employee.id} has been destroyed!"]
-      redirect_to admins_employees_path
+      if @employee.destroy
+        flash[:success] = "Employee with id: #{@employee.id} has been destroyed!"
+        redirect_to admins_employees_path
+      else
+        flash[:error] = @employee.errors.full_messages
+        redirect_to edit_admins_employee_path
+      end
     end
 
     private
@@ -63,20 +71,7 @@ module Admins
     end
 
     def set_employee
-      @employee = Employee.find(params[:id])
-    end
-
-    def employee_current_before_after_get
-      Employee.includes(:account).where("
-        id >= #{params[:id]} - 1").order(:id).limit(3)
-    end
-
-    def employee_current_before_after_set(employees)
-      id = params[:id].to_i
-      idx = employees.index { |e| e.id == id }
-      @previous_employee = idx.zero? ? nil : employees[idx - 1]
-      @employee = employees[idx]
-      @next_employee = idx == employees.size - 1 ? nil : employees[idx + 1]
+      @employee = Employee.find_by(id: params[:id])
     end
   end
 end

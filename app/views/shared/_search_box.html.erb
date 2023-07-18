@@ -1,8 +1,8 @@
 <div class="search-form">
   <% if @q %>
-    <%= search_form_for @q, url: search_form_url, data: { turbo_frame: 'container-frame' } do |f| %>
+    <%= search_form_for @q, url: search_form_url, remote: true, data: { turbo_frame: 'container-frame' } do |f| %>
       <i class="fa-solid fa-magnifying-glass"></i>
-      <%= f.search_field @queries, class: "form-control form-input", placeholder: "Search anything...", value: params.fetch(:q, {}).fetch(@queries, '') %>
+      <%= f.search_field search_form_queries, class: 'form-control form-input', placeholder: 'Search anything...', value: params.fetch(:q, {}).fetch(search_form_queries, '') %>
     <% end %>
   <% end %>
 </div>
