@@ -8,9 +8,6 @@ module Admins
     before_action :set_account, only: %i[show edit update destroy]
 
     def index
-      @url = admins_accounts_path
-      @queries = 'email_or_phone_cont'
-
       @q = Account.ransack(params[:q])
       @account = @q.result(distinct: true)
       @pagy, @records = pagy(@account)

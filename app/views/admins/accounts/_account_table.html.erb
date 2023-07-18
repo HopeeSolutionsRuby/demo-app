@@ -1,9 +1,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col"> <%= sort_link(@q, :id, "#")  %></th>
+      <th scope="col"><%= sort_link(@q, :id, "#")  %></th>
       <th scope="col"><%= sort_link(@q, :email, "Email", default_order: :desc) %></th>
-      <th scope="col"><%= sort_link(@q, :phone, "Phone", default_order: :desc)%></th>
+      <th scope="col"><%= sort_link(@q, :phone, "Phone", default_order: :desc) %></th>
       <th scope="col"><%= sort_link(@q, :role, "Role", default_order: :desc) %></th>
     </tr>
   </thead>
