@@ -1,8 +1,71 @@
-<h1>Employer</h1>
+<div class="mb-3 px-3">
+  <div class="d-flex justify-content-between">
+    <div class="row g-0" style="max-width: 540px;">
+      <div class="col-md-4 border border-2 rounded border-dark">
+      <% if @employer&.account&.avatar_url %>
+        <%= image_tag("/uploads/account/avatar/#{@employer.id}/avatar_small.jpg", class: "img-fluid rounded-start", height: "40", alt:  "Profile image") %>
+      <% else %> 
+         <%= image_tag('/image/company_default.jpg', class: "img-fluid rounded-start", height: "40", alt:  "Profile image") %>
+      <% end %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title text-dark pb-2"><%= @employer.name %></h2>
+          <div class="d-flex align-items-center py-2">
+            <i class="fa-solid fa-suitcase"></i>
+            <span class="card-text ms-1">9 jobs available </span>
+          </div>
+          <div class="d-flex align-items-center py-2">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="card-text ms-1"><%= @employer.address %> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-toolbar" role="toolbar" >
+      <div class="me-2" role="group">
+        <%= link_to 'Edit', edit_admins_employer_path(@employer), class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+      </div>
+      <div class="me-2" role="group">
+        <%= button_to 'Destroy', admins_account_path(@employer), class: 'btn btn-danger', method: 'delete', data: { turbo_frame: 'container-frame', turbo_action: 'replace', turbo_confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  </div>
 
-<div>
-  <p> Name: <%= @employer.name %></p>
-  <p> Address: <%= @employer.address %></p> 
-  <p> Company Size: <%= @employer.company_size %> people</p>
-  <td><%= button_to 'Back to Accounts List', admins_employers_path, class: 'btn btn-secondary',method: 'get', data: {turbo: false}%></td>
+  <div class="card mt-4 border border-2">
+    <div class="card-body ">
+      <h3 class="card-title text-dark pb-2">General</h3>
+      <div class = "row g-0 pt-2 ms-1">
+        <div class="col-md-4 d-flex flex-md-column justify-content-between ipy-2 ipy-md-0">
+          <span class="card-text">Phone number</span>
+          <span class="card-text text-dark pt-1"><%= @employer.account.phone %></span>
+        </div>        
+        <div class="col-md-4 d-flex flex-md-column justify-content-between ipy-2 ipy-md-0">
+          <span class="card-text">Company size</span>
+          <span class="card-text text-dark pt-1"><%= @employer.company_size %> staffs</span>
+        </div>        
+        <div class="col-md-4 d-flex flex-md-column justify-content-between ipy-2 ipy-md-0">
+          <span class="card-text">Website</span>
+          <a class="card-text text-dark pt-1" href="#"><%= @employer.website %></a>
+        </div>
+      </div>
+      <div class = "row g-0 pt-2 ms-1 mt-3">
+        <div class="col-md-4 d-flex flex-md-column justify-content-between ipy-2 ipy-md-0">
+          <span class="card-text">Working time</span>
+          <span class="card-text text-dark pt-1"> Monday - Friday </span>
+        </div>        
+        <div class="col-md-4 d-flex flex-md-column justify-content-between ipy-2 ipy-md-0">
+          <span class="card-text">Overtime</span>
+          <span class="card-text text-dark pt-1">No</span>
+        </div>        
+      </div>
+    </div>
+  </div>  
+
+  <div class="card mt-4 border border-2">
+    <div class="card-body">
+      <h3 class="card-title text-dark pb-2">Description</h3>
+      <p class="card-text"><%= @employer.description %></p>
+    </div>
+  </div>  
 </div>

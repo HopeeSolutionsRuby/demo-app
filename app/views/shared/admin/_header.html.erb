@@ -16,7 +16,7 @@
     <!-- Avatar -->
     <div class="dropdown">
       <a class="mb-2 dropdown-toggle d-flex align-items-center hidden-arrow" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-      <% if current_account&.avatar %>
+      <% if current_account&.avatar_url %>
         <%= image_tag("/uploads/account/avatar/#{current_account.id}/avatar_small.jpg", class: "rounded-circle", height: "40", alt:  "Profile image") %>
       <% else %> 
         <%= image_tag('/image/default.jpg', class: "rounded-circle", height: "40", alt:  "Profile image") %>

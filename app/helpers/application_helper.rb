@@ -11,6 +11,8 @@ module ApplicationHelper
     case controller_path
     when 'admins/accounts'
       'email_or_phone_cont'
+    when 'admins/employers'
+      'name_or_website_cont'
     else
       ''
     end

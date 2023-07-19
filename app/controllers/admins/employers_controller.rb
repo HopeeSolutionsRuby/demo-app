@@ -6,11 +6,9 @@ module Admins
     before_action :set_employer, only: %i[show]
 
     def index
-      @url = admins_employers_path
-      @queries = 'name_cont'
       @q = Employer.includes(:account).ransack(params[:q])
-      @employers = @q.result(distinct: true)
-      @pagy, @records = pagy(@employers)
+      employers = @q.result(distinct: true)
+      @pagy, @records = pagy(employers)
     end
 
     def show; end
