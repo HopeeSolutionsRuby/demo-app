@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class Employer < ApplicationRecord
-  belongs_to :account
+  after_validation :set_role_employer
+  belongs_to :account, inverse_of: :employer, dependent: :destroy
+
+  accepts_nested_attributes_for :account, update_only: true
 
   validates :name, presence: true, length: { in: 4..80 }
   validates :address, presence: true, length: { maximum: 255 }
@@ -13,5 +16,9 @@ class Employer < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     ['account']
+  end
+
+  def set_role_employer
+    account.role = 'employer'
   end
 end

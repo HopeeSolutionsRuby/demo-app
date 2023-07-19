@@ -1,0 +1,45 @@
+<div class="container mx-auto my-5 px-5 py-3 shadow-lg" style="width: calc(6em * 6);">
+  <h2 class="text-center">Admin edit employer</h2>
+  <%= form_with model: @employer, url: admins_employer_path do |form| %>
+    <div class="row my-4 mx-5"> 
+      <%= form.label :name, class:"form-label" %> 
+      <%= form.text_field :name, class:"form-control border-3 bg-light py-2", placeholder: "Name" %>
+    </div>
+
+    <%= form.fields_for :account do |account_form| %>
+      <div class="row my-4 mx-5">
+        <%= account_form.label :email, class:"form-label" %> 
+        <%= account_form.text_field :email, class:"form-control border-3 bg-light py-2", placeholder: "Email" %>
+      </div>
+      <div class="row mb-4 mx-5"> 
+        <%= account_form.label :phone, class:"form-label" %>
+        <%= account_form.text_field :phone, class:"form-control border-3 bg-light py-2", placeholder: "Phone Number" %>
+      </div>
+      <div class="row mb-4 mx-5">
+        <%= account_form.label :avatar, for:"formFileLg", class:"form-label" %>
+        <%= account_form.file_field :avatar, class:"form-control border-3" %>
+      </div>
+    <% end %>
+
+    <div class="row mb-4 mx-5"> 
+      <%= form.label :address, class:"form-label" %> 
+      <%= form.text_area :address, class: "form-control border-3 bg-light py-2", placeholder: "Address" %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :company_size, class:"form-label" %>
+      <%= form.text_field :company_size, class:"form-control border-3 bg-light py-2", placeholder: "Company size" %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :website, class:"form-label" %>  
+      <%= form.text_field :website, class:"form-control border-3 bg-light py-2", placeholder: "Website" %>
+    </div>
+    <div class="row mb-4 mx-5">
+      <%= form.label :description, class:"form-label" %>    
+      <%= form.text_area :description, class: "form-control border-3 bg-light py-2", placeholder: "Description" %>
+    </div>
+    
+    <div class="d-grid col-4 mx-auto mb-4">
+      <%= form.submit class: "btn btn-primary btn-lg rounded-3 py-2", data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+    </div>
+  <% end %>
+</div>
