@@ -94,4 +94,28 @@
       </ul>
     </div>
   </li>
+   <%# Jobs %>
+  <li class="nav-item py-2">
+    <a class="nav-link row d-flex" href="#" role="button" data-toggle="collapse" data-target="#collapse_jobs" aria-expanded="true" aria-controls="collapse2">
+      <div class="col-lg-2">
+        <i class="fa-solid fa-building-user fa-lg"></i>
+      </div>
+      <div class="col-lg-10 toggle hide-on-mobile">
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Jobs</span>
+          <i class="fa-solid fa-angle-down collapse-icon rotate"></i>
+        </div>
+      </div>
+    </a>
+    <div id="collapse_jobs" class="collapse">
+      <ul class="navbar-nav">
+        <li class="nav-item ps-3">
+          <%# Add after when have feature %>
+          <%= link_to "Job Category", admin_root_path, class: 'nav-link'%>
+          <%= link_to "Job Tag ", admins_job_tags_path, class: 'nav-link'%>
+        </li>
+      </ul>
+    </div>
+  </li>
 </ul>
+

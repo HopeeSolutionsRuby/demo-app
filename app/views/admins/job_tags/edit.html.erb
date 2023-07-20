@@ -1,0 +1,25 @@
+<h1>Job Tag Update</h1>
+<%= form_with model: @job_tags, url: admins_job_tags_path do |form| %>
+  <div class="mb-3">
+    <%= form.label :job_id, class: "form-label"%><br>
+    <%= form.text_field :job_id, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :country, class: "form-label"%><br>
+    <%= form.text_field :country, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :job_category_id, class: "form-label" %><br>
+    <%= form.text_field :job_category_id, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label"%><br>
+    <%= form.text_field :description, class: "form-control"%>
+  </div>
+  <br>
+  <div class="mb-3">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
