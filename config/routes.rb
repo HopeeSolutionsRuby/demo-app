@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :job_tags
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :accounts

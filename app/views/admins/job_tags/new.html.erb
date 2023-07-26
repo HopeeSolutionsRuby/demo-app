@@ -1,0 +1,25 @@
+<%= render partial: 'shared/flash'%>
+<h1>New job tag</h1>
+<%= form_with model: @job_tag, url: admins_job_tags_path do |form| %>
+  <div class="mb-3">
+    <%= form.label :job_id, class: "form-label" %><br>
+    <%= form.text_field :job_id, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :country, class: "form-label"%><br>
+    <%= form.text_field :country, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :job_category_id, class: "form-label"%><br>
+    <%= form.text_field :job_category_id, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label"%><br>
+    <%= form.text_field :description, class: "form-control"%>
+  </div>
+    <%= link_to  admins_job_tags_path, style: 'text-decoration: none;', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-backward"></i>&nbsp;Job Tag List
+    <% end %>
+  <%= form.submit class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+  </div>
+<% end %>
