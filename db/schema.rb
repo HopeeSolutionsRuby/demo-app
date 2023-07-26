@@ -46,5 +46,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_043807) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "employees", "accounts", "job_tags"
 end

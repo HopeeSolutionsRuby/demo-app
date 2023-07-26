@@ -8,7 +8,7 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.integer :gender, default: 0, null: false
       t.string :address, default: ''
 
-      t.belongs_to :account, index: { unique: true }, foreign_key: true
+      t.belongs_to :account, index: { unique: true }
 
       t.timestamps
     end
