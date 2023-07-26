@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :accounts
     resources :employees
+    resources :job_tags
   end
 
   unauthenticated do
