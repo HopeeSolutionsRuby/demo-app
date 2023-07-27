@@ -1,0 +1,22 @@
+<tr>
+  <th scope="row"><%= job_tag.id %></th>
+  <td><%= job_tag.country %></td>
+  <td><%= job_tag.job_category_id %></td>
+  <td><%= job_tag.job_id %></td>
+  <td><%= job_tag.description %></td>
+  <td>
+    <%= link_to admins_job_tag_path (job_tag), class: 'btn btn-success', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-eye"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to edit_admins_job_tag_path (job_tag), class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-pen"></i>
+    <% end %>
+  </td>
+  <td>
+    <%= button_to admins_job_tag_path (job_tag), method: :delete, class: 'btn btn-danger ms-1', data: { turbo_frame: 'container-frame', turbo_action: 'replace', turbo_confirm: 'Are you sure?' } do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
+  </td>
+</tr>

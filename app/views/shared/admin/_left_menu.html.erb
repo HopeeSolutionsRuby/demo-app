@@ -110,8 +110,8 @@
       <ul class="navbar-nav">
         <li class="nav-item ps-3">
           <%# Add after when have feature %>
-          <%= link_to "Job Category", admin_root_path, class: 'nav-link'%>
-          <%= link_to "Job Tag ", admins_job_tags_path, class: 'nav-link'%>
+          <%= link_to "Job Category", admins_jobcategories_path, class: 'nav-link', data: { turbo_frame: 'container-frame', turbo_action: 'replace' }%>
+          <%= link_to "Job Tag ", admins_job_tags_path, class: 'nav-link', data: { turbo_frame: 'container-frame', turbo_action: 'replace' }%>
         </li>
       </ul>
     </div>

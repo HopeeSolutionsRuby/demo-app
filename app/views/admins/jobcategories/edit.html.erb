@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-between align-items-center">
+  <h4 class="fw-bolder">Job Category Update Page</h4>
+  <div>
+    <%= link_to admins_jobcategory_path(@jobcategory), class: 'btn btn-success', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-eye"></i>
+    <% end %>
+    <%= link_to new_admins_jobcategory_path, class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-plus"></i>
+    <% end %>
+    <%= link_to admins_jobcategory_path, class: 'btn btn-secondary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } do %>
+      <i class="fa-solid fa-list-ul"></i>
+    <% end %>
+  </div>
+<%= form_with model: @jobcategory, url: admins_jobcategory_path do |form| %>
+<div class="mb-3 d-flex justify-content-between align-items-center">
+  <div class="mb-3">
+    <%= form.label :category_name, class: "form-label"%><br>
+    <%= form.text_field :category_name, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :country, class: "form-label"%><br>
+    <%= form.text_field :country, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :job_category_status, class: "form-label" %><br>
+    <%= form.text_field :job_category_status, class: "form-control"%>
+  </div>
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label"%><br>
+    <%= form.text_field :description, class: "form-control"%>
+  </div>
+  <br>
+  <div class="mb-3">
+    <%= form.submit 'UPDATE', class: "btn btn-primary",data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+  </div>
+<% end %>
+
+

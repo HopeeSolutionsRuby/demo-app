@@ -6,7 +6,6 @@ module Admins
     before_action :set_employee, only: %i[edit update destroy show]
 
     def index
-
       @q = Employee.includes(:account).ransack(params[:q])
       @pagy, @records = pagy(@q.result(distinct: true))
     end
@@ -54,7 +53,6 @@ module Admins
     end
 
     def destroy
-
       if @employee.destroy
         flash[:success] = "Employee with id: #{@employee.id} has been destroyed!"
         redirect_to admins_employees_path
@@ -62,7 +60,6 @@ module Admins
         flash[:error] = @employee.errors.full_messages
         redirect_to edit_admins_employee_path
       end
-
     end
 
     private
@@ -76,10 +73,8 @@ module Admins
                                        account_attributes: %i[email phone avatar])
     end
 
-
     def set_employee
       @employee = Employee.find_by(id: params[:id])
-
     end
   end
 end

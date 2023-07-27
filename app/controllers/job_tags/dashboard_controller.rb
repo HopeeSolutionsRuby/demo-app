@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-module Jobs
+module Jobtags
   class DashboardController < ApplicationController
-    layout 'job/layout'
+    layout 'job_tag/layout'
 
     def index
-      render 'jobs/index'
+      render 'job-tags/index'
     end
   end
 end

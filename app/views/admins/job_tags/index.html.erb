@@ -20,10 +20,10 @@
         <td><%= job_tag.description%></td>
         <td>
           <div class="d-grid gap-2 col-4">
-              <%= link_to 'Edit', edit_admins_job_tag_path(job_tag), class: 'btn btn-primary' %>
+              <%= link_to 'Edit', edit_admins_job_tag_path(job_tag), class: 'btn btn-primary', remote: true%>
           </div>
             <div class="d-grid gap-2 col-4" >
-              <%= link_to 'Show', admins_job_tag_path(job_tag), class: 'btn btn-info' %>
+              <%= link_to 'Show', admins_job_tag_path(job_tag), data: { turbo_frame: 'container-frame', turbo_action: 'replace' }, class: 'btn btn-info'%>
           </div>
             <div class="d-grid gap-2 col-4" >
               <%= button_to 'Delete', admins_job_tag_path(job_tag), method: :delete, class: 'btn btn-danger', remote: true %>

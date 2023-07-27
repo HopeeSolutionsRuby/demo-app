@@ -7,14 +7,14 @@ module Admins
 
     def index
       @job_tags = JobTag.all
-      render 'admins/job_tags/index'
+      # render 'admins/job_tags/index'
     end
 
     def show
-      return if @job_tag
-
-      flash[:error] = "Not found your path with id #{params[:id]}"
-      redirect_to admins_job_tags_path
+      # Already set in before_action, no need to find again.
+      respond_to do |format|
+        format.html # renders show.html.erb by default
+      end
     end
 
     def new
@@ -25,21 +25,20 @@ module Admins
       return if @job_tag
 
       flash[:error] = "Not found your path with id #{params[:id]}"
-      redirect_to admins_job_tags_path
+      redirect_to admins_job_tag_path
     end
 
     # POST
     def create
-      job_tag = nil
-      ActiveRecord::Base.transaction do
-        job_tag = JobTag.new(job_tag_params)
-        job_tag.save!
+      job_tag = JobTag.new(job_tag_params)
+
+      if job_tag.save
+        redirect_to admins_job_tags_path, notice: 'Job tag was successfully created.'
+      else
+        Rails.logger.debug job_tag.errors.full_messages
+        flash[:notice] = 'Invalid job tag information'
+        render :new, status: :unprocessable_entity
       end
-      redirect_to admins_job_tags_path, notice: 'Job tag was successfully created.'
-    rescue ActiveRecord::RecordInvalid => e
-      Rails.logger.debug e.message
-      flash[:notice] = 'Invalid job tag information'
-      render :new, status: :unprocessable_entity
     end
 
     def update
@@ -55,7 +54,7 @@ module Admins
     # DELETE
     def destroy
       @job_tag.destroy
-      redirect_to admins_job_tags_path, notice: 'Job Tag was successfully deleted'
+      redirect_to admins_job_tags_path, notice: 'Job Tag was successfully deleted.'
     end
 
     private
