@@ -12,7 +12,7 @@
     <% if @jobcategories.size.zero? %>
       <tr><td colspan="10">No data</td></tr>
     <% else %>
-      <%= render partial: 'tag_line', collection: @jobcategories, as: :jobcategories %>
+      <%= render partial: 'table_line', collection: @jobcategories, as: :jobcategories %>
     <% end %>
   </tbody>
 </table>

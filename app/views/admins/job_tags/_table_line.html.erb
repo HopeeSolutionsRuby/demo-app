@@ -1,0 +1,18 @@
+<tr>
+        <td><%= job_tag.job_id %></td>
+        <td><%= job_tag.country %></td>
+        <td><%= job_tag.job_category_id%></td>
+        <td><%= job_tag.description%></td>
+        <td>
+          <div class="d-grid gap-4 col-4">
+              <%= link_to 'Edit', edit_admins_job_tag_path(job_tag), class: 'btn btn-primary', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+          </div>
+          <div class="d-grid gap-4 col-4" >
+            <%= link_to 'Show', admins_job_tag_path(job_tag), class: 'btn btn-success', data: { turbo_frame: 'container-frame', turbo_action: 'replace' } %>
+          </div>
+          <div class="d-grid gap-4 col-6" >
+            <%= button_to 'Delete', admins_job_tag_path(job_tag), method: :delete, class: 'btn btn-danger', remote: true %>
+          </div>
+
+        </td>
+      </tr>

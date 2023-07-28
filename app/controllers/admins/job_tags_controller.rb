@@ -6,15 +6,16 @@ module Admins
     before_action :set_job_tag, only: %i[show edit update destroy]
 
     def index
-      @job_tags = JobTag.all
+      @q = JobTag.ransack(params[:q])
+      @pagy, @records = pagy(@q.result(distinct: true))
       # render 'admins/job_tags/index'
     end
 
     def show
-      # Already set in before_action, no need to find again.
-      respond_to do |format|
-        format.html # renders show.html.erb by default
-      end
+      return if @job_tag
+
+      flash[:error] = "Not found your path with id #{params[:id]}"
+      redirect_to admins_job_tags_path
     end
 
     def new
@@ -60,7 +61,7 @@ module Admins
     private
 
     def set_job_tag
-      @job_tag = JobTag.find(params[:id])
+      @job_tag = JobTag.find_by(id: params[:id])
     end
 
     def job_tag_params_update
