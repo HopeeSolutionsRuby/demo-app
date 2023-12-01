@@ -13,20 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   timeout: 5000
-  username: root
+  username: <%=ENV['MYSQL_USERNAME']%>
   password: <%=ENV['MYSQL_PASSWORD']%>
-  host: 127.0.0.1
-  port: 3306
+  host: <%=ENV['HOST']%>
+  port: <%=ENV['MYSQL_PORT']%>
 development:
   <<: *default
-  database: clinic_development
+  database: <%=ENV['DB_DEV']%>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: clinic_test
+  database: <%=ENV['DB_TEST']%>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: clinic_production
-  username: demo_app
+  database: <%=ENV['DB_PRODUCTION']%>
+  username: <%= ENV["DEMO_APP_DATABASE_USERNAME"] %>
   password: <%= ENV["DEMO_APP_DATABASE_PASSWORD"] %>
