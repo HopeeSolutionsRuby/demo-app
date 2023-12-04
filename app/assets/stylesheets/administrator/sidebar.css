@@ -1,0 +1,10 @@
+.nav-item:hover .nav-link,
+.nav-item:active .nav-link {
+    background-color: #eff2f6 !important;
+    color: #007bff !important;
+    border-radius: 10px;
+}
+
+.nav-pills .nav-link {
+    color: black;
+}
