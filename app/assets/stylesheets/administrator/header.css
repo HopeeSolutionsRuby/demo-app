@@ -1,0 +1,22 @@
+.logo-text {
+    color: #6e7891;
+}
+
+.search-box .search-box-icon {
+    position: absolute;
+    color: #8a94ad;
+    width: 12.8px;
+    top: 50%;
+    left: 10px;
+    -webkit-transform: translateY(-48%);
+    -ms-transform: translateY(-48%);
+    transform: translateY(-48%);
+}
+
+.navbar-nav-ul > li {
+    margin-right: 15px;
+}
+
+.navbar-nav-ul > li:last-child {
+    margin-right: 0px;
+}
