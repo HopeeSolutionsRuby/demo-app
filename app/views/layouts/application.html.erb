@@ -8,12 +8,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'customers' %>
+    <%= stylesheet_link_tag 'header', 'footer' %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <%= render  "shared/header" %>
     <section>
       <%= yield %>
     </section>
+    <%= render  "shared/footer" %>
   </body>
 </html>
