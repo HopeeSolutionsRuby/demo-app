@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DemoApp</title>
+    <title>Clinic Hopee</title>
+    <%= favicon_link_tag asset_path('clinic') %>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'customers' %>
+    <%= stylesheet_link_tag 'header', 'footer' %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render  "shared/header" %>
+    <section>
+      <%= yield %>
+    </section>
+    <%= render  "shared/footer" %>
   </body>
 </html>
