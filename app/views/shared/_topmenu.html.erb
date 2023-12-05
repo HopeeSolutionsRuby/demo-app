@@ -1,72 +1,77 @@
-<div class="container-fluid">
+<div class="container-fluid p-0">
       <!-- navbar -->
-    <div class="container-fluid white top-menu d-flex align-items-center ">
-      <div class=" container white d-flex justify-content-between mt-0">
-        <div class="d-flex justify-content-between align-items-center category position-relative">
+    <div class="container-small p-0 white top-menu d-flex align-items-center ">
+      <div class="px-0 container white d-flex justify-content-between mt-0">
+        <div class=" d-flex justify-content-between align-items-center category position-relative" data-controller="customer" id="popupTrigger" >
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
             </svg>
           </div>
-          <p class="navbar-item">Category</p>
-          <div class="popup-table border ">
-            <div class="d-flex justify-content-around">
-                <div>
-                  <div class="d-flex align-items-center mt-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2088fc" class="bi bi-ticket-perforated me-2" viewBox="0 0 16 16">
-                      <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9H4m7 0v.9h1v-.9h-1m-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z"/>
-                      <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"/>
-                    </svg>
-                    <h6 class="mb-0">Collectibles</h6>
-                  </div>
-                  <p class="pt-3">
-                    Collectibles & Art
-                  </p>
-                  <p class="pt-3">Collectibles</p>
-                  <p class="pt-3">Collectibles</p>
+          <p class="menu-category black">Category</p>
+          <div class="popup-table hidden-popup py-5 px-1">
+            <div class="d-flex justify-content-around table-response">
+              <!--item -->
+              <div class="d-flex flex-column justify-content-around">
+                <div class="d-flex align-items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2088fc" class="bi bi-ticket-perforated me-2" viewBox="0 0 16 16">
+                    <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9H4m7 0v.9h1v-.9h-1m-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z"/>
+                    <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"/>
+                  </svg>
+                  <strong class="mb-0">Collectibles</strong>
                 </div>
-                <div>
-                  <div class="d-flex align-items-center mt-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2088fc" class="bi bi-house me-2" viewBox="0 0 16 16">
-                      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-                    </svg>
-                    <h6 class="mb-0">Collectibles</h6>
-                  </div>
-                  <p class="pt-3">
-                    Home & Gardan
-                  </p>
-                  <p class="pt-3">Collectibles</p>
-                  <p class="pt-3">Collectibles</p>
+                <p class="popup-item py-3 ">
+                  Collectibles & Art
+                </p>
+                <p class="popup-item py-3">Collectibles</p>
+                <p class="popup-item py-3">Collectibles</p>
+              </div>
+              <div class="d-flex flex-column justify-content-around">
+                <div class="d-flex align-items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2088fc" class="bi bi-ticket-perforated me-2" viewBox="0 0 16 16">
+                    <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9H4m7 0v.9h1v-.9h-1m-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z"/>
+                    <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"/>
+                  </svg>
+                  <strong class="mb-0">Collectibles</strong>
                 </div>
-                <div>
-                  <div class="d-flex align-items-center mt-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2088fc" class="bi bi-globe me-2" viewBox="0 0 16 16">
-                      <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472M3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
-                    </svg>
-                    <h6 class="mb-0">International</h6>
-                  </div>
-                  <p class="pt-3">
-                    Collectibles & Art
-                  </p>
-                  <p class="pt-3">Collectibles</p>
-                  <p class="pt-3">Collectibles</p>
+                <p class="popup-item py-3 ">
+                  Collectibles & Art
+                </p>
+                <p class="popup-item py-3">Collectibles</p>
+                <p class="popup-item py-3">Collectibles</p>
+              </div>
+              <div class="d-flex flex-column justify-content-around">
+                <div class="d-flex align-items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2088fc" class="bi bi-ticket-perforated me-2" viewBox="0 0 16 16">
+                    <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9H4m7 0v.9h1v-.9h-1m-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z"/>
+                    <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"/>
+                  </svg>
+                  <strong class="mb-0">Collectibles</strong>
                 </div>
+                <p class="popup-item py-3 ">
+                  Collectibles & Art
+                </p>
+                <p class="popup-item py-3">Collectibles</p>
+                <p class="popup-item py-3">Collectibles</p>
+              </div>
             </div>
+            <a href = "/customers" class="d-flex justify-content-center mt-5 text-decoration-none">
+              <span class="px-3 primary">See all Categories</span>
+              <i class="fa-solid fa-chevron-right primary"></i>
+            </a>
           </div>
         </div>
-        <div class="w-75 d-flex justify-content-end">
-          <ul class="d-flex justify-content-around w-75 align-items-center mb-0">
-            <li class="active-navbar navbar-item">Home</li>
-            <li class="navbar-item">My Favorites Stores</li>
-            <li class="navbar-item">Products</li>
-            <li class="navbar-item">Wishlist</li>
-            <li class="navbar-item">Shipping Info</li>
-            <li class="navbar-item">Be a vendor</li>
-            <li class="navbar-item">Track order</li>
-            <li class="navbar-item">Checkout</li>
-          </ul>
-        </div>
-      
+        <ul class=" d-flex justify-content-around align-items-center mb-0 list-unstyled ">
+          <li class="active-navbar navbar-item px-3">Home</li>
+          <li class="navbar-item px-3">My Favorites Stores</li>
+          <li class="navbar-item px-3">Products</li>
+          <li class="navbar-item px-3">Wishlist</li>
+          <li class="navbar-item px-3">Shipping Info</li>
+          <li class="navbar-item px-3">Be a vendor</li>
+          <li class="navbar-item px-3">Track order</li>
+          <li class="navbar-item pl-3">Checkout</li>
+          <li class="navbar-item pl-3 hidden-item">More<i class="fa-solid fa-chevron-down px-1"></i></li>
+        </ul>
       </div>
     </div>
     <!-- menu -->
@@ -265,9 +270,8 @@
                 <p class="opacity-75">2 colors</p>
               </div>
             </div>
-            
-            
           </div>  
         </div>
       </div>-->
     </div>  
+    
