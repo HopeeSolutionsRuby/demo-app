@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+<<<<<<< HEAD
     <title>Clinic Hopee</title>
     <%= favicon_link_tag asset_path('clinic') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -15,10 +16,18 @@
       "administrator/sidebar",
       "administrator/table_admin"
     <% end %>
+=======
+    <title>DemoApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+>>>>>>> 4e61298 ([Issue 33]: Fix Reviews)
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+<<<<<<< HEAD
     <div id="authentication-administrator">
       <%= render "administrator/shared/notice_messages" %>
     </div>
@@ -38,3 +47,9 @@
     </div>
   </body>
 </html>
+=======
+    <%= yield %>
+  </body>
+</html>
+
+>>>>>>> 4e61298 ([Issue 33]: Fix Reviews)

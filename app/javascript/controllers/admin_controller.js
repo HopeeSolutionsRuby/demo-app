@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   connect() {
     document.querySelector('.navbar-toggler').addEventListener('click', function () {
+<<<<<<< HEAD
       document.querySelector('.sidebar').classList.toggle('d-none');
       document.querySelector('.sidebar').style.width = (document.querySelector('.sidebar').style.width === '250px') ? '100%' : '250px';
       document.querySelector('.nav-footer').classList.toggle('d-none');
@@ -25,3 +26,15 @@ export default class extends Controller {
     });
   }
 }
+=======
+        document.querySelector('.sidebar').classList.toggle('d-none');
+        document.querySelector('.viewbtn').classList.toggle('d-none');
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var myCollapse = new bootstrap.Collapse(document.getElementById('collapseExample'), {
+            toggle: false // Set toggle to false to prevent automatic toggling
+        });
+    });
+  }
+}
+>>>>>>> 4e61298 ([Issue 33]: Fix Reviews)

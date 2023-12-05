@@ -1,4 +1,5 @@
 .header-administrator-page {
+<<<<<<< HEAD
   .logo-text {
     color: #6e7891;
   }
@@ -116,3 +117,74 @@
     }
   }
 }
+=======
+    .logo-text {
+      color: #6e7891;
+    }
+  
+    .navbar-nav-ul > li {
+      margin-right: 15px;
+  
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  
+    // Thêm mới
+    .navbar-top {
+      background: #fff;
+      padding: 3px 10px;
+      border-bottom: 1px solid #cbd0dd;
+    }
+  
+    .border-300 {
+      border: 1px solid #c9d0dd;
+    }
+  
+    .avatar {
+      width: 40px;
+      height: auto;
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+  
+      &-xl {
+        width: 60px;
+      }
+    }
+  
+    .navbar .dropdown-menu.navbar-dropdown-caret:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 33px;
+      height: 33px;
+      top: -10px;
+      right: 17px;
+      transform: rotate(45deg);
+      background: inherit;
+      border-top-left-radius: 0.25rem;
+      border-width: 1px 0 0 1px;
+      border-color: #c9d0dd;
+      border-style: solid;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+  
+    @media (min-width: 992px) {
+      .navbar-logo {
+        width: 254px;
+        height: 32px;
+      }
+    }
+  
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+    }
+  
+    .dropdown-profile {
+      min-width: 300px;
+    }
+  }
+  
+>>>>>>> 4e61298 ([Issue 33]: Fix Reviews)
