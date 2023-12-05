@@ -2,6 +2,4 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
-//= link administrator/sidebar.css
 //= require rails-ujs
-//= link administrator/header.css

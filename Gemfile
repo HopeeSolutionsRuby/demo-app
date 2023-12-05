@@ -77,6 +77,8 @@ group :development, :test do
 
   gem 'sassc-rails'
 
+  gem 'font-awesome-sass', '~> 6.5.1'
+
   gem 'debug', platforms: %i[mri windows]
 end
 
