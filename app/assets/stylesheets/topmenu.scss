@@ -146,16 +146,29 @@ body {
 
 // navbar-item
 .popup-table:before {
-  top: -13px;
+  // top: -13px;
+  // content: "";
+  // position: absolute;
+  // width: 34px;
+  // height: 10px;
+  // border-left: solid transparent;
+  // border-right: solid transparent;
+  // border-bottom: 19px solid white;
+  // left: 21px;
+  // transform: translateX(-50%);
   content: "";
   position: absolute;
-  width: 34px;
-  height: 10px;
-  border-left: solid transparent;
-  border-right: solid transparent;
-  border-bottom: 19px solid white;
-  left: 21px;
-  transform: translateX(-50%);
+  z-index: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  top: -12px;
+  left: 1.5rem;
+  transform: rotate(45deg);
+  background-color: white;
+  border-top-left-radius: 0.25rem;
+  border-width: 2px 0 0 2px;
+  border-style: solid;
+  border-color: #cbd0dd;
 }
 
 body {
