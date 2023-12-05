@@ -66,21 +66,9 @@ Rails.application.configure do
   
   config.assets.debug = true
 
-  config.assets.debug = true
-
   config.assets.compile = true
 
-  config.assets.paths << Rails.root.join("app", "assets", "fonts")
-
-  config.assets.precompile += %w( .svg .eot .woff .ttf )
-
-  config.assets.debug = true
-
-  config.assets.debug = true
-
-  config.assets.compile = true
-
-  config.assets.paths << Rails.root.join("app", "assets", "fonts")
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
   config.assets.precompile += %w( .svg .eot .woff .ttf )
   # Raises error for missing translations.
