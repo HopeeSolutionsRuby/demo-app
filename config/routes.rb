@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :administrator
+  namespace :administrator do
+    resources :dashboard, only: %i[index]
+  end
 end
