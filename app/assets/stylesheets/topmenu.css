@@ -106,6 +106,9 @@ body {
 .menu-item-contain:hover {
   cursor: pointer;
 }
+.navbar-item {
+  font-size: 16px;
+}
 
 .navbar-item:hover {
   font-weight: bold;
@@ -123,7 +126,7 @@ body {
 }
 
 .category {
-  width: 85px;
+  width: 100px;
 }
 .category:hover {
   cursor: pointer;
@@ -138,19 +141,45 @@ body {
   max-height: 300px;
   min-height: 100px;
   border-radius: 10px;
+  /* display: block; */
 }
 .category:hover .popup-table {
   display: block;
 }
 .popup-table:before {
-  top: -10px;
+  top: -18px;
   content: "";
   position: absolute;
-  width: 30px;
-  height: 15px;
+  width: 34px;
+  height: 10px;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-bottom: 19px solid white;
-  left: 16px;
+  left: 21px;
   transform: translateX(-50%);
+}
+body {
+  font-family: "Nunito Sans";
+  font-size: 22px;
+  text-decoration: none;
+}
+
+/* h5 {
+  font-size: 1em;
+}
+h6 {
+  font-size: 0.8rem;
+}
+p {
+  font-size: 0.7rem;
+}
+a {
+  text-decoration: none;
+}
+i {
+  cursor: pointer;
+} */
+
+.top-menu {
+  height: 55px;
 }
