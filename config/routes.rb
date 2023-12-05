@@ -17,5 +17,8 @@ Rails.application.routes.draw do
   namespace :administrator do
     resources :dashboard, only: %i[index]
   end
+<<<<<<< HEAD
 >>>>>>> 5c1b4a1 ([Issue 33]: Fix Reviews)
+=======
+>>>>>>> 968105c ([Issue 33]: Fix Reviews)
 end
