@@ -96,4 +96,4 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
-gem "font-awesome-sass", "~> 6.5.1"
+gem 'font-awesome-sass', '~> 6.5.1'
