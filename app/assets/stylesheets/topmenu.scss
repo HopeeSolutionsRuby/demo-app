@@ -94,6 +94,7 @@
     }
   }
 }
+
 .hidden-popup {
   display: none;
 }
@@ -128,53 +129,69 @@
   .navbar-item {
     font-size: 14px;
   }
+
   .navbar-item {
     display: none;
   }
+
   .navbar-list .navbar-item:first-child {
     display: block;
   }
+
   .more {
     display: block;
   }
-  .popup-table {
+
+  .contain {
     max-height: 300px;
     overflow-y: auto;
+    width: 100%;
   }
-  .popup-table::-webkit-scrollbar {
+
+  .contain::-webkit-scrollbar {
     width: 5px;
     background-color: #eff2f6;
   }
-  .popup-table::-webkit-scrollbar-track {
+
+  .contain::-webkit-scrollbar-track {
     background-color: white;
   }
-  .popup-table::-webkit-scrollbar-thumb {
+
+  .contain::-webkit-scrollbar-thumb {
     background-color: #9fa6bc8c;
   }
-  .popup-table::-webkit-scrollbar-thumb:hover {
+
+  .contain::-webkit-scrollbar-thumb:hover {
     background-color: #9fa6bc8c;
   }
+
   .popup-table {
     max-height: 650px;
     min-width: 270px;
     left: 20px;
   }
+
   .table-response {
     flex-direction: column;
     align-items: center;
   }
+
   .hidden-item {
     display: block !important;
   }
+
   .hidden-table {
     display: block;
   }
+
   .popup-table:before {
     left: 1.5rem;
   }
+
   .top-menu {
     padding: 0 10px;
   }
+
   .table {
     margin-right: 5px;
   }
@@ -183,16 +200,20 @@
   .navbar-item {
     padding: 10px 0; /* Hoặc điều chỉnh tùy theo nhu cầu */
   }
+
   .navbar-list .navbar-item {
     display: none;
   }
-  .navbar-list .navbar-item:nth-child(-n + 3),
+
+  .navbnavbar-itemar-list .navbar-item:nth-child(-n + 3),
   .navbar-list .navbar-item:last-child {
     display: block;
   }
+
   .navbar-list .navbar-item:last-child {
     display: block;
   }
+
   .hidden-item {
     display: block !important;
   }
@@ -201,6 +222,7 @@
     max-height: 650px;
     min-width: 700px;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -229,13 +251,18 @@
 }
 
 =======
+=======
+
+>>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
   .more {
     display: block;
   }
+
   .table {
     top: 30px;
   }
 }
+
 @media (min-width: 992px) {
   .navbar-item {
     display: inline-block;
@@ -244,24 +271,36 @@
     display: none;
   }
 }
+<<<<<<< HEAD
 >>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
+=======
+
+>>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .horizontal-line {
   border-bottom: 1px solid #e3e6ed; /* Màu và độ dày của đường gạch */
   width: 88%; /* Chiều rộng của đường gạch */
   margin: 0 auto;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
+=======
+
+>>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .popup-item-title {
   margin-left: -5px;
   margin: 20px;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
+=======
+
+>>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .popup-item-icon {
   color: #3874ff;
   font-weight: 900;
@@ -271,9 +310,13 @@
   display: none;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
+=======
+
+>>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .table {
   width: 160px;
   right: -3px;
@@ -283,14 +326,21 @@
   margin: 0;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
+=======
+
+>>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .dropdown-item:hover {
   background-color: #e3e6ed;
   cursor: pointer;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 
 .hv-underline {
   &:hover {
@@ -304,5 +354,8 @@
 .chevron-icon {
   font-size: 12px;
 }
+<<<<<<< HEAD
 =======
 >>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
+=======
+>>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
