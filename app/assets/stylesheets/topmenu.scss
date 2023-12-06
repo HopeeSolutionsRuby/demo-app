@@ -174,7 +174,6 @@
     flex-direction: column;
     align-items: center;
   }
-
   .hidden-item {
     display: block !important;
   }
@@ -220,6 +219,7 @@
     max-height: 650px;
     min-width: 700px;
   }
+<<<<<<< HEAD
 
   .more {
     display: block;
@@ -227,6 +227,12 @@
 
   .table {
     top: 30px;
+=======
+}
+@media (min-width: 992px) {
+  .navbar-item {
+    display: inline-block; 
+>>>>>>> 595505f ([issue_34]_remove debug issue)
   }
 }
 
