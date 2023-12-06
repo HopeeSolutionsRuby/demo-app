@@ -35,12 +35,14 @@
           </ul>
         </div>
 
-        <a class="navbar-brand d-flex align-items-center" href="/administrator/dashboard">
-          <img
-            src="https://prium.github.io/phoenix/v1.13.0/assets/img/icons/logo.png"
-            alt="phoenix"
-            height="36"
-          />
+        <a
+          class="navbar-brand d-flex align-items-center"
+          href="/administrator/dashboard"
+        >
+          <%=
+          image_tag('https://prium.github.io/phoenix/v1.13.0/assets/img/icons/logo.png',
+          alt: 'Phoenix', class: 'rounded-circle img-logo') %>
+
           <p class="logo-text ms-2 d-none d-sm-block fw-bold mb-0">phoenix</p>
         </a>
       </div>
@@ -48,12 +50,11 @@
       <!-- Avatar -->
       <div class="dropdown">
         <a
-          class="nav-link show"
+          class="nav-link"
           id="navbarDropdownUser"
           href="#"
           role="button"
           data-bs-toggle="dropdown"
-          aria-haspopup="true"
           aria-expanded="false"
         >
           <div class="avatar">
@@ -70,16 +71,18 @@
           <li>
             <div class="card position-relative border-0">
               <div class="card-body p-0">
-                <div class="text-center pt-4 pb-3">
-                  <div class="avatar-xl">
+                <div class="avatar-wrap pt-4 pb-3">
+                  <div>
                     <%=
-                    image_tag('https://prium.github.io/phoenix/v1.13.0/assets/img/team/40x40/57.webp',
-                    alt: 'Avatar', class: 'rounded-circle') %>
+                    image_tag('https://prium.github.io/phoenix/v1.13.0/assets/img/team/72x72/57.webp',
+                    alt: 'Avatar', class: 'rounded-circle img-avatar') %>
                   </div>
-                  <h6 class="mt-2 text-dark">Jerry Seinfield</h6>
-                  <h6 class="mt-2 text-dark">Jerry Seinfield</h6>
-
-                  <h6 class="mt-2 text-dark">Jerry Seinfield</h6>
+                  <h6 class="mt-2 text-dark avatar-name">Jerry Seinfield</h6>
+                  <div class="avatar-sign-out">
+                    <%= button_tag class: 'btn-sign-out' do %>
+                      <i class="fas fa-sign-out-alt icon"></i> Sign out
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
