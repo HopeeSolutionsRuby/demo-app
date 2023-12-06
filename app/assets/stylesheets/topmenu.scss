@@ -6,12 +6,7 @@ p {
   color: #2088fc;
   font-weight: 700;
 }
-a {
-  :hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-}
+
 *,
 *:before,
 *:after {
@@ -38,37 +33,7 @@ body {
   padding-left: 0;
   background-color: #f5f7fa !important;
 }
-.circle {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: #fff;
-  /* Background color for the circle */
-  right: 8px;
-  top: 8px;
-  border: 2px solid #2088fc;
-  overflow: hidden;
-}
-.star-rate {
-  line-height: 16px;
-  margin-left: 10px;
-}
-.card-text {
-  font-weight: bold;
-}
-.card:hover .card-title {
-  color: #2088fc;
-  text-decoration: underline;
-}
-.card:hover {
-  cursor: pointer;
-}
-.circle:hover {
-  background-color: #2088fc;
-}
-.circle:hover svg {
-  fill: #fff;
-}
+
 .menu-item {
   border-radius: 5px;
   background-color: #e5edff;
@@ -145,7 +110,7 @@ body {
 }
 
 // navbar-item
-.popup-table:before {
+.popup-table::after {
   content: "";
   position: absolute;
   z-index: 1;
@@ -202,7 +167,7 @@ body {
     background-color: #9fa6bc8c;
   }
   .popup-table::-webkit-scrollbar-thumb:hover {
-    background-color: red;
+    background-color: #9fa6bc8c;
   }
   .popup-table {
     max-height: 650px;
@@ -288,7 +253,7 @@ body {
   background-color: white;
   border-radius: 10px;
   border: 2px solid #cbd0dd;
-  margin: ;
+  margin: 0;
 }
 .dropdown-item:hover {
   background-color: #e3e6ed;
