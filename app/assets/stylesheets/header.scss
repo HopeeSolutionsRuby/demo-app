@@ -177,6 +177,19 @@
     }
   }
 }
+.dropdown-profile {
+	.nav {
+		.nav-link {
+			color: #222834;
+			font-weight: 500;
+			&:hover {
+				background: #eff2f6;
+				text-decoration: none;
+				font-weight: 500;	
+			}
+		}
+	}
+}
 
 .nav-vertical {
   .nav {
@@ -233,4 +246,31 @@
   .navbar-nav .dropdown-menu {
     position: absolute;
   }
+}
+.nav-link {
+	i {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.avatar-xl {
+	height: 3rem;
+	width: 3rem;
+}
+
+.avatar {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+.ecommerce-topbar .navbar-nav .dropdown-menu {
+	position: absolute;
+}
+
+@media (max-width: 1000px) {
+	.navbar-nav .dropdown-menu {
+		position: absolute;
+	}
+
 }
