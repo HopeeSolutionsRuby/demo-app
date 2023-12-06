@@ -6,7 +6,6 @@
   color: #2088fc;
   font-weight: 700;
 }
-
 .menu-item {
   border-radius: 5px;
   background-color: #e5edff;
@@ -129,42 +128,32 @@
   .navbar-item {
     font-size: 14px;
   }
-
   .navbar-item {
     display: none;
   }
-
   .navbar-list .navbar-item:first-child {
     display: block;
   }
-
   .more {
     display: block;
   }
-
-  .contain {
+  .popup-table {
     max-height: 300px;
     overflow-y: auto;
-    width: 100%;
   }
-
-  .contain::-webkit-scrollbar {
+  .popup-table::-webkit-scrollbar {
     width: 5px;
     background-color: #eff2f6;
   }
-
-  .contain::-webkit-scrollbar-track {
+  .popup-table::-webkit-scrollbar-track {
     background-color: white;
   }
-
-  .contain::-webkit-scrollbar-thumb {
+  .popup-table::-webkit-scrollbar-thumb {
     background-color: #9fa6bc8c;
   }
-
-  .contain::-webkit-scrollbar-thumb:hover {
-    background-color: #9fa6bc8c;
+  .popup-table::-webkit-scrollbar-thumb:hover {
+    background-color: red;
   }
-
   .popup-table {
     max-height: 650px;
     min-width: 270px;
@@ -177,19 +166,15 @@
   .hidden-item {
     display: block !important;
   }
-
   .hidden-table {
     display: block;
   }
-
   .popup-table:before {
     left: 1.5rem;
   }
-
   .top-menu {
     padding: 0 10px;
   }
-
   .table {
     margin-right: 5px;
   }
@@ -198,19 +183,16 @@
   .navbar-item {
     padding: 10px 0; /* Hoặc điều chỉnh tùy theo nhu cầu */
   }
-
   .navbar-list .navbar-item {
     display: none;
   }
-
-  .navbar-list .navbar-item:nth-child(-n + 3) {
-    display: block;
-  }
-
+  .navbar-list .navbar-item:nth-child(-n + 3),
   .navbar-list .navbar-item:last-child {
     display: block;
   }
-
+  .navbar-list .navbar-item:last-child {
+    display: block;
+  }
   .hidden-item {
     display: block !important;
   }
@@ -219,6 +201,7 @@
     max-height: 650px;
     min-width: 700px;
   }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
   .more {
@@ -245,17 +228,40 @@
   }
 }
 
+=======
+  .more {
+    display: block;
+  }
+  .table {
+    top: 30px;
+  }
+}
+@media (min-width: 992px) {
+  .navbar-item {
+    display: inline-block;
+  }
+  .more {
+    display: none;
+  }
+}
+>>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
 .horizontal-line {
   border-bottom: 1px solid #e3e6ed; /* Màu và độ dày của đường gạch */
   width: 88%; /* Chiều rộng của đường gạch */
   margin: 0 auto;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
 .popup-item-title {
   margin-left: -5px;
   margin: 20px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
 .popup-item-icon {
   color: #3874ff;
   font-weight: 900;
@@ -264,7 +270,10 @@
 .hidden-table {
   display: none;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
 .table {
   width: 160px;
   right: -3px;
@@ -273,11 +282,15 @@
   border: 2px solid #cbd0dd;
   margin: 0;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
 .dropdown-item:hover {
   background-color: #e3e6ed;
   cursor: pointer;
 }
+<<<<<<< HEAD
 
 .hv-underline {
   &:hover {
@@ -291,3 +304,5 @@
 .chevron-icon {
   font-size: 12px;
 }
+=======
+>>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
