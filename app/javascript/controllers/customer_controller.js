@@ -17,10 +17,5 @@ export default class extends Controller {
       }
     });
     
-    
-    
-    // $("#popupMore").on("click", () => {
-    //   $(".popup-more").toggleClass("hidden-popup");
-    // });
   }
 }

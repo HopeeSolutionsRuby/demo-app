@@ -57,10 +57,7 @@ gem 'rubocop-rails'
 # Use jquery as the JavaScript librar
 
 # Use jquery-ui for pretty UI
-gem 'jquery-ui-rails'
 
-# Use Sass to process CSS
-gem "sassc-rails"
 
 gem 'rubocop-rspec', require: false
 
