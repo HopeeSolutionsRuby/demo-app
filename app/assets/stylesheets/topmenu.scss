@@ -103,7 +103,6 @@ body {
   color: black;
 }
 .navbar-item:hover {
-  // font-weight: 700;
   color: black;
   cursor: pointer;
 }
@@ -190,9 +189,6 @@ body {
     flex-direction: column;
     align-items: center;
   }
-  // .menu-category {
-  //   display: none;
-  // }
   .hidden-item {
     display: block !important;
   }
@@ -217,6 +213,6 @@ body {
 }
 @media (min-width: 992px) {
   .navbar-item {
-    display: inline-block; /* Hoặc display: inline; tùy theo bố cục mong muốn */
+    display: inline-block; 
   }
 }
