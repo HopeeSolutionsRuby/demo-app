@@ -66,9 +66,7 @@ Rails.application.configure do
 
   config.assets.debug = true
 
-  config.assets.debug = true
-
-  config.assets.compile = true
+  config.assets.compile = false
 
   config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
