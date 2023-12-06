@@ -54,9 +54,6 @@ gem 'pagy', '~> 6.2'
 gem 'jquery-rails'
 
 gem 'rubocop-rails'
-# Use jquery as the JavaScript librar
-
-# Use jquery-ui for pretty UI
 
 
 gem 'rubocop-rspec', require: false
