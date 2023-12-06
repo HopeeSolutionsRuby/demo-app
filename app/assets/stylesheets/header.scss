@@ -1,15 +1,12 @@
 .nav-item {
-	padding-left: 10px;
-}
-
-.nav-item {
 	i {
 		font-size: 1.2rem;
 	}
 }
 
-img {
-	width: 45px;
+.logo__header img{
+	width: 27px;
+	margin: 10px
 }
 
 .form {
@@ -26,6 +23,7 @@ img {
 		top: 4px;
 		padding: 1px;
 		border-left: 1px solid #d1d5db;
+		text-decoration: none;
 	}
 }
 
@@ -47,48 +45,17 @@ img {
 	}
 }
 
-.clipboard__icon {
-	position: relative;
-	span {
-		background: rgb(241, 44, 41);
-	}
-}
-
 .user_icon{
 	padding-left: 26px;
 	position: relative;
 }
-.bell__icon {
-	position: relative;
-	span {
-		background: rgb(241, 44, 41);
-	}
-}
 
-.badge {
-	position: absolute;
-	top: 20%;
-	right: -2%;
-	width: 14px;
-	height: 14px;
-	content: '';
-	background: var(--primary-color);
-	color: #fff;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 0.5rem;
-	font-weight: 600;
-	z-index: 10;
-}
 
 .dropdown-menu{
 	margin-top: 0.5rem !important;
 	position: absolute;
-
 	a {
-		font-weight: bold;
+		font-weight: 600;
 	}
 	.fa-user{
 		margin-right: 10px;
@@ -107,18 +74,9 @@ img {
 			left: auto;
 		}
 	}
-	.dropdown-item {
-		font-weight: 500;
-		&:hover {
-			background-color: var(--phoenix-gray-200);
-			color: var(--phoenix-gray-1000);
-		}
-		&:focus {
-			background-color: var(--phoenix-gray-200);
-			color: var(--phoenix-gray-1000);
-		}
-	}
+	
 }
+
 .navbar.navbar-slim {
 	.dropdown-menu.navbar-dropdown-caret {
 		&:after {
@@ -206,6 +164,19 @@ img {
 .dropdown-profile{
 	min-width: 18.3125rem;
 }
+.dropdown-profile {
+	.nav {
+		.nav-link {
+			color: #222834;
+			font-weight: 500;
+			&:hover {
+				background: #eff2f6;
+				text-decoration: none;
+				font-weight: 500;	
+			}
+		}
+	}
+}
 
 .nav-vertical {
 	.nav {
@@ -216,24 +187,51 @@ img {
 	.nav-link {
 		padding: .5rem;
 		border-radius: .375rem;
-		
-		
 	}
 }
 .nav-vertical.doc-nav {
 	.nav-link.active {
-		background-color: var(--phoenix-gray-200);
+		background-color: #e3e6ed;
 	}
 }
 
 .btn__log-out {
 	.btn{
-		background-color: #e3e6eb;
+		background-color: #eff2f6;
+		border-color: #e3e6ed;
 	}
 	.btn:hover{
-		background-color: #c7c5c5;
+		background-color: #e3e6ed;
+		text-decoration: none;
 	}
 	i{
 		padding-right: 10px;
 	}	
+}
+.nav-link {
+	i {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.avatar-xl {
+	height: 3rem;
+	width: 3rem;
+}
+
+.avatar {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+.ecommerce-topbar .navbar-nav .dropdown-menu {
+	position: absolute;
+}
+
+@media (max-width: 1000px) {
+	.navbar-nav .dropdown-menu {
+		position: absolute;
+	}
+
 }

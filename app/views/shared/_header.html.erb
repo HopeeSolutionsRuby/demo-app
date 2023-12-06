@@ -1,74 +1,58 @@
 <section class='py-0 bg-light'>
   <div class="container-sm">
     <nav class="navbar navbar-expand-lg navbar-light px-0">
-      <div class="row container-sm">
-        <div class="col-auto d-flex align-center">
-          <%= image_tag 'clinic' %>
-          <span class='ms-3 fw-bold d-flex align-items-center' >CLINIC HOPEE</span> 
+      <div class="row container-sm p-0">
+        <div class='col-auto'>
+          <div class="logo__header col-auto d-flex align-center">
+            <%= image_tag 'clinic' %>
+            <span class='ms-3 fw-bold d-flex align-items-center' >CLINIC HOPEE</span> 
+          </div>
         </div>
 
         <div class="col-auto order-md-1">
           <ul class='navbar-nav navbar-nav-icons flex-row me-n2'>
-            <li class='nav-item clipboard__icon'>
-              <a class="nav-link " href=""> <i class="fa-regular fa-clipboard"></i></a>
-              <span class='badge'>1</span>
-            </li>
-            <li class="nav-item dropdown bell__icon">
-              <a class="nav-link " href=""><i class="fa-regular fa-bell"></i></a> 
-              <span class='badge'>1</span>
-   
-            </li>
+            <!-- Example single danger button -->
             <li class='nav-item dropdown'>
-              <a class="nav-link px-2" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link px-2" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
                 <i class="fa-regular fa-user"></i>
               </a>
-              <div class='dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300 mt-2'>
+              <div class='dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300 mt-2' aria-labelledby="navbarDropdownUser">
                 <div class='card position-relative border-0'>
                   <div class='card-body p-0'>
                     <div class='text-center pt-4 pb-3'>
                       <div class='avatar avatar-xl '>
-                        <%= image_tag 'oba', class: 'rounded-circle' %>
-                        <h6 class='mt-2 text-black fw-bold'>Phi Hoan Dep Trai</h6>
+                        <%= image_tag 'oba', class: 'rounded-circle mx-auto' %>
                       </div>
-                    </div>
-                    <div class='mb-3 mx-3'>
-                      <input type="text" class='form-control form-control-sm' placeholder='Update your status'>
+                        <h6 class='mt-2 text-black fw-bold'>Phi Hoan Dep Trai</h6>
                     </div>
                   </div>
 
                   <div class='overflow-auto scrollbar' style="height: 10rem;">
                     <ul class='nav d-flex flex-column mb-2 pb-1'>
                       <li class='nav-item'>
-                        <a class='nav-link px-3' href=""><i class="fa-solid fa-user-pen"></i>
+                        <a class='nav-link px-3' href=""><i class="fa-solid fa-user me-2"></i>
                           <span>Profile</span>
                         </a>
                       </li>
                       <li class='nav-item'>
-                        <a class='nav-link px-3' href=""><i class="fa-regular fa-calendar-check"></i>
+                        <a class='nav-link px-3' href=""><i class="fa-regular fa-calendar-check me-2"></i>
                           <span>Schedule</span>
                         </a>
                       </li>
                       <li class='nav-item'>
-                        <a class='nav-link px-3' href=""><i class="fa-solid fa-sliders"></i>
+                        <a class='nav-link px-3' href=""><i class="fa-solid fa-sliders me-2"></i>
                           <span>Settings & Privacy </span>
                         </a>
                       </li>
                       <li class='nav-item'>
-                        <a class='nav-link px-3' href=""><i class="fa-regular fa-circle-question"></i>
+                        <a class='nav-link px-3' href=""><i class="fa-regular fa-circle-question me-2"></i>
                           <span>Help Center</span>
                         </a>
                       </li>
                     </ul>
                   </div>
-                  <div class='card-footer p-0 border-top'>
-                    <ul class='nav d-flex flex-column my-3'>
-                      <li class='nav-item'>
-                        <a href="" class='nav-link px-3'>
-                          <i class="fa-solid fa-user-plus"></i>Add another account
-                        </a>
-                      </li>
-                    </ul>
-                    <hr>
+                  <div class='card-footer p-0 border-top'>                     
+                    
                     <div class='p-3 btn__log-out'>
                       <a href="" class='btn d-flex justify-content-center align-items-center w-100 '>
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -84,7 +68,7 @@
         </div>
 
         <div class="col-12 col-md-6">
-          <div class="form">
+          <div class="form position-relative">
             <i class="fa fa-search"></i>
             <input type="text" class="form-control form-input" placeholder="Search ...">
             <span class="left-pan"><i class="fa fa-microphone"></i></span>
