@@ -1,27 +1,27 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="home"
 export default class extends Controller {
   connect() {
-    // console.log("home controller has been connected");
-    // $("#popupTrigger").on("click", (e) => {
-    //   e.stopPropagation(); // Ngăn chặn sự kiện lan ra các phần tử cha
-    //   $(".popup-table").toggleClass("hidden-popup");
-    // });
-    
-    // $(window).on("mouseup", (event) => {
-    //   if (!$(".popup-table").hasClass("hidden-popup")) {
-    //     if (!event.target.closest("#popupTrigger")) {
-    //       $(".popup-table").addClass("hidden-popup");
-    //     }
-    //   }
-    // });
-    
+    $("#popupTrigger").on("click", (e) => {
+      e.stopPropagation();
+      $(".popup-table").toggleClass("hidden-popup");
+    });
+    $("#more").on("click", (e) => {
+      e.stopPropagation();
+      $(".table-responsive").toggleClass("hidden-table");
+    });
 
-    
-    
-    // $("#popupMore").on("click", () => {
-    //   $(".popup-more").toggleClass("hidden-popup");
-    // });
+    $(window).on("mouseup", (event) => {
+      if (!$(".popup-table").hasClass("hidden-popup")) {
+        if (!event.target.closest("#popupTrigger")) {
+          $(".popup-table").addClass("hidden-popup");
+        }
+      }
+      if (!$(".table-responsive").hasClass("hidden-table")) {
+        if (!event.target.closest("#more")) {
+          $(".table-responsive").addClass("hidden-table");
+        }
+      }
+    });
   }
 }
