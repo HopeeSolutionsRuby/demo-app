@@ -10,7 +10,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="admin-layout">
+      <div><%= render 'shared/administrator/header' %></div>
+        <div class="container-fluid">
+          <div class="row flex-nowrap">
+            <%= render 'shared/administrator/sidebar' %>
+            <div class="px-0 body-content">
+              <div class="content-controller">
+                <%= yield %>
+              </div>
+              <%= render 'shared/administrator/footer' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
-

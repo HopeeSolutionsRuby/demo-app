@@ -55,7 +55,6 @@ gem 'jquery-rails'
 
 gem 'rubocop-rails'
 
-
 gem 'rubocop-rspec', require: false
 
 group :development, :test do
@@ -98,4 +97,3 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
-gem 'font-awesome-sass', '~> 6.5.1'
