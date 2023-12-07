@@ -4,6 +4,12 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+# Gemfile
+gem 'devise'
+
+gem 'carrierwave'
+
+gem 'mini_magick', '~> 4.12'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
 
