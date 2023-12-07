@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-<<<<<<< HEAD
     <title>Clinic Hopee</title>
     <%= favicon_link_tag asset_path('clinic') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -16,17 +15,11 @@
       "administrator/sidebar",
       "administrator/table_admin"
     <% end %>
-=======
-    <title>DemoApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
->>>>>>> 4e61298 ([Issue 33]: Fix Reviews)
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <div id="authentication-administrator">
       <%= render "administrator/shared/notice_messages" %>
@@ -37,6 +30,14 @@
           <div class="row flex-nowrap">
             <%= render 'shared/administrator/sidebar' %>
             <div class="px-0 body-content" style="overflow-x: hidden; background-color: #eff2f6">
+=======
+    <div class="admin-layout">
+      <div><%= render 'shared/administrator/header' %></div>
+        <div class="container-fluid">
+          <div class="row flex-nowrap">
+            <%= render 'shared/administrator/sidebar' %>
+            <div class="px-0 body-content">
+>>>>>>> d58f604 ([Issue 33]: Fix conflict with develop)
               <div class="content-controller">
                 <%= yield %>
               </div>
@@ -44,6 +45,7 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
     </div>
   </body>
 </html>
@@ -53,3 +55,9 @@
 </html>
 
 >>>>>>> 4e61298 ([Issue 33]: Fix Reviews)
+=======
+      </div>
+    </div>
+  </body>
+</html>
+>>>>>>> d58f604 ([Issue 33]: Fix conflict with develop)
