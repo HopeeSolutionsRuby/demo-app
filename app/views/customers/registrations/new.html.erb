@@ -1,0 +1,60 @@
+<div class="vh-200" style="background: linear-gradient(120deg, #3498db, #8e44ad, #3498db);">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-3 text-center">
+
+            <h3 class="mb-3 ">Sign in</h3>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "customers/shared/error_messages", resource: resource %>
+
+              <div class="form-outline mb-3 field">
+                <%= f.label :email, class: "form-label d-flex justify-content-start"%>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
+              </div>
+
+              <div class="form-outline mb-3 field">
+                <%= f.label :full_name,  class: "form-label d-flex justify-content-start" %>
+                <%= f.text_field :full_name, autofocus: true, autocomplete: "fullname", class: "form-control form-control-lg"  %> 
+              </div>
+
+              <div class="form-outline mb-3 field">
+                <%= f.label :address,  class: "form-label d-flex justify-content-start"  %>
+                <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control form-control-lg" %>
+              </div>
+
+              <div class="form-outline mb-3 field">
+                <%= f.label :password,  class: "form-label d-flex justify-content-start"  %>
+                <% if @minimum_password_length %>
+                
+                <% end %>
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg" %>
+              </div>
+
+              <div class="form-outline mb-3 field">
+                <%= f.label :password_confirmation,  class: "form-label d-flex justify-content-start"  %>
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg" %>
+              </div>
+
+              <div class="form-outline mb-3 field">
+                <%= f.label :avatar,  class: "form-label d-flex justify-content-start"  %>
+                <%= f.file_field :avatar, autocomplete: "avatar", class: "form-control form-control-lg" %>
+              </div>
+
+              <div class="actions py-2" style="background: linear-gradient(120deg, #3498db, #8e44ad, #3498db);">
+                <%= f.submit "Sign up", style: "background: transparent; border: none; color: white;" %>
+              </div>  
+
+              <hr class="my-4">
+              <div>
+                <span style="color: gray">Hava An Account?</span>
+                  <%= render "customers/shared/links" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
