@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   root 'customers#index'
   resources :customers, only: [:index]
   namespace :administrator do
-    resources :dashboard, only: %i[index]
+    root 'dashboard#index'
+    devise_for :admins, controllers: {
+      sessions: 'administrator/admin/sessions',
+      registrations: 'administrator/admin/registrations',
+      passwords: 'administrator/admin/passwords'
+    }, path: ''
+    resources :dashboard, only: [:index]
   end
 end
