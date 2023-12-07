@@ -4,12 +4,6 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
-# Gemfile
-gem 'devise'
-
-gem 'carrierwave'
-
-gem 'mini_magick', '~> 4.12'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
 
@@ -84,7 +78,9 @@ group :development, :test do
 
   gem 'font-awesome-sass', '~> 6.5.1'
 
-  gem 'letter_opener'
+  gem 'devise'
+
+  gem 'carrierwave'
   gem 'debug', platforms: %i[mri windows]
 end
 
