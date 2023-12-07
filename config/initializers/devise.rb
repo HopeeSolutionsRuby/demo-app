@@ -46,7 +46,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
+  config.authentication_keys = [:admin_name]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -126,11 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-<<<<<<< HEAD
   # config.pepper = '7049bf1e2c5d61c1c24adb3ad18b1d01ac57d6e225dc4ac6247e4c1957fb117f2ee5d5840cb5a06aba14962a9499eabf3ccc53158a3ed8604e5e8e16e93b789e'
-=======
-  # config.pepper = '91eb15dc2221caa5713637a8cbc752d3cab4944d5c24d1cc345ac95b11464a6e29fd4da0ddb3ed1b4e821ee4ecbb4d69b5e010817697cc2b51e01babb2dbb921'
->>>>>>> origin/issue_35_implement_authen_admin
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false

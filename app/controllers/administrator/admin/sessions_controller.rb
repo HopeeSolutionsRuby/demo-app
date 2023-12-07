@@ -2,11 +2,13 @@
 
 class Administrator::Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  
   protected
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || administrator_dashboard_index_path
   end
+
   # GET /resource/sign_in
   # def new
   #   super
