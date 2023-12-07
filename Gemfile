@@ -55,7 +55,6 @@ gem 'jquery-rails'
 
 gem 'rubocop-rails'
 
-
 gem 'rubocop-rspec', require: false
 
 group :development, :test do
@@ -77,6 +76,8 @@ group :development, :test do
 
   gem 'sassc-rails'
 
+  gem 'font-awesome-sass', '~> 6.5.1'
+
   gem 'debug', platforms: %i[mri windows]
 end
 
@@ -96,4 +97,3 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
-gem 'font-awesome-sass', '~> 6.5.1'
