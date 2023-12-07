@@ -61,6 +61,12 @@
   .navbar-logo {
     display: flex;
     align-items: center;
+
+    .dropdown {
+      .navbar-toggler:focus{
+        box-shadow: none;
+      }
+    }
   }
 
   .dropdown-profile {
@@ -96,6 +102,7 @@
         border: 1px solid #e3e6ed;
         font-size: 15px;
         border-radius: 7px;
+        transition: all 0.3s ease;
 
         .icon {
           color: #727785;
