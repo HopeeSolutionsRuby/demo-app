@@ -7,10 +7,5 @@ export default class extends Controller {
     // Show the toast
     const toast = new bootstrap.Toast(toastEl);
     toast.show();
-
-    // Close the toast after 5 seconds
-    setTimeout(function () {
-      toast.dispose(); // Hide the toast
-    }, 2000);
   }
 }
