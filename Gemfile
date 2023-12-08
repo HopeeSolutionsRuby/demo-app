@@ -61,7 +61,6 @@ gem 'jquery-rails'
 
 gem 'rubocop-rails'
 
-
 gem 'rubocop-rspec', require: false
 
 group :development, :test do
