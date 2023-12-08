@@ -81,7 +81,9 @@ group :development, :test do
   gem 'devise'
 
   gem 'carrierwave'
+
   gem 'debug', platforms: %i[mri windows]
+  gem 'letter_opener'
 end
 
 group :development do

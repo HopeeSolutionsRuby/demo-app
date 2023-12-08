@@ -23,7 +23,7 @@
                       <div class='card-body p-0'>
                         <div class='text-center pt-4 pb-3'>
                           <div class='avatar avatar-xl '>
-                            <%= image_tag src="#{current_customer.avatar}" , class: 'rounded-circle mx-auto' %>
+                            <%= image_tag src="#{current_customer.avatar}", class: 'rounded-circle mx-auto d-block', style: 'width: 50px; height: 50px; object-fit: cover; object-position: center center; border-radius: 50%;' %>
                           </div>
                           <h6 class='mt-2 text-black fw-bold'><%= current_customer.email %></h6>
                         </div>

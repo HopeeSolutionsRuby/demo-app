@@ -1,8 +1,8 @@
-<div class="login-form">
+<%= render "customers/shared/error_messages", resource: resource%>
+<div class="customer-form">
   <div class="login-form-content forgot-form px-4">
     <h2 id="title-reset-password">Forgot your password?</h2>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= render "customers/shared/error_messages", resource: resource %>
       <div class="login-input">
         <%= f.label :email, class: 'label' %><br/>
         <%= f.email_field :email, autocomplete: "email", class: 'input-field'%> 
@@ -18,4 +18,5 @@
   </div>
 </div>
 
+<%= stylesheet_link_tag 'sign_up'%>
 <%= stylesheet_link_tag 'login'%>

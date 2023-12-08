@@ -11,6 +11,6 @@ export default class extends Controller {
     // Close the toast after 5 seconds
     setTimeout(function () {
       toast.dispose(); // Hide the toast
-    }, 2000);
+    }, 5000);
   }
 }
