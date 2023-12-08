@@ -1,39 +1,40 @@
-.login-form {
+.customer-form {
   .login-form-content {
-    #title{
+    position: relative;
+
+    #title {
       font-weight: bold;
-      padding-left: calc(100% - 228px);
-      padding-bottom: 40px;
       font-size: 40px;
       font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      margin: 30px auto;
     }
 
-    #title-reset-password{
+    #title-reset-password {
       font-weight: bold;
-      padding-left: calc(100% - 350px);
       font-size: 35px;
       font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      margin: 30px auto;
     }
 
-    .new_customer{
-      .login-input{
+    .new_customer {
+      position: relative;
+
+      .login-input {
         width: 100%;
-        margin-top: 20px;
-        padding-top: 20px;
         height: 100px;
-        .input-field{
+
+        .input-field {
           border: none;
           width: 100%;
           height: 30px;
           border-bottom: 2px solid #adadad;
           font-size: 24px;
           background: #f1f1f1;
-  
-        }
-        .label{
-          margin-bottom: 2px;
         }
       }
+
       .loginbtn {
         display: block;
         width: 100%;
@@ -48,25 +49,27 @@
         font-size: 16px;
       }
 
-      .bottom-text{
+      .bottom-text {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 10px;
         font-size: 14px;
-        display: block;
+        margin-bottom: 10px;
       }
+
       width: calc(100% - 40px);
       padding-left: 30px;
-    }   
-    
+    }
+
     .back-btn {
-      &:hover, &:active {
-        text-decoration: none; /* Remove underline on hover */
-        background-color: none; /* Make the background transparent on hover */
-        outline: none; /* Remove the outline on active */
+      &:hover,
+      &:active {
+        text-decoration: none;
+        background-color: none;
+        outline: none;
         border: none;
         background-image: none;
       }
-      
+
       &:focus {
         outline: none;
       }
@@ -74,31 +77,28 @@
       border: none;
       background-color: transparent;
       margin-left: 65px;
-      // height: 17px;
-      // margin-top: 10px;
     }
 
     border-radius: 10px;
-    height: calc(100% - 380px);
-    width: 400px;
-    padding-top: 50px;
+    max-width: 400px; /* Set maximum width */
+    width: 100%; /* Make it fill the container */
     margin: auto;
     background: #f1f1f1;
   }
 
-  .forgot-form{
-    height: calc(100% - 600px);
+  .forgot-form {
+    height: 100%; /* Fill the container */
   }
 
-  .change-pass-form{
-    height: calc(100% - 500px);
+  .change-pass-form {
+    height: 100%; /* Fill the container */
   }
 
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height to ensure it covers the entire viewport */
   width: 100%;
   font-family: 'Times New Roman', Times, serif;
   background-image: linear-gradient(120deg, #3498db, #8e44ad);
