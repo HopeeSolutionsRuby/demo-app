@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #admin-pages {
   .nav-item {
     &:hover,
@@ -134,15 +133,8 @@
 @keyframes timeOut {
   to {
     width: 0%;
-=======
-.nav-item {
-  &:hover, &:active {
-    .nav-link {
-      background-color: #dcdfe3 !important;
-      color: #007bff !important;
     }
   }
-}
 
 .hidden {
   display: none;
@@ -167,32 +159,53 @@ span {
 .nav-pills {
   .nav-link {
     color: black;
->>>>>>> 4e61298 ([Issue 33]: Fix Reviews)
   }
-}
 
-.body-content {
-  position: relative;
-  width: calc(100% - 250px);
-}
+  .viewbtn {
+    text-decoration: none;
+    color: black;
+    margin-top: 5px;
+  }
 
-@media (max-width: 575px) {
+  .content {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+
+  span {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: lighter;
+  }
+
+  .nav-pills {
+    .nav-link {
+      color: black;
+    }
+  }
+
   .body-content {
     position: relative;
+    width: calc(100% - 250px);
+  }
+
+  @media (max-width: 575px) {
+    .body-content {
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .body-footer {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #dbdee4;
+    padding-bottom:7px;
+    padding-top:7px;
+    text-align:center;
+  }
+
+  .content-controller {
+    min-height: 90vh;
     width: 100%;
   }
-}
-
-.body-footer {
-  position: absolute;
-  bottom: 0;
-  border-top: 1px solid #dbdee4;
-  padding-bottom:7px;
-  padding-top:7px;
-  text-align:center;
-}
-
-.content-controller {
-  min-height: 90vh;
-  width: 100%;
 }
