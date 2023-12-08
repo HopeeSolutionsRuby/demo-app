@@ -1,33 +1,35 @@
-<div class="col-lg-6 mx-lg-auto">
-  <div class="card shadow">
-    <div class="card-header">
-      <h2 class="card-title text-center">Sign In</h2>
-    </div>
-    <div class="card-body">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-group">
-          <%= f.label :username, class: 'mb-2' %>
-          <%= f.text_field :username, class: "form-control form-control-lg" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password, class: "mb-2" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg" %>
-        </div>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="form-group mb-2 mt-2">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+<div id="authentication-administrator">
+  <div class="container-fluid">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Clinic sign-in">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.label :username, class: 'mb-2' %>
+            <%= f.text_field :username, class: "form-control form-control-lg" %>
+          </div>
+          <div class="form-group mt-3">
+            <%= f.label :password, class: "mb-2" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg" %>
+          </div>
+          
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group mb-3 mt-3">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+          <div class="actions">
+            <%= f.submit "Log in", class: "btn btn-primary btn-lg w-100", data: {turbo: false} %>
           </div>
         <% end %>
-
-        <div class="actions">
-          <%= f.submit "Log in", class: "btn btn-primary btn-lg", data: {turbo: false} %>
+        <div class="d-flex justify-content-between align-items-center mt-4">
+          <%= render "administrator/shared/links" %>
         </div>
-      <% end %>
-
-      <%= render "administrator/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
