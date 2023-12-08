@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       sessions: 'administrator/sessions',
       registrations: 'administrator/registrations',
       passwords: 'administrator/passwords'
-    }
+    }, path: ''
     resources :dashboard, only: [:index]
   end
 end
