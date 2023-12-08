@@ -1,4 +1,4 @@
-<div class="login-form">
+<div class="customer-form">
   <div class="login-form-content px-4">
     <h2 id="title">Login</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -17,7 +17,7 @@
       <input type="submit" name="commit" class="loginbtn" value="Log in" data-disable-with="Log in">
 
       <div class="bottom-text">
-        <span class="forgotpwd">Forgot <%= link_to "Password", new_password_path(resource_name)%>?</span><br>
+        <span class="forgotpwd">Forgot <%= link_to "Password", new_password_path(resource_name)%> ?</span><br>
         <span class="signup">Don't have an account? <a href="/customers/sign_up">Sign up</a></span>
       </div>
     <% end %>

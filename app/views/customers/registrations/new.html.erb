@@ -1,13 +1,12 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-<div class="vh-200" style="background: linear-gradient(120deg, #3498db, #8e44ad, #3498db); height:100vh;">
-  <%= render "customers/shared/toast", resource: resource %>
+<%= render "customers/shared/error_messages", resource: resource %>
+<div style="background: linear-gradient(120deg, #3498db, #8e44ad, #3498db); height:100vh;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-3 text-center">
-            <h3 class="mb-3 ">Sign up</h3>
+          <div class="card-body p-3 text-center uploader">
+            <h2 class="mb-3 ">Sign up</h2>
               <div class="form-outline mb-3 field">
                 <%= f.label :email, class: "form-label d-flex justify-content-start"%>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "border-bottom form-control form-control-lg" %>
@@ -23,9 +22,27 @@
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "border-bottom form-control form-control-lg" %>
               </div>
 
-              <div class="form-outline mb-3 field">
-                <%= f.label :avatar,  class: "form-label d-flex justify-content-start"  %>
-                <%= f.file_field :avatar, autocomplete: "avatar", class: "border-bottom form-control form-control-lg" %>
+              <div data-controller="uploader"> 
+                <%= f.label :avatar, class: "form-label d-flex justify-content-start"%>
+                  <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+                  <label for="file-upload" id="file-drag" class="upload_avatar">
+                    <img id="file-image" src="#" alt="Preview" class="hidden">
+                    <div id="start">
+                      <i class="fa fa-download" aria-hidden="true"></i>
+                      <div>Select a file or drag here</div>
+                      <div id="notimage" class="hidden">Please select an image</div>
+                      <div class="form-outline mb-3 field" id="file-upload-btn">
+                        <%= f.label :avatar, 'Select a file' , class: "btn__avt btn-primary" %>                      
+                        <%= f.file_field :avatar, autocomplete: "avatar"%>                    
+                        </div>
+                    </div>
+                    <div id="response" class="hidden">
+                      <div id="messages"></div>
+                      <progress class="progress" id="file-progress" value="0">
+                        <span>0</span>%
+                      </progress>
+                    </div>
+                  </label>
               </div>
 
               <div class="actions py-2" style="background: linear-gradient(120deg, #3498db, #8e44ad, #3498db);">
@@ -44,5 +61,4 @@
 </div>
 
 <% end %>
-
-<%= stylesheet_link_tag 'sign_in'%>
+<%= stylesheet_link_tag 'sign_up'%>
