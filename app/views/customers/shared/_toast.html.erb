@@ -1,0 +1,33 @@
+<% if resource.errors.any? %>
+<div class="toast show" style="position: absolute; top: 10px; right: 10px ;">
+  <div class="toast-header">
+    <strong class="mr-auto">
+      <%= I18n.t("errors.messages.not_saved",
+                count: resource.errors.count,
+                resource: resource.class.model_name.human.downcase)%>
+    </strong>
+    <button type="button" class="ml-2 mb-1 close" data-bs-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    <% resource.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  const toastEl = document.querySelector('.toast')
+
+  const toast = new bootstrap.Toast(toastEl);
+  toast.show();
+
+  setTimeout(function () {
+  toast.dispose(); 
+  }, 2000);
+</script>
+
+<% end %>
+
+<%= stylesheet_link_tag 'toast'%>

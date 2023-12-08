@@ -63,7 +63,6 @@ gem 'jquery-rails'
 
 gem 'rubocop-rails'
 
-
 gem 'rubocop-rspec', require: false
 
 gem 'sassc-rails'
