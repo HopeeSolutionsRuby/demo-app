@@ -7,6 +7,10 @@
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <div class="d-flex flex-column justify-content-center align-items-center">   
+          <h3 class="fw-bold">Forgot Password ?</h3>
+          <p>Enter your email to reset your password.</p>
+        </div>
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
           <div class="form-outline mb-4">
             <%= f.label :email, class: "form-label" %><br />

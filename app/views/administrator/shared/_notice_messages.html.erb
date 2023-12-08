@@ -1,0 +1,8 @@
+<% if !flash.empty? %>
+  <div class="toast align-items-center bg-danger text-white bg-primary border-0 position-absolute top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-controller="toast">
+    <button type="button" class="btn-close btn-close-white me-2 m-auto end-0 position-absolute" data-bs-dismiss="toast" aria-label="Close"></button>
+    <div class="toast-body">
+      <%= flash[:alert] %>
+    </div>
+  </div>
+<% end %>

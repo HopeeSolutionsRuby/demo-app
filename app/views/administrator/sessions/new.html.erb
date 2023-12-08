@@ -7,6 +7,7 @@
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= render "administrator/shared/notice_messages", resource: resource %>
           <div class="form-group">
             <%= f.label :username, class: 'mb-2' %>
             <%= f.text_field :username, class: "form-control form-control-lg" %>
