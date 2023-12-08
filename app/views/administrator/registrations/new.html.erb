@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "administrator/admin/shared/error_messages", resource: resource %>
+        <%= render "administrator/shared/error_messages", resource: resource %>
 
         <div class="form-group mb-2">
           <%= f.label :admin_name, 'Admin name' %>
@@ -35,7 +35,7 @@
         </div>
       <% end %>
 
-      <%= render "administrator/admin/shared/links" %>
+      <%= render "administrator/shared/links" %>
     </div>
   </div>
 </div>

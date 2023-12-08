@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   namespace :administrator do
     root 'dashboard#index'
     devise_for :admins, controllers: {
-      sessions: 'administrator/admin/sessions',
-      registrations: 'administrator/admin/registrations',
-      passwords: 'administrator/admin/passwords'
-    }, path: ''
+      sessions: 'administrator/sessions',
+      registrations: 'administrator/registrations',
+      passwords: 'administrator/passwords'
+    }
     resources :dashboard, only: [:index]
   end
 end

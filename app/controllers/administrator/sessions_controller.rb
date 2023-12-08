@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Administrator::Admin::SessionsController < Devise::SessionsController
+class Administrator::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   
   protected
