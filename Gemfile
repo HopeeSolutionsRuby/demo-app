@@ -96,8 +96,6 @@ group :development, :test do
 
   gem 'font-awesome-sass', '~> 6.5.1'
 
-  gem 'devise'
-
   gem 'letter_opener'
   gem 'debug', platforms: %i[mri windows]
 
