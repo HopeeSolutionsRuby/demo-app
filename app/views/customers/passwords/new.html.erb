@@ -1,16 +1,21 @@
-<h2>Forgot your password?</h2>
+<div class="login-form">
+  <div class="login-form-content forgot-form px-4">
+    <h2 id="title-reset-password">Forgot your password?</h2>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "customers/shared/error_messages", resource: resource %>
+      <div class="login-input">
+        <%= f.label :email, class: 'label' %><br/>
+        <%= f.email_field :email, autocomplete: "email", class: 'input-field'%> 
+      </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
+      <input type="submit" name="commit" class="loginbtn" value="Send me reset password instructions" data-disable-with="Send me reset password instructions">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <a class="btn back-btn" href="/customers/sign_in" role="button">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span class="mx-2">Back to log in</span>
+      </a>
+    <% end %>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "customers/shared/links" %>
+<%= stylesheet_link_tag 'login'%>
