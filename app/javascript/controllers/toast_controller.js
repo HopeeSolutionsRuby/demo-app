@@ -4,7 +4,6 @@ export default class extends Controller {
   connect() {
     const toastEl = document.querySelector(".toast");
 
-    // Show the toast
     const toast = new bootstrap.Toast(toastEl);
     toast.show();
 
@@ -17,12 +16,5 @@ export default class extends Controller {
         toast.dispose();
       }, disposeTime);
     }, displayTime);
-
-    //Customs hiden the toast
-    // const custToast = document.getElementById("cus-toast");
-    // var displayTime = 5000;
-    // setTimeout(function () {
-    //   toast.hide();
-    // }, displayTime);
   }
 }
