@@ -6,7 +6,7 @@ class Administrator::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    stored_location_for(resource) || resource.redirect_to || root_path
+    stored_location_for(resource) || administrator_dashboard_index_path
   end
   # GET /resource/sign_up
   # def new
