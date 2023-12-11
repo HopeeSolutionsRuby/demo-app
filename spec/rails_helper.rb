@@ -6,7 +6,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
-require 'shoulda/matchers'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
