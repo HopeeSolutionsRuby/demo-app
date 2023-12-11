@@ -74,7 +74,7 @@ group :development, :test do
 
   gem 'shoulda-callback-matchers'
 
-  gem 'simplecov'
+  gem 'simplecov', require: false
 
   gem 'sassc-rails'
 
