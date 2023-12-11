@@ -2,7 +2,7 @@
   <div class="toast align-items-center text-white bg-primary border-0 position-absolute bg-danger toast-animation toast-custom" role="alert" aria-live="assertive" aria-atomic="true" data-controller="toast">
     <button type="button" class="btn-close btn-close-white me-2 m-auto end-0 position-absolute" data-bs-dismiss="toast" aria-label="Close"></button>
     <div class="toast-body">
-      <ul>
+      <ul class="my-0">
         <% resource.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>

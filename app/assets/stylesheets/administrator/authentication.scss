@@ -16,50 +16,5 @@
     }
   }
 
-  .toast-animation {
-    animation: show_toast 0.3s ease forwards;
 
-    .btn-close:focus {
-      box-shadow: none;
-    }
-  }
-
-  .cursor-pointer {
-    cursor: default;
-  }
-
-  @keyframes show_toast {
-    0% {
-      transform: translateX(100%);
-    }
-    40% {
-      transform: translateX(-5%);
-    }
-    80% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-10%);
-    }
-  }
-
-  .toast::before {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    background-color: white;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: none;
-    content: "";
-    width: 100%;
-    height: 4px;
-    animation: timeOut 5s linear 1 forwards;
-  }
-
-  @keyframes timeOut {
-    to {
-      width: 0%;
-    }
-  }
 }
