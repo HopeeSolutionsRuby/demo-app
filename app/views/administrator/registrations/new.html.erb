@@ -11,12 +11,12 @@
 
           <div class="form-group mb-2">
             <%= f.label :username, 'User name' %>
-            <%= f.text_field :username, class: "form-control form-control-lg", autocomplete: "username" %>
+            <%= f.text_field :username,autofocus: true, class: "form-control form-control-lg", autocomplete: "username" %>
           </div>
 
           <div class="form-group mb-2">
             <%= f.label :email %>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
+            <%= f.email_field :email, autocomplete: "email", class: "form-control form-control-lg" %>
           </div>
 
           <div class="form-group mb-2">
