@@ -1,5 +1,6 @@
 <div id="authentication-administrator">
   <div class="container-fluid full-vh">
+     <%= render "administrator/shared/notice_messages" %>
     <div class="row d-flex justify-content-center align-items-center full-vh">
       <div class="col-md-9 col-lg-6 col-xl-5">
         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
@@ -7,7 +8,7 @@
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= render "administrator/shared/notice_messages" %>
+         
           <div class="form-group">
             <%= f.label :username, class: 'mb-2' %>
             <%= f.text_field :username, class: "form-control form-control-lg", autocomplete: "username" %>
