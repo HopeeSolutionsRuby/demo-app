@@ -77,14 +77,13 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # Raise error when a before_action's only/except options reference missing actions
-  config.action_controller.raise_on_missing_callback_actions = true
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.perform_deliveries = true
+	credentials = Rails.application.credentials.my_credentials
   config.action_controller.raise_on_missing_callback_actions = true
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = { from: '<hothanhdatsd@gmail.com>' }
+  config.action_mailer.default_options = { from: credentials[:username]}
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
@@ -92,8 +91,8 @@ Rails.application.configure do
     enable_starttls_auto: true,
     address: 'smtp.gmail.com',
     port: 587, domain: 'smtp.gmail.com',
-    user_name: ENV['USER_NAME'],
-    password: ENV['PASSWORD'],
+    user_name: credentials[:username],
+    password: credentials[:password],
     authentication: 'plain'
   }
 end
