@@ -9,6 +9,6 @@ Rails.application.routes.draw do
       registrations: 'administrator/registrations',
       passwords: 'administrator/passwords'
     }, path: ''
-    resources :dashboard, only: [:index]
+    resources :dashboard
   end
 end
