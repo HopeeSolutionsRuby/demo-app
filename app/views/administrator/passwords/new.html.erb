@@ -13,7 +13,7 @@
         </div>
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
           <div class="form-outline mb-4">
-            <%= f.label :email, class: "form-label" %><br />
+            <%= f.label :email, class: "form-label" %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg",
               placeholder: "Enter a valid email address" %>
           </div>
