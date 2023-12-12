@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :customers, only: %i[index delete]
   namespace :administrator do
     resources :dashboard, only: %i[index]
+    resources :clinics
   end
 end
