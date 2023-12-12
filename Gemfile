@@ -102,6 +102,9 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
 
   gem 'letter_opener'
+
+  gem 'ransack'
+
 end
 
 group :development do
