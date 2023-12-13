@@ -1,0 +1,19 @@
+ <p>
+    <strong>First name:</strong>
+    <%= customer.full_name %>
+    <%= highlight(customer.full_name, params.dig(:q, :full_name_or_age_or_email_cont)) %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= customer.age %>
+    <%= highlight(customer.age, params.dig(:q, :full_name_or_age_or_email_cont)) %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= customer.email %>
+    <%= highlight(customer.email, params.dig(:q, :full_name_or_age_or_email_cont)) %>
+  </p>
+
+</div>

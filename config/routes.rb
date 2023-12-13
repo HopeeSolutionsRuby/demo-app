@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :customers, only: [:index]
   namespace :administrator do
     resources :dashboard, only: %i[index]
+    resources :customers
   end
 end

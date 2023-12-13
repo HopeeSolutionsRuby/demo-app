@@ -1,0 +1,96 @@
+<div class='content p-5'>
+  <div class="mb-9">
+    <div class="row g-2 mb-4">
+      <div class="col-auto">
+        <h2 class="mb-0">Customers</h2>
+      </div>
+    </div>
+    <ul class="nav nav-links mb-3 mb-lg-2 mx-n3">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">
+          <span>All </span>
+          <span class="fw-semi-bold" style='color: rgb(82, 91,117)'>(68817)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span>New </span>
+          <span class="fw-semi-bold" style='color: rgb(82, 91, 117)'>(6)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span>Abandoned checkouts </span>
+          <span class="fw-semi-bold" style='color: rgb(82, 91, 117)'>(17)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span>Locals </span>
+          <span class="fw-semi-bold" style='color: rgb(82, 91, 117)'>(6,810)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span>Email subscribers </span>
+          <span class="fw-semi-bold" style='color: rgb(82, 91, 117)'>(8)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span>Top reviews </span>
+          <span class="fw-semi-bold" style='color: rgb(82, 91, 117)'>(2)</span>
+        </a>
+      </li>
+    </ul>
+    <div class="mb-4">
+      <div class="row g-3">
+        <div class="col-auto">
+          <div class="search-box" style=' position: relative; font-size: .8rem; width: 20rem;'>
+            <div class="position-relative" data-bs-toggle="search" data-bs-display="static">
+              
+              <%= search_form_for @q, url:administrator_customers_path, data: { turbo_frame: :results } do |f| %>
+                <%= f.search_field :full_name_or_age,
+                                   autofocus: true, autocomplete: 'off', class: "form-control search-input search", placeholder: "Search customers", style: 'padding-left: 2.5rem; padding-right: 2rem; border-radius: 0.375rem; box-shadow: none;' %>
+              <% end %>
+              <i class="fa-solid fa-magnifying-glass" style=' position: absolute; color: gray; top: 50%; left: 1rem; transform: translateY(-48%);'></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto scrollbar overflow-hidden-y flex-grow-1">
+          <div class="btn-group position-static" role="group">
+            <div class="btn-group position-static text-nowrap"><button class="btn  px-5 flex-shrink-0" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent" style='border: 1px solid #e3e6ed'> Country
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Name</a></li>
+                <li><a class="dropdown-item" href="#">Email</a></li>
+                <li><a class="dropdown-item" href="#">Age</a></li>
+              </ul>
+            </div>
+            <div class="btn-group position-static text-nowrap"><button class="btn  px-5 flex-shrink-0" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent" style='border: 1px solid #e3e6ed'> VIP 
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">TVDD</a></li>
+                <li><a class="dropdown-item" href="#">UTGDC</a></li>
+                <li><a class="dropdown-item" href="#">TGAN</a></li>
+                <li></li>
+              </ul>
+            </div><button class="btn px-5 flex-shrink-0" style='border: 1px solid #e3e6ed'>More filters</button>
+          </div>
+        </div>
+        <div class="col-auto"><button class="btn btn-link text-900 me-4 px-0" style='color: rgb(49, 55, 74)'>
+          <i class="fa-solid fa-file-export"></i>
+          Export</button>
+        <button class="btn btn-primary">
+          <i class="fa-solid fa-plus"></i>
+          Add customer </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<%= stylesheet_link_tag "administrator/content" %>
