@@ -82,7 +82,7 @@ group :development, :test do
 
   gem 'debug', platforms: %i[mri windows]
 
-  gem "letter_opener"
+  gem 'letter_opener'
 end
 
 group :development do

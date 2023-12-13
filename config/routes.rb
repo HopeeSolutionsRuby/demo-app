@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   namespace :administrator do
     devise_for :admins, controllers: {
       sessions: 'administrator/sessions',
-      registrations: 'administrator/registrations',
       passwords: 'administrator/passwords'
-    }, path: ''
+    }, path: '', skip: [:registrations]
     resources :dashboard
   end
 end
