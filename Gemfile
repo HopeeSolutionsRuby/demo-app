@@ -57,6 +57,8 @@ gem 'rubocop-rails'
 
 gem 'rubocop-rspec', require: false
 
+gem 'devise'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
 
@@ -72,13 +74,11 @@ group :development, :test do
 
   gem 'shoulda-callback-matchers'
 
-  gem 'simplecov'
+  gem 'simplecov', require: false
 
   gem 'sassc-rails'
 
   gem 'font-awesome-sass', '~> 6.5.1'
-
-  gem 'devise'
 
   gem 'carrierwave'
 
