@@ -1,0 +1,119 @@
+.header-administrator-page {
+  .logo-text {
+    color: #6e7891;
+  }
+
+  .navbar-nav-ul > li {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  // Thêm mới
+  .navbar-top {
+    background: #fff;
+    padding: 3px 10px;
+    border-bottom: 1px solid #cbd0dd;
+  }
+
+  .border-300 {
+    border: 1px solid #c9d0dd;
+  }
+
+  .avatar {
+    width: 40px;
+    height: auto;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+
+    &-xl {
+      width: 60px;
+    }
+  }
+
+  .navbar .dropdown-menu.navbar-dropdown-caret:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 33px;
+    height: 33px;
+    top: -10px;
+    right: 17px;
+    transform: rotate(45deg);
+    background: inherit;
+    border-top-left-radius: 0.25rem;
+    border-width: 1px 0 0 1px;
+    border-color: #c9d0dd;
+    border-style: solid;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+
+  @media (min-width: 992px) {
+    .navbar-logo {
+      width: 254px;
+      height: 32px;
+    }
+  }
+
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+
+    .dropdown {
+      .navbar-toggler:focus{
+        box-shadow: none;
+      }
+    }
+  }
+
+  .dropdown-profile {
+    min-width: 300px;
+  }
+
+  .img-logo {
+    height: 36px;
+  }
+
+  .avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .img-avatar {
+      width: 48px;
+    }
+
+    .avatar-name {
+      font-size: 14px;
+    }
+
+    .avatar-sign-out {
+      border-top: 1px solid #e3e6ed;
+      padding-top: 15px;
+      width: 100%;
+      text-align: center;
+
+      .btn-sign-out {
+        background: #f3f5f9;
+        padding: 6px 100px;
+        border: 1px solid #e3e6ed;
+        font-size: 15px;
+        border-radius: 7px;
+        transition: all 0.3s ease;
+
+        .icon {
+          color: #727785;
+          font-size: 16px;
+          margin-right: 8px;
+        }
+        
+        &:hover{
+          background: #E3E6ED;
+        }
+      }
+    }
+  }
+}
