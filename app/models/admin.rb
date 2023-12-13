@@ -13,4 +13,8 @@ class Admin < ApplicationRecord
     with: /\A(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}\z/,
     message: 'should contain at least one letter, one number, and be at least 6 characters long'
   }
+
+  def self.authentication_keys
+    [:username]
+  end
 end
