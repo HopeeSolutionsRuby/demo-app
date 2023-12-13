@@ -16,11 +16,11 @@ module Administrator
     private
 
     def author_params
-      params.require(:author).permit(:id, :name, :address, :region, :faculity)
+      params.require(:author).permit(:id, :name, :address, :region, :faculity, { pictures: [] })
     end
 
     def search_params
-      params.fetch(:query, {}).permit(:name_or_address_or_faculity_or_region_cont, :s, :name_cont, :address_cont, :faculity_cont, :region_cont)
+      params.fetch(:query, {}).permit!
     end
   end
 end

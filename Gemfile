@@ -82,6 +82,7 @@ group :development, :test do
 
   gem 'carrierwave'
 
+
   gem 'debug', platforms: %i[mri windows]
   gem 'letter_opener'
 

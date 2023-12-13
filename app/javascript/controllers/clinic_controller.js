@@ -2,60 +2,29 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    $('#btn-check-name').on('click', function() {
-      var isChecked = $(this).prop('checked');
-      console.log(isChecked)
-      var changedElement = document.getElementsByClassName('search-field')[0]
+    function handleCheckboxClick(field) {
+      var isChecked = $('#btn-check-' + field).prop('checked');
+      console.log(field + ' ' + isChecked);
+    
+      var changedElement = $('.search-field')[0];
       if (isChecked) {
-        changedElement.id = "query_name_cont"
-        changedElement.name = "query[name_cont]"
+        if (changedElement.id === "query_name_or_address_or_faculity_or_region_cont") {
+          changedElement.id = "query_" + field + "_cont";
+        } else {
+          changedElement.id = "query_" + changedElement.id.split('_')[1] + "_or_" + field + "_cont";
+        }
+      } else {
+        if (changedElement.id === "query_" + field + "_cont") {
+          changedElement.id = "query_name_or_address_or_faculity_or_region_cont";
+        } else {
+          var fieldIndex = changedElement.id.indexOf('_or_' + field + '_cont');
+          changedElement.id = "query_" + changedElement.id.slice(6, fieldIndex) + changedElement.id.slice(fieldIndex + field.length + 4, fieldIndex + field.length + 9 );
+        }
       }
-      else {
-        document.getElementsByClassName('search-field').id = "query_name_or_address_or_faculity_or_region_cont"
-        changedElement.name = "query[name_or_address_or_faculity_or_region_cont]"
-      }
-    });
-
-    $('#btn-check-address').on('click', function() {
-      var isChecked = $(this).prop('checked');
-      console.log(isChecked)
-      var changedElement = document.getElementsByClassName('search-field')[0]
-      if (isChecked) {
-        changedElement.id = "query_address_cont"
-        changedElement.name = "query[address_cont]"
-      }
-      else {
-        document.getElementsByClassName('search-field').id = "query_name_or_address_or_faculity_or_region_cont"
-        changedElement.name = "query[name_or_address_or_faculity_or_region_cont]"
-      }
-    });
-
-    $('#btn-check-region').on('click', function() {
-      var isChecked = $(this).prop('checked');
-      console.log(isChecked)
-      var changedElement = document.getElementsByClassName('search-field')[0]
-      if (isChecked) {
-        changedElement.id = "query_region_cont"
-        changedElement.name = "query[region_cont]"
-      }
-      else {
-        document.getElementsByClassName('search-field').id = "query_name_or_address_or_faculity_or_region_cont"
-        changedElement.name = "query[name_or_address_or_faculity_or_region_cont]"
-      }
-    });
-
-    $('#btn-check-faculity').on('click', function() {
-      var isChecked = $(this).prop('checked');
-      console.log(isChecked)
-      var changedElement = document.getElementsByClassName('search-field')[0]
-      if (isChecked) {
-        changedElement.id = "query_faculity_cont"
-        changedElement.name = "query[faculity_cont]"
-      }
-      else {
-        document.getElementsByClassName('search-field').id = "query_name_or_address_or_faculity_or_region_cont"
-        changedElement.name = "query[name_or_address_or_faculity_or_region_cont]"
-      }
+    }
+    
+    $('#btn-check-name, #btn-check-address, #btn-check-region, #btn-check-faculity').on('click', function() {
+      handleCheckboxClick(this.id.replace('btn-check-', ''));
     });
   }
   

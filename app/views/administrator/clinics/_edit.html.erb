@@ -1,0 +1,35 @@
+<div class="card border-info mb-3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px">
+    <h1 style="margin-left: 150px;padding-bottom: 0px;padding-top:50px">Edit clinic</h1>
+    <div class="card-body">
+      <%= form_with(model: clinic, class: 'needs-validation', novalidate: true) do |form| %>  
+        <div class="form-field">
+          <%= form.label :first_name, 'First Name', class:'form-label' %>
+          <%= form.text_field :first_name, class: 'form-control', required: true %>
+        </div>
+  
+        <div class="form-field">
+          <%= form.label :last_name, 'Last Name', class:'form-label' %>
+          <%= form.text_field :last_name, class: 'form-control', required: true %>
+        </div>
+  
+        <div class="form-field">
+          <%= form.label :title, 'Title', class:'form-label' %>
+          <%= form.text_field :title, class: 'form-control', required: true, placeholder: 'Ex: Author, Poet, Romance Novelist, ...' %>
+        </div>
+
+        <div class="form-field">
+          <%= form.label :email, 'Email', class:'form-label' %>
+          <%= form.text_field :email, class: 'form-control', required: true, placeholder: 'Ex: example@gmail.com, ...' %>
+        </div>
+  
+        <div class="form-field">
+          <%= form.label :picture, 'Picture', class:'form-label' %>
+          <%= form.file_field :picture %>
+        </div>
+               
+        <div class="form-actions" style="text-align:right">
+          <%= form.submit 'Save', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+</div>

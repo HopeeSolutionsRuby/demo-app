@@ -1,141 +1,135 @@
-function ekUpload() {
-  function Init() {
+import { Controller } from "@hotwired/stimulus"
 
-    console.log("Upload Initialised");
+export default class extends Controller {
+  connect() {
+    function ekUpload() {
+      function Init() {
 
-    var fileSelect = document.getElementById('customer_avatar'),
-      fileDrag = document.getElementById('file-drag'),
-      submitButton = document.getElementById('submit-button');
+        console.log("Upload Initialised");
 
-    fileSelect.addEventListener('change', fileSelectHandler, false);
+        var fileSelect = document.getElementById('customer_avatar'),
+          fileDrag = document.getElementById('file-drag'),
+          submitButton = document.getElementById('submit-button');
 
-    // Is XHR2 available?
-    var xhr = new XMLHttpRequest();
-    if (xhr.upload) {
-      // File Drop
-      fileDrag.addEventListener('dragover', fileDragHover, false);
-      fileDrag.addEventListener('dragleave', fileDragHover, false);
-      fileDrag.addEventListener('drop', fileSelectHandler, false);
-    }
-  }
+        fileSelect.addEventListener('change', fileSelectHandler, false);
 
-  function fileDragHover(e) {
-    var fileDrag = document.getElementById('file-drag');
+        // Is XHR2 available?
+        var xhr = new XMLHttpRequest();
+        if (xhr.upload) {
+          // File Drop
+          fileDrag.addEventListener('dragover', fileDragHover, false);
+          fileDrag.addEventListener('dragleave', fileDragHover, false);
+          fileDrag.addEventListener('drop', fileSelectHandler, false);
+        }
+      }
 
-    e.stopPropagation();
-    e.preventDefault();
+      function fileDragHover(e) {
+        var fileDrag = document.getElementById('file-drag');
 
-    fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body customer_avatar');
-  }
+        e.stopPropagation();
+        e.preventDefault();
 
-  function fileSelectHandler(e) {
-    // Fetch FileList object
-    var files = e.target.files || e.dataTransfer.files;
+        fileDrag.className = (e.type === 'dragover' ? 'hover' : 'modal-body customer_avatar');
+      }
 
-    // Cancel event and hover styling
-    fileDragHover(e);
+      function fileSelectHandler(e) {
+        // Fetch FileList object
+        var files = e.target.files || e.dataTransfer.files;
 
-    // Process all File objects
-    for (var i = 0, f; f = files[i]; i++) {
-      parseFile(f);
-      uploadFile(f);
-    }
-  }
+        // Cancel event and hover styling
+        fileDragHover(e);
 
-  // Output
-  function output(msg) {
-    // Response
-    var m = document.getElementById('messages');
-    m.innerHTML = msg;
-  }
+        // Process all File objects
+        for (var i = 0, f; f = files[i]; i++) {
+          parseFile(f);
+          uploadFile(f);
+        }
+      }
 
-  function parseFile(file) {
+      // Output
+      function output(msg) {
+        // Response
+        var m = document.getElementById('messages');
+        m.innerHTML = msg;
+      }
 
-    console.log(file.name);
-    output(
-      '<strong>' + encodeURI(file.name) + '</strong>'
-    );
+      function parseFile(file) {
 
-    // var fileType = file.type;
-    // console.log(fileType);
-    var imageName = file.name;
+        console.log(file.name);
+        output(
+          '<strong>' + encodeURI(file.name) + '</strong>'
+        );
 
-    var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
-    if (isGood) {
-      document.getElementById('start').classList.add("hidden");
-      document.getElementById('response').classList.remove("hidden");
-      document.getElementById('notimage').classList.add("hidden");
-      // Thumbnail Preview
-      document.getElementById('file-image').classList.remove("hidden");
-      document.getElementById('file-image').src = URL.createObjectURL(file);
-      console.log(document.getElementById('file-image'));
-    }
-    else {
-      document.getElementById('file-image').classList.add("hidden");
-      document.getElementById('notimage').classList.remove("hidden");
-      document.getElementById('start').classList.remove("hidden");
-      document.getElementById('response').classList.add("hidden");
-      document.getElementById("file-upload-form").reset();
-    }
-  }
+        var imageName = file.name;
 
-  function setProgressMaxValue(e) {
-    var pBar = document.getElementById('file-progress');
+        var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+        if (isGood) {
+          document.getElementById('start').classList.add("hidden");
+          document.getElementById('response').classList.remove("hidden");
+          document.getElementById('notimage').classList.add("hidden");
+          // Thumbnail Preview
+          document.getElementById('file-image').classList.remove("hidden");
+          document.getElementById('file-image').src = URL.createObjectURL(file);
+          console.log(document.getElementById('file-image'));
+        }
+        else {
+          document.getElementById('file-image').classList.add("hidden");
+          document.getElementById('notimage').classList.remove("hidden");
+          document.getElementById('start').classList.remove("hidden");
+          document.getElementById('response').classList.add("hidden");
+          document.getElementById("file-upload-form").reset();
+        }
+      }
 
-    if (e.lengthComputable) {
-      pBar.max = e.total;
-    }
-  }
+      function setProgressMaxValue(e) {
+        var pBar = document.getElementById('file-progress');
 
-  function updateFileProgress(e) {
-    var pBar = document.getElementById('file-progress');
+        if (e.lengthComputable) {
+          pBar.max = e.total;
+        }
+      }
 
-    if (e.lengthComputable) {
-      pBar.value = e.loaded;
-    }
-  }
+      function updateFileProgress(e) {
+        var pBar = document.getElementById('file-progress');
 
-  function uploadFile(file) {
+        if (e.lengthComputable) {
+          pBar.value = e.loaded;
+        }
+      }
 
-    var xhr = new XMLHttpRequest(),
-      fileInput = document.getElementById('class-roster-file'),
-      pBar = document.getElementById('file-progress'),
-      fileSizeLimit = 1024; // In MB
-    if (xhr.upload) {
-      // Check if file is less than x MB
-      if (file.size <= fileSizeLimit * 1024 * 1024) {
-        // Progress bar
-        pBar.style.display = 'inline';
-        xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
-        xhr.upload.addEventListener('progress', updateFileProgress, false);
+      function uploadFile(file) {
 
-        // File received / failed
-        xhr.onreadystatechange = function (e) {
-          if (xhr.readyState == 4) {
-            // Everything is good!
+        var xhr = new XMLHttpRequest(),
+          fileInput = document.getElementById('class-roster-file'),
+          pBar = document.getElementById('file-progress'),
+          fileSizeLimit = 1024; // In MB
+        if (xhr.upload) {
+          // Check if file is less than x MB
+          if (file.size <= fileSizeLimit * 1024 * 1024) {
+            // Progress bar
+            pBar.style.display = 'inline';
+            xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
+            xhr.upload.addEventListener('progress', updateFileProgress, false);
 
-            // progress.className = (xhr.status == 200 ? "success" : "failure");
-            // document.location.reload(true);
+            // Start upload
+            xhr.open('POST', document.getElementById('file-upload-form').action, true);
+            xhr.setRequestHeader('X-File-Name', file.name);
+            xhr.setRequestHeader('X-File-Size', file.size);
+            xhr.setRequestHeader('Content-Type', 'multipart/form-data');
+            xhr.send(file);
+          } else {
+            output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
           }
-        };
+        }
+      }
 
-        // Start upload
-        xhr.open('POST', document.getElementById('file-upload-form').action, true);
-        xhr.setRequestHeader('X-File-Name', file.name);
-        xhr.setRequestHeader('X-File-Size', file.size);
-        xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-        xhr.send(file);
+      // Check for the various File API support.
+      if (window.File && window.FileList && window.FileReader) {
+        Init();
       } else {
-        output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
+        document.getElementById('file-drag').style.display = 'none';
       }
     }
-  }
-
-  // Check for the various File API support.
-  if (window.File && window.FileList && window.FileReader) {
-    Init();
-  } else {
-    document.getElementById('file-drag').style.display = 'none';
+    ekUpload();
   }
 }
-ekUpload();

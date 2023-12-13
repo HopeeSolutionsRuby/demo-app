@@ -3,9 +3,7 @@
     <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class:'col-auto', remote:true, id: 'search-form', data: { turbo_frame: 'search'} do |f| %>
       <%= f.search_field :name_or_address_or_faculity_or_region_cont, style:"width:200px;height:35px", class:'search-field' %>
       <%= f.button class: 'btn btn-outline-dark', type: 'submit' do %>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-          </svg>
+      <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>
     <% end %> 
   
@@ -27,6 +25,9 @@
     <div class="col-auto">
       <input type="checkbox" class="btn-check" id="btn-check-faculity" name="options" autocomplete="off">
       <label class="btn btn-outline-primary" for="btn-check-faculity">Faculity</label><br>
+    </div>
+
+    <div class="col-auto">
     </div>
   </div>
 </div>
