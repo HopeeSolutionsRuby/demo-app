@@ -1,0 +1,109 @@
+.customer-form {
+  .login-form-content {
+    position: relative;
+
+    #title {
+      font-weight: bold;
+      font-size: 40px;
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    #title-reset-password {
+      font-weight: bold;
+      font-size: 35px;
+      font-family: 'Times New Roman', Times, serif;
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    .new_customer {
+      position: relative;
+
+      .login-input {
+        width: 100%;
+        height: 100px;
+
+        .input-field {
+          border: none;
+          width: 100%;
+          height: 30px;
+          border-bottom: 2px solid #adadad;
+          font-size: 24px;
+          background: #f1f1f1;
+        }
+      }
+
+      .loginbtn {
+        display: block;
+        width: 100%;
+        height: 50px;
+        border: none;
+        background: linear-gradient(120deg, #3498db, #8e44ad, #3498db);
+        background-size: 200%;
+        color: #fff;
+        outline: none;
+        cursor: pointer;
+        transition: 0.5s;
+        font-size: 16px;
+      }
+
+      .bottom-text {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      width: calc(100% - 40px);
+      padding-left: 30px;
+    }
+
+    .back-btn {
+      &:hover,
+      &:active {
+        text-decoration: none;
+        background-color: none;
+        outline: none;
+        border: none;
+        background-image: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      border: none;
+      background-color: transparent;
+      margin-left: 65px;
+    }
+
+    border-radius: 10px;
+    max-width: 400px; /* Set maximum width */
+    width: 100%; /* Make it fill the container */
+    margin: auto;
+    background: #f1f1f1;
+  }
+
+  .forgot-form {
+    height: 100%; /* Fill the container */
+  }
+
+  .change-pass-form {
+    height: 100%; /* Fill the container */
+  }
+
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Use min-height to ensure it covers the entire viewport */
+  width: 100%;
+  font-family: 'Times New Roman', Times, serif;
+  background-image: linear-gradient(120deg, #3498db, #8e44ad);
+}
+
+input:focus {
+  outline: none;
+}
