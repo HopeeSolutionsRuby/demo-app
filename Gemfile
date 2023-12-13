@@ -6,6 +6,8 @@ ruby '3.2.2'
 
 # Gemfile
 gem 'devise'
+gem 'pry-rails', '~> 0.3.9'
+gem 'ransack', '~> 4.1', '>= 4.1.1'
 
 gem 'carrierwave'
 
