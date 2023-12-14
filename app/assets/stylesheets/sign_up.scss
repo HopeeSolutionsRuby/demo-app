@@ -1,6 +1,7 @@
 .toast {
   right: -20px;
   margin-top: 10px;
+  z-index: 9999;
 }
 
 .toast-animation {
@@ -215,5 +216,14 @@ $dark-text: #2b2f38;
     background: $theme;
     border-color: $theme;
     cursor: pointer;
+  }
+  @media screen and (min-height: 600px) {
+    .container {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .uploader {
+      margin-bottom: 2rem;
+    }
   }
 }

@@ -1,8 +1,8 @@
+<%= render "customers/shared/error_login_messages", resource: resource %>
 <div class="customer-form">
   <div class="login-form-content px-4">
     <h2 id="title">Login</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= render "customers/shared/error_login_messages", resource: resource %>
 
       <div class="login-input">
         <%= f.label :email, class: 'label' %><br/>
@@ -24,4 +24,5 @@
   </div>
 </div>
 
+<%= stylesheet_link_tag 'sign_up'%>
 <%= stylesheet_link_tag 'login'%>

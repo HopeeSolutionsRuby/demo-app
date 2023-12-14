@@ -82,6 +82,13 @@ group :development, :test do
 
   gem 'shoulda-callback-matchers'
 
+  gem 'simplecov', require: false
+
+  gem 'sassc-rails'
+
+  gem 'font-awesome-sass', '~> 6.5.1'
+
+  gem 'carrierwave'
   gem 'simplecov'
 
   gem 'debug', platforms: %i[mri windows]
