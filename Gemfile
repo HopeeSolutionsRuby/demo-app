@@ -57,6 +57,16 @@ gem 'rubocop-rails'
 
 gem 'rubocop-rspec', require: false
 
+gem 'sassc-rails'
+
+gem 'font-awesome-sass', '~> 6.5.1'
+
+gem 'devise'
+
+gem 'carrierwave'
+
+gem 'ransack'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
 
@@ -74,19 +84,8 @@ group :development, :test do
 
   gem 'simplecov'
 
-  gem 'sassc-rails'
-
-  gem 'font-awesome-sass', '~> 6.5.1'
-
-  gem 'devise'
-
-  gem 'carrierwave'
-
-
   gem 'debug', platforms: %i[mri windows]
   gem 'letter_opener'
-
-  gem 'ransack'
 
 end
 

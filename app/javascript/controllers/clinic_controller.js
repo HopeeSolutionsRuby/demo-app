@@ -10,15 +10,19 @@ export default class extends Controller {
       if (isChecked) {
         if (changedElement.id === "query_name_or_address_or_faculity_or_region_cont") {
           changedElement.id = "query_" + field + "_cont";
+          changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
         } else {
-          changedElement.id = "query_" + changedElement.id.split('_')[1] + "_or_" + field + "_cont";
+          changedElement.id = "query_" + changedElement.id.slice(6,changedElement.id.length - 5) + "_or_" + field + "_cont";
+          changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
         }
       } else {
         if (changedElement.id === "query_" + field + "_cont") {
           changedElement.id = "query_name_or_address_or_faculity_or_region_cont";
+          changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
         } else {
-          var fieldIndex = changedElement.id.indexOf('_or_' + field + '_cont');
-          changedElement.id = "query_" + changedElement.id.slice(6, fieldIndex) + changedElement.id.slice(fieldIndex + field.length + 4, fieldIndex + field.length + 9 );
+          var fieldIndex = changedElement.id.indexOf('_or_' + field);
+          changedElement.id = "query_" + changedElement.id.slice(6, fieldIndex) + changedElement.id.slice(fieldIndex + field.length + 4, changedElement.id.length);
+          changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
         }
       }
     }
