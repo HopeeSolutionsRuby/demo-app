@@ -92,18 +92,11 @@ group :development, :test do
 
   gem 'shoulda-callback-matchers'
 
-  gem 'simplecov', require: false
+  gem 'simplecov'
 
-  gem 'font-awesome-sass', '~> 6.5.1'
-
-  gem 'devise'
-
-  gem 'carrierwave'
   gem 'debug', platforms: %i[mri windows]
 
   gem 'letter_opener'
-
-  gem 'ransack'
 
 end
 

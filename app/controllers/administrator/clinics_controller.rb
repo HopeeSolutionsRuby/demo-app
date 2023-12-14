@@ -20,62 +20,14 @@ module Administrator
       @pagy, @paginated_clinics = pagy(@clinics, items: 10)
     end
 
-    def new
-      @clinic = Clinic.new
-    end
-
-    def show
-      @clinic = Clinic.find(params[:id])
-    end
-
-    def create
-      @clinic = Clinic.new(clinic_params)
-      respond_to do |format|
-        if @clinic.save
-          format.html { redirect_to '/administrator/clinics', notice: 'Clinic was successfully created.' }
-          format.json { render :show, status: :created, location: @clinic, notice: 'Clinic was successfully created.' }
-        else
-          format.html do
-            redirect_back fallback_location: '/administrator/clinics', alert: @clinic.errors.full_messages.join(', ')
-          end
-          format.json { render :new, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    def edit
-      @clinic = Clinic.find(params[:id])
-    end
-
-    def destroy
-      @clinic = Clinic.find(params[:id])
-      if @clinic.destroy
-        flash[:alert] = 'Clinic has been deleted successfully.'
-        redirect_to administrator_clinics_path
-      else
-        flash[:alert] = 'Failed to delete clinic.'
-        redirect_back(fallback_location: root_path)
-      end
-    end
+    def edit; end
 
     def update
       @clinic = Clinic.find(params[:id])
-
-      if params[:clinic][:pictures].present?
-        existing_pictures = @clinic.pictures || []
-        new_pictures = params[:clinic][:pictures]
-        @clinic.pictures = existing_pictures + new_pictures
-      end
-      respond_to do |format|
-        if @clinic.update(clinic_params.merge(pictures: @clinic.pictures))
-          format.html { redirect_to '/administrator/clinics', notice: 'Clinic was successfully updated.' }
-          format.json { render :index, status: :edited }
-        else
-          format.html do
-            redirect_back fallback_location: '/administrator/clinics', alert: @clinic.errors.full_messages.join(', ')
-          end
-          format.json { render json: @clinic.errors, status: :unprocessable_entity }
-        end
+      if @clinic.update(clinic_params)
+        redirect_to administrator_clinics_path
+      else
+        render :edit
       end
     end
 

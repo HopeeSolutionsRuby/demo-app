@@ -7,54 +7,22 @@ export default class extends Controller {
       console.log(isChecked)
       var changedElement = document.getElementsByClassName('search-field')[0]
       if (isChecked) {
-        changedElement.id = "query_name_cont"
-        changedElement.name = "query[name_cont]"
-      }
-      else {
-        document.getElementsByClassName('search-field').id = "query_name_or_address_or_faculity_or_region_cont"
-        changedElement.name = "query[name_or_address_or_faculity_or_region_cont]"
-      }
-    });
-
-    $('#btn-check-address').on('click', function() {
-      var isChecked = $(this).prop('checked');
-      console.log(isChecked)
-      var changedElement = document.getElementsByClassName('search-field')[0]
-      if (isChecked) {
-        changedElement.id = "query_address_cont"
-        changedElement.name = "query[address_cont]"
-      }
-      else {
-        document.getElementsByClassName('search-field').id = "query_name_or_address_or_faculity_or_region_cont"
-        changedElement.name = "query[name_or_address_or_faculity_or_region_cont]"
-      }
-    });
-
-    $('#btn-check-region').on('click', function() {
-      var isChecked = $(this).prop('checked');
-      console.log(isChecked)
-      var changedElement = document.getElementsByClassName('search-field')[0]
-      if (isChecked) {
-        changedElement.id = "query_region_cont"
-        changedElement.name = "query[region_cont]"
-      }
-      else {
-        document.getElementsByClassName('search-field').id = "query_name_or_address_or_faculity_or_region_cont"
-        changedElement.name = "query[name_or_address_or_faculity_or_region_cont]"
-      }
-    });
-
-    $('#btn-check-faculity').on('click', function() {
-      var isChecked = $(this).prop('checked');
-      console.log(isChecked)
-      var changedElement = document.getElementsByClassName('search-field')[0]
-      if (isChecked) {
-        changedElement.id = "query_faculity_cont"
-        changedElement.name = "query[faculity_cont]"
-      }
-      else {
-        document.getElementsByClassName('search-field').id = "query_name_or_address_or_faculity_or_region_cont"
-        changedElement.name = "query[name_or_address_or_faculity_or_region_cont]"
+        if (changedElement.id === "query_name_or_address_or_faculity_or_region_cont") {
+          changedElement.id = "query_" + field + "_cont";
+          changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
+        } else {
+          changedElement.id = "query_" + changedElement.id.slice(6,changedElement.id.length - 5) + "_or_" + field + "_cont";
+          changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
+        }
+      } else {
+        if (changedElement.id === "query_" + field + "_cont") {
+          changedElement.id = "query_name_or_address_or_faculity_or_region_cont";
+          changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
+        } else {
+          var fieldIndex = changedElement.id.indexOf('_or_' + field);
+          changedElement.id = "query_" + changedElement.id.slice(6, fieldIndex) + changedElement.id.slice(fieldIndex + field.length + 4, changedElement.id.length);
+          changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
+        }
       }
     });
   }
