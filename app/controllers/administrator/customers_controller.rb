@@ -3,10 +3,13 @@
 module Administrator
   # class Dashboard Controller
   class CustomersController < BaseController
-    def index
-      
-      @q = Customer.ransack(params[:q])
-      @customers = @q.result(distinct: true).order(created_at: :asc)
+    include Pagy::Backend
+
+    def index      
+      @q = Customer.ransack(search_params[:q])
+
+      @customers = @q.result(distinct: true)
+      @pagy, @customers = pagy(@customers, items: 50)
 
     end
     def set_customer
@@ -17,5 +20,8 @@ module Administrator
       params.require(:customer).permit(:full_name, :age, :sex, :email, :phone, :address, :avatar)
     end
     
+    def search_params
+      params.permit(:format, :page, q: [:full_name_or_age_or_email_cont])
+    end
   end
 end

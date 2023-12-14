@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Customer < ApplicationRecord
-  validates :phone, numericality: { only_integer: true, message: 'Please enter only numbers' }
+  # validates :phone, numericality: { only_integer: true, message: 'Please enter only numbers' }
 
   # devise :database_authenticatable, :registerable,
-  #        :recoverable, :rememberable, :validatable
+  #        :recoverable, :rememberable, :validatable,
+  #        :confirmable, :lockable, :trackable
 
   enum sex: { male: 0, female: 1 }
 

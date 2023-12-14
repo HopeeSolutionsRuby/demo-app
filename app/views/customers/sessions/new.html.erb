@@ -1,26 +1,28 @@
-<h2>Log in</h2>
+<%= render "customers/shared/error_login_messages", resource: resource %>
+<div class="customer-form">
+  <div class="login-form-content px-4">
+    <h2 id="title">Login</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="login-input">
+        <%= f.label :email, class: 'label' %><br/>
+        <%= f.email_field :email, autocomplete: "email", class: 'input-field', required: true%>
+      </div>
+
+      <div class="login-input">
+        <%= f.label :password, class: 'label' %><br/>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'input-field', required: true %>
+      </div>
+      
+      <input type="submit" name="commit" class="loginbtn" value="Log in" data-disable-with="Log in">
+
+      <div class="bottom-text">
+        <span class="forgotpwd">Forgot <%= link_to "Password", new_password_path(resource_name)%> ?</span><br>
+        <span class="signup">Don't have an account? <a href="/customers/sign_up">Sign up</a></span>
+      </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "customers/shared/links" %>
+<%= stylesheet_link_tag 'sign_up'%>
+<%= stylesheet_link_tag 'login'%>

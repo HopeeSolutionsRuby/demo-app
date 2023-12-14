@@ -10,62 +10,83 @@
         </div>
         <div class="col-auto order-md-1">
           <ul class='navbar-nav navbar-nav-icons flex-row me-n2'>
-            <!-- Example single danger button -->
             <li class='nav-item dropdown'>
               <a class="nav-link px-2" id="navbarDropdownUser" href="#" role="button" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <i class="fa-regular fa-user"></i>
               </a>
-              <div
-                class='dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300 mt-2'
-                aria-labelledby="navbarDropdownUser">
-                <div class='card position-relative border-0'>
-                  <div class='card-body p-0'>
-                    <div class='text-center pt-4 pb-3'>
-                      <div class='avatar avatar-xl '>
-                        <%= image_tag 'oba' , class: 'rounded-circle mx-auto' %>
+                <% if customer_signed_in? %>
+                  <div
+                    class='dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300 mt-2'
+                    aria-labelledby="navbarDropdownUser">
+                    <div class='card position-relative border-0'>
+                      <div class='card-body p-0'>
+                        <div class='text-center pt-4 pb-3'>
+                          <div class='avatar avatar-xl '>
+                            <%= image_tag src="#{current_customer.avatar}", class: 'rounded-circle mx-auto d-block', style: 'width: 50px; height: 50px; object-fit: cover; object-position: center center; border-radius: 50%;' %>
+                          </div>
+                          <h6 class='mt-2 text-black fw-bold'><%= current_customer.email %></h6>
+                        </div>
                       </div>
-                      <h6 class='mt-2 text-black fw-bold'>Phi Hoan Dep Trai</h6>
+
+                      <div class='overflow-auto scrollbar' style="height: 10rem;">
+                        <ul class='nav d-flex flex-column mb-2 pb-1'>
+                          <li class='nav-item'>
+                            <a class='nav-link px-3' href=""><i class="fa-solid fa-user me-2"></i>
+                              <span>Profile</span>
+                            </a>
+                          </li>
+                          <li class='nav-item'>
+                            <a class='nav-link px-3' href=""><i class="fa-regular fa-calendar-check me-2"></i>
+                              <span>Schedule</span>
+                            </a>
+                          </li>
+                          <li class='nav-item'>
+                            <a class='nav-link px-3' href=""><i class="fa-solid fa-sliders me-2"></i>
+                              <span>Settings & Privacy </span>
+                            </a>
+                          </li>
+                          <li class='nav-item'>
+                            <a class='nav-link px-3' href=""><i class="fa-regular fa-circle-question me-2"></i>
+                              <span>Help Center</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class='card-footer p-0 border-top'>
+
+                        <div class='p-3 btn__log-out'>
+                          <a data-turbo-method="delete" href="/customers/sign_out" class='btn d-flex justify-content-center align-items-center w-100 '>
+                            <i class="fa-solid fa-right-from-bracket"></i>                            
+                            <span>Log out</span>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  <div class='overflow-auto scrollbar' style="height: 10rem;">
-                    <ul class='nav d-flex flex-column mb-2 pb-1'>
-                      <li class='nav-item'>
-                        <a class='nav-link px-3' href=""><i class="fa-solid fa-user me-2"></i>
-                          <span>Profile</span>
-                        </a>
-                      </li>
-                      <li class='nav-item'>
-                        <a class='nav-link px-3' href=""><i class="fa-regular fa-calendar-check me-2"></i>
-                          <span>Schedule</span>
-                        </a>
-                      </li>
-                      <li class='nav-item'>
-                        <a class='nav-link px-3' href=""><i class="fa-solid fa-sliders me-2"></i>
-                          <span>Settings & Privacy </span>
-                        </a>
-                      </li>
-                      <li class='nav-item'>
-                        <a class='nav-link px-3' href=""><i class="fa-regular fa-circle-question me-2"></i>
-                          <span>Help Center</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class='card-footer p-0 border-top'>
-
-                    <div class='p-3 btn__log-out'>
-                      <a href="" class='btn d-flex justify-content-center align-items-center w-100 '>
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        <span>Log out</span>
-                      </a>
+                <% else %>
+                  <div
+                    class='dropdown-menu dropdown-menu-end navbar-dropdown-caret py-0 dropdown-profile shadow border border-300 mt-2'
+                    aria-labelledby="navbarDropdownUser">
+                    <div class='card position-relative border-0'>
+                      <div class='card-body p-0'>
+                        <div class='text-center pt-4 pb-3'>
+                            <i class="fa-regular fa-circle-user fa-2xl"></i>
+                          <h6 class='mt-2 text-black fw-bold'>User</h6>
+                        </div>
+                      </div>
+                      <div class='card-footer p-0 border-top'>
+                        <div class='p-3 btn__log-out'>
+                          <a href="/customers/sign_in" class='btn d-flex justify-content-center align-items-center w-100 '>
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>                            
+                            <span>Sign_in</span>
+                          </a>
+                        </div>
+                      </div>
                     </div>
-
                   </div>
-                </div>
-              </div>
-            </li>
+                <% end %>
+              </li>
           </ul>
         </div>
 

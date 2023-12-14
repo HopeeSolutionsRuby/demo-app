@@ -1,19 +1,32 @@
- <p>
-    <strong>First name:</strong>
-    <%= customer.full_name %>
-    <%= highlight(customer.full_name, params.dig(:q, :full_name_or_age_or_email_cont)) %>
-  </p>
 
-  <p>
-    <strong>Last name:</strong>
-    <%= customer.age %>
-    <%= highlight(customer.age, params.dig(:q, :full_name_or_age_or_email_cont)) %>
-  </p>
+<%@customers.each  do |customer|%>
+<div id="<%= dom_id customer %>">
 
-  <p>
-    <strong>Email:</strong>
-    <%= customer.email %>
-    <%= highlight(customer.email, params.dig(:q, :full_name_or_age_or_email_cont)) %>
-  </p>
 
+<div class="simplebar-mask"  >
+  <tr class="hover-actions-trigger btn-reveal-trigger position-static">                     
+    <td class="customer align-middle white-space-nowrap pe-5">
+      <a class="d-flex align-items-center text-1100" href="">
+        <p class="mb-0 ms-3 text-1100 fw-bold">
+            <%= highlight(customer.full_name, params.dig(:q, :full_name_or_age_or_email_cont)) %>
+        </p>
+      </a>
+    </td>
+    <td class="email align-middle white-space-nowrap pe-5">
+      <a class="fw-semi-bold" href="mailto:annac34@gmail.com">
+        <%= highlight(customer.email, params.dig(:q, :full_name_or_age_or_email_cont)) %>
+      </a>
+    </td>
+    <td class="total-orders align-middle white-space-nowrap fw-semi-bold text-end text-1000">
+      <%= customer.age %>
+    </td>
+    <td class="total-spent align-middle white-space-nowrap fw-semi-bold text-end ps-3 text-1100">
+      <%= customer.phone %>
+    </td>
+    <td class="city align-middle white-space-nowrap text-1000 text-end ps-7">
+      <%= customer.address %>
+    </td>
+  </tr>
 </div>
+</div>
+<% end %>

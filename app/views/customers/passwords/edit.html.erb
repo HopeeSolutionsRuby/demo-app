@@ -1,25 +1,26 @@
-<h2>Change your password</h2>
+<div class="customer-form">
+  <div class="login-form-content change-pass-form px-4">
+    <h2 id="title-reset-password">Change your password</h2>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "customers/shared/error_messages", resource: resource %>
+      <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "customers/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+      <div class="login-input">
+        <%= f.label :password, "New password", class: 'label' %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+        <% end %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'input-field' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <div class="login-input">
+        <%= f.label :password_confirmation, "Confirm new password", class: 'label' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-field' %>
+      </div>
+
+      <input type="submit" name="commit" class="loginbtn" value="Change my password" data-disable-with="Change my password">       
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "customers/shared/links" %>
+<%= stylesheet_link_tag 'login'%>
