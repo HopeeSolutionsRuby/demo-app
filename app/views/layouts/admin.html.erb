@@ -6,6 +6,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag do %>
+      "administrator/authentication",
+      "administrator/forgot_password",
+      "administrator/header",
+      "administrator/sidebar",
+      "administrator/table_admin"
+    <% end %>
     <%= javascript_importmap_tags %>
   </head>
 
