@@ -17,5 +17,3 @@ unless admin.persisted?
   admin.password_confirmation = 'admin123'
   admin.save
 end
-
-# Customer.create(full_name: 'Nguyễn Văn Minh', age: 24, gender: 'male', email: 'minh@gmail.com', avatar: 'logo.png')
