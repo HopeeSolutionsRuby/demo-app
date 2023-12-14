@@ -16,7 +16,32 @@ module Administrator
       @pagy, @paginated_clinics = pagy(@clinics, items: 10)
     end
 
-    def edit; end
+    def new
+      @clinic = Clinic.new
+    end
+
+    def show
+      @clinic = Clinic.find(params[:id])
+    end
+    def create
+      # book_params.inspect
+      @clinic = Clinic.new(clinic_params)
+
+      respond_to do |format|
+        if @clinic.save
+          format.html { redirect_to '/administrator/clinics', notice: 'Clinic was successfully created.' }
+          format.json { render :show, status: :created, location: @clinic }
+        else
+          errors_message = @clinic.errors.full_messages.join(', ')
+          format.html { redirect_to '/administrator/clinics', notice: errors_message }
+          format.json { render json: @clinic.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def edit
+      @clinic = Clinic.find(params[:id])
+    end
 
     def update
       @clinic = Clinic.find(params[:id])
@@ -29,8 +54,8 @@ module Administrator
 
     private
 
-    def author_params
-      params.require(:author).permit(:id, :name, :address, :region, :faculity, { pictures: [] })
+    def clinic_params
+      params.require(:clinic).permit(:id, :name, :address, :region, :faculity, pictures: [])
     end
 
     def search_params

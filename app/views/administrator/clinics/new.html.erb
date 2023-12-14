@@ -1,7 +1,3 @@
-<% image_test = []  %>
-<% 30.times do |i| %>
-<% image_test << {url:"https://i.imgur.com/0eg0aG0.jpg"} %>
-<% end %>
 <div class="container rounded bg-white mt-5" style="border: solid 1px;">
   <div class="row">
     <div class="col-md-4 border-right" style="overflow-y: scroll; height:379px">
@@ -10,21 +6,12 @@
           <h5 class="font-weight-bold">Clinic Picture</h5>
         </div>
         <div class="col-md-4">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<%=@clinic.id%>">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPictureModal">
             +
           </button>
         </div>
       </div>
       <div class="row mt-2">
-        <% image_test.each_slice(2) do |images_row| %>
-          <div class="row mt-2 w-100">
-            <% images_row.each do |image| %>
-              <div class="col-md-6">
-                <%= image_tag image[:url], class: 'img-fluid rounded mb-2', heigh:'200px', width: '200px'%>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
       </div>      
     </div>
     <div class="col-md-8">
@@ -36,7 +23,7 @@
           <% end %>
           <h6 class="text-right">Edit Profile</h6>
         </div>
-        <%= form_with(model: @clinic, url: administrator_clinic_path(@clinic), class: 'needs-validation', novalidate: true, local: true, html: {multipart: true}) do |form| %>
+        <%= form_with(model: @clinic, url: administrator_clinics_path, class: 'needs-validation', novalidate: true, multipart: true) do |form| %>
           <div class="row mt-2">
             <div class="col-md-6">
               <%= form.label :name, 'Name', class:'form-label' %>
@@ -62,7 +49,6 @@
           <div class="form-actions" style="text-align:right">
             <%= form.submit 'Save', class: 'btn btn-primary' %>
           </div>
-          <%= render 'administrator/clinics/modal',clinic: @clinic, form: form %>
         <% end %>
       </div>
     </div>
