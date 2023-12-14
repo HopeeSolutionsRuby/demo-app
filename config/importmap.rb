@@ -5,13 +5,10 @@ pin '@hotwired/turbo-rails', to: 'turbo.min.js', preload: true
 pin '@hotwired/stimulus', to: 'stimulus.min.js', preload: true
 pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js', preload: true
 pin_all_from 'app/javascript/controllers', under: 'controllers'
-<<<<<<< HEAD
 pin '@popperjs/core', to: 'popper.js', preload: true
-=======
-pin 'jquery', to: 'jquery.min.js', preload: true
-pin 'popper', to: 'popper.js', preload: true
->>>>>>> 4e61298 ([Issue 33]: Fix Reviews)
 pin 'bootstrap', to: 'bootstrap.min.js', preload: true
 pin "jquery", to: "jquery.min.js", preload: true
 pin "jquery_ujs", to: "jquery_ujs.js", preload: true
 pin "jquery-ui", to: "jquery-ui.min.js", preload: true
+pin "dropzone", to: "https://ga.jspm.io/npm:dropzone@6.0.0-beta.2/dist/dropzone.mjs"
+pin "just-extend", to: "https://ga.jspm.io/npm:just-extend@5.1.1/index.esm.js"

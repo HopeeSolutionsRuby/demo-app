@@ -98,6 +98,7 @@ group :development, :test do
 
   gem 'letter_opener'
 
+  gem 'letter_opener'
 end
 
 group :development do

@@ -1,84 +1,195 @@
 import { Controller } from "@hotwired/stimulus";
+import Dropzone from "dropzone";
+import {
+  getMetaValue,
+  findElement,
+  removeElement,
+  insertAfter,
+} from "../helpers/dropzone";
+
+// Dropzone.autoDiscover = false;
 
 export default class extends Controller {
-  static targets = ["input", "previewContainer"];
+  static targets = ["input"];
+
   connect() {
-    this.inputTarget.addEventListener("change", this.previewImages.bind(this));
-    this.inputTarget.addEventListener("input", this.handleInput.bind(this));
+    this.dropZone = createDropZone(this);
+    this.hideFileInput();
+    this.bindEvents();
   }
 
-  handleInput() {
-    if (!this.inputTarget.value) {
-      $(".drag").removeClass("d-none");
-      const preview = this.previewContainerTarget;
-      const existingImages = preview.querySelectorAll(".preview-image");
-      const existingIcons = preview.querySelectorAll(".close-icon");
-      existingImages.forEach((image) => {
-        image.remove();
-      });
-      existingIcons.forEach((icon) => {
-        icon.remove();
-      });
-    }
+  // Private
+  hideFileInput() {
+    this.inputTarget.disabled = true;
+    this.inputTarget.style.display = "none";
   }
 
-  previewImages() {
-    const files = this.inputTarget.files;
-    if (files && files.length > 0) {
-      $(".drag").addClass("d-none");
-      const preview = this.previewContainerTarget;
-      const existingImages = preview.querySelectorAll(".preview-image");
-      const existingIcons = preview.querySelectorAll(".close-icon");
-      existingImages.forEach((image) => {
-        image.remove();
-      });
-      existingIcons.forEach((icon) => {
-        icon.remove();
-      });
-      this.handleInput();
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const imgContainer = document.createElement("div");
-        imgContainer.classList.add("image-container");
-        const img = document.createElement("img");
-        img.src = URL.createObjectURL(file);
-        img.classList.add("preview-image");
-        img.setAttribute("data-name", file.name);
-        imgContainer.appendChild(img);
+  bindEvents() {
+    this.dropZone.on("addedfile", (file) => {
+      setTimeout(() => {
+        file.accepted && createDirectUploadController(this, file).start();
+      }, 500);
+    });
 
-        const closeIcon = document.createElement("i");
-        closeIcon.classList.add("fa", "fa-circle-xmark");
-        closeIcon.classList.add("fa-regular", "close-icon");
-        closeIcon.addEventListener("click", this.deleteImage.bind(this));
-        imgContainer.appendChild(closeIcon);
+    this.dropZone.on("removedfile", (file) => {
+      file.controller && removeElement(file.controller.hiddenInput);
+    });
 
-        preview.appendChild(imgContainer);
+    this.dropZone.on("canceled", (file) => {
+      file.controller && file.controller.xhr.abort();
+    });
+
+    this.dropZone.on("processing", (file) => {
+      this.submitButton.disabled = true;
+    });
+
+    this.dropZone.on("queuecomplete", (file) => {
+      this.submitButton.disabled = false;
+    });
+
+    this.form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      // console.log(this.form)
+      const picturesInputName = "clinic[pictures][]";
+      console.log(this.dropZone.files)
+      this.dropZone.files.forEach((file) => {
+        const hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = picturesInputName;
+        hiddenInput.value = file.signed_id;
+        this.form.appendChild(hiddenInput);
+      });
+      this.form.submit();
+    });
+  }
+
+  get headers() {
+    return { "X-CSRF-Token": getMetaValue("csrf-token") };
+  }
+
+  get url() {
+    return this.inputTarget.getAttribute("data-direct-upload-url");
+  }
+
+  get maxFiles() {
+    return this.data.get("maxFiles") || 1;
+  }
+
+  get maxFileSize() {
+    return this.data.get("maxFileSize") || 256;
+  }
+
+  get acceptedFiles() {
+    return this.data.get("acceptedFiles");
+  }
+
+  get addRemoveLinks() {
+    return this.data.get("addRemoveLinks") || true;
+  }
+
+  get form() {
+    return this.element.closest("form");
+  }
+
+  get submitButton() {
+    return findElement(this.form, "input[type=submit], button[type=submit]");
+  }
+}
+
+class DirectUploadController {
+  constructor(source, file) {
+    this.directUpload = createDirectUpload(file, source.url, this);
+    this.source = source;
+    this.file = file;
+  }
+
+  start() {
+    this.file.controller = this;
+    this.hiddenInput = this.createHiddenInput();
+    this.directUpload.create((error, attributes) => {
+      if (error) {
+        removeElement(this.hiddenInput);
+        this.emitDropzoneError(error);
+      } else {
+        this.hiddenInput.value = attributes.signed_id;
+        this.emitDropzoneSuccess();
       }
-    }
+    });
   }
 
-  deleteImage(event) {
-    if (event.target.classList.contains("close-icon")) {
-      const confirmed = confirm("Are you sure you want to delete this image?");
-      if (confirmed) {
-        const imageContainer = event.target.parentElement;
-        const fileToRemove = imageContainer
-          .querySelector(".preview-image")
-          .getAttribute("data-name");
-
-        imageContainer.remove();
-        const files = Array.from(this.inputTarget.files);
-        const updatedFiles = files.filter((file) => {
-          return file.name !== fileToRemove;
-        });
-
-        const newFileList = new DataTransfer();
-        updatedFiles.forEach((file) => {
-          newFileList.items.add(file);
-        });
-
-        this.inputTarget.files = newFileList.files;
-      }
-    }
+  // Private
+  createHiddenInput() {
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = this.source.inputTarget.name;
+    input.value = this.file.signed_id;
+    insertAfter(input, this.source.inputTarget);
+    return input;
   }
+
+  directUploadWillStoreFileWithXHR(xhr) {
+    this.bindProgressEvent(xhr);
+    this.emitDropzoneUploading();
+  }
+
+  bindProgressEvent(xhr) {
+    this.xhr = xhr;
+    this.xhr.upload.addEventListener("progress", (event) =>
+      this.uploadRequestDidProgress(event)
+    );
+  }
+
+  uploadRequestDidProgress(event) {
+    const element = this.source.element;
+    const progress = (event.loaded / event.total) * 100;
+    findElement(
+      this.file.previewTemplate,
+      ".dz-upload"
+    ).style.width = `${progress}%`;
+  }
+
+  emitDropzoneUploading() {
+    this.file.status = Dropzone.UPLOADING;
+    this.source.dropZone.emit("processing", this.file);
+  }
+
+  emitDropzoneError(error) {
+    this.file.status = Dropzone.ERROR;
+    this.source.dropZone.emit("error", this.file, error);
+    this.source.dropZone.emit("complete", this.file);
+  }
+
+  emitDropzoneSuccess() {
+    this.file.status = Dropzone.SUCCESS;
+    this.source.dropZone.emit("success", this.file);
+    this.source.dropZone.emit("complete", this.file);
+  }
+}
+
+// Top level...
+function createDirectUploadController(source, file) {
+  return new DirectUploadController(source, file);
+}
+
+function createDirectUpload(file, url, controller) {
+  return new DirectUpload(file, url, controller);
+}
+
+function createDropZone(controller) {
+  return new Dropzone(controller.element, {
+    url: controller.url,
+    headers: controller.headers,
+    maxFiles: controller.maxFiles,
+    maxFilesize: controller.maxFileSize,
+    acceptedFiles: controller.acceptedFiles,
+    addRemoveLinks: controller.addRemoveLinks,
+    paramName: "pictures[]",
+    autoQueue: false,
+  });
+  // var mediaDropzone;
+  // mediaDropzone = new Dropzone("#media-dropzone");
+  // return mediaDropzone.on("success", function(file, responseText) {
+  //   var imageUrl;
+  //   imageUrl = responseText.file_name.url;
+  // });
 }

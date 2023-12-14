@@ -7,6 +7,7 @@
       <th style="width: 100px; max-width: 100px; overflow: hidden;">Region</th>
       <th style="width: 100px; max-width: 100px; overflow: hidden;">Faculity</th>
       <th style="width: 50px; max-width: 50px; overflow: hidden;">Edit</th>
+      <th style="width: 50px; max-width: 50px; overflow: hidden;">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -17,8 +18,13 @@
         <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis;"><%= clinic[:address] %></td>
         <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= clinic[:region] %></td>
         <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;"><%= clinic[:faculity] %></td>
-        <td style="max-width: 50px; overflow: hidden; text-overflow: ellipsis;">
-          <%= link_to "Edit", edit_administrator_clinic_path(clinic.id), class: "btn btn-primary", role: "button" %>
+        <td style="max-width: calc(100% - 600px); overflow: hidden; text-overflow: ellipsis;">
+          <%= link_to "View", administrator_clinic_path(clinic.id), class: "btn btn-primary", role: "button", data: { turbo_frame: "_top" } %>
+        </td>
+        <td style="width: 75px;">
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal<%= clinic.id %>">
+            Delete
+          </button>
         </td>
       </tr>
     <% end %>
