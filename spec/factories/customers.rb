@@ -8,6 +8,6 @@ FactoryBot.define do
     password_confirmation { password }
     age { Faker::Number.between(from: 0, to: 100) }
     gender { %w[male female other].sample }
-    avatar { "avatar_#{rand(1..2)}.png" }
+    avatar { Faker::Avatar.image }
   end
 end

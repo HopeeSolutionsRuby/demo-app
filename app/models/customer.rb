@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
   # Enum gender
   enum gender: { male: 0, female: 1, other: 2 }
 
-  def self.not_send
+  def self.not_send_email
     def send_devise_notification(notification, *args); end
   end
 end

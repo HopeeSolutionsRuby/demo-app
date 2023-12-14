@@ -3,5 +3,16 @@
     width: 45px;
     height: 45px;
   }
-}
 
+  .border-bottom {
+    border-bottom: 1px dashed #cbd0dd00;
+  }
+
+  .avatar-show {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

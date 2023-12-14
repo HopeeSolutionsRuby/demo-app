@@ -7,35 +7,28 @@
           <th>Full name</th>
           <th>Email</th>
           <th>Age</th>
-          <th>Gender</th>
+          <th>Gender</th> 
         </tr>
       </thead>
       <tbody>
         <% customers.each do |customer| %>
-          <#% puts "==========#{customer.inspect}==============" %>
           <tr>
-            <td>
-              <div>
-                <%= image_tag customer[:avatar], class: "rounded-circle avatar" %>
-              </div>
-            </td>
-            <td>           
-              <div class="ms-3">
-                <span class="fw-bold mb-1"><%= customer[:avatar] %></span>           
-              </div>             
+            <td>              
+              <%= image_tag "avatar_#{rand(1..2)}.png", class: "rounded-circle avatar" %>
             </td>
             <td>
-              <p class="fw-normal mb-1">Software engineer</p>
-              <p class="text-muted mb-0">IT department</p>
+              <%= link_to administrator_customer_path(customer), class: 'text-decoration-none' do %>
+                <span class="fw-bold"><%= customer[:full_name] %></span>
+              <% end %>            
             </td>
             <td>
-              <span class="badge badge-success rounded-pill d-inline">Active</span>
+              <span class="fw-normal"><%= customer[:email] %></span>
             </td>
-            <td>Senior</td>
             <td>
-              <button type="button" class="btn btn-link btn-sm btn-rounded">
-                Edit
-              </button>
+              <span class="fw-normal"><%= customer[:age] %></span>
+            </td>
+            <td>
+              <span class="fw-normal"><%= customer[:gender].capitalize %></span>
             </td>
           </tr>
         <% end %>
