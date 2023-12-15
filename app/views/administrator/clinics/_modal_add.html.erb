@@ -1,4 +1,4 @@
-<div class="modal fade" id="editModal<%=clinic.id%>" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+<div class="modal fade" id="addModal<%=clinic.id%>" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -10,12 +10,11 @@
         <div data-controller="dropzone" class="dropzone dz-clickable" data-dropzone-user-id-value="<%= clinic.id %>">
         </div>
       </div>
-
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-  <!--      <div class="form-actions" style="text-align:right">-->
-          <%#= form.submit 'Save' , class: 'btn btn-primary' %>
-<!--        </div>-->
+        <div class="form-actions" style="text-align:right">
+          <%= form.submit 'Save' , class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
   </div>

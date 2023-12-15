@@ -1,13 +1,13 @@
-<div class="container rounded bg-white mt-5" style="border: solid 1px;">
+<div class="container rounded bg-white mt-5",data-controller="dropzone", style="border: solid 1px;">
   <div class="row">
     <div class="col-md-4 border-right" style="overflow-y: scroll; height:379px">
       <div class="row mt-2">
-        <div class="col-md-8">
-          <h5 class="font-weight-bold">Clinic Picture</h5>
+        <div class="col-md-6">
+          <h4 class="font-weight-bold">Clinic Picture</h4>
         </div>
-        <div class="col-md-4">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<%=@clinic.id%>">
-            +
+        <div class="col-auto ms-auto">
+          <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal<%=@clinic.id%>">
+          Add pictures
           </button>
         </div>
       </div>
@@ -55,8 +55,9 @@
               <%= form.text_field :faculity, class: 'form-control', required: true %>
             </div>
           </div>
-          <div class="form-actions" style="text-align:right">
-            <%= form.submit 'Save', class: 'btn btn-primary' %>
+          <div class="form-actions mt-2" style="text-align:right">
+            <%= form.submit 'Save', class: 'btn btn-primary',id:"submitButton" %>
+            <%= button_to 'Cancel', administrator_clinics_path, class:"btn btn-danger" %>
           </div>
           <%= render 'administrator/clinics/modal',clinic: @clinic, form: form %>
         <% end %>

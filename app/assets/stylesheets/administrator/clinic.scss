@@ -5,7 +5,7 @@ $toggle-width: 100px;
 $toggle-height: 50px;
 $toggle-gutter: 5px;
 $toggle-radius: 50%;
-$toggle-control-speed: .15s;
+$toggle-control-speed: 0.15s;
 $toggle-control-ease: ease-in;
 
 // These are our computed variables
@@ -32,7 +32,7 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 
   input:checked ~ .control {
     background-color: $toggle-background-color-on;
-    
+
     &:after {
       left: $toggle-width - $toggle-control-size - $toggle-gutter;
     }
@@ -50,7 +50,7 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 
     &:after {
       content: "";
-    //   position: absolute;
+      //   position: absolute;
       left: $toggle-gutter;
       top: $toggle-gutter;
       width: $toggle-control-size;
@@ -62,14 +62,13 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   }
 }
 
-
 .form-control:focus {
   box-shadow: none;
-  border-color: #BA68C8;
+  border-color: #ba68c8;
 }
 
 .profile-button {
-  background: #BA68C8;
+  background: #ba68c8;
   box-shadow: none;
   border: none;
 }
@@ -93,8 +92,11 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   cursor: pointer;
 }
 
-.unstyled-link, .unstyled-link:hover, .unstyled-link:active, .unstyled-link:focus {
-  text-decoration: none; 
+.unstyled-link,
+.unstyled-link:hover,
+.unstyled-link:active,
+.unstyled-link:focus {
+  text-decoration: none;
   color: inherit;
 }
 .file-input {
@@ -123,3 +125,6 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   font-style: italic;
   color: #555;
 }
+// .dz-progress {
+//   display: none;
+// }
