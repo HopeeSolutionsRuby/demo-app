@@ -20,15 +20,15 @@ module Administrator
     end
 
     def update
-      puts "======================"
       if @customer.update(customer_params)
         flash[:notice] = 'Customer information updated successfully.'
         redirect_to administrator_customers_path
       else
+        flash[:alert] = "Cannot update the customer: #{customer.errors.full_messages.join(', ')}"
         render 'edit'
       end
     end
-  
+
     private
   
     def set_customer
