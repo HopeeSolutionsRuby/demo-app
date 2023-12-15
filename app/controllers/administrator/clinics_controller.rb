@@ -51,7 +51,13 @@ module Administrator
         render :edit
       end
     end
-
+    def destroy 
+      @clinic = Clinic.find(params[:id])
+      if @clinic.destroy
+        redirect_to administrator_clinics_path
+      end
+    end
+    
     private
 
     def clinic_params
