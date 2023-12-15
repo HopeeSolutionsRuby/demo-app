@@ -20,6 +20,7 @@ export default class extends Controller {
       document.querySelector('.sidebar-wrapper').style.width = (document.querySelector('.sidebar-wrapper').style.width === '250px') ? '70px' : '250px';
       document.querySelector('.nav-footer').style.width = (document.querySelector('.nav-footer').style.width === '250px') ? '70px' : '250px';
       document.querySelector('.change-icon').className = (document.querySelector('.change-icon').className === 'fa-solid fa-arrow-left change-icon') ? 'fa-solid fa-right-from-bracket change-icon' : 'fa-solid fa-arrow-left change-icon'
+      document.querySelector('.body-content').classList.toggle('w-100');
     });
   }
 }

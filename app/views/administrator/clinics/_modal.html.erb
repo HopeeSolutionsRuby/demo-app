@@ -1,0 +1,32 @@
+<div class="modal fade" id="editModal<%=clinic.id%>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Upload Picture</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" data-controller="clinic">
+          <div id='upload-dropzone' class="dropzone" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-max-files="2" data-upload-multiple="true" data-dropzone-accepted-files="image/*">
+            <%= form.file_field :pictures, multiple: true, direct_upload: true, data: { dropzone_target: 'input' } %>
+            <div class="dropzone-msg dz-message needsclick">
+              <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+              <span class="dropzone-msg-desc">2 MB file size maximum. Allowed file types png, jpg.</span>
+            </div>
+          </div>
+          <%= form.file_field :pictures, multiple: true %>
+          <!-- <%= form_tag '/media_contents', method: :post, class: "dropzone", id: "media-dropzone" do %>
+            <div class="fallback">
+              <%= file_field_tag "media", multiple: true %>
+            </div>
+          <% end %> -->
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="form-actions" style="text-align:right">
+            <%= form.submit 'Save', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

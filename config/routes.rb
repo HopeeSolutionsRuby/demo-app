@@ -12,5 +12,6 @@ Rails.application.routes.draw do
       passwords: 'administrator/passwords'
     }, path: '', skip: [:registrations]
     resources :dashboard
+    resources :clinics
   end
 end
