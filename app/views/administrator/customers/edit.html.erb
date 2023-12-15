@@ -1,0 +1,28 @@
+<div id="table-admin">
+  <div class="container mt-3">
+    <%= form_with(model: @customer, url: administrator_customer_path(@customer), local: true) do |form| %>
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-lg-6">
+          <%= form.label :full_name, class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.text_field :full_name, class: "form-control", placeholder: "Full name" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :gender, class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.select :gender, [['Male', 'male'], ['Female', 'female'], ['Other', 'other']], {}, class: "form-select" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :email, "Email", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :age, "Age", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.number_field :age, class: "form-control", placeholder: "Age" %>
+        </div>
+      </div>
+      <div class="text-end">
+        <%= button_to "Back to home", administrator_customer_path, class: "btn btn-secondary" %>
+        <%= form.submit "Save changes", class: "btn btn-primary px-5" %>
+      </div>
+    <% end %>
+  </div>
+</div>

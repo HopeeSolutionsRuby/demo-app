@@ -1,4 +1,4 @@
-<%= render partial: "administrator/model/delete_modal", locals: { customer: @customer } %>
+<%= render partial: "administrator/modal/admin_modal", locals: { customer: @customer } %>
 <div id="table-admin">
   <div class="container mt-3">
     <div class="row align-items-center justify-content-between mb-4">
@@ -14,7 +14,7 @@
             </button>
           </div>
           <div class="col-auto">
-            <%= link_to(edit_administrator_customer_path(@customer), class: "btn btn-warning btn-edit-cus") do %>
+            <%= button_to edit_administrator_customer_path(@customer), method: :get, class: "btn btn-warning btn-edit-cus" do %>
               <i class="fa-solid fa-pen-to-square"></i> Edit customer
             <% end %>
           </div>

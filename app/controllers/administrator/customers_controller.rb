@@ -3,27 +3,44 @@
 module Administrator
   # class Dashboard Controller
   class CustomersController < BaseController
-    before_action :set_customer, only: %i[show destroy]
+    before_action :set_customer, only: %i[show destroy edit update]
+
     def index
       @customers = Customer.all
     end
+
     def show; end
+
+    def edit; end
+
     def destroy
-      
       @customer.destroy
-      flash[:alert] = "Customer has been deleted successfully."
-      redirect_to administrator_dashboard_index_path
+      flash[:notice] = "Customer has been deleted successfully."
+      redirect_to administrator_customers_path
+    end
+
+    def update
+      puts "======================"
+      if @customer.update(customer_params)
+        flash[:notice] = 'Customer information updated successfully.'
+        redirect_to administrator_customers_path
+      else
+        render 'edit'
+      end
     end
   
-    protected
+    private
+  
     def set_customer
-      puts "===========#{@customer}============="
       @customer = Customer.find_by(id: params[:id])
-     
       unless @customer
         flash[:alert] = "Customer with ID #{params[:id]} not found."
-        redirect_to administrator_dashboard_index_path
+        redirect_to administrator_customers_path
       end
+    end
+
+    def customer_params
+      params.require(:customer).permit(:full_name, :email, :age, :gender)
     end
   end
 end
