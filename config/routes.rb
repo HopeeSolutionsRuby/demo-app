@@ -9,5 +9,10 @@ Rails.application.routes.draw do
   namespace :administrator do
     resources :dashboard, only: %i[index]
     resources :customers, format: :turbo_stream
+    devise_for :admins, controllers: {
+      sessions: 'administrator/sessions',
+      passwords: 'administrator/passwords'
+    }, path: '', skip: [:registrations]
+    resources :dashboard
   end
 end

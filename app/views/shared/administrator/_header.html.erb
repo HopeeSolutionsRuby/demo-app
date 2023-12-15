@@ -77,9 +77,9 @@
                     image_tag('https://prium.github.io/phoenix/v1.13.0/assets/img/team/72x72/57.webp',
                     alt: 'Avatar', class: 'rounded-circle img-avatar') %>
                   </div>
-                  <h6 class="mt-2 text-dark avatar-name">Jerry Seinfield</h6>
+                  <h6 class="mt-2 text-dark avatar-name"><%= current_administrator_admin.email %></h6>
                   <div class="avatar-sign-out">
-                    <%= button_tag class: 'btn-sign-out' do %>
+                    <%= link_to destroy_administrator_admin_session_path, 'data-turbo-method': :delete, class: 'btn-sign-out text-decoration-none text-dark' do %>
                       <i class="fas fa-sign-out-alt icon"></i> Sign out
                     <% end %>
                   </div>

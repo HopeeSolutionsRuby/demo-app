@@ -24,10 +24,20 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
+
+  config.mailer_sender = 'example@example.com'
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  # Change the mailer paths
+
+  # Configure the class responsible to send e-mails.
+  config.mailer = 'Devise::Mailer'
+  # Change the mailer paths
+  config.scoped_views = true
+  config.mailer = 'Administrator::Mailer'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
+
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -46,7 +56,6 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
