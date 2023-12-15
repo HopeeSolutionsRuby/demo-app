@@ -1,0 +1,14 @@
+<h1>User sign up in months</h1>
+<%= form_tag(administrator_statistics_path, method: :get) do %>
+  <% (1..12).each do |month| %>
+    <label>
+        <%= check_box_tag 'selected_months[]', month, Array(params[:selected_months]).include?(month.to_s) %>
+        <%= Date::MONTHNAMES[month] %>
+    </label>
+  <% end %>
+
+  <%= submit_tag 'Filter' %>
+<% end %>
+
+
+<%= image_tag "data:image/png;base64,#{@base64_image}", alt: 'User login and sign up in months'%>
