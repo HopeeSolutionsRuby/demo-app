@@ -100,26 +100,3 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 .file-input {
   display: none;
 }
-
-/* Style the custom file upload container */
-.file-upload-container {
-  display: inline-block;
-  border: 2px solid #3498db;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-/* Style the file upload label */
-.file-upload-label {
-  color: #3498db;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Style the selected files container */
-.selected-files {
-  margin-top: 10px;
-  font-style: italic;
-  color: #555;
-}

@@ -8,14 +8,15 @@ module Administrator
     def index
       @g = Gruff::Bar.new
       @g.title = 'Clinic Statistics'
-
-      # Add your data and configuration here
-      # generate label for 12 months
-      standard_labels = { 0 => 'Jan', 1 => 'Feb', 2 => 'Mar', 3 => 'Apr', 4 => 'May', 5 => 'Jun', 6 => 'Jul', 7 => 'Aug', 8 => 'Sep', 9 => 'Oct', 10 => 'Nov', 11 => 'Dec' }
+      @g.y_axis_label = 'Numbers of new register'
+      @g.x_axis_label = 'Month'
+      @g.show_labels_for_bar_values = true
+      @g.label_formatting = '%.0f'
       @selected_months = params[:selected_months] || []
       @filtered_customers = filter_customers_by_months
       @signup_data = @filtered_customers.group("MONTH(created_at)").count
       chart_data = []
+      standard_labels = { 0 => 'Jan', 1 => 'Feb', 2 => 'Mar', 3 => 'Apr', 4 => 'May', 5 => 'Jun', 6 => 'Jul', 7 => 'Aug', 8 => 'Sep', 9 => 'Oct', 10 => 'Nov', 11 => 'Dec' }
       if @selected_months.empty?
         12.times do |i|
           chart_data << if !@signup_data.keys.include?(i + 1)
@@ -35,6 +36,8 @@ module Administrator
         end
         @g.labels = @selected_months.map { |month| standard_labels[month.to_i - 1] }
       end
+
+      @g.y_axis_increment = chart_data.max / 4
       @g.data('Sign up', chart_data)
 
       # Render the graph to a temporary file
@@ -47,7 +50,6 @@ module Administrator
       # Close and delete the temporary file
       tempfile.close
       tempfile.unlink
-
 
     end
 
@@ -62,10 +64,8 @@ module Administrator
           (date.beginning_of_month..date.end_of_month)
         end
 
-        # Flatten the array of date ranges
-        date_range = date_ranges.flatten
-
-        Customer.where(created_at: date_range)
+        puts "===> #{date_ranges}"
+        Customer.where(created_at: date_ranges)
       else
         Customer.all
       end
