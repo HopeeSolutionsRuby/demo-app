@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     }, path: '', skip: [:registrations]
     resources :dashboard
     resources :clinics
+    resources :statistics, only: %i[index]
   end
 end
