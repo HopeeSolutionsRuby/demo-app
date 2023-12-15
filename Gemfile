@@ -80,9 +80,10 @@ group :development, :test do
 
   gem 'font-awesome-sass', '~> 6.5.1'
 
-  gem 'debug', platforms: %i[mri windows]
+  gem 'carrierwave'
 
-  gem "letter_opener"
+  gem 'debug', platforms: %i[mri windows]
+  gem 'letter_opener'
 end
 
 group :development do

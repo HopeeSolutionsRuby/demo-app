@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Administrator
+  # SessionsController
   class SessionsController < Devise::SessionsController
     protected
 

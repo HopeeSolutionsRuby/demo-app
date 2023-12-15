@@ -1,0 +1,28 @@
+<%= render "customers/shared/error_login_messages", resource: resource %>
+<div class="customer-form">
+  <div class="login-form-content px-4">
+    <h2 id="title">Login</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="login-input">
+        <%= f.label :email, class: 'label' %><br/>
+        <%= f.email_field :email, autocomplete: "email", class: 'input-field', required: true%>
+      </div>
+
+      <div class="login-input">
+        <%= f.label :password, class: 'label' %><br/>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'input-field', required: true %>
+      </div>
+      
+      <input type="submit" name="commit" class="loginbtn" value="Log in" data-disable-with="Log in">
+
+      <div class="bottom-text">
+        <span class="forgotpwd">Forgot <%= link_to "Password", new_password_path(resource_name)%> ?</span><br>
+        <span class="signup">Don't have an account? <a href="/customers/sign_up">Sign up</a></span>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= stylesheet_link_tag 'sign_up'%>
+<%= stylesheet_link_tag 'login'%>

@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'c5857b3c9856839e064956f96fe86e6425ac7a9b0d0efb01817cc1f2100e65ad551b21af71a84f4b7d66ed5fba40382254de6710c5fb01fe47f2b688373a0493'
+  # config.secret_key = '203cbed741977eb0d9ec3703e622f9446223cb2cebf64d36e5fba54d82a379ff16a3d4ee569d9825d7882f9fab9982d8130129ac591757b2c8a7f02379486c1f'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,7 +24,9 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
+
   config.mailer_sender = 'example@example.com'
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   # Change the mailer paths
 
   # Configure the class responsible to send e-mails.
@@ -32,6 +34,10 @@ Devise.setup do |config|
   # Change the mailer paths
   config.scoped_views = true
   config.mailer = 'Administrator::Mailer'
+
+  # Configure the class responsible to send e-mails.
+  # config.mailer = 'Devise::Mailer'
+
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -50,7 +56,6 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  config.authentication_keys = [:username]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -130,7 +135,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '7049bf1e2c5d61c1c24adb3ad18b1d01ac57d6e225dc4ac6247e4c1957fb117f2ee5d5840cb5a06aba14962a9499eabf3ccc53158a3ed8604e5e8e16e93b789e'
+  # config.pepper = 'cc0cea629702f35ff9331d04ab9d4dde28389bd93bd41e881b040bc449e9dd10a265e746ddcb6a21c226e32a2caed37f9f2dbd65bf3ecbd4ba150e7f56ff95e7'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
