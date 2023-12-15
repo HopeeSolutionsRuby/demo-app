@@ -1,5 +1,0 @@
-<%= turbo_stream.append :customers do %>
-  <%= turbo_frame_tag :customers, turbo_action: 'advance' do %>
-      <%= render partial: 'administrator/customers/customer' %>    
-  <% end %>
-<% end %>
