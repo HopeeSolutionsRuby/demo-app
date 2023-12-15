@@ -405,6 +405,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  letter_opener
   mysql2 (~> 0.5)
   pagy (~> 6.2)
   puma (>= 5.0)
