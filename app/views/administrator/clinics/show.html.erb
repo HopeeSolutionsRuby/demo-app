@@ -9,13 +9,15 @@
         <h5 class="font-weight-bold">Clinic Picture</h5>
       </div>
       <div class="row mt-2">
-        <% image_test.each_slice(2) do |images_row| %>
-          <div class="row mt-2 w-100">
-            <% images_row.each do |image| %>
-              <div class="col-md-6">
-                <%= image_tag image[:url], class: 'img-fluid rounded mb-2', height:'200px', width: '200px'%>
-              </div>
-            <% end %>
+        <% if @clinic.pictures.present? %>
+          <% @clinic.pictures.each do |image| %>
+            <div class="col-md-6">
+              <%= image_tag image.url, class: 'img-fluid rounded mb-2', style: 'height: 200px; width: 200px'%>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-md-12 d-flex justify-content-center align-items-center">
+            <%= image_tag 'noimage', class: 'img-fluid rounded px-3 mx-5', style: 'max-height: 290px; max-width: 290px' %>
           </div>
         <% end %>
       </div>      
