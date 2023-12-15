@@ -6,7 +6,7 @@ module Administrator
     include Pagy::Backend
     def index
       # @clinics = []
-      # 30.times do
+      # 100.times do
       #   clinic = FactoryBot.create(:clinic)
       #   @clinics << clinic
       # end
@@ -25,6 +25,8 @@ module Administrator
     end
     def create
       # book_params.inspect
+   
+
       @clinic = Clinic.new(clinic_params)
 
       respond_to do |format|
@@ -42,15 +44,6 @@ module Administrator
     def edit
       @clinic = Clinic.find(params[:id])
     end
-
-    def update
-      @clinic = Clinic.find(params[:id])
-      if @clinic.update(clinic_params)
-        redirect_to administrator_clinics_path
-      else
-        render :edit
-      end
-    end
     def destroy 
       @clinic = Clinic.find(params[:id])
       if @clinic.destroy
@@ -58,11 +51,35 @@ module Administrator
       end
     end
     
+    def update
+      @clinic = Clinic.find(params[:id])
+    
+      if params[:pictures].present?
+        existing_pictures = @clinic.pictures || []
+        new_pictures = Array(params[:pictures].values)
+        updated_pictures = existing_pictures + new_pictures
+      else
+        updated_pictures = @clinic.pictures
+      end
+    
+      if @clinic.update(clinic_params.merge(pictures: updated_pictures))
+        redirect_to administrator_clinics_path
+      else
+        render :edit
+      end
+    end
+    
+    
     private
 
     def clinic_params
-      params.require(:clinic).permit(:id, :name, :address, :region, :faculity, pictures: [])
+      if params[:pictures].present?
+        params.permit(:id).merge(pictures: params[:pictures].values)
+      else
+        params.require(:clinic).permit(:id, :name, :address, :region, :faculity,:pictures)
+      end
     end
+    
 
     def search_params
       params.fetch(:query, {}).permit!

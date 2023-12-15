@@ -6,7 +6,7 @@
           <h5 class="font-weight-bold">Clinic Picture</h5>
         </div>
         <div class="col-md-4">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPictureModal">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
             +
           </button>
         </div>
@@ -47,8 +47,9 @@
             </div>
           </div>
           <div class="form-actions" style="text-align:right">
-            <%= form.submit 'Save', class: 'btn btn-primary' %>
+            <%= form.submit 'Save', class: 'btn btn-primary',id:"submitButton" %>
           </div>
+          <%= render 'administrator/clinics/modal_add',clinic: @clinic, form: form %> 
         <% end %>
       </div>
     </div>
