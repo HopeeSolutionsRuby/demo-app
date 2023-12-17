@@ -10,7 +10,7 @@ export default class extends Controller {
     });
     document.addEventListener('DOMContentLoaded', function () {
         var myCollapse = new bootstrap.Collapse(document.getElementById('collapseExample'), {
-            toggle: false // Set toggle to false to prevent automatic toggling
+            toggle: false
         });
     });
     document.querySelector('.toggle-button').addEventListener('click', function () {
