@@ -55,11 +55,11 @@
               <%= form.text_field :faculity, class: 'form-control', required: true %>
             </div>
           </div>
+          <%= render 'administrator/clinics/modal',clinic: @clinic, form: form %>
           <div class="form-actions mt-2" style="text-align:right">
             <%= form.submit 'Save', class: 'btn btn-primary',id:"submitButton" %>
             <%= button_to 'Cancel', administrator_clinics_path, class:"btn btn-primary" %>
           </div>
-          <%= render 'administrator/clinics/modal',clinic: @clinic, form: form %>
         <% end %>
       </div>
     </div>

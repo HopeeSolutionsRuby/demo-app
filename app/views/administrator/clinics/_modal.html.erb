@@ -7,15 +7,14 @@
       </div>
       <div class="modal-body" data-controller="clinic">
         <div class="form-label">Upload Your Pictures</div>
-        <div data-controller="dropzone" class="dropzone dz-clickable" data-dropzone-user-id-value="<%= clinic.id %>">
-        </div>
+        <%= form.file_field :pictures, multiple: true, class: "dropzone" %>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-  <!--      <div class="form-actions" style="text-align:right">-->
-          <%#= form.submit 'Save' , class: 'btn btn-primary' %>
-<!--        </div>-->
+        <div class="form-actions" style="text-align:right">
+          <%= form.submit 'Save' , class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
   </div>

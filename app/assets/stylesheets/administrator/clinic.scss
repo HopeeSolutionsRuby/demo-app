@@ -125,6 +125,12 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   font-style: italic;
   color: #555;
 }
-// .dz-progress {
-//   display: none;
+.preview-image {
+  width: 180px;
+  height: 180px;
+  padding: 10px;
+}
+// .dropzone {
+//   width: 100px !important;
+//   height: 100px !important;
 // }

@@ -1,19 +1,5 @@
-<div class="container rounded bg-white mt-5" style="border: solid 1px;">
+<div class="container rounded bg-white mt-5" style="border: solid 1px;" data-controller="clinic">
   <div class="row">
-    <div class="col-md-4 border-right" style="overflow-y: scroll; height:379px">
-      <div class="row mt-2">
-        <div class="col-md-8">
-          <h5 class="font-weight-bold">Clinic Picture</h5>
-        </div>
-        <div class="col-md-4">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-            +
-          </button>
-        </div>
-      </div>
-      <div class="row mt-2">
-      </div>      
-    </div>
     <div class="col-md-8">
       <div class="p-3 py-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -23,35 +9,37 @@
           <% end %>
           <h6 class="text-right">Edit Profile</h6>
         </div>
-        <%= form_with(model: @clinic, url: administrator_clinics_path, class: 'needs-validation', novalidate: true, multipart: true) do |form| %>
+        <%= form_with(model: @clinic, url: administrator_clinics_path, class: 'needs-validation' , novalidate: true,
+          multipart: true) do |form| %>
           <div class="row mt-2">
             <div class="col-md-6">
-              <%= form.label :name, 'Name', class:'form-label' %>
-              <%= form.text_field :name, class: 'form-control', required: true %>
+              <%= form.label :name, 'Name' , class:'form-label' %>
+              <%= form.text_field :name, class: 'form-control' , required: true %>
             </div>
-            
             <div class="col-md-6">
-              <%= form.label :address, 'Address', class:'form-label' %>
-              <%= form.text_field :address, class: 'form-control', required: true %>
+              <%= form.label :address, 'Address' , class:'form-label' %>
+              <%= form.text_field :address, class: 'form-control' , required: true %>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-6">
-              <%= form.label :region, 'Region', class:'form-label' %>
-              <%= form.text_field :region, class: 'form-control', required: true %>
+              <%= form.label :region, 'Region' , class:'form-label' %>
+              <%= form.text_field :region, class: 'form-control' , required: true %>
             </div>
-            
             <div class="col-md-6">
-              <%= form.label :faculity, 'Faculity', class:'form-label' %>
-              <%= form.text_field :faculity, class: 'form-control', required: true %>
+              <%= form.label :faculity, 'Faculity' , class:'form-label' %>
+              <%= form.text_field :faculity, class: 'form-control' , required: true %>
             </div>
           </div>
-          <div class="form-actions" style="text-align:right">
-            <%= form.submit 'Save', class: 'btn btn-primary',id:"submitButton" %>
+
+          <div data-controller="dropzone"  data-dropzone-target="previewContainer" class="preview-container mt-3 border" style="height:240px">
+            <%= form.file_field :pictures, id: "clinic_pictures", multiple: true, class: "w-100","data-dropzone-target":"input" %>
           </div>
-          <%= render 'administrator/clinics/modal_add',clinic: @clinic, form: form %> 
+
+          <div class="form-actions mt-3" style="text-align:right">
+            <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton" %>
+          </div>
+
         <% end %>
-      </div>
-    </div>
   </div>
 </div>
