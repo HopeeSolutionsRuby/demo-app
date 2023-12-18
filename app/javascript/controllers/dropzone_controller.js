@@ -5,14 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.inputTarget.addEventListener("change", this.previewImages.bind(this));
-    // this.previewContainerTarget.addEventListener(
-    //   "dragover",
-    //   this.handleDragOver.bind(this)
-    // );
-    // this.previewContainerTarget.addEventListener(
-    //   "drop",
-    //   this.handleDrop.bind(this)
-    // );
+
   }
 
   previewImages() {
@@ -38,21 +31,5 @@ export default class extends Controller {
         reader.readAsDataURL(file);
       }
     }
-  }
-
-  handleDragOver(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    event.dataTransfer.dropEffect = "copy";
-  }
-
-  handleDrop(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const files = event.dataTransfer.files;
-    this.inputTarget.files = files;
-
-    this.previewImages();
   }
 }

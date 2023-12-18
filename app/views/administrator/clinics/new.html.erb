@@ -32,9 +32,15 @@
             </div>
           </div>
 
-          <div data-controller="dropzone"  data-dropzone-target="previewContainer" class="preview-container mt-3 border" style="height:240px">
-            <%= form.file_field :pictures, id: "clinic_pictures", multiple: true, class: "w-100","data-dropzone-target":"input" %>
+        <div data-controller="dropzone" data-dropzone-target="previewContainer" class="preview-container mt-3 border p-3">
+          <div class="input-group">
+            <%= form.file_field :pictures, id: "clinic_pictures", multiple: true, class: "form-control", "data-dropzone-target": "input" %>
           </div>
+          <label for="clinic_pictures" class="form-label mt-2">
+            Drag and drop files here or click to upload
+          </label>
+        </div>
+
 
           <div class="form-actions mt-3" style="text-align:right">
             <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton" %>
