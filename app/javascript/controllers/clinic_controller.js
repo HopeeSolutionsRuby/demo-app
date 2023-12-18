@@ -12,7 +12,7 @@ export default class extends Controller {
           changedElement.id = "query_" + field + "_cont";
           changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
         } else {
-          changedElement.id = changedElement.id.slice(0,changedElement.id.length - 5) + "_or_" + field + "_cont";
+          changedElement.id = changedElement.id.substring(0,changedElement.id.length - 5) + "_or_" + field + "_cont";
           changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
         }
       } else {
@@ -21,7 +21,7 @@ export default class extends Controller {
           changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
         } else {
           var fieldIndex = changedElement.id.indexOf('_or_' + field);
-          changedElement.id = changedElement.id.slice(0, fieldIndex) + changedElement.id.slice(fieldIndex + field.length + 4, changedElement.id.length);
+          changedElement.id = changedElement.id.substring(0, fieldIndex) + changedElement.id.substring(fieldIndex + field.length + 4, changedElement.id.length);
           changedElement.name = changedElement.id.substring(0, 5) + '[' + changedElement.id.substring(6, changedElement.id.length) + ']';
         }
       }

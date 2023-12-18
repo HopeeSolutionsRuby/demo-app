@@ -48,15 +48,7 @@ module Administrator
     def update
       @clinic = Clinic.find(params[:id])
 
-      if params[:pictures].present?
-        existing_pictures = @clinic.pictures || []
-        new_pictures = Array(params[:pictures].values)
-        updated_pictures = existing_pictures + new_pictures
-      else
-        updated_pictures = @clinic.pictures
-      end
-
-      if @clinic.update(clinic_params.merge(pictures: updated_pictures))
+      if @clinic.update(clinic_params)
         redirect_to administrator_clinics_path
       else
         render :edit
@@ -66,11 +58,7 @@ module Administrator
     private
 
     def clinic_params
-      if params[:pictures].present?
-        params.permit(:id).merge(pictures: params[:pictures].values)
-      else
-        params.require(:clinic).permit(:id, :name, :address, :region, :faculity, :pictures)
-      end
+      params.require(:clinic).permit(:id, :name, :address, :region, :faculity, pictures: [])
     end
 
     def search_params

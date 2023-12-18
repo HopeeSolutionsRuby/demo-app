@@ -5,14 +5,21 @@
         <h5 class="modal-title" id="exampleModalLabel">Upload Picture</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" data-controller="clinic">
-        <div class="form-label">Upload Your Pictures</div>
-        <div data-controller="dropzone" class="dropzone dz-clickable" data-dropzone-user-id-value="<%= clinic.id %>">
+
+      <div data-controller="dropzone" data-dropzone-target="previewContainer" class="preview-container mt-3 border p-3">
+        <div class="input-group">
+          <%= form.file_field :pictures, id: "clinic_pictures", multiple: true, class: "form-control", "data-dropzone-target": "input" %>
         </div>
+        <label for="clinic_pictures" class="form-label mt-2">
+          Drag and drop files here or click to upload
+        </label>
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="form-actions" style="text-align:right">
+          <%= form.submit 'Save' , class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
   </div>

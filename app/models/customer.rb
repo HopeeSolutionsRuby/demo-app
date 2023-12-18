@@ -7,10 +7,6 @@ class Customer < ApplicationRecord
          :confirmable, :lockable, :trackable
 
   mount_uploader :avatar, AvatarUploader
-
-  validates :age, numericality: { only_integer: true, greater_than: 0 }
-  validates :gender, inclusion: { in: %w(male female other) }
-  validates :full_name, length: { maximum: 255 }
   # Enum gender
   enum gender: { male: 0, female: 1, other: 2 }
 
