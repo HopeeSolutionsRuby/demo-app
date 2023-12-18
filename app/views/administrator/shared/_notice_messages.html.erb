@@ -3,7 +3,13 @@
     <button type="button" class="btn-close btn-close-white me-2 m-auto end-0 position-absolute" data-bs-dismiss="toast" aria-label="Close"></button>
     <div class="toast-body cursor-pointer">
       <%= flash[:alert] %>
-      <div data-controller="toast" data-toast-message="<%= flash[:alert] %>"></div>
+    </div>
+  </div>
+<% elsif flash[:notice] %>
+  <div class="toast align-items-center bg-primary text-white toast-animation toast-custom" role="alert" aria-live="assertive" aria-atomic="true" data-controller="toast">
+    <button type="button" class="btn-close btn-close-white me-2 m-auto end-0 position-absolute" data-bs-dismiss="toast" aria-label="Close"></button>
+    <div class="toast-body cursor-pointer">
+      <%= flash[:notice] %>
     </div>
   </div>
 <% end %>

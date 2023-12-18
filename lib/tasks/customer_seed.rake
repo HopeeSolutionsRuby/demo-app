@@ -4,7 +4,7 @@ namespace :db do
     Customer.delete_all
     unless Customer.any?
       Customer.not_send_email
-      200.times do
+      5.times do
         FactoryBot.create(:customer)
       end
     end

@@ -8,14 +8,23 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <%= stylesheet_link_tag  'administrator/clinic', 'administrator/header', 'administrator/sidebar'%>
+    <%= stylesheet_link_tag do %>
+      "administrator/authentication",
+      "administrator/forgot_password",
+      "administrator/header",
+      "administrator/sidebar",
+      "administrator/table_admin"
+    <% end %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= render 'administrator/shared/notice' %>
+    <div id="authentication-administrator">
+      <%= render "administrator/shared/notice_messages" %>
+    </div>
     <div class="admin-layout" id="admin-pages">
-      <div><%= render 'shared/administrator/header' %></div>
-        <div class="container-fluid">
+      <%= render 'shared/administrator/header' %>
+      <div class="container-fluid">
           <div class="row flex-nowrap">
             <%= render 'shared/administrator/sidebar' %>
             <div class="px-0 body-content">
@@ -26,7 +35,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </body>
 </html>

@@ -1,0 +1,31 @@
+<div id="table-admin">
+  <section class="container" style="height: 86vh; padding-top: 24px;">
+    <div class="text-start">
+        <%= link_to "New tag", new_administrator_tag_path, class: "btn btn-primary px-5 mb-3" %>
+    </div>
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th style="width: 100px;">STT</th>
+          <th style="width: 550px;">Name</th>
+          <th style="width: 50px;">Edit</th>
+          <th style="width: 50px;">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tags.each_with_index do |tag, index| %>
+          <tr>
+            <td class="custom-table" style="max-width: 100px;"><%= index + 1 %></td>
+            <td class="custom-table" style="max-width: 550px;"><%= tag[:name] %></td>
+            <td>
+              <%= link_to "View", administrator_tag_path(tag.id), class: "btn btn-primary px-5" %>
+            </td>
+            <td>
+              <%= button_to "Delete", administrator_tag_path(tag), method: :delete, class: "btn btn-danger px-5" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>

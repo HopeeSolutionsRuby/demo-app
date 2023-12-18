@@ -10,5 +10,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Admin.create(username: 'admin', email: 'minh842657913@gmail.com', password: 'admin123',
-             password_confirmation: 'admin123')
+admin = Admin.find_or_initialize_by(username: 'admin')
+unless admin.persisted?
+  admin.email = 'minh842657913@gmail.com'
+  admin.password = 'admin123'
+  admin.password_confirmation = 'admin123'
+  admin.save
+end
+puts 'Seeding has been completed!'
