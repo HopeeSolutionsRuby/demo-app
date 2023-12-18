@@ -23,6 +23,7 @@ module Administrator
     def show
       @clinic = Clinic.find(params[:id])
     end
+
     def create
       @clinic = Clinic.new(clinic_params)
       respond_to do |format|
@@ -43,13 +44,14 @@ module Administrator
 
     def destroy
       @clinic = Clinic.find(params[:id])
-      if @clinic.destroy
-        redirect_to administrator_clinics_path
-      end
+      return unless @clinic.destroy
+
+      redirect_to administrator_clinics_path
     end
 
     def update
       @clinic = Clinic.find(params[:id])
+
       if @clinic.update(clinic_params)
         redirect_to administrator_clinics_path
       else
@@ -60,7 +62,7 @@ module Administrator
     private
 
     def clinic_params
-      params.require(:clinic).permit(:id, :name, :address, :region, :faculity, pictures: [])
+        params.require(:clinic).permit(:id, :name, :address, :region, :faculity, pictures: [])
     end
 
     def search_params

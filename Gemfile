@@ -53,8 +53,8 @@ gem 'pagy', '~> 6.2'
 
 gem 'jquery-rails'
 
-gem 'rubocop-rails'
 gem 'dropzonejs-rails'
+gem 'rubocop-rails'
 gem 'rubocop-rspec', require: false
 
 gem 'sassc-rails'
