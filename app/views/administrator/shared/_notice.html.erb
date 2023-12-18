@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+  <div class="toast align-items-center text-white border-0 bg-primary toast-animation toast-custom position-absolute right-0 " role="alert" aria-live="assertive" aria-atomic="true" data-controller="toast">
+    <button type="button" class="btn-close btn-close-white me-2 m-auto py-2 end-0 position-absolute" data-bs-dismiss="toast" aria-label="Close"></button>
+    <div class="toast-body">
+      <ul class="my-0 p-0">
+        <%= flash[:notice] %>
+      </ul>
+    </div>
+  </div>
+<% end %>

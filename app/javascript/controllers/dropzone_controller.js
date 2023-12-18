@@ -5,12 +5,24 @@ export default class extends Controller {
 
   connect() {
     this.inputTarget.addEventListener("change", this.previewImages.bind(this));
+    this.inputTarget.addEventListener("input", this.handleInput.bind(this));
+  }
 
+  handleInput() {
+    if (!this.inputTarget.value) {
+      $(".form-label").removeClass("d-none"); 
+      const preview = this.previewContainerTarget;
+      const existingImages = preview.querySelectorAll(".preview-image");
+      existingImages.forEach((image) => {
+        image.remove();
+      });
+    }
   }
 
   previewImages() {
     const files = this.inputTarget.files;
     if (files && files.length > 0) {
+      $(".form-label").addClass("d-none");
       const preview = this.previewContainerTarget;
       const existingImages = preview.querySelectorAll(".preview-image");
       existingImages.forEach((image) => {

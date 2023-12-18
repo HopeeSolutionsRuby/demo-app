@@ -39,18 +39,27 @@ module Administrator
 
     def destroy
       @clinic = Clinic.find(params[:id])
-      return unless @clinic.destroy
-
-      redirect_to administrator_clinics_path
+      @clinic.destroy!
+      p @clinic.destroy!
+      respond_to do |format|
+        format.html { redirect_to administrator_clinics_path, notice: 'Clinic was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
+    
 
     def update
       @clinic = Clinic.find(params[:id])
 
-      if @clinic.update(clinic_params)
-        redirect_to administrator_clinics_path
-      else
-        render :edit
+      respond_to do |format|
+        if @clinic.update(clinic_params)
+          format.html { redirect_to '/administrator/clinics', notice: 'Clinic was successfully updated.' }
+          format.json { render :index, status: :edited }
+        else
+          errors_message = @clinic.errors.full_messages.join(', ')
+          format.html { redirect_to '/administrator/clinics', notice: errors_message }
+          format.json { render json: @clinic.errors, status: :unprocessable_entity }
+        end
       end
     end
 
