@@ -128,3 +128,9 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 // .dz-progress {
 //   display: none;
 // }
+
+.preview-image {
+  width: 180px;
+  height: 180px;
+  padding: 10px;  
+}

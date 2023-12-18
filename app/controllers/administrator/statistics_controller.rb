@@ -50,7 +50,6 @@ module Administrator
       # Close and delete the temporary file
       tempfile.close
       tempfile.unlink
-
     end
 
     private
