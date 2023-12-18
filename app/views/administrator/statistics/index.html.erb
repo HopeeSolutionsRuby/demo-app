@@ -1,0 +1,41 @@
+<style>
+  .month-label {
+    display: inline-block;
+    width: 200px; /* Set your desired width */
+  }
+</style>
+<div>
+  <h1 class='container d-flex justify-content-center mb-5'>USER REGISTER IN MONTHS</h1>
+  <%= form_tag(administrator_statistics_path, method: :get) do %>
+    <div class="d-flex justify-content-center">
+      <% (1..6).each do |month| %>
+        <label class="month-label">
+          <div class="form-check form-switch mb-4" style='margin-left: 35px'>
+            <%= check_box_tag 'selected_months[]', month, Array(params[:selected_months]).include?(month.to_s),class:"form-check-input" %>
+            <%= Date::MONTHNAMES[month] %>
+          </div>
+        </label>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <% (7..12).each do |month| %>
+        <label class="month-label">
+          <div class="form-check form-switch mb-3" style='margin-left: 35px'>
+            <%= check_box_tag 'selected_months[]', month, Array(params[:selected_months]).include?(month.to_s),class:"form-check-input" %>
+            <%= Date::MONTHNAMES[month] %>
+          </div>
+        </label>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= button_tag type: 'submit', class: "btn btn-primary px-5 mx-5 mb-3" do %>
+          <%= content_tag(:i, '', class: 'fas fa-filter') %>
+            Filter
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class='d-flex justify-content-center'>
+    <%= image_tag "data:image/png;base64,#{@base64_image}", alt: 'User login and sign up in months'%>
+  </div>
+</div>

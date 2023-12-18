@@ -5,11 +5,6 @@ module Administrator
   class ClinicsController < BaseController
     include Pagy::Backend
     def index
-      # @clinics = []
-      # 100.times do
-      #   clinic = FactoryBot.create(:clinic)
-      #   @clinics << clinic
-      # end
       @q = Clinic.ransack(search_params)
       @clinics = @q.result(distinct: true)
 
