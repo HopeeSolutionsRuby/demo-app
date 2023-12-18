@@ -28,7 +28,7 @@
             <div class="border-bottom pb-4">
               <div class="row align-items-center text-center text-sm-start">
                 <div class="col-12 col-sm-auto">
-                    <%= image_tag "avatar_#{rand(1..2)}.png", class: 'rounded-circle avatar-show' %>
+                    <%= image_tag((@customer.avatar.present? ? @customer.avatar.url : 'noimage.png'), class: 'rounded-circle avatar-show') %>
                 </div>
                 <div class="col-12 col-sm-auto flex-grow-1">
                   <h4><%= @customer.full_name %></h3>

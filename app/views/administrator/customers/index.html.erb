@@ -8,27 +8,37 @@
           <th>Email</th>
           <th>Age</th>
           <th>Gender</th>
+          <th colspan="3" class="text-center">Action</th>
         </tr>
       </thead>
       <tbody>
         <% @customers.each do |customer| %>
           <tr>
             <td>              
-              <%= image_tag "avatar_#{rand(1..2)}.png", class: "rounded-circle avatar" %>
+              <%= image_tag((customer[:avatar].present? ? customer.avatar.url : 'noimage.png'), class: "rounded-circle avatar") %>
             </td>
             <td>
               <%= link_to administrator_customer_path(customer), class: 'text-decoration-none' do %>
-                <span class="fw-bold"><%= customer[:full_name] %></span>
+                <span class="fw-bold"><%= customer.full_name %></span>
               <% end %>            
             </td>
             <td>
-              <span class="fw-normal"><%= customer[:email] %></span>
+              <span class="fw-normal"><%= customer.email %></span>
             </td>
             <td>
-              <span class="fw-normal"><%= customer[:age] %></span>
+              <span class="fw-normal"><%= customer.age %></span>
             </td>
             <td>
-              <span class="fw-normal"><%= customer[:gender].capitalize %></span>
+              <span class="fw-normal"><%= customer.gender.capitalize %></span>
+            </td>
+            <td style="padding-left: 0; padding-right: 0;">
+              <%= button_to "Show", administrator_customer_path(customer), method: :get, class: "btn btn-primary" %>
+            </td>
+            <td style="padding-left: 0; padding-right: 0;">
+              <%= button_to "Edit", edit_administrator_customer_path(customer), method: :get, class: "btn btn-warning" %>
+            </td>
+            <td style="padding-left: 0; padding-right: 0;">
+              <%= button_to "Delete", administrator_customer_path(customer), method: :delete, class: "btn btn-danger" %>
             </td>
           </tr>
         <% end %>

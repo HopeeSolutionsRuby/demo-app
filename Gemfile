@@ -59,6 +59,8 @@ gem 'rubocop-rspec', require: false
 
 gem 'devise'
 
+gem 'carrierwave'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
 
@@ -80,9 +82,8 @@ group :development, :test do
 
   gem 'font-awesome-sass', '~> 6.5.1'
 
-  gem 'carrierwave'
-
   gem 'debug', platforms: %i[mri windows]
+
   gem 'letter_opener'
 end
 

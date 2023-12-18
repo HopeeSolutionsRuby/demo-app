@@ -2,6 +2,7 @@
   .avatar {
     width: 45px;
     height: 45px;
+    object-fit: cover;
   }
 
   .custom-table {
@@ -32,6 +33,7 @@
     position: relative;
     display: inline-block;
     vertical-align: middle;
+    object-fit: cover;
   }
 
   .infor-title {
