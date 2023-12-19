@@ -9,6 +9,11 @@ export default class extends Controller {
       document.querySelector('.body-content').classList.toggle('d-none');
     });
 
+    document.addEventListener('DOMContentLoaded', function () {
+        var myCollapse = new bootstrap.Collapse(document.getElementById('collapseExample'), {
+            toggle: false
+        });
+    });
     document.querySelector('.toggle-button').addEventListener('click', function () {
       document.querySelectorAll('.hide-icon').forEach(function(element) {
         element.classList.toggle('d-none');

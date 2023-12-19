@@ -6,9 +6,8 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password(min_length: 6) }
     password_confirmation { password }
-    age { Faker::Number.between(from: 1, to: 100) }
+    age { Faker::Number.between(from: 0, to: 100) }
     gender { %w[male female other].sample }
     avatar { Faker::Avatar.image }
-    created_at { Faker::Date.between(from: 11.months.ago, to: Date.today) }
   end
 end

@@ -31,6 +31,8 @@
   </thead>
   <tbody>
     <% clinics.each do |clinic| %>
+      <%= render partial: "administrator/modal/admin_modal_clinic" , locals: { clinic: clinic } %>
+
       <tr id="<%= clinic[:id] %>">
         <td style="max-width: 50px; overflow: hidden; text-overflow: ellipsis;padding-left:50px;">
           <%= clinic[:id] %>
@@ -55,13 +57,14 @@
               </button>
               <div class="dropdown-menu dropdown-menu-end py-2">
                 <a class="dropdown-item" href="/administrator/clinics/<%=clinic.id%>" data-turbo-frame="_top">View</a>
-                <%= link_to 'Remove', administrator_clinic_path(clinic.id), class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure you want to remove this clinic?', turbo_method: :delete } %>
+                <button type="button" class="btn btn-danger btn-del-cus" data-bs-toggle="modal"
+                  data-bs-target="#deleteClinicModal">
+                  Delete
+                </button>
+                <!-- <%= link_to 'Remove', administrator_clinic_path(clinic.id), class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure you want to remove this clinic?', turbo_method: :delete } %> -->
               </div>
-            </div>
-          </div>
-        </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>
 
