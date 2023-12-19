@@ -10,3 +10,5 @@ pin 'popper', to: 'popper.js', preload: true
 pin 'bootstrap', to: 'bootstrap.min.js', preload: true
 pin 'dropzone', to: 'https://ga.jspm.io/npm:dropzone@6.0.0-beta.2/dist/dropzone.mjs'
 pin 'just-extend', to: 'https://ga.jspm.io/npm:just-extend@5.1.1/index.esm.js'
+pin "chartkick", to: "chartkick.js"
+pin "Chart.bundle", to: "Chart.bundle.js"
