@@ -1,0 +1,21 @@
+<!-- Delete Modal -->
+<div class="modal fade border-dark" id="importClinicModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">Import clinic</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with(url: administrator_clinic_imports_path, multipart: true,class:"d-flex justify-content-between align-items-center") do |form| %>
+          <%= form.file_field :csv_file %>
+          <%= form.submit 'Save',class:"btn btn-primary " %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <!--<button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Close</button>-->
+        <%#= button_to "Delete customer" , administrator_clinic_path(clinic), method: :delete, class: "btn btn-danger", data: { turbo: false} %>
+      </div>
+    </div>
+  </div>
+</div>

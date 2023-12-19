@@ -6,11 +6,15 @@ export default class extends Controller {
   connect() {
     this.inputTarget.addEventListener("change", this.previewImages.bind(this));
     this.inputTarget.addEventListener("input", this.handleInput.bind(this));
+    this.previewContainerTarget.addEventListener(
+      "click",
+      this.deleteImage.bind(this)
+    );
   }
 
   handleInput() {
     if (!this.inputTarget.value) {
-      $(".form-label").removeClass("d-none"); 
+      $(".drag").removeClass("d-none");
       const preview = this.previewContainerTarget;
       const existingImages = preview.querySelectorAll(".preview-image");
       existingImages.forEach((image) => {
@@ -22,7 +26,7 @@ export default class extends Controller {
   previewImages() {
     const files = this.inputTarget.files;
     if (files && files.length > 0) {
-      $(".form-label").addClass("d-none");
+      $(".drag").addClass("d-none");
       const preview = this.previewContainerTarget;
       const existingImages = preview.querySelectorAll(".preview-image");
       existingImages.forEach((image) => {
@@ -41,6 +45,16 @@ export default class extends Controller {
         };
 
         reader.readAsDataURL(file);
+      }
+    }
+  }
+
+  deleteImage(event) {
+    if (event.target.classList.contains("preview-image")) {
+      const confirmed = confirm("Are you sure you want to delete this image?");
+      if (confirmed) {
+        event.target.remove();
+        $("#clinic_pictures").refresh
       }
     }
   }

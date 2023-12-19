@@ -5,7 +5,6 @@ class Admin < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable, and :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :validatable
-  devise :timeoutable, timeout_in: 1.minute
 
   # Custom validations
   validates :username, presence: true

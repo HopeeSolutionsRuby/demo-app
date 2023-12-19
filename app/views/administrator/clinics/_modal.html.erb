@@ -9,12 +9,11 @@
       <div data-controller="dropzone" data-dropzone-target="previewContainer" class="preview-container mt-3 border p-3">
         <div class="input-group">
       </div>
-          <%= form.file_field :pictures, id: "clinic_pictures", multiple: true, class: "form-control", "data-dropzone-target": "input" %>
-        </div>  
-        <label for="clinic_pictures" class="form-label mt-2">
-          Drag and drop files here or click to upload
-        </label>
-
+        <%= form.file_field :pictures, id: "clinic_pictures", multiple: true, class: "form-control", "data-dropzone-target": "input" %>
+      </div>  
+      <label for="clinic_pictures" class="form-label mt-2">
+        Drag and drop files here or click to upload
+      </label>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <div class="form-actions" style="text-align:right">

@@ -15,7 +15,7 @@ module Administrator
 
     def destroy
       @customer.destroy
-      flash[:notice] = "Customer has been deleted successfully."
+      flash[:notice] = 'Customer has been deleted successfully.'
       redirect_to administrator_customers_path
     end
 

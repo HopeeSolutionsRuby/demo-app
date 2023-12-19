@@ -11,6 +11,8 @@
   </thead>
   <tbody>
     <% clinics.each do |clinic| %>
+      <%= render partial: "administrator/modal/admin_modal_clinic" , locals: { clinic: clinic } %>
+
       <tr id="<%= clinic[:id] %>">
         <td style="max-width: 50px; overflow: hidden; text-overflow: ellipsis;">
           <%= clinic[:id] %>
@@ -28,18 +30,21 @@
           <%= clinic[:faculity] %>
         </td>
         <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
-          <div class="row"> 
+          <div class="row">
             <div class="col-6" style="width:100px">
-              <%= link_to "View" , administrator_clinic_path(clinic.id), class: "btn btn-primary d-block", style: 'width:75px',role: "button" , data: { turbo_frame: "_top" } %>
+              <%= link_to "View" , administrator_clinic_path(clinic.id), class: "btn btn-primary d-block" ,
+                style: 'width:75px' ,role: "button" , data: { turbo_frame: "_top" } %>
             </div>
             <div class="col-6" style="width: 100px;">
-            <%= button_to "Delete" , administrator_clinic_path(clinic.id),class: "btn btn-danger d-block",style:'width:75px', data: {
-              turbo_confirm: "Are you sure delete?" }, method: :delete %>
+              <button type="button" class="btn btn-danger btn-del-cus" data-bs-toggle="modal"
+                data-bs-target="#deleteClinicModal">
+                Delete
+              </button>
             </div>
           </div>
         </td>
       </tr>
-      <% end %>
+    <% end %>
   </tbody>
 </table>
 

@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :customers
     resources :tags
+    resources :clinic_imports, only: [:new, :create]
+    resources :clinic_exports, only: [:index]
   end
 end

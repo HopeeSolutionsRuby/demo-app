@@ -32,6 +32,20 @@
         + Create new clinic
       <% end %>
     </div>
+    <div class="col-auto ms-auto">
+      <button type="button" class="btn btn-primary btn-del-cus" data-bs-toggle="modal"
+        data-bs-target="#importClinicModal">
+        <i class="fa-solid fa-file-import px-1"></i>
+        Import CSV
+      </button>
+    </div>
+    <div class="col-auto ms-auto">
+      <button type="button" onclick="window.location.href='<%= administrator_clinic_exports_path(format: :csv) %>'" class="btn btn-primary btn-del-cus">
+        <i class="fa-solid fa-file-export px-1"></i>
+        Export CSV
+      </button>
+    </div>
+
   </div>
 </div>
 
@@ -40,3 +54,4 @@
     <%= render partial: 'administrator/clinics/table', locals: { clinics: @paginated_clinics, pagy: @pagy } %>
   </div>
 <% end %>
+<%= render partial: "administrator/modal/admin_modal_clinic_import"  %>

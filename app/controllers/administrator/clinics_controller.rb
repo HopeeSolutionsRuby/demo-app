@@ -24,11 +24,10 @@ module Administrator
       respond_to do |format|
         if @clinic.save
           format.html { redirect_to '/administrator/clinics', notice: 'Clinic was successfully created.' }
-          format.json { render :show, status: :created, location: @clinic }
+          format.json { render :show, status: :created, location: @clinic, notice: 'Clinic was successfully created.' }
         else
-          errors_message = @clinic.errors.full_messages.join(', ')
-          format.html { redirect_to '/administrator/clinics', notice: errors_message }
-          format.json { render json: @clinic.errors, status: :unprocessable_entity }
+          format.html { redirect_back fallback_location: '/administrator/clinics', alert: @clinic.errors.full_messages.join(', ') }
+          format.json { render :new, status: :unprocessable_entity }
         end
       end
     end
@@ -39,25 +38,30 @@ module Administrator
 
     def destroy
       @clinic = Clinic.find(params[:id])
-      @clinic.destroy!
-      p @clinic.destroy!
-      respond_to do |format|
-        format.html { redirect_to administrator_clinics_path, notice: 'Clinic was successfully destroyed.' }
-        format.json { head :no_content }
+      if @clinic.destroy
+        flash[:alert] = 'Clinic has been deleted successfully.'
+        redirect_to administrator_clinics_path
+      else
+        flash[:alert] = 'Failed to delete clinic.'
+        redirect_back(fallback_location: root_path)
       end
     end
-    
 
     def update
       @clinic = Clinic.find(params[:id])
 
+      if params[:clinic][:pictures].present?
+        existing_pictures = @clinic.pictures || []
+        new_pictures = params[:clinic][:pictures]
+        @clinic.pictures  = existing_pictures + new_pictures
+      end
+
       respond_to do |format|
-        if @clinic.update(clinic_params)
+        if @clinic.update(clinic_params.merge(pictures: @clinic.pictures))
           format.html { redirect_to '/administrator/clinics', notice: 'Clinic was successfully updated.' }
           format.json { render :index, status: :edited }
         else
-          errors_message = @clinic.errors.full_messages.join(', ')
-          format.html { redirect_to '/administrator/clinics', notice: errors_message }
+          format.html { redirect_back fallback_location: '/administrator/clinics', alert: @clinic.errors.full_messages.join(', ') }
           format.json { render json: @clinic.errors, status: :unprocessable_entity }
         end
       end
@@ -66,7 +70,7 @@ module Administrator
     private
 
     def clinic_params
-        params.require(:clinic).permit(:id, :name, :address, :region, :faculity, pictures: [])
+      params.require(:clinic).permit(:name, :address, :region, :faculity, pictures: [])
     end
 
     def search_params
