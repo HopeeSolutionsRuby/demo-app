@@ -57,11 +57,10 @@
               </button>
               <div class="dropdown-menu dropdown-menu-end py-2">
                 <a class="dropdown-item" href="/administrator/clinics/<%=clinic.id%>" data-turbo-frame="_top">View</a>
-                <button type="button" class="btn btn-danger btn-del-cus" data-bs-toggle="modal"
+                <a type="button"  data-bs-toggle="modal" class="dropdown-item"
                   data-bs-target="#deleteClinicModal">
                   Delete
-                </button>
-                <!-- <%= link_to 'Remove', administrator_clinic_path(clinic.id), class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure you want to remove this clinic?', turbo_method: :delete } %> -->
+                </a>
               </div>
       </tr>
     <% end %>

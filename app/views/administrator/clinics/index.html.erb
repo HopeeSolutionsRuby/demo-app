@@ -14,10 +14,10 @@
                 <option value="<%= faculity %>"><%= faculity %></option>
               <% end %>
             </select>
+            <%= f.button class: 'btn filter-btn', style: 'height:35px;', type: 'submit' do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
           </div>
-          <%= f.button class: 'btn filter-btn', style: 'height:35px;', type: 'submit' do %>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          <% end %>
 
           <div class="select-wrapper">
             <select id="choices-multiple-remove-button" placeholder="Select regions" name="query[region_in][]" multiple="multiple">
@@ -25,33 +25,28 @@
                 <option value="<%= region %>"><%= region %></option>
               <% end %>
             </select>
-          </div>
           <%= f.button class: 'btn filter-btn', style: 'height:35px;', type: 'submit' do %>
             <i class="fa-solid fa-magnifying-glass"></i>
           <% end %>
+          </div>
         <% end %>
       </div>
     
-      <div class="col-auto ms-auto">
-        <%= link_to 'clinics/new', class: 'btn btn-success' do %>
+      <div class="col-auto mx-2">
+        <%= link_to 'clinics/new', class: 'btn btn-primary mx-2 ml-3' do %>
           + Create new clinic
         <% end %>
+        <a type="button" class="btn btn-primary btn-del-cus mx-2" data-bs-toggle="modal"
+          data-bs-target="#importClinicModal">
+          <i class="fa-solid fa-file-import px-1"></i>
+          Import CSV
+        </a>
+        <a type="button" onclick="window.location.href='<%= administrator_clinic_exports_path(format: :csv) %>'" class="btn btn-primary btn-del-cus mx-2">
+          <i class="fa-solid fa-file-export px-1"></i>
+          Export CSV
+        </a>
       </div>
     </div>
-    <div class="col-auto ms-auto">
-      <button type="button" class="btn btn-primary btn-del-cus" data-bs-toggle="modal"
-        data-bs-target="#importClinicModal">
-        <i class="fa-solid fa-file-import px-1"></i>
-        Import CSV
-      </button>
-    </div>
-    <div class="col-auto ms-auto">
-      <button type="button" onclick="window.location.href='<%= administrator_clinic_exports_path(format: :csv) %>'" class="btn btn-primary btn-del-cus">
-        <i class="fa-solid fa-file-export px-1"></i>
-        Export CSV
-      </button>
-    </div>
-
   </div>
 </div>
 
