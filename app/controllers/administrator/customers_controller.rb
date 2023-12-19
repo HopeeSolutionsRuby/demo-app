@@ -3,7 +3,7 @@
 module Administrator
   # class Dashboard Controller
   class CustomersController < BaseController
-    before_action :set_customer, only: %i[show destroy edit update]
+    before_action :assign_customer, only: %i[ show destroy edit update ]
 
     def index
       @customers = Customer.all
@@ -12,6 +12,10 @@ module Administrator
     def show; end
 
     def edit; end
+
+    def new
+      @customer = Customer.new
+    end
 
     def destroy
       @customer.destroy
@@ -24,14 +28,25 @@ module Administrator
         flash[:notice] = 'Customer information updated successfully.'
         redirect_to administrator_customers_path
       else
-        flash[:alert] = "Cannot update the customer: #{customer.errors.full_messages.join(', ')}"
+        flash[:alert] = "Cannot update the customer: #{@customer.errors.full_messages.join(', ')}"
         render 'edit'
+      end
+    end
+    
+    def create
+      @customer = Customer.new(customer_params)
+      if @customer.save!
+        flash[:notice] = "Successfully created a customer named '#{@customer.full_name}'."
+        redirect_to administrator_customer_path(@customer)
+      else
+        flash[:alert] = "Cannot update the customer: #{@customer.errors.full_messages.join(', ')}"
+        render 'new'
       end
     end
 
     private
   
-    def set_customer
+    def assign_customer
       @customer = Customer.find_by(id: params[:id])
       unless @customer
         flash[:alert] = "Customer with ID #{params[:id]} not found."
@@ -40,7 +55,7 @@ module Administrator
     end
 
     def customer_params
-      params.require(:customer).permit(:full_name, :email, :age, :gender)
+      params.require(:customer).permit(:full_name, :email, :age, :gender, :avatar, :password, :password_confirmation)
     end
   end
 end

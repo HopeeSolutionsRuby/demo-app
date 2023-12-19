@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
   has_many :taggables, dependent: :destroy
   has_many :tags, through: :taggables
 
-  # validates :age, numericality: { greater_than: 0, only_integer: true }
+  validates :age, numericality: { greater_than: 0, only_integer: true }
   validates :full_name, length: { maximum: 255 }
   validates :gender, inclusion: { in: %w(male female other), message: "%{value} is not a valid gender" }
 

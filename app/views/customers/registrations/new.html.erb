@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-outline mb-3 field">                 
                     <%= f.label :gender, class: "form-label d-flex justify-content-start" %>
-                    <%= f.select :gender, ["Male", "Female", "Other"], {}, { class: "form-control border" } %>
+                    <%= f.select :gender, [["Male", "male"], ["Female", "female"], ["Other", "other"]], {}, { class: "form-control border" } %>
                 </div>
                 <div class="form-outline mb-3 field">
                   <%= f.label :email, class: "form-label d-flex justify-content-start"%>

@@ -1,6 +1,6 @@
 <div id="table-admin">
   <div class="container mt-3">
-    <%= form_with(model: @customer, url: administrator_customer_path, local: true) do |form| %>
+    <%= form_with(model: customer, url: administrator_customers_path) do |form| %>
       <div class="row g-3 mb-3">
         <div class="col-12">
           <%= form.label :avatar, class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
@@ -22,9 +22,13 @@
           <%= form.label :age, "Age", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
           <%= form.number_field :age, class: "form-control", placeholder: "Age" %>
         </div>
-        <div class="col-12">
-          <%= form.label :age, "Tagging", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
-          <%= form.number_field :age, class: "form-control", placeholder: "Age" %>
+        <div class="col-12 col-lg-6">
+          <%= form.label :password, "Password", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.text_field :password, class: "form-control", placeholder: "Password" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :password_confirmation, "Password confirmation", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.text_field :password_confirmation, class: "form-control", placeholder: "Password confirmation" %>
         </div>
       </div>
       <div class="text-md-end text-center">

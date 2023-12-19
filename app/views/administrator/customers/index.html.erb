@@ -1,5 +1,11 @@
 <div id="table-admin">
   <section class="container" style="height: 86vh; padding-top: 24px;">
+    <div class="text-end mb-3">
+      <%= button_to new_administrator_customer_path, method: :get, class: "btn btn-primary px-3" do %>
+        <i class="fa-solid fa-plus me-2"></i>
+        Create customer
+      <% end %>
+    </div>
     <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
         <tr>
