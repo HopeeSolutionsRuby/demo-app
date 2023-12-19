@@ -55,7 +55,6 @@ module Administrator
         new_pictures = params[:clinic][:pictures]
         @clinic.pictures  = existing_pictures + new_pictures
       end
-
       respond_to do |format|
         if @clinic.update(clinic_params.merge(pictures: @clinic.pictures))
           format.html { redirect_to '/administrator/clinics', notice: 'Clinic was successfully updated.' }
@@ -70,7 +69,7 @@ module Administrator
     private
 
     def clinic_params
-      params.require(:clinic).permit(:name, :address, :region, :faculity, pictures: [])
+      params.require(:clinic).permit(:name, :address, :region, :faculity, :remove_pictures, pictures: [])
     end
 
     def search_params

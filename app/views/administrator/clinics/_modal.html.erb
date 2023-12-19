@@ -11,14 +11,11 @@
       </div>
         <%= form.file_field :pictures, id: "clinic_pictures", multiple: true, class: "form-control", "data-dropzone-target": "input" %>
       </div>  
-      <label for="clinic_pictures" class="form-label mt-2">
+      <label for="clinic_pictures" class=" drag mt-2 mx-3">
         Drag and drop files here or click to upload
       </label>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <div class="form-actions" style="text-align:right">
-          <%= form.submit 'Save' , class: 'btn btn-primary' %>
-        </div>
       </div>
     </div>
   </div>

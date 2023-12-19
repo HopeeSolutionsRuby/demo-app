@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["input", "previewContainer"];
+  images = []; // To keep track of object URLs
 
   connect() {
     this.inputTarget.addEventListener("change", this.previewImages.bind(this));
@@ -18,8 +19,10 @@ export default class extends Controller {
       const preview = this.previewContainerTarget;
       const existingImages = preview.querySelectorAll(".preview-image");
       existingImages.forEach((image) => {
+        URL.revokeObjectURL(image.src); // Revoke object URLs
         image.remove();
       });
+      this.images = []; // Reset the images array
     }
   }
 
@@ -32,19 +35,14 @@ export default class extends Controller {
       existingImages.forEach((image) => {
         image.remove();
       });
-
+      this.handleInput(); // Clear previous images
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const reader = new FileReader();
-
-        reader.onload = (event) => {
-          const img = new Image();
-          img.src = event.target.result;
-          img.classList.add("preview-image");
-          preview.appendChild(img);
-        };
-
-        reader.readAsDataURL(file);
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(file); // Obtain local file path
+        img.classList.add("preview-image");
+        img.setAttribute("data-name", file.name);
+        preview.appendChild(img);
       }
     }
   }
@@ -54,7 +52,18 @@ export default class extends Controller {
       const confirmed = confirm("Are you sure you want to delete this image?");
       if (confirmed) {
         event.target.remove();
-        $("#clinic_pictures").refresh
+        const fileToRemove = event.target.getAttribute("data-name");
+        const files = Array.from(this.inputTarget.files);
+        const updatedFiles = files.filter((file) => {
+          return file.name !== fileToRemove;
+        });
+
+        const newFileList = new DataTransfer();
+        updatedFiles.forEach((file) => {
+          newFileList.items.add(file);
+        });
+
+        this.inputTarget.files = newFileList.files;
       }
     }
   }
