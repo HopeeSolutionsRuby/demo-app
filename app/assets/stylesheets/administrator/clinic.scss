@@ -135,11 +135,11 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 .preview-image {
   width: 180px;
   height: 180px;
-  padding: 10px;  
+  padding: 10px;
 }
 
 #top-table {
-  height:150px;
+  height: 150px;
   #search-form {
     .search-field-clinic {
       border-radius: 5px;
@@ -154,9 +154,13 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
       border-left: none;
       border-radius: none;
     }
-    .select-wrapper{
+    .select-wrapper {
       margin-left: 10px;
-      width: 460px;
+      position: relative;
+      width: 350px;
+      .choices {
+        margin-bottom: 0;
+      }
       .choices__inner {
         height: 50px;
       }
@@ -167,9 +171,12 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
     }
     .filter-btn {
       margin-bottom: 5px;
+      position: absolute;
+      right: 5px;
+      top: 10px;
     }
   }
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 #sort-link {
@@ -181,4 +188,4 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
     color: #000;
     text-decoration: none;
   }
-} 
+}
