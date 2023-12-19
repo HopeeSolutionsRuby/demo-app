@@ -3,7 +3,6 @@
     &:hover, &:active {
       .nav-link {
         background-color: #dcdfe3 !important;
-        color: #007bff !important;
       }
     }
   }
@@ -24,8 +23,8 @@
   }
 
   span {
-    font-family: 'Nunito Sans', sans-serif;
     font-weight: lighter;
+    font-size: 17px;
   }
 
   .nav-pills {
@@ -36,7 +35,7 @@
 
   .body-content {
     position: relative;
-    width: calc(100% - 250px);
+    max-width: calc(100% - 250px);
   }
 
   @media (max-width: 575px) {

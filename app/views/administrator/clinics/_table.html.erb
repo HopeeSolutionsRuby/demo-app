@@ -1,21 +1,41 @@
-<table class="table align-middle mb-0 bg-white">
+<table class="table align-middle bg-white" style="font-family:Georgia, 'Times New Roman', Times, serif; width: 100%; table-layout:fixed; border-collapse:unset">
   <thead class="bg-light">
     <tr>
-      <th style="width: 50px; max-width: 50px; overflow: hidden;">Id</th>
-      <th style="width: 200px; max-width: 200px; overflow: hidden;">Name</th>
-      <th style="width: 150px; max-width: 150px; overflow: hidden;">Address</th>
-      <th style="width: 100px; max-width: 100px; overflow: hidden;">Region</th>
-      <th style="width: 100px; max-width: 100px; overflow: hidden;">Faculity</th>
-      <th style="width: 100px; max-width: 100px; overflow: hidden;padding-left:65px">Action</th>
+      <th style="width: 100px; max-width: 20px; overflow: hidden; padding-left:50px">
+        <%= sort_link(@q, :id, id:'sort-link') do %>
+        ID
+        <% end %>
+      </th>
+      <th style="width: 180px; max-width: 180px; overflow: hidden; padding-left:20px">
+        <%= sort_link(@q, :name, id:'sort-link') do %>
+        Name
+        <% end %>
+      </th>
+      <th style="width: 150px; max-width: 150px; overflow: hidden;">
+        <%= sort_link(@q, :address, id:'sort-link') do %>
+        ADDRESS
+        <% end %>
+      </th>
+      <th style="width: 100px; max-width: 100px; overflow: hidden;">
+        <%= sort_link(@q, :region, id:'sort-link') do %>
+        REGION
+        <% end %>
+      </th>
+      <th style="width: 100px; max-width: 100px; overflow: hidden;">
+        <%= sort_link(@q, :faculity, id:'sort-link') do %>
+        FACULITY
+        <% end %>
+      </th>
+      <th style="width: 100px; max-width: 100px; overflow: hidden;padding-right:20px"></th>
     </tr>
   </thead>
   <tbody>
     <% clinics.each do |clinic| %>
       <tr id="<%= clinic[:id] %>">
-        <td style="max-width: 50px; overflow: hidden; text-overflow: ellipsis;">
+        <td style="max-width: 50px; overflow: hidden; text-overflow: ellipsis;padding-left:50px;">
           <%= clinic[:id] %>
         </td>
-        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
+        <td style="max-width: 180px; overflow: hidden; text-overflow: ellipsis; padding-left:20px">
           <%= clinic[:name] %>
         </td>
         <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis;">
@@ -27,14 +47,16 @@
         <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;">
           <%= clinic[:faculity] %>
         </td>
-        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
+        <td style="max-width: 280px; overflow: hidden; text-overflow: ellipsis;">
           <div class="row"> 
-            <div class="col-6" style="width:100px">
-              <%= link_to "View" , administrator_clinic_path(clinic.id), class: "btn btn-primary d-block", style: 'width:75px',role: "button" , data: { turbo_frame: "_top" } %>
-            </div>
-            <div class="col-6" style="width: 100px;">
-            <%= button_to "Delete" , administrator_clinic_path(clinic.id),class: "btn btn-danger d-block",style:'width:75px', data: {
-              turbo_confirm: "Are you sure delete?" }, method: :delete %>
+            <div class="btn-reveal-trigger position-static">
+              <button class="btn btn-sm transition-none btn-reveal fs--2 custom-dropdown-button ms-auto" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent" style="float: right; margin-right:30px">
+                ...
+              </button>
+              <div class="dropdown-menu dropdown-menu-end py-2">
+                <a class="dropdown-item" href="/administrator/clinics/<%=clinic.id%>" data-turbo-frame="_top">View</a>
+                <%= link_to 'Remove', administrator_clinic_path(clinic.id), class: 'dropdown-item text-danger', method: :delete, data: { confirm: 'Are you sure?', turbo_confirm: 'Are you sure you want to remove this clinic?', turbo_method: :delete } %>
+              </div>
             </div>
           </div>
         </td>

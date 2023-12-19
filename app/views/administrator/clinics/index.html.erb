@@ -1,36 +1,42 @@
-<div class="me-auto p-2 bd-highlight" data-controller="clinic">
-  <div class="row align-items-start">
-    <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class:'col-auto', remote:true, format:'pdf',id: 'search-form', data: { turbo_frame: 'search'} do |f| %>
-      <%= f.search_field :name_or_address_or_faculity_or_region_cont, style:"width:400px;height:35px", class:'search-field' %>
-      <%= f.button class: 'btn btn-outline-dark', style:'height:35px;margin-bottom:3px',type: 'submit' do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <% end %>
-    <% end %> 
-  
-    <div class="col-auto">
-      <input type="checkbox" class="btn-check" id="btn-check-name" name="options" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btn-check-name">Name</label><br>
-    </div>
-    
-    <div class="col-auto">
-      <input type="checkbox" class="btn-check" id="btn-check-address" name="options" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btn-check-address">Address</label><br>
-    </div>  
-    
-    <div class="col-auto">
-      <input type="checkbox" class="btn-check" id="btn-check-region" name="options" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btn-check-region">Region</label><br>
-    </div>  
-    
-    <div class="col-auto">
-      <input type="checkbox" class="btn-check" id="btn-check-faculity" name="options" autocomplete="off">
-      <label class="btn btn-outline-primary" for="btn-check-faculity">Faculity</label><br>
-    </div>
+<div class="me-auto p-2 bd-highlight mb-4" data-controller="clinic" id="top-table">
+  <h1>Clinics</h1>
+  <div class="row align-items-start" style="margin-top: 30px;">
+    <div class="row align-items-start">
+      <div class="col-auto">
+        <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'd-flex align-items-end', remote: true, format: 'pdf', id: 'search-form', data: { turbo_frame: 'search' } do |f| %>
+          <%= f.search_field :name_or_address_or_faculity_or_region_cont, style: "width:300px;height:50px;font-size:14px", class: 'search-field-clinic', placeholder: '  Search clinics' %>
+          <!-- <%= f.button class: 'btn search-icon', style: 'height:35px;', type: 'submit' do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %> -->
+          <div class="select-wrapper">
+            <select id="choices-multiple-remove-button" placeholder="Select faculities" name="query[faculity_in][]" multiple="multiple">
+              <%= @faculities.map do |faculity| %>
+                <option value="<%= faculity %>"><%= faculity %></option>
+              <% end %>
+            </select>
+          </div>
+          <%= f.button class: 'btn filter-btn', style: 'height:35px;', type: 'submit' do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
 
-    <div class="col-auto ms-auto">
-      <%= link_to 'clinics/new', class: 'btn btn-success' do %>
-        + Create new clinic
-      <% end %>
+          <div class="select-wrapper">
+            <select id="choices-multiple-remove-button" placeholder="Select regions" name="query[region_in][]" multiple="multiple">
+              <%= @regions.map do |region| %>
+                <option value="<%= region %>"><%= region %></option>
+              <% end %>
+            </select>
+          </div>
+          <%= f.button class: 'btn filter-btn', style: 'height:35px;', type: 'submit' do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+        <% end %>
+      </div>
+    
+      <div class="col-auto ms-auto">
+        <%= link_to 'clinics/new', class: 'btn btn-success' do %>
+          + Create new clinic
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

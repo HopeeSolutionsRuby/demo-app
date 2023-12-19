@@ -6,8 +6,9 @@ module Administrator
     include Pagy::Backend
     def index
       @q = Clinic.ransack(search_params)
+      @faculities = Clinic.all.pluck(:faculity).uniq
+      @regions = Clinic.all.pluck(:region).uniq
       @clinics = @q.result(distinct: true)
-
       @pagy, @paginated_clinics = pagy(@clinics, items: 10)
     end
 

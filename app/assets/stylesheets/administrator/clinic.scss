@@ -64,7 +64,10 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 
 .form-control:focus {
   box-shadow: none;
-  border-color: #ba68c8;
+}
+
+.form-control {
+  height: 35px;
 }
 
 .profile-button {
@@ -134,3 +137,48 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   height: 180px;
   padding: 10px;  
 }
+
+#top-table {
+  height:150px;
+  #search-form {
+    .search-field-clinic {
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .search-icon {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      position: absolute;
+      margin-left: 360px;
+      border-left: none;
+      border-radius: none;
+    }
+    .select-wrapper{
+      margin-left: 10px;
+      width: 460px;
+      .choices__inner {
+        height: 50px;
+      }
+      .choices__list--multiple .choices__item {
+        background-color: green;
+        font-size: 14px;
+      }
+    }
+    .filter-btn {
+      margin-bottom: 5px;
+    }
+  }
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+#sort-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
+} 

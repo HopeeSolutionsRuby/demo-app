@@ -30,6 +30,17 @@ export default class extends Controller {
     $('#btn-check-name, #btn-check-address, #btn-check-region, #btn-check-faculity').on('click', function() {
       handleCheckboxClick(this.id.replace('btn-check-', ''));
     });
+
+    $(document).ready(function(){
+    
+      var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+         removeItemButton: true,
+         maxItemCount:3,
+         searchResultLimit:3,
+       }); 
+      
+      
+  });
   }
   
 }
