@@ -11,10 +11,10 @@ module Administrator
         clinics_data = CSV.read(uploaded_file.path, headers: true)
         clinics_data.each do |clinic_row|
           Clinic.create!(
-            name: clinic_row['Name'],
-            address: clinic_row['Address'],
-            region: clinic_row['Region'],
-            faculity: clinic_row['Faculity'],
+            name: clinic_row['name'],
+            address: clinic_row['address'],
+            region: clinic_row['region'],
+            faculity: clinic_row['faculity'],
           )
         end
         redirect_to administrator_clinics_path, notice: 'Clinic data imported successfully.'

@@ -19,10 +19,9 @@ export default class extends Controller {
       const preview = this.previewContainerTarget;
       const existingImages = preview.querySelectorAll(".preview-image");
       existingImages.forEach((image) => {
-        URL.revokeObjectURL(image.src); // Revoke object URLs
+        URL.revokeObjectURL(image.src);
         image.remove();
       });
-      this.images = []; // Reset the images array
     }
   }
 
@@ -35,11 +34,11 @@ export default class extends Controller {
       existingImages.forEach((image) => {
         image.remove();
       });
-      this.handleInput(); // Clear previous images
+      this.handleInput();
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const img = document.createElement("img");
-        img.src = URL.createObjectURL(file); // Obtain local file path
+        img.src = URL.createObjectURL(file);
         img.classList.add("preview-image");
         img.setAttribute("data-name", file.name);
         preview.appendChild(img);
