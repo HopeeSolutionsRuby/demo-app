@@ -15,23 +15,23 @@ require 'faker'
 Customer.destroy_all
 
 # Create 50 customers
-50.times do
-  Customer.create!(
-    email: Faker::Internet.email,
-    encrypted_password: Devise.friendly_token,
-    full_name: Faker::Name.name,
-    phone: Faker::PhoneNumber.phone_number,
-    age: Faker::Number.between(from: 1, to: 80),
-    address: Faker::Address.full_address,
-    sex: Faker::Number.between(from: 0, to: 1),
-    reset_password_token: nil, # You may adjust this based on your requirements
-    reset_password_sent_at: nil,
-    remember_created_at: nil,
-    created_at: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now),
-    updated_at: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now),
-    avatar: nil # You may adjust this based on your requirements
-  )
-end
+# 50.times do
+#   Customer.create!(
+#     email: Faker::Internet.email,
+#     encrypted_password: Devise.friendly_token,
+#     full_name: Faker::Name.name,
+#     phone: Faker::PhoneNumber.phone_number,
+#     age: Faker::Number.between(from: 1, to: 80),
+#     address: Faker::Address.full_address,
+#     sex: Faker::Number.between(from: 0, to: 1),
+#     reset_password_token: nil, # You may adjust this based on your requirements
+#     reset_password_sent_at: nil,
+#     remember_created_at: nil,
+#     created_at: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now),
+#     updated_at: Faker::Time.between(from: DateTime.now - 365, to: DateTime.now),
+#     avatar: nil # You may adjust this based on your requirements
+#   )
+# end
 
 Admin.create(username: 'admin', email: 'minh842657913@gmail.com', password: 'admin123',
              password_confirmation: 'admin123')

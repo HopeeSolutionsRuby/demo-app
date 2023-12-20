@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+gem 'chartkick'
+
+gem 'groupdate', '~> 6.4'
+gem 'pry', '~> 0.14.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
 
