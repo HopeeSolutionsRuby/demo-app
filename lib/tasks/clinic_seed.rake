@@ -7,6 +7,6 @@ namespace :db do
         FactoryBot.create(:clinic)
       end
     end
-    puts 'Customer seeding has been completed!'
+    puts 'Clinic seeding has been completed!'
   end
 end
