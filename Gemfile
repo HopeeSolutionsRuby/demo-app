@@ -55,7 +55,6 @@ gem 'pagy', '~> 6.2'
 
 gem 'jquery-rails'
 
-gem 'dropzonejs-rails'
 gem 'rubocop-rails'
 gem 'rubocop-rspec', require: false
 
@@ -89,8 +88,6 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
 
   gem 'letter_opener'
-
-  gem 'gruff'
 end
 
 group :development do

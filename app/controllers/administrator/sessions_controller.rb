@@ -14,7 +14,7 @@ module Administrator
     end
 
     def logout_due_to_timeout
-      flash[:alert] = "Your session has expired. Please log in again."
+      flash[:alert] = 'Your session has expired. Please log in again.'
       redirect_to new_administrator_admin_session_path
     end
   end

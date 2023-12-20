@@ -2,7 +2,6 @@
 <div class="customer-form">
   <div class="login-form-content px-4">
     <h2 id="title">Login</h2>
-    <%= puts "resource_name: #{resource_name}" %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
       <div class="login-input">

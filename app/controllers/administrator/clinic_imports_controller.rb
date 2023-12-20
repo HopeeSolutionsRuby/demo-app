@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'csv'
 module Administrator
   class ClinicImportsController < BaseController
-    def new
-    end
+    def new; end
 
     def create
       uploaded_file = params[:csv_file]
@@ -14,7 +15,7 @@ module Administrator
             name: clinic_row['name'],
             address: clinic_row['address'],
             region: clinic_row['region'],
-            faculity: clinic_row['faculity'],
+            faculity: clinic_row['faculity']
           )
         end
         redirect_to administrator_clinics_path, notice: 'Clinic data imported successfully.'
