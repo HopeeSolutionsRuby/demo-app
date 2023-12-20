@@ -137,6 +137,12 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   height: 180px;
   padding: 10px;
 }
+.image-container {
+  display: inline-block;
+  .close-icon:hover {
+    cursor: pointer;
+  }
+}
 
 #top-table {
   height: 150px;
