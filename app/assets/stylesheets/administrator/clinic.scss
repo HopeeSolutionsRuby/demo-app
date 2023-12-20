@@ -250,5 +250,6 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 
 .dropdown-action {
-  transform: translate3d(-50px, 260px, 0px) !important;
+  // transform: translate3d(-50px, 260px, 0px) !important;
+  margin-right: 40px !important;
 }
