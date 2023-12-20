@@ -1,5 +1,5 @@
-*{
-  font-family: 'Times New Roman', Times, serif;
+* {
+  font-family: "Times New Roman", Times, serif;
 }
 
 .primary {
@@ -206,8 +206,7 @@
     display: none;
   }
 
-  .navbnavbar-itemar-list .navbar-item:nth-child(-n + 3),
-  .navbar-list .navbar-item:last-child {
+  .navbar-list .navbar-item:nth-child(-n + 3) {
     display: block;
   }
 

@@ -1,0 +1,56 @@
+<div class="container rounded bg-white mt-5" style="border: solid 1px;">
+  <div class="row">
+    <div class="col-md-4 border-right" style="overflow-y: scroll; height:379px">
+      <div class="row mt-2">
+        <h4 class="font-weight-bold">Clinic Picture</h4>
+      </div>
+      <div class="row mt-2">
+        <% if @clinic.pictures.present? %>
+          <% @clinic.pictures.each do |image| %>
+            <div class="col-md-6">
+              <%= image_tag image.url, class: 'img-fluid rounded mb-2', style: 'height: 200px; width: 200px'%>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-md-12 d-flex justify-content-center align-items-center">
+            <%= image_tag 'noimage', class: 'img-fluid rounded px-3 mx-5', style: 'max-height: 290px; max-width: 290px' %>
+          </div>
+        <% end %>
+      </div>      
+    </div>
+    <div class="col-md-8">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <%= link_to administrator_clinics_path, class: 'd-flex flex-row align-items-center back unstyled-link' do %>
+            <i class="fa fa-long-arrow-left mb-2 mx-2"></i>
+            <h6>Back to home</h6>
+          <% end %>
+          <%= link_to edit_administrator_clinic_path(@clinic.id), class: "btn btn-primary", role: "button", data: { turbo_frame: "_top" } do %>
+            <h6 class="text-right mt-1">Edit Profile</h6>
+          <% end %>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <label class='form-label'>Name</label>
+            <p><%= @clinic.name %></p>
+          </div>
+          <div class="col-md-6">
+            <label class='form-label'>Address</label>
+            <p><%= @clinic.address %></p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <label class='form-label'>Region</label>
+            <p><%= @clinic.region %></p>
+          </div>
+          <div class="col-md-6">
+            <label class='form-label'>Faculity</label>
+            <p><%= @clinic.faculity %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  

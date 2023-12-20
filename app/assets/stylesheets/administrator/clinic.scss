@@ -1,0 +1,191 @@
+$toggle-background-color-on: dodgerblue;
+$toggle-background-color-off: darkgray;
+$toggle-control-color: white;
+$toggle-width: 100px;
+$toggle-height: 50px;
+$toggle-gutter: 5px;
+$toggle-radius: 50%;
+$toggle-control-speed: 0.15s;
+$toggle-control-ease: ease-in;
+
+// These are our computed variables
+// change at your own risk.
+$toggle-radius: $toggle-height / 2;
+$toggle-control-size: $toggle-height - ($toggle-gutter * 2);
+
+.toggle-control {
+  display: block;
+  position: relative;
+  padding-left: $toggle-width;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+
+  input {
+    // position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  input:checked ~ .control {
+    background-color: $toggle-background-color-on;
+
+    &:after {
+      left: $toggle-width - $toggle-control-size - $toggle-gutter;
+    }
+  }
+
+  .control {
+    // position: absolute;
+    top: 0;
+    left: 0;
+    height: $toggle-height;
+    width: $toggle-width;
+    border-radius: $toggle-radius;
+    background-color: $toggle-background-color-off;
+    transition: background-color $toggle-control-speed $toggle-control-ease;
+
+    &:after {
+      content: "";
+      //   position: absolute;
+      left: $toggle-gutter;
+      top: $toggle-gutter;
+      width: $toggle-control-size;
+      height: $toggle-control-size;
+      border-radius: $toggle-radius;
+      background: $toggle-control-color;
+      transition: left $toggle-control-speed $toggle-control-ease;
+    }
+  }
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.form-control {
+  height: 35px;
+}
+
+.profile-button {
+  background: #ba68c8;
+  box-shadow: none;
+  border: none;
+}
+
+.profile-button:hover {
+  background: #682773;
+}
+
+.profile-button:focus {
+  background: #682773;
+  box-shadow: none;
+}
+
+.profile-button:active {
+  background: #682773;
+  box-shadow: none;
+}
+
+.back:hover {
+  color: #682773;
+  cursor: pointer;
+}
+
+.unstyled-link,
+.unstyled-link:hover,
+.unstyled-link:active,
+.unstyled-link:focus {
+  text-decoration: none;
+  color: inherit;
+}
+.file-input {
+  display: none;
+}
+
+/* Style the custom file upload container */
+.file-upload-container {
+  display: inline-block;
+  border: 2px solid #3498db;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Style the file upload label */
+.file-upload-label {
+  color: #3498db;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Style the selected files container */
+.selected-files {
+  margin-top: 10px;
+  font-style: italic;
+  color: #555;
+}
+// .dz-progress {
+//   display: none;
+// }
+
+.preview-image {
+  width: 180px;
+  height: 180px;
+  padding: 10px;
+}
+
+#top-table {
+  height: 150px;
+  #search-form {
+    .search-field-clinic {
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .search-icon {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      margin-left: 10px;
+      position: absolute;
+      margin-left: 360px;
+      border-left: none;
+      border-radius: none;
+    }
+    .select-wrapper {
+      margin-left: 10px;
+      position: relative;
+      width: 350px;
+      .choices {
+        margin-bottom: 0;
+      }
+      .choices__inner {
+        height: 50px;
+      }
+      .choices__list--multiple .choices__item {
+        background-color: green;
+        font-size: 14px;
+      }
+    }
+    .filter-btn {
+      margin-bottom: 5px;
+      position: absolute;
+      right: 5px;
+      top: 10px;
+    }
+  }
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#sort-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
+}

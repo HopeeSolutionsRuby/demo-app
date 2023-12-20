@@ -1,0 +1,58 @@
+<div class="me-auto p-2 bd-highlight mb-4" data-controller="clinic" id="top-table">
+  <h1>Clinics</h1>
+  <div class="row align-items-start" style="margin-top: 30px;">
+    <div class="row align-items-start">
+      <div class="col-auto">
+        <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'd-flex align-items-end', remote: true, format: 'pdf', id: 'search-form', data: { turbo_frame: 'search' } do |f| %>
+          <%= f.search_field :name_or_address_or_faculity_or_region_cont, style: "width:300px;height:50px;font-size:14px", class: 'search-field-clinic', placeholder: '  Search clinics' %>
+          <!-- <%= f.button class: 'btn search-icon', style: 'height:35px;', type: 'submit' do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %> -->
+          <div class="select-wrapper">
+            <select id="choices-multiple-remove-button" placeholder="Select faculities" name="query[faculity_in][]" multiple="multiple">
+              <%= @faculities.map do |faculity| %>
+                <option value="<%= faculity %>"><%= faculity %></option>
+              <% end %>
+            </select>
+            <%= f.button class: 'btn filter-btn', style: 'height:35px;', type: 'submit' do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          </div>
+
+          <div class="select-wrapper">
+            <select id="choices-multiple-remove-button" placeholder="Select regions" name="query[region_in][]" multiple="multiple">
+              <%= @regions.map do |region| %>
+                <option value="<%= region %>"><%= region %></option>
+              <% end %>
+            </select>
+          <%= f.button class: 'btn filter-btn', style: 'height:35px;', type: 'submit' do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+    
+      <div class="col-auto mt-2 mx-4">
+        <%= link_to 'clinics/new', class: 'btn btn-primary mx-2 ml-3' do %>
+          + Create new clinic
+        <% end %>
+        <a type="button" class="btn btn-primary btn-del-cus mx-2" data-bs-toggle="modal"
+          data-bs-target="#importClinicModal">
+          <i class="fa-solid fa-file-import px-1"></i>
+          Import CSV
+        </a>
+        <a type="button" onclick="window.location.href='<%= administrator_clinic_exports_path(format: :csv) %>'" class="btn btn-primary btn-del-cus mx-2">
+          <i class="fa-solid fa-file-export px-1"></i>
+          Export CSV
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= turbo_frame_tag "search" do %>
+  <div id="clinic-table-container">
+    <%= render partial: 'administrator/clinics/table', locals: { clinics: @paginated_clinics, pagy: @pagy } %>
+  </div>
+<% end %>
+<%= render partial: "administrator/modal/admin_modal_clinic_import"  %>

@@ -1,0 +1,74 @@
+<table class="table align-middle bg-white" style="font-family:Georgia, 'Times New Roman', Times, serif; width: 100%; table-layout:fixed; border-collapse:unset">
+  <thead class="bg-light">
+    <tr>
+      <th style="width: 100px; max-width: 20px; overflow: hidden; padding-left:50px">
+        <%= sort_link(@q, :id, id:'sort-link') do %>
+        ID
+        <% end %>
+      </th>
+      <th style="width: 180px; max-width: 180px; overflow: hidden; padding-left:20px">
+        <%= sort_link(@q, :name, id:'sort-link') do %>
+        Name
+        <% end %>
+      </th>
+      <th style="width: 150px; max-width: 150px; overflow: hidden;">
+        <%= sort_link(@q, :address, id:'sort-link') do %>
+        ADDRESS
+        <% end %>
+      </th>
+      <th style="width: 100px; max-width: 100px; overflow: hidden;">
+        <%= sort_link(@q, :region, id:'sort-link') do %>
+        REGION
+        <% end %>
+      </th>
+      <th style="width: 100px; max-width: 100px; overflow: hidden;">
+        <%= sort_link(@q, :faculity, id:'sort-link') do %>
+        FACULITY
+        <% end %>
+      </th>
+      <th style="width: 100px; max-width: 100px; overflow: hidden;padding-right:20px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% clinics.each do |clinic| %>
+      <%= render partial: "administrator/modal/admin_modal_clinic" , locals: { clinic: clinic } %>
+
+      <tr id="<%= clinic[:id] %>">
+        <td style="max-width: 50px; overflow: hidden; text-overflow: ellipsis;padding-left:50px;">
+          <%= clinic[:id] %>
+        </td>
+        <td style="max-width: 180px; overflow: hidden; text-overflow: ellipsis; padding-left:20px">
+          <%= clinic[:name] %>
+        </td>
+        <td style="max-width: 150px; overflow: hidden; text-overflow: ellipsis;">
+          <%= clinic[:address] %>
+        </td>
+        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;">
+          <%= clinic[:region] %>
+        </td>
+        <td style="max-width: 100px; overflow: hidden; text-overflow: ellipsis;">
+          <%= clinic[:faculity] %>
+        </td>
+        <td style="max-width: 280px; overflow: hidden; text-overflow: ellipsis;">
+          <div class="row"> 
+            <div class="btn-reveal-trigger position-static">
+              <button class="btn btn-sm transition-none btn-reveal fs--2 custom-dropdown-button ms-auto" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent" style="float: right; margin-right:30px">
+                ...
+              </button>
+              <div class="dropdown-menu dropdown-menu-end py-2">
+                <a class="dropdown-item" href="/administrator/clinics/<%=clinic.id%>" data-turbo-frame="_top">View</a>
+                <a type="button"  data-bs-toggle="modal" class="dropdown-item"
+                  data-bs-target="#deleteClinicModal" style="color: red;">
+                  Delete
+                </a>
+              </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col-auto ms-auto">
+    <%== pagy_bootstrap_nav(pagy) %>
+  </div>
+</div>
