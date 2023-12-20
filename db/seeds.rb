@@ -17,4 +17,4 @@ unless admin.persisted?
   admin.password_confirmation = 'admin123'
   admin.save
 end
-puts 'Seeding has been completed!'
+Rails.logger.debug 'Seeding has been completed!'

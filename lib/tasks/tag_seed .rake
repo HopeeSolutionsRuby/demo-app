@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :db do
   desc 'Seed data for tagging'
   task tag_seed: :environment do

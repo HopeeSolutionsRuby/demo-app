@@ -23,8 +23,8 @@
           <%= form.number_field :age, class: "form-control", placeholder: "Age" %>
         </div>
         <div class="col-12">
-          <%= form.label :age, "Tagging", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
-          <%= form.number_field :age, class: "form-control", placeholder: "Age" %>
+          <%= form.label :tags, "Tagging", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= collection_select(:customer, :tag_ids, Tag.all, :id, :name, { }, { multiple: true, class: 'form-select', id: 'multiple-select-field', 'data-placeholder': 'Choose anything' }) %>
         </div>
       </div>
       <div class="text-md-end text-center">
@@ -33,3 +33,12 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $( '#multiple-select-field' ).select2( {
+    theme: "bootstrap-5",
+    width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+    placeholder: $( this ).data( 'placeholder' ),
+    closeOnSelect: false,
+} );
+</script>

@@ -3,7 +3,7 @@
 module Administrator
   # class Dashboard Controller
   class CustomersController < BaseController
-    before_action :assign_customer, only: %i[ show destroy edit update ]
+    before_action :assign_customer, only: %i[show destroy edit update]
 
     def index
       @customers = Customer.all
@@ -19,7 +19,7 @@ module Administrator
 
     def destroy
       @customer.destroy
-      flash[:notice] = "Customer has been deleted successfully."
+      flash[:notice] = 'Customer has been deleted successfully.'
       redirect_to administrator_customers_path
     end
 
@@ -32,10 +32,12 @@ module Administrator
         render 'edit'
       end
     end
-    
+
     def create
-      @customer = Customer.new(customer_params)
-      if @customer.save!
+      @customer = Customer.new(customer_params.except(:tag_ids))
+      create_tag(@customer)
+     
+      if @customer.save
         flash[:notice] = "Successfully created a customer named '#{@customer.full_name}'."
         redirect_to administrator_customer_path(@customer)
       else
@@ -45,17 +47,46 @@ module Administrator
     end
 
     private
-  
+
+    def create_tag(customer)
+      tag_number = []
+      tag_string = []
+      tags = params[:customer][:tag_ids].reject(&:empty?)
+      tags.each do |value|
+        if value.match?(/\A\d+\z/)
+          tag_number << Tag.find(value.to_i)
+        else
+          tag_string << Tag.create(name: value)
+        end
+      end
+      tag_string.each { |value| tag_number << value }
+      customer.tags = tag_number
+    end
+
+    def update_tag(customer)
+      tag_number = []
+      tag_string = []
+      params[:customer][:tag_ids].each do |value|
+        if value.match?(/\A\d+\z/)
+          tag_number << Tag.find(value.to_i)
+        elsif value.match?(/\A[a-zA-Z]+\z/)
+          tag_string << Tag.update(name: value)
+        end
+      end
+      tag_string.each { |value| tag_number << value }
+      customer.tags = tag_number
+    end
+
     def assign_customer
       @customer = Customer.find_by(id: params[:id])
-      unless @customer
-        flash[:alert] = "Customer with ID #{params[:id]} not found."
-        redirect_to administrator_customers_path
-      end
+      return if @customer
+
+      flash[:alert] = "Customer with ID #{params[:id]} not found."
+      redirect_to administrator_customers_path
     end
 
     def customer_params
-      params.require(:customer).permit(:full_name, :email, :age, :gender, :avatar, :password, :password_confirmation)
+      params.require(:customer).permit(:full_name, :email, :age, :gender, :avatar, :password, :password_confirmation, tag_ids:[])
     end
   end
 end

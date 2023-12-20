@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :db do
   desc 'Seed data for customers'
   task customer_seed: :environment do

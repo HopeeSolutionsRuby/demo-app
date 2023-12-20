@@ -3,21 +3,19 @@
 module Administrator
   # class Dashboard Controller
   class TagsController < BaseController
-    before_action :set_tag, only: %i[ show edit update destroy ]
+    before_action :set_tag, only: %i[show edit update destroy]
 
     def index
       @tags = Tag.all
     end
 
-    def show
-    end
+    def show; end
 
     def new
       @tag = Tag.new
     end
 
-    def edit
-    end
+    def edit; end
 
     def create
       @tag = Tag.new(tag_params)
@@ -28,7 +26,7 @@ module Administrator
       else
         flash[:alert] = "Cannot create the tagging: #{@tag.errors.full_messages.join(', ')}"
         render 'new'
-      end    
+      end
     end
 
     def update
@@ -44,7 +42,7 @@ module Administrator
     def destroy
       @tag.destroy!
 
-      flash[:notice] = "Tagging has been deleted successfully."
+      flash[:notice] = 'Tagging has been deleted successfully.'
       redirect_to administrator_tags_path
     end
 
@@ -52,11 +50,11 @@ module Administrator
 
     def set_tag
       @tag = Tag.find_by(id: params[:id])
-      unless @tag
-        flash[:alert] = "Tag with ID #{params[:id]} not found."
-        redirect_to administrator_tags_path
-      end
-    end    
+      return if @tag
+
+      flash[:alert] = "Tag with ID #{params[:id]} not found."
+      redirect_to administrator_tags_path
+    end
 
     def tag_params
       params.require(:tag).permit(:name)

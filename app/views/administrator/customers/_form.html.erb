@@ -30,6 +30,10 @@
           <%= form.label :password_confirmation, "Password confirmation", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
           <%= form.text_field :password_confirmation, class: "form-control", placeholder: "Password confirmation" %>
         </div>
+        <div class="col-12">
+          <%= form.label :tags, "Tagging", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= collection_select(:customer, :tag_ids, Tag.all, :id, :name, { }, { multiple: true, class: 'form-select', id: 'multiple-select-custom-field', 'data-placeholder': 'Choose anything', 'data-controller': 'table' }) %>
+        </div>
       </div>
       <div class="text-md-end text-center">
         <%= form.submit "Save changes", class: "btn btn-primary px-5" %>

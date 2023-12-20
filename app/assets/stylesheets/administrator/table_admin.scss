@@ -11,6 +11,27 @@
     text-overflow: ellipsis;
   }
 
+  .table {
+    border-collapse: separate;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  .btn:focus {
+    box-shadow: none;
+  }
+
+  .tag {
+    background-color: #e3e6ed;
+    color: #222834;;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 3px 7px;
+    text-transform: uppercase;
+  }
+
   .border-bottom {
     border-bottom: 1px dashed #cbd0dd00;
   }
