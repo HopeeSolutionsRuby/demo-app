@@ -11,11 +11,15 @@
     text-overflow: ellipsis;
   }
 
+  .custom-table tr:last-child td {
+    border-style: none;
+  }
+
   .table {
     border-collapse: separate;
   }
 
-.dropdown-toggle::after {
+  .dropdown-toggle::after {
     display: none;
   }
 
@@ -23,9 +27,13 @@
     box-shadow: none;
   }
 
+  .page-link {
+    border: none;
+  }
+
   .tag {
     background-color: #e3e6ed;
-    color: #222834;;
+    color: #222834;
     font-weight: 600;
     font-size: 12px;
     padding: 3px 7px;

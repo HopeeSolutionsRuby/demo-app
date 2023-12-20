@@ -1,48 +1,49 @@
-<div id="table-admin" class="px-4">
-  <table class="table align-middle mb-0 bg-white">
-    <thead style="font-size: 15px;">
-      <tr>
-        <th><%= sort_link(@q, :full_name, "Name",class: 'text-black')%></th>
-        <th><%= sort_link(@q, :email, "Email",class: 'text-black')%></th>
-        <th><%= sort_link(@q, :age, "Age",class: 'text-black') %></th>
-        <th scope="col" style="width: 250px;">Tagging</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @customers.each do |customer| %>
-        <%= render partial: "administrator/modal/admin_modal", locals: { customer: customer } %>
-        <tr>
-          <td>
-            <%= link_to administrator_customer_path(customer), class: 'text-decoration-none', data: { turbo_frame: "_top" } do %>
-              <span class="fw-bold"><%= customer.full_name %></span>
-            <% end %>            
-          </td>
-          <td>
-            <span class="fw-normal"><%= customer.email %></span>
-          </td>
-          <td class="fw-normal"><%= customer.age %> Years old</td>
-          <td style="min-width:225px;">
-              <% customer.tags.each do |tag| %>
-                <span class="me-1 tag"><%= tag.name %></span>
-              <% end %>
-          </td>
-          <td>
-              <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa-solid fa-ellipsis" style="font-size: 17px;"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li><%= button_to "Show", administrator_customer_path(customer), method: :get, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
-                <li> <%= button_to "Edit", edit_administrator_customer_path(customer), method: :get, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
-                <li>
-                  <%= button_to "Delete customer", administrator_customer_path(customer), method: :delete, class: "dropdown-item", data: { turbo_frame: "_top" } %>
-                </li>          
-              </ul> 
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div id="table-admin">
+  <div class="card" style="border-left: none; border-right: none;">
+    <div class="card-body pt-0 pb-0" style="padding: 0 34px;">
+      <table class="table align-middle mb-0 bg-white custom-table">
+        <thead style="font-size: 15px;">
+          <tr>
+            <th><%= sort_link(@q, :full_name, "Name", class: 'text-black') %></th>
+            <th><%= sort_link(@q, :email, "Email", class: 'text-black') %></th>
+            <th><%= sort_link(@q, :age, "Age", class: 'text-black') %></th>
+            <th scope="col" style="width: 250px;">Tagging</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td>
+                <%= link_to administrator_customer_path(customer), class: 'text-decoration-none', data: { turbo_frame: "_top" } do %>
+                  <span class="fw-bold"><%= customer.full_name %></span>
+                <% end %>            
+              </td>
+              <td>
+                <span class="fw-normal"><%= customer.email %></span>
+              </td>
+              <td class="fw-normal"><%= customer.age %> Years old</td>
+              <td style="min-width: 225px;">
+                <% customer.tags.each do |tag| %>
+                  <span class="me-1 tag"><%= tag.name %></span>
+                <% end %>
+              </td>
+              <td>
+                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-ellipsis" style="font-size: 17px;"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= button_to "Show", administrator_customer_path(customer), method: :get, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
+                  <li><%= button_to "Edit", edit_administrator_customer_path(customer), method: :get, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
+                  <li><%= button_to "Delete customer", administrator_customer_path(customer), method: :delete, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>          
+                </ul> 
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <%= stylesheet_link_tag 'administrator/content' %>
