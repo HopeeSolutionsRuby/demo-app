@@ -34,10 +34,10 @@ export default class extends Controller {
     $(document).ready(function(){
     
       var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
-         removeItemButton: true,
-         maxItemCount:3,
-         searchResultLimit:3,
-       }); 
+        removeItemButton: true,
+        maxItemCount:3,
+        searchResultLimit:3,
+      }); 
       
       
   });
