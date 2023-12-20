@@ -18,19 +18,19 @@ module Administrator
     end
 
     def show; end
-    
+
     def edit; end
-    
+
     def new
       @customer = Customer.new
     end
-    
+
     def destroy
       @customer.destroy
       flash[:notice] = 'Customer has been deleted successfully.'
       redirect_to administrator_customers_path
     end
-    
+
     def update
       if @customer.update(customer_params)
         flash[:notice] = 'Customer information updated successfully.'
@@ -44,7 +44,7 @@ module Administrator
     def create
       @customer = Customer.new(customer_params.except(:tag_ids))
       create_tag(@customer)
-      
+
       if @customer.save
         flash[:notice] = "Successfully created a customer named '#{@customer.full_name}'."
         redirect_to administrator_customer_path(@customer)
@@ -53,9 +53,9 @@ module Administrator
         render 'new'
       end
     end
-    
+
     private
-    
+
     def create_tag(customer)
       tag_number = []
       tag_string = []
@@ -94,7 +94,8 @@ module Administrator
     end
 
     def customer_params
-      params.require(:customer).permit(:full_name, :email, :age, :gender, :avatar, :password, :password_confirmation, tag_ids:[])
+      params.require(:customer).permit(:full_name, :email, :age, :gender, :avatar, :password, :password_confirmation,
+                                       tag_ids: [])
     end
   end
 end

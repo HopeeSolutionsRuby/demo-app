@@ -9,6 +9,6 @@ FactoryBot.define do
     age { Faker::Number.between(from: 1, to: 100) }
     gender { %w[male female other].sample }
     avatar { Faker::Avatar.image }
-    created_at { Faker::Date.between(from: 11.months.ago, to: Date.today) }
+    created_at { Faker::Date.between(from: 11.months.ago, to: Time.zone.today) }
   end
 end

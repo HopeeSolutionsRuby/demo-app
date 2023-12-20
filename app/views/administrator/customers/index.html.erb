@@ -1,4 +1,4 @@
-<div class="me-auto p-4 bd-highlight content" data-controller="customer">
+<div class="me-auto p-4 bd-highlight content " data-controller="customer">
   <div class=" align-items-start">
     <%= search_form_for @q, url: administrator_customers_path, class:'row  d-flex align-items-right ' ,id: 'search-form', data: { turbo_stream: 'search'} do |f| %>
       <div class="form-outline mb-3 field mx-2 col-auto">
@@ -16,7 +16,7 @@
         <div class="form-outline mb-3  col-md-2 ">
           <%= f.label "Tags",class: "form-label fw-bold"  %>
           <div class='d-flex'>
-            <%= f.number_field :age_gteq, class: " form-control",placeholder: 'from'%>
+            <%= f.text_field :tags, class: " form-control",placeholder: 'ex: ho, so mui,...'%>
           </div>
         </div>
         <div class=''>
@@ -42,7 +42,7 @@
   </div> 
 <% end %>
 
-<div class='d-flex align-items-right justify-content-end mt-3 '>
+<div class='d-flex align-items-right justify-content-end mt-3 px-4 '>
       <%== pagy_bootstrap_nav(@pagy) %>
 </div>
  
