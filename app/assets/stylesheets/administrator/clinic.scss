@@ -143,6 +143,21 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
     cursor: pointer;
   }
 }
+.btn-custom {
+  button {
+    border: 0;
+    background-color: white;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+  }
+  &:hover {
+    background-color: #e9ecef !important;
+  }
+  &:hover button {
+    background-color: #e9ecef !important;
+  }
+}
 
 #top-table {
   height: 150px;

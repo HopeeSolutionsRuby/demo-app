@@ -2,8 +2,6 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["input", "previewContainer"];
-  images = []; // To keep track of object URLs
-
   connect() {
     this.inputTarget.addEventListener("change", this.previewImages.bind(this));
     this.inputTarget.addEventListener("input", this.handleInput.bind(this));
@@ -16,7 +14,6 @@ export default class extends Controller {
       const existingImages = preview.querySelectorAll(".preview-image");
       const existingIcons = preview.querySelectorAll(".close-icon");
       existingImages.forEach((image) => {
-        URL.revokeObjectURL(image.src);
         image.remove();
       });
       existingIcons.forEach((icon) => {
