@@ -1,25 +1,27 @@
 <h1 class='container d-flex justify-content-center'>USER REGISTER IN MONTHS</h1>
-<div class='row g-4 mb-4 p-4' >
-  <div class='col-12'>
-    <div class="card shadow-none border border-300 bg-light">
-      <div class='card-body p-0 d-flex justify-content-between' >
-        <div class='p-2 code-to-copy'>
-          <h3>Customer</h3>
-          <p style='color:rgb(82, 91, 117)'>Pham Phi Hoan dep trai number1</p>
-        </div>
+  <div class='row g-4 mb-4 p-4' >
+    <div class='col-12'>
+      <div class="card shadow-none border border-300 bg-light">
+        <div class='card-body p-0 d-flex justify-content-between' >
+          <div class='p-2 code-to-copy'>
+            <h2>Customer Charts</h2>
+            <h6 class='px-2'>Selected Year: <%= @year %></h6>
+            <h6 class='px-2'>Selected Month: <%= Date::MONTHNAMES[@month] %></h6>
+          </div>
         <div class=' py-4 px-2 d-flex align-items-center' >
-          <input type = "date" name = "date" class='mx-2 form-control'>  
-          <input type = "date" name = "date" class='form-control'>  
+          <%= form_tag(administrator_statistics_path, method: :get) do %>
+            <input type="month" name="filter_month" id="filter_month" class='py-2 px-2'/>
+            <%= submit_tag 'Submit', class: 'btn btn-primary py-2' %>
+            <% end %>
         </div>
       </div>
-      <div class=' d-flex justify-content-center '>
-        <%= pie_chart Customer.group("quarter(created_at)").count, width: "400px", height: "150px"  %>
-      </div>
-      <div class='p-4'>
-        <% data = Customer.group("DATE_FORMAT(created_at,'%b')").count %>
-        <% sorted_data = data.sort_by { |month, _| Date::ABBR_MONTHNAMES.index(month) || 0 }.to_h %>
-        <%= column_chart sorted_data, colors: ["#4CB9E7"] %>
-      </div>
+    <div class='p-4'>
+      <% data = @sign_ups_by_day %>
+      <%= area_chart data, xtitle: "Days", ytitle: "Number", colors: ["#4CB9E7"] %>
     </div>
   </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
