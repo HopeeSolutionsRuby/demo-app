@@ -139,8 +139,17 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 .image-container {
   display: inline-block;
+  position: relative;
   .close-icon:hover {
     cursor: pointer;
+    // color:#0d6efd;
+  }
+  .close-icon{
+    position: absolute;
+    top: 0;
+    right: -2%;
+    color:red;
+    font-size: 20px;
   }
 }
 .btn-custom {
@@ -238,4 +247,8 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 .table-col-name{
   overflow: hidden;
   text-overflow: ellipsis
+}
+
+.dropdown-action {
+  transform: translate3d(-50px, 260px, 0px) !important;
 }

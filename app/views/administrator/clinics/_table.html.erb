@@ -54,9 +54,9 @@
               <button class="btn btn-sm transition-none btn-reveal fs--2 custom-dropdown-button ms-auto" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent" id="btn-action">
                 ...
               </button>
-              <div class="dropdown-menu dropdown-menu-end py-2">
+              <div class="dropdown-menu dropdown-menu-end py-2 dropdown-action">
                 <a class="dropdown-item" href="/administrator/clinics/<%=clinic.id%>" data-turbo-frame="_top">View</a>
-                <%= button_to 'Delete', administrator_clinic_path(clinic), method: :delete, class: 'dropdown-item btn-custom', data: { turbo: false } %>
+                <%= button_to 'Delete', administrator_clinic_path(clinic), method: :delete, class: 'dropdown-item btn-custom', data: { turbo: false }, style:'color:red' %>
               </div>
             </div>
           </div>

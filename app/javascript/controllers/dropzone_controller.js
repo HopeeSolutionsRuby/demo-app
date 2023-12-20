@@ -46,9 +46,9 @@ export default class extends Controller {
         img.setAttribute("data-name", file.name);
         imgContainer.appendChild(img);
 
-        const closeIcon = document.createElement("span");
-        closeIcon.innerHTML = "&times;";
-        closeIcon.classList.add("close-icon");
+        const closeIcon = document.createElement("i");
+        closeIcon.classList.add("fa", "fa-circle-xmark");
+        closeIcon.classList.add("fa-regular", "close-icon");
         closeIcon.addEventListener("click", this.deleteImage.bind(this));
         imgContainer.appendChild(closeIcon);
 

@@ -41,12 +41,10 @@
             Drag and drop files here or click to upload
           </label>
         </div>
-
-
-          <div class="form-actions mt-3" style="text-align:right">
-            <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton",data:{turbo: false} %>
-          </div>
-
+        <div class="form-actions mt-3" style="text-align:right">
+          <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton",data:{turbo: false} %>
+          <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
+        </div>
         <% end %>
   </div>
 </div>
