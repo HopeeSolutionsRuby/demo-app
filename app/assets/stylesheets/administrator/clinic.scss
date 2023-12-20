@@ -253,3 +253,33 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   // transform: translate3d(-50px, 260px, 0px) !important;
   margin-right: 40px !important;
 }
+
+@media (max-width: 757px) {
+  .btn-del-cus {
+    display: none;
+  }
+  .wrapper-feature {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    .btn-create {
+      margin-left: 100px;
+    }
+  }
+  #top-table {
+    margin-bottom: 50px !important;
+  }
+}
+
+@media (min-width: 757px) and  (max-width: 1800px) {
+  .wrapper-feature {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  #top-table {
+    margin-bottom: 60px !important;
+  }
+}

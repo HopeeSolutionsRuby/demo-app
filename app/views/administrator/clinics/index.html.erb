@@ -1,7 +1,7 @@
 <div class="me-auto p-2 bd-highlight mb-4 mx-4 mt-3" data-controller="clinic" id="top-table">
   <h1>Clinics</h1>
   <div class="row align-items-start" style="margin-top: 30px;">
-    <div class="row align-items-start">
+    <div class="row align-items-start" style="display: flex; justify-content: space-between">
       <div class="col-auto">
         <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'd-flex align-items-end', remote: true, format: 'pdf', id: 'search-form', data: { turbo_frame: 'search' } do |f| %>
           <%= f.search_field :name_or_address_or_faculity_or_region_cont, style: "width:300px;height:50px;font-size:14px;padding-left:10px", class: 'search-field-clinic', placeholder: 'Search clinics' %>
@@ -29,16 +29,16 @@
         <% end %>
       </div>
     
-      <div class="col-auto mx-2">
-        <%= link_to 'clinics/new', class: 'btn btn-primary mx-2 ml-3 mt-2' do %>
+      <div class="col-auto wrapper-feature">
+        <%= link_to 'clinics/new', class: 'btn btn-primary ml-3 mt-2 btn-create' do %>
           + Create new clinic
         <% end %>
-        <a type="button" class="btn btn-primary btn-del-cus mx-2 mt-2" data-bs-toggle="modal"
+        <a type="button" class="btn btn-primary mx-2 mt-2 btn-import" data-bs-toggle="modal"
           data-bs-target="#importClinicModal">
           <i class="fa-solid fa-file-import px-1"></i>
           Import CSV
         </a>
-        <a type="button" onclick="window.location.href='<%= administrator_clinic_exports_path(format: :csv) %>'" class="btn btn-primary btn-del-cus mx-2 mt-2">
+        <a type="button" onclick="window.location.href='<%= administrator_clinic_exports_path(format: :csv) %>'" class="btn btn-primary btn-del-cus mt-2">
           <i class="fa-solid fa-file-export px-1"></i>
           Export CSV
         </a>
