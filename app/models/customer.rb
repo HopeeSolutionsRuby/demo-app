@@ -7,11 +7,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :trackable
   
-  def self.not_send_email
-    def send_devise_notification(notification, *args); end
-  end
   
-  enum gender: { Male: 0, Female: 1, Other: 2}
+  enum gender: { male: 0, female: 1, other: 2}
 
   mount_uploader :avatar, AvatarUploader
   def self.ransackable_attributes(_auth_object = nil)
@@ -21,5 +18,16 @@ class Customer < ApplicationRecord
 
   def self.ransackable_associations(_auth_object = nil)
     []
+  end
+  has_many :taggables, dependent: :destroy
+  has_many :tags, through: :taggables
+
+  validates :age, numericality: { greater_than: 0, only_integer: true }
+  validates :full_name, length: { maximum: 255 }
+  validates :gender, inclusion: { in: %w[male female other], message: '%<value>s is not a valid gender' }
+
+  # Enum gender
+  def self.not_send_email
+    def send_devise_notification(notification, *args); end
   end
 end

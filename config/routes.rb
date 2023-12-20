@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :dashboard
     resources :clinics
     resources :statistics, only: %i[index]
+    resources :tags
   end
 end

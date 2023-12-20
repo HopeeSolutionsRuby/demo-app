@@ -336,7 +336,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.16.0)
+    select2-rails (4.0.13)
+    selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -419,6 +420,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sassc-rails
+  select2-rails
   selenium-webdriver
   shoulda-callback-matchers
   shoulda-matchers (~> 5.0)

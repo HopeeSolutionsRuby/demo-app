@@ -1,32 +1,43 @@
-<%= form_with(model: customer) do |form| %>
-  <% if customer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% customer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :full_name, style: "display: block" %>
-    <%= form.text_field :full_name %>
+<div id="table-admin">
+  <div class="container mt-3">
+    <%= form_with(model: customer, url: administrator_customers_path) do |form| %>
+      <div class="row g-3 mb-3">
+        <div class="col-12">
+          <%= form.label :avatar, class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.file_field :avatar, class: "form-control", placeholder: "Full name" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :full_name, class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.text_field :full_name, class: "form-control", placeholder: "Full name" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :gender, class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.select :gender, [['Male', 'male'], ['Female', 'female'], ['Other', 'other']], {}, class: "form-select" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :email, "Email", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :age, "Age", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.number_field :age, class: "form-control", placeholder: "Age" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :password, "Password", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.text_field :password, class: "form-control", placeholder: "Password" %>
+        </div>
+        <div class="col-12 col-lg-6">
+          <%= form.label :password_confirmation, "Password confirmation", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= form.text_field :password_confirmation, class: "form-control", placeholder: "Password confirmation" %>
+        </div>
+        <div class="col-12">
+          <%= form.label :tags, "Tagging", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
+          <%= collection_select(:customer, :tag_ids, Tag.all, :id, :name, { }, { multiple: true, class: 'form-select', id: 'multiple-select-custom-field', 'data-placeholder': 'Choose anything', 'data-controller': 'table' }) %>
+        </div>
+      </div>
+      <div class="text-md-end text-center">
+        <%= form.submit "Save changes", class: "btn btn-primary px-5" %>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :age, style: "display: block" %>
-    <%= form.text_field :age %>
-  </div>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

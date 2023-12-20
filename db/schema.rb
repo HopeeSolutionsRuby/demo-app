@@ -63,4 +63,21 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_071608) do
     t.index ["unlock_token"], name: "index_customers_on_unlock_token", unique: true
   end
 
+  create_table "taggables", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_taggables_on_customer_id"
+    t.index ["tag_id"], name: "index_taggables_on_tag_id"
+  end
+
+  create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "taggables", "customers"
+  add_foreign_key "taggables", "tags"
 end
