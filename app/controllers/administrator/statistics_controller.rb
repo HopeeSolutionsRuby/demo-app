@@ -48,7 +48,6 @@ module Administrator
       tempfile.close
       tempfile.unlink
 
-
     end
 
     private
