@@ -18,6 +18,7 @@
       "administrator/sidebar",
       "administrator/table_admin"
     <% end %>
+
     <%= javascript_importmap_tags %>
   </head>
 
@@ -31,7 +32,7 @@
           <div class="row flex-nowrap">
             <%= render 'shared/administrator/sidebar' %>
             <div class="px-0 body-content">
-              <div class="content-controller">
+              <div class="content-controller" style="background-color: #F5F7FA;">
                 <%= yield %>
               </div>
               <%= render 'shared/administrator/footer' %>

@@ -11,10 +11,11 @@ module Administrator
 
       # Add your data and configuration here
       # generate label for 12 months
-      standard_labels = { 0 => 'Jan', 1 => 'Feb', 2 => 'Mar', 3 => 'Apr', 4 => 'May', 5 => 'Jun', 6 => 'Jul', 7 => 'Aug', 8 => 'Sep', 9 => 'Oct', 10 => 'Nov', 11 => 'Dec' }
+      standard_labels = { 0 => 'Jan', 1 => 'Feb', 2 => 'Mar', 3 => 'Apr', 4 => 'May', 5 => 'Jun', 6 => 'Jul',
+                          7 => 'Aug', 8 => 'Sep', 9 => 'Oct', 10 => 'Nov', 11 => 'Dec' }
       @selected_months = params[:selected_months] || []
       @filtered_customers = filter_customers_by_months
-      @signup_data = @filtered_customers.group("MONTH(created_at)").count
+      @signup_data = @filtered_customers.group('MONTH(created_at)').count
       chart_data = []
       if @selected_months.empty?
         12.times do |i|
@@ -47,7 +48,6 @@ module Administrator
       # Close and delete the temporary file
       tempfile.close
       tempfile.unlink
-
     end
 
     private
