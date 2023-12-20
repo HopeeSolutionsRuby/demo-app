@@ -4,7 +4,7 @@
     <div class="row align-items-start">
       <div class="col-auto">
         <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'd-flex align-items-end', remote: true, format: 'pdf', id: 'search-form', data: { turbo_frame: 'search' } do |f| %>
-          <%= f.search_field :name_or_address_or_faculity_or_region_cont, style: "width:300px;height:50px;font-size:14px", class: 'search-field-clinic', placeholder: '  Search clinics' %>
+          <%= f.search_field :name_or_address_or_faculity_or_region_cont, style: "width:300px;height:50px;font-size:14px;padding-left:10px", class: 'search-field-clinic', placeholder: 'Search clinics' %>
           <!-- <%= f.button class: 'btn search-icon', style: 'height:35px;', type: 'submit' do %>
             <i class="fa-solid fa-magnifying-glass"></i>
           <% end %> -->

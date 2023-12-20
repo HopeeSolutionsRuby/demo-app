@@ -42,16 +42,35 @@
   @media (max-width: 575px) {
     .body-content {
       position: relative;
-      width: 100%;
+      max-width: 575px;
+      
+    }
+    .col-id {
+      padding-left: 15px !important;
+      width: 60px;
+    }
+    .col-name {
+      padding-left: 0px !important;
+      width: 100px;
+    }
+    .col-action {
+      padding-right: 0px !important;
+      width: 10px; 
+      #btn-action {
+        float: right;
+        margin-right: 5px;
+      }
+    }
+    .col-address {
+      width: 100px;
     }
   }
 
   .body-footer {
-    position: absolute;
     bottom: 0;
     border-top: 1px solid #dbdee4;
-    padding-bottom: 7px;
-    padding-top: 7px;
+    padding-bottom: 5px;
+    padding-top: 30px;
     text-align: center;
   }
 

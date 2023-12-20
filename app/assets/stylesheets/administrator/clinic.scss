@@ -163,6 +163,7 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
       }
       .choices__inner {
         height: 50px;
+        overflow-y: auto;
       }
       .choices__list--multiple .choices__item {
         background-color: green;
@@ -188,4 +189,32 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
     color: #000;
     text-decoration: none;
   }
+}
+
+.col-id{
+  width: 100px;
+  padding-left: 50px !important;
+}
+
+.col-name {
+  padding-left: 20px !important;
+  width: 180px;
+}
+
+.col-action {
+  padding-right: 20px !important  ;
+  width: 100px;
+  #btn-action {
+    float: right;
+    margin-right: 30px;
+  }
+}
+
+.col-address {
+  width: 150px;
+}
+
+.table-col-name{
+  overflow: hidden;
+  text-overflow: ellipsis
 }
