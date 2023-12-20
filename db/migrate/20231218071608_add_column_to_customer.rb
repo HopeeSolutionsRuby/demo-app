@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddColumnToCustomer < ActiveRecord::Migration[7.1]
   def change
     add_column :customers, :full_name, :string
