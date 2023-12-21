@@ -1,4 +1,4 @@
-<div class="container rounded bg-white mt-5" style="border: solid 1px;" data-controller="clinic">
+<div class="container-fluid rounded mt-5" data-controller="clinic">
   <div class="row">
     <div class="col-md-12">
       <div class="p-3 py-5">
@@ -13,21 +13,21 @@
           multipart: true) do |form| %>
           <div class="row mt-2">
             <div class="col-md-6">
-              <%= form.label :name, 'Name' , class:'form-label' %>
+              <%= form.label :name, 'Name' , class:'form-label text-back' %>
               <%= form.text_field :name, class: 'form-control' , required: true %>
             </div>
             <div class="col-md-6">
-              <%= form.label :address, 'Address' , class:'form-label' %>
+              <%= form.label :address, 'Address' , class:'form-label text-back' %>
               <%= form.text_field :address, class: 'form-control' , required: true %>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-6">
-              <%= form.label :region, 'Region' , class:'form-label' %>
+              <%= form.label :region, 'Region' , class:'form-label text-back' %>
               <%= form.text_field :region, class: 'form-control' , required: true %>
             </div>
             <div class="col-md-6">
-              <%= form.label :faculity, 'Faculity' , class:'form-label' %>
+              <%= form.label :faculity, 'Faculity' , class:'form-label text-back' %>
               <%= form.text_field :faculity, class: 'form-control' , required: true %>
             </div>
           </div>
@@ -37,7 +37,7 @@
             <%= form.file_field :pictures, id: "clinic_pictures", multiple: true, class: "form-control", "data-dropzone-target": "input", required: true %>
           </div>
           
-          <label for="clinic_pictures" class="form-label drag mt-2">
+          <label for="clinic_pictures" class="form-label drag mt-2 ">
             Drag and drop files here or click to upload
           </label>
         </div>
