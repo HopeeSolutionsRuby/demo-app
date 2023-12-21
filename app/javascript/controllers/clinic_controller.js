@@ -53,7 +53,7 @@ export default class extends Controller {
       }
     }
   
-    window.closeRegionBadge = (button, faculty) => {
+    window.closeRegionBadge = (button, region) => {
       var badge = button.closest('.badge');
       if (badge) {
         badge.remove();
