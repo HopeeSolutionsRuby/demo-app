@@ -3,5 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it 'validates the numericality of age' do
+      should validate_numericality_of(:age).only_integer.is_greater_than(0)
+    end
+
+    it 'validates the length of full name' do
+      should validate_length_of(:full_name).is_at_most(255)
+    end
+
+    it 'validates the inclusion of gender' do
+      should define_enum_for(:gender)
+    end
+  end
 end

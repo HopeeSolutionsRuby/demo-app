@@ -1,9 +1,15 @@
 <%= render partial: "administrator/modal/admin_modal", locals: { customer: @customer } %>
 <div id="table-admin" class="pt-4">
   <div style="margin: 0 20px;">
+    <div class="back-home mb-4 mt-3">
+      <%= link_to administrator_customers_path, class: "list-unstyled", style: "color: black; text-decoration: none;" do %>
+        <i class="fa fa-long-arrow-left mb-2 mx-1"></i>
+        Back home
+      <% end %>
+    </div>
     <div class="row align-items-center justify-content-between mb-4">
       <div class="col-auto">
-        <h2 class="mb-0 fs-2">Profile</h2>
+        <p class="m-0" style="font-size: 25px; font-weight: 600;">Profile</p>
       </div>
       <div class="col-auto">
         <div class="row g-2 g-sm-3">

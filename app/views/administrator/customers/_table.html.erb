@@ -4,10 +4,10 @@
       <table class="table align-middle mb-0 bg-white custom-table">
         <thead style="font-size: 15px;">
           <tr>
-            <th><%= sort_link(@q, :full_name, "Name", class: 'text-black text-decoration-none') %></th>
-            <th><%= sort_link(@q, :email, "Email", class: 'text-black text-decoration-none') %></th>
-            <th><%= sort_link(@q, :age, "Age", class: 'text-black text-decoration-none') %></th>
-            <th scope="col" style="width: 250px;">Tagging</th>
+            <th><%= sort_link(@q, :full_name, "Name", class: 'text-black text-decoration-none text-uppercase') %></th>
+            <th><%= sort_link(@q, :email, "Email", class: 'text-black text-decoration-none text-uppercase') %></th>
+            <th><%= sort_link(@q, :age, "Age", class: 'text-black text-decoration-none text-uppercase') %></th>
+            <th scope="col" style="width: 250px;" class="text-uppercase">Tagging</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -22,7 +22,7 @@
               <td>
                 <span class="fw-normal"><%= customer.email %></span>
               </td>
-              <td class="fw-normal"><%= customer.age %> Years old</td>
+              <td class="fw-normal"><%= customer.age %> years old</td>
               <td style="min-width: 225px;">
                 <% customer.tags.each do |tag| %>
                   <span class="me-1 tag"><%= tag.name %></span>

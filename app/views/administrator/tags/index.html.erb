@@ -1,6 +1,9 @@
 <div class="pt-4">
-  <div class="text-end mb-3">
-    <%= link_to "New tag", new_administrator_tag_path, class: "btn btn-primary px-5 " %>
+  <div class="me-auto p-4 bd-highlight content">
+    <h3 class="mb-4" style="font-weight: 700; padding-top: 10px; margin-left: 6px;">Tagging</h3>
+    <div class="text-end mb-3">
+      <%= link_to "New tag", new_administrator_tag_path, class: "btn btn-primary px-5 " %>
+    </div>
   </div>
   <div id="table-admin">
     <div class="card" style="border-left: none; border-right: none;">
@@ -8,9 +11,9 @@
         <table class="table align-middle mb-0 bg-white custom-table">
           <thead style="font-size: 15px;">
             <tr>
-              <th scope="col">STT</th>
+              <th scope="col"style="width: 250px;">STT</th>
               <th scope="col">Name</th>
-              <th scope="col"></th>
+              <th scope="col" style="width: 50px;"></th>
             </tr>
           </thead>
           <tbody>
