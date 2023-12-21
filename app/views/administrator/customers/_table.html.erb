@@ -4,9 +4,9 @@
       <table class="table align-middle mb-0 bg-white custom-table">
         <thead style="font-size: 15px;">
           <tr>
-            <th><%= sort_link(@q, :full_name, "Name", class: 'text-black') %></th>
-            <th><%= sort_link(@q, :email, "Email", class: 'text-black') %></th>
-            <th><%= sort_link(@q, :age, "Age", class: 'text-black') %></th>
+            <th><%= sort_link(@q, :full_name, "Name", class: 'text-black text-decoration-none') %></th>
+            <th><%= sort_link(@q, :email, "Email", class: 'text-black text-decoration-none') %></th>
+            <th><%= sort_link(@q, :age, "Age", class: 'text-black text-decoration-none') %></th>
             <th scope="col" style="width: 250px;">Tagging</th>
             <th scope="col"></th>
           </tr>
@@ -35,7 +35,7 @@
                 <ul class="dropdown-menu">
                   <li><%= button_to "Show", administrator_customer_path(customer), method: :get, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
                   <li><%= button_to "Edit", edit_administrator_customer_path(customer), method: :get, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
-                  <li><%= button_to "Delete customer", administrator_customer_path(customer), method: :delete, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>          
+                  <li><%= button_to "Delete", administrator_customer_path(customer), method: :delete, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>          
                 </ul> 
               </td>
             </tr>

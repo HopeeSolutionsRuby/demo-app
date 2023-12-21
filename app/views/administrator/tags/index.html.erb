@@ -1,31 +1,38 @@
-<div class="me-auto p-4 bd-highlight content">
+<div class="pt-4">
+  <div class="text-end mb-3">
+    <%= link_to "New tag", new_administrator_tag_path, class: "btn btn-primary px-5 " %>
+  </div>
   <div id="table-admin">
-    <div class="text-start">
-        <%= link_to "New tag", new_administrator_tag_path, class: "btn btn-primary px-5 mb-3" %>
+    <div class="card" style="border-left: none; border-right: none;">
+      <div class="card-body pt-0 pb-0" style="padding: 0 34px;">
+        <table class="table align-middle mb-0 bg-white custom-table">
+          <thead style="font-size: 15px;">
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Name</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @tags.each_with_index do |tag, index| %>
+              <tr>
+                <td class="custom-table" style="max-width: 100px;"><%= index + 1 %></td>
+                <td class="custom-table" style="max-width: 550px;"><%= tag.name %></td>
+                <td>
+                  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis" style="font-size: 17px;"></i>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><%= button_to "Show", administrator_tag_path(tag), method: :get, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
+                    <li><%= button_to "Edit", edit_administrator_tag_path(tag), method: :get, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>
+                    <li><%= button_to "Delete", administrator_tag_path(tag), method: :delete, class: "dropdown-item", data: { turbo_frame: "_top" } %></li>          
+                  </ul> 
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <table class="table align-middle mb-0 bg-white">
-      <thead style="font-size: 15px;">
-        <tr>
-          <th style="width: 100px;">STT</th>
-          <th style="width: 550px;">Name</th>
-          <th style="width: 50px;">Edit</th>
-          <th style="width: 50px;">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @tags.each_with_index do |tag, index| %>
-          <tr>
-            <td class="custom-table" style="max-width: 100px;"><%= index + 1 %></td>
-            <td class="custom-table" style="max-width: 550px;"><%= tag[:name] %></td>
-            <td>
-              <%= link_to "View", administrator_tag_path(tag.id), class: "btn btn-primary px-5" %>
-            </td>
-            <td>
-              <%= button_to "Delete", administrator_tag_path(tag), method: :delete, class: "btn btn-danger px-5" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
   </div>
 </div>
