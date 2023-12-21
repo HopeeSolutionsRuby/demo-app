@@ -3,8 +3,6 @@
 require 'csv'
 module Administrator
   class ClinicImportsController < BaseController
-    def new; end
-
     def create
       uploaded_file = params[:csv_file]
 

@@ -1,32 +1,26 @@
-<div class="container rounded bg-white mt-5" ,data-controller="dropzone" , style="border: solid 1px;">
-  <div class="row">
-    <div class="col-md-4 border-right" style="overflow-y: scroll; height:379px">
-      <div class="row mt-2">
-        <div class="col-md-6">
-          <h3 style="font-weight: 600;">Clinic Picture</h3>
-        </div>
-        <div class="col-auto ms-auto">
-          <button type="button" class="btn btn-success" data-bs-toggle="modal"
-            data-bs-target="#editModal<%=@clinic.id%>">
-            Add pictures
-          </button>
-        </div>
-      </div>
+<div class="container-fluid rounded p-4 h-100 space" ,data-controller="dropzone">
+  <div class="col-md-6 d-flex">
+    <h2>Clinic Details</h2>
+  </div>
+  <div class="row my-3">
+    <div class="col-md-4 image-contain border-right bg-white">
       <div class="row mt-2">
         <% if @clinic.pictures.present? %>
           <% @clinic.pictures.each do |image| %>
-            <div class="col-md-6">
-              <%= image_tag image.url, class: 'img-fluid rounded mb-2' ,style: 'height: 200px; width: 200px' %>
+            <div class="col-md-6 my-3">
+              <%= image_tag image.url, class: 'img-fluid rounded mb-2 img-clinic'  %>
             </div>
             <% end %>
               <% else %>
-                <%= image_tag 'noimage' , class: 'img-fluid rounded px-3 mx-5' ,
-                  style: 'max-height: 290px; max-width: 290px' %>
-                  <% end %>
+                <div class="col-md-12 d-flex justify-content-center align-items-center  ">
+                  <%= image_tag 'noimage' , class: 'img-fluid rounded px-3 mx-5 my-3 img-clinic' ,
+                    style: 'max-height: 290px; max-width: 290px' %>
+                </div>
+                <% end %>
       </div>
     </div>
     <div class="col-md-8">
-      <div class="p-3 py-5">
+      <div class="p-3 py-5 bg-white border-10">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <%= link_to administrator_clinics_path, class: 'd-flex flex-row align-items-center back unstyled-link' do %>
             <i class="fa fa-long-arrow-left mb-2 mx-2"></i>
@@ -63,12 +57,15 @@
             </label>
           </div>
           <%= render 'administrator/clinics/modal' ,clinic: @clinic, form: form %>
-          <div class="form-actions mt-2" style="text-align:right">
-            <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton" %>
-            <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
-          </div>
-        <% end %>
-      </div>p
+            <div class="form-actions mt-2" style="text-align:right">
+              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal<%=@clinic.id%>">
+                Add pictures
+              </button>
+              <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton" %>
+              <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
+            </div>
+            <% end %>
+      </div>
     </div>
   </div>
 </div>
