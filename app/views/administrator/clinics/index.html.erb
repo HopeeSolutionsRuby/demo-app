@@ -38,10 +38,10 @@
         <% end %>
       <% end %>
       <% @selected_faculties.each do |faculty| %>
-        <div class="col-auto">
+        <div class="col-auto" style="font-size: 20px;">
           <span class="badge badge-primary text-black">
             <%= faculty %>
-            <button type="button" class="close btn-close" aria-label="Close" onclick="closeBadge(this, '<%= faculty %>')" data-controller="clinic">
+            <button type="button" class="close btn-close" aria-label="Close" onclick="closeBadge(this, '<%= faculty %>')" data-controller="clinic" style="font-size: 12px;">
               <span aria-hidden="true">&times;</span>
             </button>
           </span>
@@ -57,10 +57,10 @@
       <% end %>
     <% end %>
     <% @selected_regions.each do |region| %>
-      <div class="col-auto">
+      <div class="col-auto" style="font-size: 20px;">
         <span class="badge badge-primary text-black">
           <%= region %>
-          <button type="button" class="close btn-close" aria-label="Close" onclick="closeRegionBadge(this, '<%= region %>')" data-controller="clinic">
+          <button type="button" class="close btn-close" aria-label="Close" onclick="closeRegionBadge(this, '<%= region %>')" data-controller="clinic" style="font-size: 12px;">
             <span aria-hidden="true">&times;</span>
           </button>
         </span>

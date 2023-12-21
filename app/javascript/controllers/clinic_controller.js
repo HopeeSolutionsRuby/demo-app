@@ -12,7 +12,6 @@ export default class extends Controller {
 
     var options = [];
     $('.dropdown-menu a').on( 'click', function( event ) {
-      console.log("dropdown-menu a")
       var $target = $( event.currentTarget ),
           val = $target.attr( 'data-value' ),
           $inp = $target.find( 'input' ),

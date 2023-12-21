@@ -293,8 +293,10 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 
 .badge {
-  border: #000 solid 1px;
+  border: #cbd0dd solid 1px;
   border-radius: 20px;
+  background-color: #e3e6ed;
+  color: #141824;
 }
 
 .search-field-clinic {
