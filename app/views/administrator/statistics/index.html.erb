@@ -1,14 +1,23 @@
-<h1>User sign up in months</h1>
-<%= form_tag(administrator_statistics_path, method: :get) do %>
-  <% (1..12).each do |month| %>
-    <label>
-        <%= check_box_tag 'selected_months[]', month, Array(params[:selected_months]).include?(month.to_s) %>
-        <%= Date::MONTHNAMES[month] %>
-    </label>
-  <% end %>
+  <div class='row mt-0 p-4 ' id='statistic' >
+    <div class='col-12 ' >
+      <div class="cards shadow-none border" style='border-radius:10px; z-index:999;' >
+        <div class='cards-body p-0 d-flex justify-content-between bg-light border-bottom' style='border-radius:10px 10px 0px 0px;'>
+          <div class='p-4 code-to-copy '>
+            <h2>Customer Charts</h2>
+          </div>
+        <div class='p-4 d-flex align-items-center '>      
+          <%= form_tag(administrator_statistics_path, method: :get) do %>
+          <div class="input-group date">
+            <input type="text" name="filter_month" id="filter_month" class='p-2 form-control form-input datepicker' autocomplete ='off' data-controller="datepicker" style='cursor: pointer; border-radius: 20px; width:190px; font-size: 20px; font-weight:600; text-align: center;' value="<%= @selected_month.join('-') %>" onchange='this.form.submit()' >
+          </div>
+          <% end %>
+        </div>
+      </div>
+    <div class='p-4 bg-white border-0'style='border-radius:0px 0px 10px 10px;'>
+      <% data = @sign_ups_by_day %>
+        <%= area_chart data, xtitle: "#{Date::MONTHNAMES[@month]}", colors: ["#0044cc"] %>
+    </div>
+  </div>
+</div>
 
-  <%= submit_tag 'Filter' %>
-<% end %>
-
-
-<%= image_tag "data:image/png;base64,#{@base64_image}", alt: 'User login and sign up in months'%>
+<%= stylesheet_link_tag 'administrator/statistic' %>

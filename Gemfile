@@ -4,14 +4,12 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
-# Gemfile
-gem 'devise'
-gem 'pry-rails', '~> 0.3.9'
-gem 'ransack', '~> 4.1', '>= 4.1.1'
+gem 'chartkick'
 
-gem 'carrierwave'
+gem 'bootstrap-datepicker-rails', '~> 1.10', '>= 1.10.0.1'
 
-gem 'mini_magick', '~> 4.12'
+gem 'groupdate', '~> 6.4'
+gem 'pry', '~> 0.14.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
 
@@ -76,6 +74,8 @@ gem 'devise'
 gem 'carrierwave'
 
 gem 'ransack'
+
+gem 'select2-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,17 +1,13 @@
-<%= turbo_stream.append :customers do %>
-    <% @customers.each do |user| %>
-      <div style='border: 2px solid;'>
-        <%= render customer %>
-        <p>
-          <%= link_to "Show this user", customer %>
-        </p>
-      </div>
-      <br>
-    <% end %>
+<%= turbo_stream.append "search", data: { turbo_action: 'append' } do %>
+  <div id="customer-table-container">
+    <%= render partial: 'administrator/customers/table', locals: { customers: @customers } %>
+  </div>
 <% end %>
-<% if @pagy.next.present? %>
-  <%= turbo_stream.replace :pagination do %>
-    <%= turbo_frame_tag :pagination, loading: :lazy,
-                        src: users_path(format: :turbo_stream, page: @pagy.next, q: @query) %>
+
+<%= turbo_stream.replace :pagination do %>
+  <% if @pagy.next.present? %>
+    <%= turbo_frame_tag :pagination,
+                loading: :lazy,
+        src: administrator_customers_path(format: :turbo_stream, page: @pagy.next) %>
   <% end %>
 <% end %>
