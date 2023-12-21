@@ -1,4 +1,5 @@
-<div class="me-auto p-4 bd-highlight content " data-controller="customer">
+<div class="me-auto p-4 bd-highlight content" data-controller="customer">
+  <h3 class="mb-4" style="font-weight: 700; padding-top: 10px;">Customer</h3>
   <div class=" align-items-start">
     <%= search_form_for @q, url: administrator_customers_path, class:'row  d-flex align-items-right ' ,id: 'search-form', data: { turbo_stream: 'search'} do |f| %>
       <div class="form-outline mb-3 field mx-2 col-auto">
@@ -24,7 +25,6 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
       </div>
-
     <div class="col-auto mb-3 d-flex align-items-end ">
       <%= link_to 'customers/new', class: 'btn btn-primary ' do %>
         + Create new customer
@@ -32,12 +32,11 @@
     </div>
       <% end %>
     <% end %> 
-
   </div>
 </div>
 
 <%= turbo_frame_tag "search", data: { turbo_action: 'advance' } do %>
-  <div id="customer-table-container" class='px-4'>
+  <div id="customer-table-container">
     <%= render partial: 'administrator/customers/table', locals: { customers: @customers} %>
   </div> 
 <% end %>

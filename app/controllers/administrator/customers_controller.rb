@@ -32,7 +32,8 @@ module Administrator
     end
 
     def update
-      if @customer.update(customer_params)
+      create_tag(@customer)
+      if @customer.update(customer_params.except(:tag_ids))
         flash[:notice] = 'Customer information updated successfully.'
         redirect_to administrator_customers_path
       else
@@ -65,20 +66,6 @@ module Administrator
           tag_number << Tag.find(value.to_i)
         else
           tag_string << Tag.create(name: value)
-        end
-      end
-      tag_string.each { |value| tag_number << value }
-      customer.tags = tag_number
-    end
-
-    def update_tag(customer)
-      tag_number = []
-      tag_string = []
-      params[:customer][:tag_ids].each do |value|
-        if value.match?(/\A\d+\z/)
-          tag_number << Tag.find(value.to_i)
-        elsif value.match?(/\A[a-zA-Z]+\z/)
-          tag_string << Tag.update(name: value)
         end
       end
       tag_string.each { |value| tag_number << value }
