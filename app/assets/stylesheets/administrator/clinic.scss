@@ -154,6 +154,7 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   }
 }
 .btn-custom {
+  color: red;
   button {
     border: 0;
     background-color: white;
@@ -162,6 +163,8 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
     text-align: left;
   }
   &:hover {
+    color: red;
+
     background-color: #e9ecef !important;
   }
   &:hover button {

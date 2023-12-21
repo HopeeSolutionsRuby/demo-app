@@ -1,67 +1,74 @@
-<table class="table align-middle bg-white" style="font-family:Georgia, 'Times New Roman', Times, serif; width: 100%; table-layout:fixed; border-collapse:unset">
+<table class="table align-middle bg-white"
+  style="font-family:Georgia, 'Times New Roman', Times, serif; width: 100%; table-layout:fixed; border-collapse:unset">
   <thead class="bg-light">
     <tr>
       <th style="overflow: hidden;" class="col-id">
         <%= sort_link(@q, :id, id:'sort-link') do %>
-        ID
-        <% end %>
+          ID
+          <% end %>
       </th>
       <th style="overflow: hidden;" class="col-name">
         <%= sort_link(@q, :name, id:'sort-link') do %>
-        Name
-        <% end %>
+          Name
+          <% end %>
       </th>
       <th style="overflow: hidden;" class="col-address">
         <%= sort_link(@q, :address, id:'sort-link') do %>
-        ADDRESS
-        <% end %>
+          ADDRESS
+          <% end %>
       </th>
       <th style="width: 100px; overflow: hidden;">
         <%= sort_link(@q, :region, id:'sort-link') do %>
-        REGION
-        <% end %>
+          REGION
+          <% end %>
       </th>
       <th style="width: 100px; overflow: hidden;">
         <%= sort_link(@q, :faculity, id:'sort-link') do %>
-        FACULITY
-        <% end %>
+          FACULITY
+          <% end %>
       </th>
       <th style="overflow: hidden;" class="col-action"></th>
     </tr>
   </thead>
   <tbody>
     <% clinics.each do |clinic| %>
+      <%= render partial: "administrator/modal/admin_modal_clinic" , locals: { clinic: clinic } %>
 
-      <tr id="<%= clinic[:id] %>">
-        <td class="table-col-value col-id">
-          <%= clinic[:id] %>
-        </td>
-        <td class="table-col-value col-name">
-          <%= clinic[:name] %>
-        </td>
-        <td class="table-col-value col-address">
-          <%= clinic[:address] %>
-        </td>
-        <td class="table-col-value">
-          <%= clinic[:region] %>
-        </td>
-        <td class="table-col-value">
-          <%= clinic[:faculity] %>
-        </td>
-        <td class="table-col-value col-action">
-          <div class="row"> 
-            <div class="btn-reveal-trigger position-static">
-              <button class="btn btn-sm transition-none btn-reveal fs--2 custom-dropdown-button ms-auto" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent" id="btn-action">
-                ...
-              </button>
-              <div class="dropdown-menu dropdown-menu-end py-2 dropdown-action">
-                <a class="dropdown-item" href="/administrator/clinics/<%=clinic.id%>" data-turbo-frame="_top">View</a>
-                <%= button_to 'Delete', administrator_clinic_path(clinic), method: :delete, class: 'dropdown-item btn-custom', data: { turbo: false }, style:'color:red' %>
+        <tr id="<%= clinic[:id] %>">
+          <td class="table-col-value col-id">
+            <%= clinic[:id] %>
+          </td>
+          <td class="table-col-value col-name">
+            <%= clinic[:name] %>
+          </td>
+          <td class="table-col-value col-address">
+            <%= clinic[:address] %>
+          </td>
+          <td class="table-col-value">
+            <%= clinic[:region] %>
+          </td>
+          <td class="table-col-value">
+            <%= clinic[:faculity] %>
+          </td>
+          <td class="table-col-value col-action">
+            <div class="row">
+              <div class="btn-reveal-trigger position-static">
+                <button class="btn btn-sm transition-none btn-reveal fs--2 custom-dropdown-button ms-auto" type="button"
+                  data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false"
+                  data-bs-reference="parent" id="btn-action">
+                  ...
+                </button>
+                <div class="dropdown-menu dropdown-menu-end py-2 dropdown-action">
+                  <a class="dropdown-item" href="/administrator/clinics/<%=clinic.id%>" data-turbo-frame="_top">View</a>
+                  <a type="button" data-bs-toggle="modal" class="dropdown-item btn-custom"
+                    data-bs-target="#deleteClinicModal">
+                    Delete
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-      </tr>
-    <% end %>
+        </tr>
+        <% end %>
   </tbody>
 </table>
 
