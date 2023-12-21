@@ -5,6 +5,14 @@ module Administrator
   class ClinicsController < BaseController
     include Pagy::Backend
     def index
+      filter_params = params[:query]
+      if filter_params
+        @selected_faculties = filter_params[:faculity_in]
+        # if @selected_faculties.class == String
+        #   @selected_faculties = @selected_faculties.split(',')
+        # end
+        @selected_regions = filter_params[:region_in]
+      end
       @q = Clinic.ransack(search_params)
       @faculities = Clinic.all.pluck(:faculity).uniq
       @regions = Clinic.all.pluck(:region).uniq

@@ -1,0 +1,77 @@
+<div class="modal fade border-dark" id="filterClinicModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="width: 600px;">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="deleteModalLabel">Filter clinic</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'align-items-end', remote: true, format: 'pdf', id: 'search-form', data: { turbo_frame: 'search' } do |f| %>
+            <div class="accordion accordion-flush w-100" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Faculties
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body p-0 pt-2">
+                    <% Clinic.all.pluck(:faculity).uniq.each_slice(3) do |faculties| %>
+                      <div class="row">
+                        <% faculties.each do |faculty| %>
+                          <div class="col-md-4"> <!-- Adjust the column size based on your layout -->
+                            <div class="form-check">
+                              <%= check_box_tag 'query[faculity_in][]', faculty, class: 'form-check-input' %>
+                              <%= label_tag "faculty_#{faculty}", faculty, class: 'form-check-label' %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Regions
+                  </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body p-0 pt-2">
+                    <% Clinic.all.pluck(:region).uniq.each_slice(3) do |regions| %>
+                      <div class="row">
+                        <% regions.each do |region| %>
+                          <div class="col-md-4"> <!-- Adjust the column size based on your layout -->
+                            <div class="form-check">
+                              <%= check_box_tag 'query[region_in][]', region, class: 'form-check-input' %>
+                              <%= label_tag "faculty_#{region}", region, class: 'form-check-label' %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                    <% if @selected_faculties.present? %>
+                      <input type="hidden" name="query[faculity_in]" id="remaining-faculties" value="<%= @selected_faculties.join(',') %>">
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-4" style="float: right;">
+              <%= f.submit 'Apply', class: 'btn btn-primary', id: 'submit-button', data: { controller: 'clinic' } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   document.getElementById('submit-button').addEventListener('click', function() {
+    //     $('#filterClinicModal').modal('hide');
+    //   });
+    // });
+  </script>
+  
