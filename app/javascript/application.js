@@ -1,3 +1,4 @@
+import "jquery2"
 import "@hotwired/turbo-rails";
 import "controllers";
 import "jquery";
@@ -7,3 +8,4 @@ import "bootstrap";
 import "dropzone";
 import "chartkick"
 import "Chart.bundle"
+import "bootstrap-datepicker"
