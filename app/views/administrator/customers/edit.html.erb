@@ -21,19 +21,19 @@
             </div>
             <div class="col-12 col-lg-6">
               <%= form.label :full_name, class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
-              <%= form.text_field :full_name, class: "form-control", placeholder: "Full name" %>
+              <%= form.text_field :full_name, class: "form-control", placeholder: "Full name", required: true %>
             </div>
             <div class="col-12 col-lg-6">
               <%= form.label :gender, class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
-              <%= form.select :gender, [['Male', 'male'], ['Female', 'female'], ['Other', 'other']], {}, class: "form-select" %>
+              <%= form.select :gender, [['Male', 'male'], ['Female', 'female'], ['Other', 'other']], {}, class: "form-select", required: true %>
             </div>
             <div class="col-12 col-lg-6">
               <%= form.label :email, "Email", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
-              <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+              <%= form.text_field :email, class: "form-control", placeholder: "Email", required: true %>
             </div>
             <div class="col-12 col-lg-6">
               <%= form.label :age, "Age", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>
-              <%= form.number_field :age, class: "form-control", placeholder: "Age" %>
+              <%= form.number_field :age, class: "form-control", placeholder: "Age", required: true %>
             </div>
             <div class="col-12">
               <%= form.label :tags, "Tagging", class: "form-label text-capitalize fw-bold mb-1 edit-fs-15" %>

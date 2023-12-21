@@ -17,10 +17,10 @@
           <div class="row g-3 mb-3">
             <div class="col-12">
               <%= form.label :name, class: "form-label text-capitalize mb-1 edit-fs-15" %>
-              <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+              <%= form.text_field :name, class: "form-control", placeholder: "Name", required: true %>
             </div>
             <div class="text-md-end text-center">
-              <%= form.submit "Save changes", class: "btn btn-primary px-5", data: { turbo: false } %>
+              <%= form.submit "Save changes", class: "btn btn-primary px-5" %>
             </div>
           </div>
         </div>

@@ -22,9 +22,9 @@ class Customer < ApplicationRecord
   has_many :taggables, dependent: :destroy
   has_many :tags, through: :taggables
 
-  validates :age, numericality: { greater_than: 0, only_integer: true }
-  validates :full_name, length: { maximum: 255 }
-  validates :gender, inclusion: { in: %w[male female other], message: '%<value>s is not a valid gender' }
+  validates :age, presence: true, numericality: { greater_than: 0, only_integer: true }
+  validates :full_name, presence: true, length: { maximum: 255 }
+  validates :gender, presence: true, inclusion: { in: %w[male female other], message: '%<value> is not a valid gender' }
 
   def self.not_send_email
     def send_devise_notification(notification, *args); end
