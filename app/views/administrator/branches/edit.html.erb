@@ -1,0 +1,10 @@
+<h1>Editing branch</h1>
+
+<%= render "form", branch: @branch %>
+
+<br>
+
+<div>
+  <%= link_to "Show this branch", administrator_branches_path(@branch) %> |
+  <%= link_to "Back to branches", administrator_branches_path %>
+</div>

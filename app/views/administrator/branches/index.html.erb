@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Branches</h1>
+
+<div id="branches">
+  <% @branches.each do |branch| %>
+    <%= render branch %>
+    <p>
+      <%= link_to "Show this branch", administrator_branch_path(branch) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New branch", new_administrator_branch_path %>

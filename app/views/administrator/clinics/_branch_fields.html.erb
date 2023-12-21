@@ -1,0 +1,13 @@
+<div class="nested-fields">
+  <%= f.label :name, class: "mt-3" %>
+  <%= f.text_field  :name, placeholder: "Enter Your Flat/House Number", class: "mb-3 form-control" %>
+  <%= f.label :address, class: "mt-3" %>
+  <%= f.text_area :address, placeholder: "Enter Your Society Name", class: "mb-3 form-control" %>
+  <%= f.label :ward, class: "mt-3" %>
+  <%= f.text_area :ward, placeholder: "Enter Your Area Name", class: "mb-3 form-control" %>
+  <%= f.label :district, class: "mt-3" %>
+  <%= f.text_area :district, placeholder: "Enter Your City Name", class: "mb-3 form-control" %>
+    <%= f.label :city, class: "mt-3" %>
+  <%= f.text_area :city, placeholder: "Enter Your City Name", class: "mb-3 form-control" %>
+  <%= link_to_remove_association "Delete", f %>
+</div>

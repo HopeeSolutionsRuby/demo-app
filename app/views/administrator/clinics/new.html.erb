@@ -41,6 +41,13 @@
             Drag and drop files here or click to upload
           </label>
         </div>
+        <div class="branches">
+          <%= form.fields_for :branches do |branch| %>
+            <%= render 'branch_fields', f: branch %>
+          <% end %>
+        </div>
+        <%= link_to_add_association "add address", form, :branches, data: {association_insertion_node: '.branches', association_insertion_method: :append} %>
+        </div>
         <div class="form-actions mt-3" style="text-align:right">
           <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton",data:{turbo: false} %>
           <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
