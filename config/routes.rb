@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :customers,
+             controllers: { sessions: 'customers/sessions', passwords: 'customers/passwords',
+                            registrations: 'customers/registrations' }
   root 'customers#index'
-  resources :customers, only: [:index]
+  resources :customers, only: %i[index delete]
   namespace :administrator do
     devise_for :admins, controllers: {
       sessions: 'administrator/sessions',
-      registrations: 'administrator/registrations',
       passwords: 'administrator/passwords'
-    }, path: ''
-    resources :dashboard
+    }, path: '', skip: [:registrations]
+    resources :clinics
+    resources :dashboard, only: [:index]
+    resources :clinic_imports, only: %i[new create]
+    resources :clinic_exports, only: [:index]
   end
 end

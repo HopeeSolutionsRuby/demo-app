@@ -1,0 +1,71 @@
+<table class="table align-middle bg-white" style="font-family:Georgia, 'Times New Roman', Times, serif; width: 100%; table-layout:fixed; border-collapse:unset">
+  <thead class="bg-light">
+    <tr>
+      <th style="overflow: hidden;" class="col-id">
+        <%= sort_link(@q, :id, id:'sort-link') do %>
+        ID
+        <% end %>
+      </th>
+      <th style="overflow: hidden;" class="col-name">
+        <%= sort_link(@q, :name, id:'sort-link') do %>
+        Name
+        <% end %>
+      </th>
+      <th style="overflow: hidden;" class="col-address">
+        <%= sort_link(@q, :address, id:'sort-link') do %>
+        ADDRESS
+        <% end %>
+      </th>
+      <th style="width: 100px; overflow: hidden;">
+        <%= sort_link(@q, :region, id:'sort-link') do %>
+        REGION
+        <% end %>
+      </th>
+      <th style="width: 100px; overflow: hidden;">
+        <%= sort_link(@q, :faculity, id:'sort-link') do %>
+        FACULITY
+        <% end %>
+      </th>
+      <th style="overflow: hidden;" class="col-action"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% clinics.each do |clinic| %>
+      <tr id="<%= clinic[:id] %>">
+        <td class="table-col-value col-id">
+          <%= clinic[:id] %>
+        </td>
+        <td class="table-col-value col-name">
+          <%= clinic[:name] %>
+        </td>
+        <td class="table-col-value col-address">
+          <%= clinic[:address] %>
+        </td>
+        <td class="table-col-value">
+          <%= clinic[:region] %>
+        </td>
+        <td class="table-col-value">
+          <%= clinic[:faculity] %>
+        </td>
+        <td class="table-col-value col-action">
+          <div class="row"> 
+            <div class="btn-reveal-trigger position-static">
+              <button class="btn btn-sm transition-none btn-reveal fs--2 custom-dropdown-button ms-auto" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent" id="btn-action">
+                ...
+              </button>
+              <div class="dropdown-menu dropdown-menu-end py-2 dropdown-action">
+                <%= button_to 'View', administrator_clinic_path(clinic.id), method: :get, class: 'dropdown-item btn-custom', data: { turbo: false } %>
+                <%= button_to 'Delete', administrator_clinic_path(clinic), method: :delete, class: 'dropdown-item btn-custom', data: { turbo: false }, style:'color:red' %>
+              </div>
+            </div>
+          </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col-auto ms-auto mx-5 mt-2">
+    <%== pagy_bootstrap_nav(pagy) %>
+  </div>
+</div>

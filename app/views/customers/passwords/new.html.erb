@@ -1,0 +1,22 @@
+<%= render "customers/shared/error_messages", resource: resource%>
+<div class="customer-form">
+  <div class="login-form-content forgot-form px-4">
+    <h2 id="title-reset-password">Forgot your password?</h2>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <div class="login-input">
+        <%= f.label :email, class: 'label' %><br/>
+        <%= f.email_field :email, autocomplete: "email", class: 'input-field'%> 
+      </div>
+
+      <input type="submit" name="commit" class="loginbtn" value="Send me reset password instructions" data-disable-with="Send me reset password instructions">
+
+      <a class="btn back-btn" href="/customers/sign_in" role="button">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span class="mx-2">Back to log in</span>
+      </a>
+    <% end %>
+  </div>
+</div>
+
+<%= stylesheet_link_tag 'sign_up'%>
+<%= stylesheet_link_tag 'login'%>

@@ -1,0 +1,76 @@
+<div class="me-auto p-2 bd-highlight mx-4 mt-3" data-controller="clinic" id="top-table">
+  <h1>Clinics</h1>
+  <div class="row align-items-start" style="margin-top: 30px;">
+    <div class="row align-items-start" style="display: flex; justify-content: space-between">
+      <div class="col-auto">
+        <div class="row">
+          <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'd-flex align-items-end col-auto', remote: true, format: 'pdf', id: 'search-form1', data: { turbo_frame: 'search' } do |f| %>
+            <%= f.search_field :name_or_address_or_faculity_or_region_cont, style: "width:300px;height:40px;font-size:14px;padding-left:10px", class: 'search-field-clinic', placeholder: 'Search clinics' %>
+          <% end %>
+          <button class="btn btn-filter px-7 flex-shrink-0 col-auto" data-bs-toggle="modal" data-bs-target="#filterClinicModal">More filters</button>
+        </div>
+    </div>
+      <div class="col-auto wrapper-feature">
+        <%= link_to 'clinics/new', class: 'btn btn-primary ml-3 mt-2 btn-create' do %>
+          + Create new clinic
+        <% end %>
+        <a type="button" class="btn btn-primary mx-2 mt-2 btn-import" data-bs-toggle="modal"
+          data-bs-target="#importClinicModal">
+          <i class="fa-solid fa-file-import px-1"></i>
+          Import CSV
+        </a>
+        <a type="button" onclick="window.location.href='<%= administrator_clinic_exports_path(format: :csv) %>'" class="btn btn-primary btn-del-cus mt-2">
+          <i class="fa-solid fa-file-export px-1"></i>
+          Export CSV
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= turbo_frame_tag "search" do %>
+  <div class="row mb-4 mx-4">
+    <% if @selected_faculties.present? %>
+      <% if @selected_faculties.class == String %>
+        <% @selected_faculties = @selected_faculties.split(',') %>
+        <% if @selected_faculties.count == 1 %>
+          <% @selected_faculties = [] %>
+        <% end %>
+      <% end %>
+      <% @selected_faculties.each do |faculty| %>
+        <div class="col-auto" style="font-size: 20px;">
+          <span class="badge badge-primary text-black">
+            <%= faculty %>
+            <button type="button" class="close btn-close" aria-label="Close" onclick="closeBadge(this, '<%= faculty %>')" data-controller="clinic" style="font-size: 12px;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </span>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if @selected_regions.present? %>
+    <% if @selected_regions.class == String %>
+      <% @selected_regions = @selected_regions.split(',') %>
+      <% if @selected_regions.count == 1 %>
+        <% @selected_regions = [] %>
+      <% end %>
+    <% end %>
+    <% @selected_regions.each do |region| %>
+      <div class="col-auto" style="font-size: 20px;">
+        <span class="badge badge-primary text-black">
+          <%= region %>
+          <button type="button" class="close btn-close" aria-label="Close" onclick="closeRegionBadge(this, '<%= region %>')" data-controller="clinic" style="font-size: 12px;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </span>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+  <div id="clinic-table-container">
+    <%= render partial: 'administrator/clinics/table', locals: { clinics: @paginated_clinics, pagy: @pagy } %>
+  </div>
+<% end %>
+<%= render partial: "administrator/modal/admin_modal_clinic_import"  %>
+<%= render partial: "administrator/modal/admin_modal_clinic_filter", q: @q, faculities: @faculities, regions: @regions %>

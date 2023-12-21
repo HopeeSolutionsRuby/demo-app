@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>   
+    <%= stylesheet_link_tag  'administrator/clinic', 'administrator/header', 'administrator/sidebar'%>
+    <%= stylesheet_link_tag do %>
+      "administrator/authentication",
+      "administrator/forgot_password",
+      "administrator/header",
+      "administrator/sidebar",
+      "administrator/table_admin"
+    <% end %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <div class="admin-layout">
-      <div><%= render 'shared/administrator/header' %></div>
-        <div class="container-fluid">
+    <div id="authentication-administrator">
+      <%= render "administrator/shared/notice_messages" %>
+    </div>
+    <div class="admin-layout" id="admin-pages">
+      <%= render 'shared/administrator/header' %>
+      <div class="container-fluid">
           <div class="row flex-nowrap">
             <%= render 'shared/administrator/sidebar' %>
-            <div class="px-0 body-content">
+            <div class="px-0 body-content" style="overflow-x: hidden; background-color: #eff2f6">
               <div class="content-controller">
                 <%= yield %>
               </div>
@@ -23,7 +34,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
   </body>
 </html>
