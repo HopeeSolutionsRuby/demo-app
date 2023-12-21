@@ -1,7 +1,8 @@
 @import "bootstrap";
 @import "font-awesome";
-@import "shared/toast.scss";
 @import "administrator/sidebar";
 @import "administrator/header";
 @import "administrator/authentication";
 @import "administrator/forgot_password";
+@import "administrator/table_admin";
+@import "bootstrap-datepicker";

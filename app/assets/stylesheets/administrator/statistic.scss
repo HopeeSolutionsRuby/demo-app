@@ -1,0 +1,20 @@
+#statistic {
+  font-family: 'Times New Roman', Times, serif;
+  .input-group > .form-control, .input-group > .form-select{
+    position: static !important;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+  }
+  .code-to-copy{
+    h2 {
+      font-weight: 600;
+    }
+  }
+}
+.datepicker {
+  padding: 4px;
+  border-radius: 4px;
+  direction: ltr;
+  top: 163px !important;
+}

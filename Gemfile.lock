@@ -90,6 +90,8 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.9.3, < 3)
       sassc-rails (>= 2.0.0)
+    bootstrap-datepicker-rails (1.10.0.1)
+      railties (>= 3.0)
     builder (3.2.4)
     capybara (3.39.2)
       addressable
@@ -107,6 +109,8 @@ GEM
       image_processing (~> 1.1)
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
+    chartkick (5.0.5)
+    coderay (1.1.3)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -141,6 +145,8 @@ GEM
     font-awesome-sass (6.5.1)
       sassc (~> 2.0)
     globalid (1.2.1)
+      activesupport (>= 6.1)
+    groupdate (6.4.0)
       activesupport (>= 6.1)
     gruff (0.23.0)
       histogram
@@ -182,6 +188,7 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
@@ -208,6 +215,9 @@ GEM
       racc
     pkg-config (1.5.5)
     popper_js (2.11.8)
+    pry (0.14.2)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     psych (5.1.1.1)
       stringio
     public_suffix (5.0.4)
@@ -328,7 +338,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.16.0)
+    select2-rails (4.0.13)
+    selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -385,14 +396,17 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap (~> 5.1.3)
+  bootstrap-datepicker-rails (~> 1.10, >= 1.10.0.1)
   capybara
   carrierwave
+  chartkick
   debug
   devise
   dotenv-rails
   factory_bot_rails
   faker
   font-awesome-sass (~> 6.5.1)
+  groupdate (~> 6.4)
   gruff
   importmap-rails
   jbuilder
@@ -400,6 +414,7 @@ DEPENDENCIES
   letter_opener
   mysql2 (~> 0.5)
   pagy (~> 6.2)
+  pry (~> 0.14.2)
   puma (>= 5.0)
   rails (~> 7.1.2)
   rails-controller-testing
@@ -408,6 +423,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   sassc-rails
+  select2-rails
   selenium-webdriver
   shoulda-callback-matchers
   shoulda-matchers (~> 5.0)
