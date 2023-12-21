@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       sessions: 'administrator/sessions',
       passwords: 'administrator/passwords'
     }, path: '', skip: [:registrations]
-    resources :dashboard
+    resources :clinics
+    resources :dashboard, only: [:index]
+    resources :clinic_imports, only: %i[new create]
+    resources :clinic_exports, only: [:index]
   end
 end

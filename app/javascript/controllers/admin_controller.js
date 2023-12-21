@@ -8,9 +8,10 @@ export default class extends Controller {
       document.querySelector('.nav-footer').classList.toggle('d-none');
       document.querySelector('.body-content').classList.toggle('d-none');
     });
+
     document.addEventListener('DOMContentLoaded', function () {
         var myCollapse = new bootstrap.Collapse(document.getElementById('collapseExample'), {
-            toggle: false // Set toggle to false to prevent automatic toggling
+            toggle: false
         });
     });
     document.querySelector('.toggle-button').addEventListener('click', function () {
@@ -19,6 +20,7 @@ export default class extends Controller {
       });
       document.querySelector('.sidebar-wrapper').style.width = (document.querySelector('.sidebar-wrapper').style.width === '250px') ? '70px' : '250px';
       document.querySelector('.nav-footer').style.width = (document.querySelector('.nav-footer').style.width === '250px') ? '70px' : '250px';
+      document.querySelector('.body-content').style.maxWidth = (document.querySelector('.change-icon').className === 'fa-solid fa-arrow-left change-icon') ? 'calc(100% - 70px)' : 'calc(100% - 250px)' ;
       document.querySelector('.change-icon').className = (document.querySelector('.change-icon').className === 'fa-solid fa-arrow-left change-icon') ? 'fa-solid fa-right-from-bracket change-icon' : 'fa-solid fa-arrow-left change-icon'
     });
   }
