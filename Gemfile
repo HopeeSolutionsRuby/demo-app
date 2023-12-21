@@ -90,7 +90,7 @@ group :development, :test do
 
   gem 'shoulda-callback-matchers'
 
-  gem 'simplecov'
+  gem 'simplecov', require: false
 
   gem 'debug', platforms: %i[mri windows]
 

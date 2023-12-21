@@ -79,7 +79,6 @@ module Administrator
       flash[:alert] = "Customer with ID #{params[:id]} not found."
       redirect_to administrator_customers_path
     end
-  
     def customer_params
       params.require(:customer).permit(:full_name, :email, :age, :gender, :avatar, :password, :password_confirmation,
                                        tag_ids: [])
