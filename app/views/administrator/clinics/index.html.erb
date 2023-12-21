@@ -28,7 +28,6 @@
   </div>
 </div>
 
-<div data-controller="clinic">
 <%= turbo_frame_tag "search" do %>
   <div class="row mb-4 mx-4">
     <% if @selected_faculties.present? %>
@@ -75,55 +74,3 @@
 <% end %>
 <%= render partial: "administrator/modal/admin_modal_clinic_import"  %>
 <%= render partial: "administrator/modal/admin_modal_clinic_filter", q: @q, faculities: @faculities, regions: @regions %>
-</div>
-<script>
-  // function closeBadge(button, faculty) {
-  //   var badge = button.closest('.badge');
-  //   if (badge) {
-  //     badge.remove();
-
-  //     // Uncheck the corresponding checkbox in the modal
-  //     var checkbox = document.querySelector('input[name="query[faculity_in][]"][value="' + faculty + '"]');
-  //     if (checkbox) {
-  //       checkbox.checked = false;
-  //     }
-  //     var anyCheckboxChecked = document.querySelector('input[name="query[faculity_in][]"]:checked');
-  //     var anyCheckboxRegionChecked = document.querySelector('input[name="query[region_in][]"]:checked');
-    
-  //     // Reset the form only if no checkboxes are checked
-  //     if (anyCheckboxChecked == null && anyCheckboxRegionChecked == null) {
-  //       var form = document.getElementById('search-form');
-  //       form.reset();
-  //       form.submit();
-  //     } else {
-  //       document.getElementById('submit-button').click();
-  //     }
-      
-  //   }
-  // }
-
-  // function closeRegionBadge(button, region) {
-  //   var badge = button.closest('.badge');
-  //   if (badge) {
-  //     badge.remove();
-
-  //     // Uncheck the corresponding checkbox in the modal
-  //     var checkbox = document.querySelector('input[name="query[region_in][]"][value="' + region + '"]');
-  //     if (checkbox) {
-  //       checkbox.checked = false;
-  //     }
-  //     var anyCheckboxRegionChecked = document.querySelector('input[name="query[region_in][]"]:checked');
-  //     var anyCheckboxChecked = document.querySelector('input[name="query[faculity_in][]"]:checked');
-  //     // Reset the form only if no checkboxes are checked
-  //     console.log(anyCheckboxChecked == null && anyCheckboxRegionChecked == null);
-  //     if (anyCheckboxChecked == null) {
-  //       var form = document.getElementById('search-form');
-  //       form.reset();
-  //       form.submit();
-  //     } else {
-  //       document.getElementById('submit-button').click();
-  //     }
-      
-  //   }
-  // }
-</script>

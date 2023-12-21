@@ -31,7 +31,6 @@
   </thead>
   <tbody>
     <% clinics.each do |clinic| %>
-
       <tr id="<%= clinic[:id] %>">
         <td class="table-col-value col-id">
           <%= clinic[:id] %>
@@ -55,7 +54,7 @@
                 ...
               </button>
               <div class="dropdown-menu dropdown-menu-end py-2 dropdown-action">
-                <a class="dropdown-item" href="/administrator/clinics/<%=clinic.id%>" data-turbo-frame="_top">View</a>
+                <%= button_to 'View', administrator_clinic_path(clinic.id), method: :get, class: 'dropdown-item btn-custom', data: { turbo: false } %>
                 <%= button_to 'Delete', administrator_clinic_path(clinic), method: :delete, class: 'dropdown-item btn-custom', data: { turbo: false }, style:'color:red' %>
               </div>
             </div>
