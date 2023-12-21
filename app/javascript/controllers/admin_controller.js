@@ -2,7 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    console.log("connected");
     document.querySelector('.navbar-toggler').addEventListener('click', function () {
       document.querySelector('.sidebar').classList.toggle('d-none');
       document.querySelector('.sidebar').style.width = (document.querySelector('.sidebar').style.width === '250px') ? '100%' : '250px';

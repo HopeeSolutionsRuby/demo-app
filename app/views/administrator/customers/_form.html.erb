@@ -29,7 +29,7 @@
             </div>
             <div class="col-12 col-lg-6">
               <%= form.label :email, "Email", class: "form-label text-capitalize mb-1 edit-fs-15" %>
-              <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+              <%= form.text_field :email, class: "form-control", placeholder: "Email", autocomplete: "email" %>
             </div>
             <div class="col-12 col-lg-6">
               <%= form.label :age, "Age", class: "form-label text-capitalize mb-1 edit-fs-15" %>
@@ -37,11 +37,11 @@
             </div>
             <div class="col-12 col-lg-6">
               <%= form.label :password, "Password", class: "form-label text-capitalize mb-1 edit-fs-15" %>
-              <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+              <%= form.password_field :password, class: "form-control", placeholder: "Password", autocomplete: "new-password"  %>
             </div>
             <div class="col-12 col-lg-6">
-              <%= form.label :password_confirmation, "Password confirmation", class: "form-label text-capitalize mb-1 edit-fs-15", for: "floatingInput" %>
-              <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Password confirmation", id: "floatingInput" %>
+              <%= form.label :password_confirmation, "Password confirmation", class: "form-label text-capitalize mb-1 edit-fs-15" %>
+              <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Password confirmation", autocomplete: "new-password" %>
             </div>
             <div class="col-12">
               <%= form.label :tags, "Tagging", class: "form-label text-capitalize mb-1 edit-fs-15" %>

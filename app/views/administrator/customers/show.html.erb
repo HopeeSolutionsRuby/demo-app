@@ -8,10 +8,10 @@
       <div class="col-auto">
         <div class="row g-2 g-sm-3">
           <div class="col-auto">
-            <button type="button" class="btn btn-danger btn-del-cus" data-bs-toggle="modal" data-bs-target="#deleteModal">
+            <%= button_to administrator_customer_path(@customer), method: :delete, class: "btn btn-danger btn-del-cus", data: { turbo: false } do %>
               <i class="fa-solid fa-trash m-1"></i>
               Delete customer
-            </button>
+            <% end %>
           </div>
           <div class="col-auto">
             <%= button_to edit_administrator_customer_path(@customer), method: :get, class: "btn btn-warning edit-fs-15" do %>
