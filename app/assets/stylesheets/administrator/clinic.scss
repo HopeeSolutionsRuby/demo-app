@@ -23,7 +23,6 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   user-select: none;
 
   input {
-    // position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
@@ -39,7 +38,6 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   }
 
   .control {
-    // position: absolute;
     top: 0;
     left: 0;
     height: $toggle-height;
@@ -50,7 +48,6 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 
     &:after {
       content: "";
-      //   position: absolute;
       left: $toggle-gutter;
       top: $toggle-gutter;
       width: $toggle-control-size;
@@ -128,9 +125,6 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   font-style: italic;
   color: #555;
 }
-// .dz-progress {
-//   display: none;
-// }
 
 .preview-image {
   width: 200px;
@@ -143,7 +137,6 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   margin-top: 10px;
   .close-icon:hover {
     cursor: pointer;
-    // color:#0d6efd;
   }
   .close-icon {
     position: absolute;
