@@ -1,27 +1,34 @@
-<h1 class='container d-flex justify-content-center'>USER REGISTER IN MONTHS</h1>
-  <div class='row g-4 mb-4 p-4' >
-    <div class='col-12'>
-      <div class="card shadow-none border border-300 bg-light">
-        <div class='card-body p-0 d-flex justify-content-between' >
-          <div class='p-2 code-to-copy'>
+  <div class='row mt-0 p-4 ' id='statistic' >
+    <div class='col-12 ' >
+      <div class="cards shadow-none border" style='border-radius:10px; z-index:999;' >
+        <div class='cards-body p-0 d-flex justify-content-between bg-light border-bottom' style='border-radius:10px 10px 0px 0px;'>
+          <div class='p-4 code-to-copy '>
             <h2>Customer Charts</h2>
-            <h6 class='px-2'>Selected Year: <%= @year %></h6>
-            <h6 class='px-2'>Selected Month: <%= Date::MONTHNAMES[@month] %></h6>
           </div>
-        <div class=' py-4 px-2 d-flex align-items-center' >
+        <div class='p-4 d-flex align-items-center '>      
           <%= form_tag(administrator_statistics_path, method: :get) do %>
-            <input type="month" name="filter_month" id="filter_month" class='py-2 px-2'/>
-            <%= submit_tag 'Submit', class: 'btn btn-primary py-2' %>
-            <% end %>
+          <div class="input-group date">
+            <input type="text" name="filter_month" id="filter_month" class='p-2 form-control form-input ' autocomplete ='off' style='cursor: pointer; border-radius: 20px; width:190px; font-size: 20px; font-weight:600; text-align: center;' value="<%= @selected_month.join('-') %>" onchange='this.form.submit()' >
+          </div>
+          <% end %>
         </div>
       </div>
-    <div class='p-4'>
+    <div class='p-4 bg-white border-0'style='border-radius:0px 0px 10px 10px;'>
       <% data = @sign_ups_by_day %>
-      <%= area_chart data, xtitle: "Days", ytitle: "Number", colors: ["#4CB9E7"] %>
+        <%= area_chart data, xtitle: "#{Date::MONTHNAMES[@month]}", colors: ["#0044cc"] %>
     </div>
   </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="https://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+  $('#filter_month').datepicker({
+    format: "yyyy-mm",
+    startView: 1,
+    minViewMode: 1
+  })
+</script>
+
+<%= stylesheet_link_tag 'administrator/statistic' %>
