@@ -2,13 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
-    $(document).ready(function(){
-      var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
-        removeItemButton: true,
-        maxItemCount:3,
-        searchResultLimit:3,
-      }); 
-    });
+
+    // $(document).ready(function(){
+    //   var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+    //     removeItemButton: true,
+    //     maxItemCount:3,
+    //     searchResultLimit:3,
+    //   }); 
+    // });
 
     var options = [];
     $('.dropdown-menu a').on( 'click', function( event ) {
@@ -78,10 +79,11 @@ export default class extends Controller {
       }
     }
 
-    document.getElementById('submit-button').addEventListener('click', function() {
-      console.log("submit-button")
-      $('#filterClinicModal').modal('hide');
-    });
+    // document.getElementById('submit-button').addEventListener('click', function() {
+    //   console.log("submit-button")
+    //   $('#filterClinicModal').modal('hide');
+    // });
+    
+
   }
-  
 }

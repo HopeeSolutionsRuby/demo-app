@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :doctors
   devise_for :customers,
              controllers: { sessions: 'customers/sessions', passwords: 'customers/passwords',
                             registrations: 'customers/registrations' }
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
       passwords: 'administrator/passwords'
     }, path: '', skip: [:registrations]
     resources :clinics
+    resources :doctors
     resources :dashboard, only: [:index]
     resources :clinic_imports, only: %i[new create]
     resources :clinic_exports, only: [:index]

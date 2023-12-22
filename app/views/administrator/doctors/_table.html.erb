@@ -1,0 +1,50 @@
+<div id="doctor-admin">
+  <div class="table-responsive">
+    <table class="table align-middle bg-white" style="font-family: Georgia, 'Times New Roman', Times, serif; width: 100%; table-layout: fixed; border-collapse: unset;">
+      <thead class="bg-light">
+        <tr>
+          <th scope="col" class="align-middle" style="width:5%; padding-left: 30px">ID</th>
+          <th scope="col" class="align-middle" style="width:15%;">Full name</th>
+          <th scope="col" class="align-middle" style="width:5%;">Age</th>
+          <th scope="col" class="align-middle" style="width:20%;">Email</th>
+          <th scope="col" class="align-middle" style="width:10%;">Gender</th>
+          <th scope="col" class="align-middle" style="width:25%;">Address</th>
+          <th scope="col" class="align-middle" style="width:10%;">Phone number</th>
+          <th scope="col" class="align-middle" style="width:10%;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% doctors.each_with_index do |doctor, index| %>
+          <tr id="<%= doctor.id %>" scope="row">
+            <td class="table-col-value" style="padding-left: 30px"><%= index + 1 %></td>
+            <td class="table-col-value"><%= doctor.full_name %></td>
+            <td class="table-col-value"><%= doctor.age %></td>
+            <td class="table-col-value"><%= doctor.email %></td>
+            <td class="table-col-value"><%= doctor.gender %></td>
+            <td class="table-col-value"><%= doctor.address %></td>
+            <td class="table-col-value"><%= doctor.phone_number %></td>
+            <td class="table-col-value col-action">
+              <div class="row"> 
+                <div class="btn-reveal-trigger position-static">
+                  <button class="btn btn-sm transition-none btn-reveal fs--2 custom-dropdown-button ms-auto" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent" id="btn-action">
+                    ...
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end py-2 dropdown-action">
+                    <%= button_to 'View', administrator_doctor_path(doctor.id), method: :get, class: 'dropdown-item btn-custom', data: { turbo: false } %>
+                    <%= button_to 'Delete', administrator_doctor_path(doctor), method: :delete, class: 'dropdown-item btn-custom', data: { turbo: false }, style: 'color:red' %>
+                  </div>
+                </div>
+              </div>
+            </td>        
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row">
+    <div class="col-auto ms-auto mx-5 mt-2">
+      <%== pagy_bootstrap_nav(pagy) %>
+    </div>
+  </div>
+</div>
