@@ -3,7 +3,7 @@
 module Administrator
   # class Dashboard Controller
   class TagsController < BaseController
-    before_action :set_tag, only: %i[show edit update destroy]
+    before_action :assign_tag, only: %i[show edit update destroy]
 
     def index
       @tags = Tag.all
@@ -48,7 +48,7 @@ module Administrator
 
     private
 
-    def set_tag
+    def assign_tag
       @tag = Tag.find_by(id: params[:id])
       return if @tag
 
