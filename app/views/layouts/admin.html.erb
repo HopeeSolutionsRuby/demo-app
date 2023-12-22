@@ -27,13 +27,8 @@
       <div class="container-fluid">
           <div class="row flex-nowrap">
             <%= render 'shared/administrator/sidebar' %>
-            <div class="px-0 body-content" style="overflow-x: hidden; background-color: #eff2f6">
-      <div><%= render 'shared/administrator/header' %></div>
-        <div class="container-fluid">
-          <div class="row flex-nowrap">
-            <%= render 'shared/administrator/sidebar' %>
             <div class="px-0 body-content">
-              <div class="content-controller">
+              <div class="content-controller" style="background-color: #F5F7FA;">
                 <%= yield %>
               </div>
               <%= render 'shared/administrator/footer' %>

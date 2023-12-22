@@ -45,7 +45,7 @@ module Administrator
     def create
       @customer = Customer.new(customer_params.except(:tag_ids))
       create_tag(@customer)
-
+      check_email(@customer)
       if @customer.save
         flash[:notice] = "Successfully created a customer named '#{@customer.full_name}'."
         redirect_to administrator_customer_path(@customer)
@@ -56,6 +56,12 @@ module Administrator
     end
 
     private
+
+    def check_email(customer)
+      if current_administrator_admin.present? && !current_customer.present?
+        customer.not_send_email
+      end
+    end
 
     def create_tag(customer)
       tag_number = []
@@ -79,6 +85,7 @@ module Administrator
       flash[:alert] = "Customer with ID #{params[:id]} not found."
       redirect_to administrator_customers_path
     end
+
     def customer_params
       params.require(:customer).permit(:full_name, :email, :age, :gender, :avatar, :password, :password_confirmation,
                                        tag_ids: [])

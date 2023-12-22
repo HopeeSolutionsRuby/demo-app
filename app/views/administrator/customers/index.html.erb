@@ -1,48 +1,48 @@
 <div class="me-auto p-4 bd-highlight content" data-controller="customer">
-  <h3 class="mb-4" style="font-weight: 700; padding-top: 10px;">Customer</h3>
-  <div class=" align-items-start">
-    <%= search_form_for @q, url: administrator_customers_path, class:'row  d-flex align-items-right ' ,id: 'search-form', data: { turbo_stream: 'search'} do |f| %>
+  <h3 class="mb-4" style="font-weight: 700; padding-top: 10px; margin-left: 6px;">Customer</h3>
+  <div class="align-items-start">
+    <%= search_form_for @q, url: administrator_customers_path, class: 'row d-flex align-items-right', id: 'search-form', data: { turbo_stream: 'search' } do |f| %>
       <div class="form-outline mb-3 field mx-2 col-auto">
-        <%= f.label  "search",class: "form-label d-flex justify-content-start fw-bold"  %>
-        <%= f.search_field :email_or_full_name_cont,  class:'form-control search-input search ',placeholder: 'Search for email or name', autocomplete: 'off' %>
+        <%= f.label "search", class: "form-label d-flex justify-content-start fw-bold" %>
+        <%= f.search_field :email_or_full_name_cont, class: 'form-control search-input search', placeholder: 'Search for email or name', autocomplete: 'off' %>
       </div>
       <div class='col-auto d-flex flex-grow-1'>
-        <div class="form-outline mb-3 field col-md-2 ">
-          <%= f.label "Age ",class: "form-label fw-bold"  %>
+        <div class="form-outline mb-3 field col-md-2">
+          <%= f.label "Age ", class: "form-label fw-bold" %>
           <div class='d-flex'>
-            <%= f.number_field :age_gteq, class: " form-control",placeholder: 'from'%>
-            <%= f.number_field :age_lteq, class: " form-control mx-2",placeholder: 'to' %>
+            <%= f.number_field :age_gteq, class: "form-control", placeholder: 'from' %>
+            <%= f.number_field :age_lteq, class: "form-control mx-2", placeholder: 'to' %>
           </div>
         </div>
-        <div class="form-outline mb-3  col-md-2 ">
-          <%= f.label "Tags",class: "form-label fw-bold"  %>
+        <div class="form-outline mb-3 col-md-2">
+          <%= f.label "Tags", class: "form-label fw-bold" %>
           <div class='d-flex'>
-            <%= f.text_field :tags, class: " form-control",placeholder: 'ex: ho, so mui,...'%>
+            <%= f.number_field :age_gteq, class: "form-control", placeholder: 'from' %>
           </div>
         </div>
-        <div class=''>
-          <%= f.button class: 'btn btn-outline-dark btn__search-customer', style: 'height:40px ;width:100px; margin-left: 8px; background-color:#10b981;border:none;' , type: 'submit' do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
+        <div>
+          <%= f.button class: 'btn btn-outline-dark btn__search-customer', style: 'height:40px;width:100px;margin-left: 8px;background-color:#10b981;border:none;', type: 'submit' do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
         </div>
       </div>
-    <div class="col-auto mb-3 d-flex align-items-end ">
-      <%= link_to 'customers/new', class: 'btn btn-primary ' do %>
-        + Create new customer
-      <% end %>
-    </div>
-      <% end %>
-    <% end %> 
+      <div class="col-auto mb-3 d-flex align-items-end">
+        <%= link_to 'customers/new', class: 'btn btn-primary' do %>
+          + Create new customer
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
 <%= turbo_frame_tag "search", data: { turbo_action: 'advance' } do %>
   <div id="customer-table-container">
-    <%= render partial: 'administrator/customers/table', locals: { customers: @customers} %>
-  </div> 
+    <%= render partial: 'administrator/customers/table', locals: { customers: @customers } %>
+  </div>
 <% end %>
 
-<div class='d-flex align-items-right justify-content-end mt-3 px-4 '>
-      <%== pagy_bootstrap_nav(@pagy) %>
+<div class='d-flex align-items-right justify-content-end mt-3' style="margin-right: 10px;">
+  <%== pagy_bootstrap_nav(@pagy) %>
 </div>
- 
+
 <%= stylesheet_link_tag 'administrator/content' %>

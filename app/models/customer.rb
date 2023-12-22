@@ -7,12 +7,12 @@ class Customer < ApplicationRecord
   #        :recoverable, :rememberable, :validatable,
   #        :confirmable, :lockable, :trackable
 
-  enum sex: { male: 0, female: 1 }
+  enum gender: { male: 0, female: 1 , other: 2}
 
   mount_uploader :avatar, AvatarUploader
   def self.ransackable_attributes(_auth_object = nil)
     %w[address age avatar created_at email encrypted_password full_name id id_value phone
-       remember_created_at reset_password_sent_at reset_password_token sex updated_at]
+       remember_created_at reset_password_sent_at reset_password_token gender tags updated_at]
   end
 
   def self.ransackable_associations(_auth_object = nil)
