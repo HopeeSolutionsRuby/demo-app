@@ -263,6 +263,16 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   #top-table {
     margin-bottom: 50px !important;
   }
+  .branches {
+    position: relative !important;
+    padding: 0;
+  }
+  .btn-new {
+    margin-bottom: 20px;
+  }
+  .table-res {
+    padding-bottom: 10px !important;
+  }
 }
 
 @media (min-width: 757px) and (max-width: 1800px) {
@@ -278,8 +288,8 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 
 .btn-filter {
-  color:  #31374a;
-  border-color: #e3e6ed ;
+  color: #31374a;
+  border-color: #e3e6ed;
   height: 40px;
   margin-left: 20px;
   font-size: 14px;
@@ -314,6 +324,7 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 .image-contain {
   border-radius: 10px;
   border: 2px solid #e3e6ed;
+  margin-left: 20px;
 }
 .d-flex {
   h2 {
@@ -343,4 +354,16 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 .space {
   margin-bottom: 40px;
+}
+.branch-title {
+  right: 10px;
+}
+.bold {
+  font-weight: bold;
+}
+.branches {
+  position: absolute;
+}
+.branch-edit {
+  position: relative;
 }

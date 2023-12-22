@@ -8,15 +8,20 @@ module Administrator
       filter_params = params[:query]
       if filter_params
         @selected_faculties = filter_params[:faculity_in]
-        # if @selected_faculties.class == String
-        #   @selected_faculties = @selected_faculties.split(',')
-        # end
-        @selected_regions = filter_params[:region_in]
+        @selected_insurance_infomations = filter_params[:insurance_infomation_in]
       end
-      @q = Clinic.ransack(search_params)
-      @faculities = Clinic.all.pluck(:faculity).uniq
-      @regions = Clinic.all.pluck(:region).uniq
+      @q = Clinic.includes(:branches).ransack(search_params)
+
+      @cities = Branch.all.pluck(:city, :clinic_id).uniq
+      @clinics_by_city = {}
+      @cities.each do |city, clinic_id|
+        @clinics_by_city[city] ||= []
+        clinic = Clinic.find_by(id: clinic_id)
+        @clinics_by_city[city] << clinic if clinic
+      end
+
       @clinics = @q.result(distinct: true)
+
       @pagy, @paginated_clinics = pagy(@clinics, items: 10)
     end
 
@@ -82,7 +87,8 @@ module Administrator
     private
 
     def clinic_params
-      params.require(:clinic).permit(:name, :address, :region, :faculity, :remove_pictures, pictures: [])
+      params.require(:clinic).permit(:name, :service_information, :insurance_infomation, :faculity, :remove_pictures, pictures: [],
+                                                                                                                      branches_attributes: %i[id name address ward district city _destroy])
     end
 
     def search_params

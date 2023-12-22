@@ -1,0 +1,40 @@
+  <!-- navbar -->
+<div class="d-flex align-items-center category position-relative z-0" id="popupTrigger" data-controller="customer">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list-ul"
+      viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+    </svg>
+  </div>
+  <p class="menu-category black mx-2">City</p>
+  <div class="popup-table hidden-popup">
+    <div class="contain">
+      <div class="d-flex justify-content-start table-response flex-wrap">
+        <!--item -->
+        <% @clinics_by_city.first(6).each do |city,clinics| %>
+          <div class="d-flex flex-column popup-item-title">
+            <div class="d-flex align-items-center my-3 ml--1">
+              <i class="px-2 fa-brands fa-pushed popup-item-icon"></i>
+              <strong class="mb-0"><%= city %></strong>
+            </div>
+            <% clinics.first(3).each do |clinic| %>
+                <p class="popup-item py-2"><%= clinic.name %></p>
+            <% end %>
+            <% if clinics.size > 3 %>
+              <a href="#" class="show-more-link popup-item py-2 text-center">More</a>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="horizontal-line mt-3"></div>
+      <% if @clinics_by_city.size > 6 %>
+        <a href="/customers" class="d-flex justify-content-center align-self-center text-decoration-none my-4 align-items-center">
+          <span class="px-2 primary hv-underline categories-link chevron-link">See all Categories</span>
+          <i class="fa-solid fa-chevron-right primary chevron-icon"></i>
+        </a>
+      <% end %>
+      
+    </div>
+  </div>
+</div>

@@ -8,17 +8,17 @@
       </th>
       <th style="overflow: hidden;" class="col-name">
         <%= sort_link(@q, :name, id:'sort-link') do %>
-        Name
+        NAME
         <% end %>
       </th>
       <th style="overflow: hidden;" class="col-address">
-        <%= sort_link(@q, :address, id:'sort-link') do %>
-        ADDRESS
+        <%= sort_link(@q, :service_information, id:'sort-link') do %>
+        SERVICE  
         <% end %>
       </th>
       <th style="width: 100px; overflow: hidden;">
-        <%= sort_link(@q, :region, id:'sort-link') do %>
-        REGION
+        <%= sort_link(@q, :insurance_infomation, id:'sort-link') do %>
+        INSURANCE 
         <% end %>
       </th>
       <th style="width: 100px; overflow: hidden;">
@@ -39,10 +39,10 @@
           <%= clinic[:name] %>
         </td>
         <td class="table-col-value col-address">
-          <%= clinic[:address] %>
+          <%= clinic[:service_information] %>
         </td>
         <td class="table-col-value">
-          <%= clinic[:region] %>
+          <%= clinic[:insurance_infomation] %>
         </td>
         <td class="table-col-value">
           <%= clinic[:faculity] %>

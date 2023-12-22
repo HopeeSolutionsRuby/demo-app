@@ -1,17 +1,26 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <%= link_to 'Home', administrator_dashboard_index_path,class:"breadcrumb-item" %>
+    <li class="breadcrumb-item active" aria-current="page">Clinics</li>
+  </ol>
+</nav>
+
+
 <div class="me-auto p-2 bd-highlight mx-4 mt-3" data-controller="clinic" id="top-table">
   <h1>Clinics</h1>
   <div class="row align-items-start" style="margin-top: 30px;">
     <div class="row align-items-start" style="display: flex; justify-content: space-between">
       <div class="col-auto">
         <div class="row">
-          <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'd-flex align-items-end col-auto', remote: true, format: 'pdf', id: 'search-form1', data: { turbo_frame: 'search' } do |f| %>
-            <%= f.search_field :name_or_address_or_faculity_or_region_cont, style: "width:300px;height:40px;font-size:14px;padding-left:10px", class: 'search-field-clinic', placeholder: 'Search clinics' %>
-          <% end %>
+          <%= render "cities_list" %>
           <button class="btn btn-filter px-7 flex-shrink-0 col-auto" data-bs-toggle="modal" data-bs-target="#filterClinicModal">More filters</button>
+          <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'd-flex align-items-end col-auto', remote: true, format: 'pdf', id: 'search-form1', data: { turbo_frame: 'search' } do |f| %>
+            <%= f.search_field :name_or_service_information_or_faculity_or_insurance_infomation_cont, style: "width:300px;height:40px;font-size:14px;padding-left:10px", class: 'search-field-clinic', placeholder: 'Search clinics' %>
+          <% end %>
         </div>
     </div>
       <div class="col-auto wrapper-feature">
-        <%= link_to 'clinics/new', class: 'btn btn-primary ml-3 mt-2 btn-create' do %>
+        <%= link_to 'clinics/new', class: 'btn btn-primary ml-3 mt-2 btn-create', data:{ turbo: false } do %>
           + Create new clinic
         <% end %>
         <a type="button" class="btn btn-primary mx-2 mt-2 btn-import" data-bs-toggle="modal"
@@ -49,14 +58,14 @@
       <% end %>
     <% end %>
 
-    <% if @selected_regions.present? %>
-    <% if @selected_regions.class == String %>
-      <% @selected_regions = @selected_regions.split(',') %>
-      <% if @selected_regions.count == 1 %>
-        <% @selected_regions = [] %>
+    <% if @selected_insurance_infomations.present? %>
+    <% if @selected_insurance_infomations.class == String %>
+      <% @selected_insurance_infomations = @selected_insurance_infomations.split(',') %>
+      <% if @selected_insurance_infomations.count == 1 %>
+        <% @selected_insurance_infomations = [] %>
       <% end %>
     <% end %>
-    <% @selected_regions.each do |region| %>
+    <% @selected_insurance_infomations.each do |region| %>
       <div class="col-auto" style="font-size: 20px;">
         <span class="badge badge-primary text-black">
           <%= region %>
@@ -73,4 +82,4 @@
   </div>
 <% end %>
 <%= render partial: "administrator/modal/admin_modal_clinic_import"  %>
-<%= render partial: "administrator/modal/admin_modal_clinic_filter", q: @q, faculities: @faculities, regions: @regions %>
+<%= render partial: "administrator/modal/admin_modal_clinic_filter", q: @q %>
