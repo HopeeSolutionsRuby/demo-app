@@ -12,7 +12,6 @@ module Administrator
 
       @year, @month = @selected_month.map(&:to_i)
 
-      # Kiểm tra nếu @month không nằm trong khoảng từ 1 đến 12, hãy gán mặc định là 1 (tháng 1)
       @month = 1 unless (1..12).include?(@month)
 
       start_date = Date.new(@year, @month, 1)
