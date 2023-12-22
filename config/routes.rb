@@ -15,6 +15,5 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resources :clinic_imports, only: %i[new create]
     resources :clinic_exports, only: [:index]
-    resources :branches
   end
 end

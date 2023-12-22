@@ -278,8 +278,8 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 
 .btn-filter {
-  color:  #31374a;
-  border-color: #e3e6ed ;
+  color: #31374a;
+  border-color: #e3e6ed;
   height: 40px;
   margin-left: 20px;
   font-size: 14px;
@@ -314,6 +314,7 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 .image-contain {
   border-radius: 10px;
   border: 2px solid #e3e6ed;
+  margin-left: 20px;
 }
 .d-flex {
   h2 {
@@ -343,4 +344,10 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 .space {
   margin-bottom: 40px;
+}
+.branch-title {
+  right: 10px;
+}
+.bold {
+  font-weight: bold;
 }

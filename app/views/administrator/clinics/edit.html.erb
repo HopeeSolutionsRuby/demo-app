@@ -3,12 +3,12 @@
     <h2>Clinic Details</h2>
   </div>
   <div class="row my-3">
-    <div class="col-md-4 image-contain border-right bg-white">
-      <div class="row mt-2">
+    <div class="col-md-4  border-right">
+      <div class="row image-contain bg-white">
         <% if @clinic.pictures.present? %>
           <% @clinic.pictures.each do |image| %>
             <div class="col-md-6 my-3">
-              <%= image_tag image.url, class: 'img-fluid rounded mb-2 img-clinic'  %>
+              <%= image_tag image.url, class: 'img-fluid rounded mb-2 img-clinic' %>
             </div>
             <% end %>
               <% else %>
@@ -19,36 +19,36 @@
                 <% end %>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
       <div class="p-3 py-5 bg-white border-10">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <%= link_to administrator_clinics_path, class: 'd-flex flex-row align-items-center back unstyled-link' do %>
             <i class="fa fa-long-arrow-left mb-2 mx-2"></i>
             <h6 style="font-weight: 600;">Back to home</h6>
             <% end %>
-              <h6 class="text-right" style="font-weight: 700;">Edit Profile</h6>
+              <h5 class="text-right" style="font-weight: 700;">Clinic profile</h5>
         </div>
         <%= form_with(model: @clinic, url: administrator_clinic_path(@clinic), class: 'needs-validation' , novalidate:
           true, local: true, html: {multipart: true}) do |form| %>
           <div class="row mt-2">
             <div class="col-md-6">
-              <%= form.label :name, 'Name' , class:'form-label' %>
+              <%= form.label :name, 'Name' , class:'form-label bold' %>
                 <%= form.text_field :name, class: 'form-control' , required: true %>
             </div>
 
             <div class="col-md-6">
-              <%= form.label :address, 'Address' , class:'form-label' %>
+              <%= form.label :address, 'Address' , class:'form-label bold' %>
                 <%= form.text_field :address, class: 'form-control' , required: true %>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-6">
-              <%= form.label :region, 'Region' , class:'form-label' %>
+              <%= form.label :region, 'Region' , class:'form-label bold' %>
                 <%= form.text_field :region, class: 'form-control' , required: true %>
             </div>
 
             <div class="col-md-6">
-              <%= form.label :faculity, 'Faculity' , class:'form-label' %>
+              <%= form.label :faculity, 'Faculity' , class:'form-label bold' %>
                 <%= form.text_field :faculity, class: 'form-control' , required: true %>
             </div>
             <label class="pt-3">
@@ -56,16 +56,25 @@
                 Remove pictures
             </label>
           </div>
-          <%= render 'administrator/clinics/modal' ,clinic: @clinic, form: form %>
-            <div class="form-actions mt-2" style="text-align:right">
-              <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal<%=@clinic.id%>">
-                Add pictures
-              </button>
-              <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton" %>
-              <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
-            </div>
+          <div class="branches">
+            <%= form.fields_for :branches do |branch| %>
+              <%= render 'branch_fields' , f: branch %>
             <% end %>
+          </div>
       </div>
+        <%= render 'administrator/clinics/modal' ,clinic: @clinic, form: form %>
+          <div class="form-actions mt-2" style="text-align:right">
+            <%= link_to_add_association "Add branch" , form, :branches, data: {association_insertion_node: '.branches' ,
+        association_insertion_method: :append}, class:"btn btn-success" %>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+              data-bs-target="#editModal<%=@clinic.id%>">
+              Add pictures
+            </button>
+            <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton", data: {turbo: false} %>
+            <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
+          </div>
+          <% end %>
     </div>
   </div>
+</div>
 </div>
