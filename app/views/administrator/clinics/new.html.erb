@@ -1,8 +1,8 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <%= link_to 'Home', administrator_dashboard_index_path,class:"breadcrumb-item" %>
-    <%= link_to 'Clinics', administrator_clinics_path,class:"breadcrumb-item" %>
-    <li class="breadcrumb-item active" aria-current="page">New</li>
+    <%= link_to 'Home' , administrator_dashboard_index_path,class:"breadcrumb-item" %>
+      <%= link_to 'Clinics' , administrator_clinics_path,class:"breadcrumb-item" %>
+        <li class="breadcrumb-item active" aria-current="page">New</li>
   </ol>
 </nav>
 <div class="container-fluid rounded mt-5" data-controller="clinic">
@@ -22,35 +22,40 @@
                   <h6 class="text-right">New Profile</h6>
             </div>
             <div class="col-md-8 border-10 py-3 px-3 bg-white">
-                <div class="col-md-12">
+              <div class="col-md-12">
                 <%= form.label :name, 'Name' , class:'form-label text-back' %>
-                <%= form.text_field :name, class: 'form-control input-branch' ,placeholder: "Enter name", required: true %>
+                  <%= form.text_field :name, class: 'form-control input-branch' ,placeholder: "Enter name" , required:
+                    true %>
               </div>
               <div class="col-md-12">
                 <%= form.label :service_information, 'Service information' , class:'form-label text-back' %>
-                <%= form.text_field :service_information, class: 'form-control input-branch' ,placeholder: "Enter service information", required: true %>
+                  <%= form.text_field :service_information, class: 'form-control input-branch'
+                    ,placeholder: "Enter service information" , required: true %>
               </div>
               <div class="col-md-12">
                 <%= form.label :insurance_infomation, 'Insurance infomation' , class:'form-label text-back' %>
-                <%= form.text_field :insurance_infomation, class: 'form-control input-branch' ,placeholder: "Enter insurance infomation", required: true %>
+                  <%= form.text_field :insurance_infomation, class: 'form-control input-branch'
+                    ,placeholder: "Enter insurance infomation" , required: true %>
               </div>
               <div class="col-md-12">
                 <%= form.label :faculity, 'Faculity' , class:'form-label text-back' %>
-              <%= form.text_field :faculty, class: 'form-control input-branch', placeholder: "Enter faculity", required: "required" %>
+                  <%= form.text_field :faculty, class: 'form-control input-branch' , placeholder: "Enter faculity" ,
+                    required: "required" %>
               </div>
               <div data-controller="dropzone" data-dropzone-target="previewContainer"
-              class="preview-container mt-3 p-3 col-md-12">
-              <div class="input-group input-branch">
-                <%= form.file_field :pictures, id: "clinic_pictures" , multiple: true, class: "form-control", "data-dropzone-target": "input" , required: true %>
+                class="preview-container mt-3 p-3 col-md-12">
+                <div class="input-group input-branch">
+                  <%= form.file_field :pictures, id: "clinic_pictures" , multiple: true, class: "form-control"
+                    , "data-dropzone-target" : "input" , required: true %>
+                </div>
+
+                <label for="clinic_pictures" class="form-label drag mt-2 ">
+                  Drag and drop files here or click to upload
+                </label>
               </div>
-
-              <label for="clinic_pictures" class="form-label drag mt-2 ">
-                Drag and drop files here or click to upload
-              </label>
-            </div>
             </div>
 
-            
+
             <div class="branches col-md-4 end-0">
               <%= form.fields_for :branches do |branch| %>
                 <%= render 'branch_add_fields' , f: branch %>
@@ -60,10 +65,11 @@
       </div>
       <div class="form-actions btn-new mt-3">
         <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton",data:{turbo: false} %>
-        <%= link_to_add_association "Add branches" , form, :branches, data: {association_insertion_node: '.branches' ,
-          association_insertion_method: :append},class:"btn btn-success" %>
-        <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
+          <%= link_to_add_association "Add branches" , form, :branches, data: {association_insertion_node: '.branches' ,
+            association_insertion_method: :append},class:"btn btn-success" %>
+            <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
       </div>
       <% end %>
     </div>
   </div>
+  

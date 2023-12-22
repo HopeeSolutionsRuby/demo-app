@@ -88,7 +88,7 @@ module Administrator
 
     def clinic_params
       params.require(:clinic).permit(:name, :service_information, :insurance_infomation, :faculity, :remove_pictures, pictures: [],
-                                                                                            branches_attributes: %i[id name address ward district city _destroy])
+                                                                                                                      branches_attributes: %i[id name address ward district city _destroy])
     end
 
     def search_params
