@@ -222,38 +222,7 @@
     max-height: 650px;
     min-width: 700px;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-  .more {
-    display: block;
-  }
-
-  .table {
-    top: 30px;
-=======
-}
-@media (min-width: 992px) {
-  .navbar-item {
-    display: inline-block; 
->>>>>>> 595505f ([issue_34]_remove debug issue)
-  }
-}
-
-@media (min-width: 992px) {
-  .navbar-item {
-    display: inline-block;
-  }
-  .more {
-    display: none;
-  }
-}
-
-=======
-=======
-
->>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
   .more {
     display: block;
   }
@@ -271,36 +240,27 @@
     display: none;
   }
 }
-<<<<<<< HEAD
->>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
-=======
 
->>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
+@media (min-width: 992px) {
+  .navbar-item {
+    display: inline-block;
+  }
+  .more {
+    display: none;
+  }
+}
+
 .horizontal-line {
   border-bottom: 1px solid #e3e6ed; /* Màu và độ dày của đường gạch */
   width: 88%; /* Chiều rộng của đường gạch */
   margin: 0 auto;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
-=======
-
->>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .popup-item-title {
   margin-left: -5px;
   margin: 20px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
-=======
-
->>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .popup-item-icon {
   color: #3874ff;
   font-weight: 900;
@@ -309,14 +269,6 @@
 .hidden-table {
   display: none;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
-=======
-
->>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .table {
   width: 160px;
   right: -3px;
@@ -325,22 +277,11 @@
   border: 2px solid #cbd0dd;
   margin: 0;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
-=======
-
->>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 .dropdown-item:hover {
   background-color: #e3e6ed;
   cursor: pointer;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
 
 .hv-underline {
   &:hover {
@@ -354,8 +295,4 @@
 .chevron-icon {
   font-size: 12px;
 }
-<<<<<<< HEAD
-=======
->>>>>>> 505e676 ([issue_34]_fix debug issue and modify responsive)
-=======
->>>>>>> fc0eba1 ([issue_34]_add css and mofidy responsive)
+
