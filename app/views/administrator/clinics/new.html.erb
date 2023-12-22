@@ -1,7 +1,7 @@
 <div class="container-fluid rounded mt-5" data-controller="clinic">
   <div class="row">
     <div class="col-md-12">
-      <div class="p-3 py-5">
+      <div class="p-3 py-5 table-res">
 
         <%= form_with(model: @clinic, url: administrator_clinics_path, class: 'needs-validation' , novalidate: true,
           multipart: true) do |form| %>
@@ -44,18 +44,18 @@
             </div>
 
             
-            <div class="branches col-md-4 position-absolute end-0">
+            <div class="branches col-md-4 end-0">
               <%= form.fields_for :branches do |branch| %>
                 <%= render 'branch_add_fields' , f: branch %>
                   <% end %>
             </div>
           </div>
       </div>
-      <div class="form-actions mt-3">
+      <div class="form-actions btn-new mt-3">
         <%= form.submit 'Save' , class: 'btn btn-primary' ,id:"submitButton",data:{turbo: false} %>
-          <%= link_to_add_association "Add branches" , form, :branches, data: {association_insertion_node: '.branches' ,
-            association_insertion_method: :append},class:"btn btn-success" %>
-            <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
+        <%= link_to_add_association "Add branches" , form, :branches, data: {association_insertion_node: '.branches' ,
+          association_insertion_method: :append},class:"btn btn-success" %>
+        <%= link_to 'Cancel' , administrator_clinics_path, class:"btn btn-secondary" %>
       </div>
       <% end %>
     </div>

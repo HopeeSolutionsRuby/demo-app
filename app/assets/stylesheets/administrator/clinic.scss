@@ -263,6 +263,16 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
   #top-table {
     margin-bottom: 50px !important;
   }
+  .branches {
+    position: relative !important;
+    padding: 0;
+  }
+  .btn-new {
+    margin-bottom: 20px;
+  }
+  .table-res {
+    padding-bottom: 10px !important;
+  }
 }
 
 @media (min-width: 757px) and (max-width: 1800px) {
@@ -350,4 +360,10 @@ $toggle-control-size: $toggle-height - ($toggle-gutter * 2);
 }
 .bold {
   font-weight: bold;
+}
+.branches {
+  position: absolute;
+}
+.branch-edit {
+  position: relative;
 }

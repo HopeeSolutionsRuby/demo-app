@@ -56,7 +56,7 @@
                 Remove pictures
             </label>
           </div>
-          <div class="branches">
+          <div class="branches branch-edit">
             <%= form.fields_for :branches do |branch| %>
               <%= render 'branch_fields' , f: branch %>
             <% end %>
