@@ -9,7 +9,6 @@ module Administrator
       filter_month = params[:filter_month]
       @selected_month = filter_month.present? ? filter_month.split('-') : %w[2023 12]
       return if @selected_month.blank?
-
       @year, @month = @selected_month.map(&:to_i)
 
       @month = 1 unless (1..12).include?(@month)
