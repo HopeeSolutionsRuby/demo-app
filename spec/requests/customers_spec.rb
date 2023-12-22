@@ -88,32 +88,14 @@ RSpec.describe Administrator::CustomersController, type: :controller do
 
   describe 'POST #create' do
     context 'with valid parameters' do
-
-      # tags = params.dig(:customer, :tag_ids)&.reject(&:empty?) || []
-
       let(:tags) { FactoryBot.create_list(:tag, 2) }
-      tag_ids = tags.map(&:id)
-
-      valid_params = {
-        customer: FactoryBot.attributes_for(:customer, tag_ids: tag_ids)
-      }
-
-      it 'creates a new customer with valid parameters' do
-
-        
-  
-        post :create, params: valid_params
-        expect(response).to have_http_status(:success)
+      
+      let(:valid_params) do
+        tag_ids = tags.map(&:id)
+        {
+          customer: FactoryBot.attributes_for(:customer, tag_ids: tag_ids)
+        }
       end
-
-      # let(:tags) { FactoryBot.create_list(:tag, 2) }
-
-      # let(:valid_params) do
-      #   {        
-      #     customer: FactoryBot.attributes_for(:customer), 
-      #     customer_tags: tags.map { |tag| { name: tag.name } }
-      #   } 
-      # end
 
       it 'creates a new customer' do
         expect do
@@ -121,35 +103,154 @@ RSpec.describe Administrator::CustomersController, type: :controller do
         end.to change(Customer, :count).by(1)
       end
 
-      # it 'redirects to the administrator_customers_path after successful creation' do
-      #   post :create, params: valid_params
-      #   expect(response).to redirect_to(administrator_customers_path)
-      # end
+      it 'redirects to the administrator_customers_path after successful creation' do
+        post :create, params: valid_params
+        expect(response).to redirect_to(administrator_customer_path(Customer.last))
+      end
 
-      # it 'sets a flash notice after successful creation' do
-      #   post :create, params: valid_params
-      #   expect(flash[:notice]).to eq('Customer was successfully created.')
-      # end
+      it 'sets a flash notice after successful creation' do
+        post :create, params: valid_params
+        expect(flash[:notice]).to eq("Successfully created a customer named '#{Customer.last.full_name}'.")
+      end
     end
 
-    # context 'with invalid parameters' do
-    #   let(:invalid_params) { { customer: FactoryBot.attributes_for(:customer, name: '') } }
+    context 'with invalid parameters' do
+      let(:tags) { FactoryBot.create_list(:tag, 2) }
+      
+      let(:invalid_params) do
+        tag_ids = tags.map(&:id)
+        {
+          customer: FactoryBot.attributes_for(:customer, tag_ids: tag_ids, full_name: '')
+        }
+      end
 
-    #   it 'does not create a new customer with invalid data' do
-    #     expect do
-    #       post :create, params: invalid_params
-    #     end.not_to change(Customer, :count)
-    #   end
+      it 'does not create a new customer with invalid data' do
+        expect do
+          post :create, params: invalid_params
+        end.not_to change(Customer, :count)
+      end
 
-    #   it 'renders the new template after failed creation' do
-    #     post :create, params: invalid_params
-    #     expect(response).to render_template('new')
-    #   end
+      it 'renders the new template after failed creation' do
+        post :create, params: invalid_params
+        expect(response).to render_template('new')
+      end
 
-    #   it 'sets a flash alert after failed creation' do
-    #     post :create, params: invalid_params
-    #     expect(flash[:alert]).to eq("Cannot create the customer: Name can't be blank")
-    #   end
-    # end
+      it 'sets a flash alert after failed creation' do
+        post :create, params: invalid_params
+        expect(flash[:alert]).to eq("Cannot create the customer: Full name can't be blank")
+      end
+    end
+  end
+
+  describe 'PATCH #update' do
+    let(:tag_ids) do 
+      tags = FactoryBot.create_list(:tag, 2) 
+      tags.map(&:id)
+    end
+        
+    let(:customer) { FactoryBot.create(:customer, tag_ids: tag_ids) }
+
+    let(:valid_params) do 
+      { 
+        id: customer.id, 
+        customer: FactoryBot.attributes_for(:customer, tag_ids: tag_ids, full_name: 'Full name customer update') 
+      }
+    end
+
+    let(:invalid_params) do 
+      { 
+        id: customer.id, 
+        customer: FactoryBot.attributes_for(:customer, tag_ids: tag_ids, full_name: '') 
+      }
+    end
+
+    context 'with valid parameters' do
+      it 'updates the customer' do
+        patch :update, params: valid_params
+        customer.reload
+        expect(customer.full_name).to eq('Full name customer update')
+      end
+
+      it 'redirects to administrator_customers_path after successful update' do
+        patch :update, params: valid_params
+        expect(response).to redirect_to(administrator_customers_path)
+      end
+
+      it 'sets a flash notice after successful update' do
+        patch :update, params: valid_params
+        expect(flash[:notice]).to eq('Customer information updated successfully.')
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'does not update the customer' do
+        patch :update, params: invalid_params
+        customer.reload
+        expect(customer.full_name).not_to eq('')
+      end
+
+      it 'renders the edit template after failed update' do
+        patch :update, params: invalid_params
+        expect(response).to render_template('edit')
+      end
+
+      it 'sets a flash alert after failed update' do
+        patch :update, params: invalid_params
+        expect(flash[:alert]).to eq("Cannot update the customer: Full name can't be blank")
+      end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    let(:tag_ids) do 
+      tags = FactoryBot.create_list(:tag, 2) 
+      tags.map(&:id)
+    end
+        
+    let(:customer) { FactoryBot.create(:customer, tag_ids: tag_ids) }
+
+    it 'deletes the customer' do
+      expect do
+        delete :destroy, params: { id: customer.id }
+      end.to change(Customer, :count).by(0)
+    end
+
+    it 'sets a flash notice after successful deletion' do
+      delete :destroy, params: { id: customer.id }
+      expect(flash[:notice]).to eq('Customer has been deleted successfully.')
+    end
+
+    it 'redirects to administrator_customers_path after successful deletion' do
+      delete :destroy, params: { id: customer.id }
+      expect(response).to redirect_to(administrator_customers_path)
+    end
+  end
+
+  describe '#assign_customer' do
+    let(:tag_ids) do 
+      tags = FactoryBot.create_list(:tag, 2) 
+      tags.map(&:id)
+    end
+        
+    let(:customer) { FactoryBot.create(:customer, tag_ids: tag_ids) }
+
+    controller do
+      before_action :assign_customer
+    end
+
+    context 'when customer exists' do
+      it 'assigns the customer' do
+        get :index, params: { id: customer.id }
+        expect(assigns(:customer)).to eq(customer)
+      end
+    end
+
+    context 'when customer does not exist' do
+      it 'sets flash alert and redirects' do
+        get :index, params: { id: 'invalid_id' }
+        expect(flash[:alert]).to eq('Customer with ID invalid_id not found.')
+        expect(response).to redirect_to(administrator_customers_path)
+      end
+    end
   end
 end

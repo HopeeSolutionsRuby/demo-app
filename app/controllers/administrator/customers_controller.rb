@@ -50,7 +50,7 @@ module Administrator
         flash[:notice] = "Successfully created a customer named '#{@customer.full_name}'."
         redirect_to administrator_customer_path(@customer)
       else
-        flash[:alert] = "Cannot update the customer: #{@customer.errors.full_messages.join(', ')}"
+        flash[:alert] = "Cannot create the customer: #{@customer.errors.full_messages.join(', ')}"
         render 'new'
       end
     end
