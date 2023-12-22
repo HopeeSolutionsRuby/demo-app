@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <%= link_to 'Home', administrator_dashboard_index_path,class:"breadcrumb-item" %>
+    <%= link_to 'Clinics', administrator_clinics_path,class:"breadcrumb-item" %>
+    <li class="breadcrumb-item active" aria-current="page">Show</li>
+  </ol>
+</nav>
 <div class="container-fluid rounded p-4 space">
   <div class="d-flex justify-content-between ">
     <h2>Clinic Details</h2>
@@ -42,17 +49,17 @@
           </p>
         </div>
         <div class="col-md-6">
-          <strong class='form-label'>Address</strong>
+          <strong class='form-label'>Service information</strong>
           <p>
-            <%= @clinic.address %>
+            <%= @clinic.service_information %>
           </p>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-md-6">
-          <strong class='form-label'>Region</strong>
+          <strong class='form-label'>Insurance infomation</strong>
           <p>
-            <%= @clinic.region %>
+            <%= @clinic.insurance_infomation %>
           </p>
         </div>
         <div class="col-md-6">

@@ -15,7 +15,7 @@
           <%= render "cities_list" %>
           <button class="btn btn-filter px-7 flex-shrink-0 col-auto" data-bs-toggle="modal" data-bs-target="#filterClinicModal">More filters</button>
           <%= search_form_for @q, url: administrator_clinics_path, html: { method: :get }, class: 'd-flex align-items-end col-auto', remote: true, format: 'pdf', id: 'search-form1', data: { turbo_frame: 'search' } do |f| %>
-            <%= f.search_field :name_or_address_or_faculity_or_region_cont, style: "width:300px;height:40px;font-size:14px;padding-left:10px", class: 'search-field-clinic', placeholder: 'Search clinics' %>
+            <%= f.search_field :name_or_service_information_or_faculity_or_insurance_infomation_cont, style: "width:300px;height:40px;font-size:14px;padding-left:10px", class: 'search-field-clinic', placeholder: 'Search clinics' %>
           <% end %>
         </div>
     </div>
@@ -58,14 +58,14 @@
       <% end %>
     <% end %>
 
-    <% if @selected_regions.present? %>
-    <% if @selected_regions.class == String %>
-      <% @selected_regions = @selected_regions.split(',') %>
-      <% if @selected_regions.count == 1 %>
-        <% @selected_regions = [] %>
+    <% if @selected_insurance_infomations.present? %>
+    <% if @selected_insurance_infomations.class == String %>
+      <% @selected_insurance_infomations = @selected_insurance_infomations.split(',') %>
+      <% if @selected_insurance_infomations.count == 1 %>
+        <% @selected_insurance_infomations = [] %>
       <% end %>
     <% end %>
-    <% @selected_regions.each do |region| %>
+    <% @selected_insurance_infomations.each do |region| %>
       <div class="col-auto" style="font-size: 20px;">
         <span class="badge badge-primary text-black">
           <%= region %>

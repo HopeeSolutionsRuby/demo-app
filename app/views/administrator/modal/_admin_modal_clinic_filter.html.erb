@@ -34,18 +34,18 @@
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwo">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    Regions
+                    Insurance infomation
                   </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body p-0 pt-2">
-                    <% Clinic.all.pluck(:region).uniq.each_slice(3) do |regions| %>
+                    <% Clinic.all.pluck(:insurance_infomation).uniq.each_slice(3) do |insurance_infomations| %>
                       <div class="row">
-                        <% regions.each do |region| %>
+                        <% insurance_infomations.each do |insurance_infomation| %>
                           <div class="col-md-4"> <!-- Adjust the column size based on your layout -->
                             <div class="form-check">
-                              <%= check_box_tag 'query[region_in][]', region, class: 'form-check-input' %>
-                              <%= label_tag "faculty_#{region}", region, class: 'form-check-label' %>
+                              <%= check_box_tag 'query[insurance_infomation_in][]', insurance_infomation, class: 'form-check-input' %>
+                              <%= label_tag "faculty_#{insurance_infomation}", insurance_infomation, class: 'form-check-label' %>
                             </div>
                           </div>
                         <% end %>

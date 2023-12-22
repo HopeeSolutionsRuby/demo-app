@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <%= link_to 'Home', administrator_dashboard_index_path,class:"breadcrumb-item" %>
+    <%= link_to 'Clinics', administrator_clinics_path,class:"breadcrumb-item" %>
+    <li class="breadcrumb-item active" aria-current="page">New</li>
+  </ol>
+</nav>
 <div class="container-fluid rounded mt-5" data-controller="clinic">
   <div class="row">
     <div class="col-md-12">
@@ -20,12 +27,12 @@
                 <%= form.text_field :name, class: 'form-control input-branch' ,placeholder: "Enter name", required: true %>
               </div>
               <div class="col-md-12">
-                <%= form.label :address, 'Address' , class:'form-label text-back' %>
-                <%= form.text_field :address, class: 'form-control input-branch' ,placeholder: "Enter address", required: true %>
+                <%= form.label :service_information, 'Service information' , class:'form-label text-back' %>
+                <%= form.text_field :service_information, class: 'form-control input-branch' ,placeholder: "Enter service information", required: true %>
               </div>
               <div class="col-md-12">
-                <%= form.label :region, 'Region' , class:'form-label text-back' %>
-                <%= form.text_field :region, class: 'form-control input-branch' ,placeholder: "Enter region", required: true %>
+                <%= form.label :insurance_infomation, 'Insurance infomation' , class:'form-label text-back' %>
+                <%= form.text_field :insurance_infomation, class: 'form-control input-branch' ,placeholder: "Enter insurance infomation", required: true %>
               </div>
               <div class="col-md-12">
                 <%= form.label :faculity, 'Faculity' , class:'form-label text-back' %>

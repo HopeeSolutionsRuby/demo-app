@@ -8,7 +8,7 @@ module Administrator
       filter_params = params[:query]
       if filter_params
         @selected_faculties = filter_params[:faculity_in]
-        @selected_regions = filter_params[:region_in]
+        @selected_insurance_infomations = filter_params[:insurance_infomation_in]
       end
       @q = Clinic.includes(:branches).ransack(search_params)
 
@@ -87,7 +87,7 @@ module Administrator
     private
 
     def clinic_params
-      params.require(:clinic).permit(:name, :address, :region, :faculity, :remove_pictures, pictures: [],
+      params.require(:clinic).permit(:name, :service_information, :insurance_infomation, :faculity, :remove_pictures, pictures: [],
                                                                                             branches_attributes: %i[id name address ward district city _destroy])
     end
 

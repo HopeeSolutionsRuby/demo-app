@@ -11,10 +11,10 @@ class Clinic < ApplicationRecord
                                                         att['name'].blank? || ['address'].blank? || ['ward'].blank? || ['city'].blank? || ['district'].blank?
                                                       }
 
-  CSV_ATTRIBUTES = %w[name address region faculity pictures].freeze
+  CSV_ATTRIBUTES = %w[name service_information insurance_infomation faculity pictures].freeze
 
   def self.ransackable_attributes(_auth_object = nil)
-    %w[address created_at faculity id name region updated_at]
+    %w[insurance_infomation created_at faculity id name service_information updated_at]
   end
 
   def self.ransackable_associations(_auth_object = nil)

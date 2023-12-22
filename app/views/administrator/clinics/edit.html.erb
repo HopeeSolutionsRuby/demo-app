@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <%= link_to 'Home', administrator_dashboard_index_path,class:"breadcrumb-item" %>
+    <%= link_to 'Clinics', administrator_clinics_path,class:"breadcrumb-item" %>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+  </ol>
+</nav>
 <div class="container-fluid rounded p-4 h-100 space" ,data-controller="dropzone">
   <div class="col-md-6 d-flex">
     <h2>Clinic Details</h2>
@@ -37,14 +44,14 @@
             </div>
 
             <div class="col-md-6">
-              <%= form.label :address, 'Address' , class:'form-label bold' %>
-                <%= form.text_field :address, class: 'form-control' , required: true %>
+              <%= form.label :service_information, 'Service infomation' , class:'form-label bold' %>
+                <%= form.text_field :service_information, class: 'form-control' , required: true %>
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-6">
-              <%= form.label :region, 'Region' , class:'form-label bold' %>
-                <%= form.text_field :region, class: 'form-control' , required: true %>
+              <%= form.label :insurance_infomation, 'Insurance infomation' , class:'form-label bold' %>
+                <%= form.text_field :insurance_infomation, class: 'form-control' , required: true %>
             </div>
 
             <div class="col-md-6">
