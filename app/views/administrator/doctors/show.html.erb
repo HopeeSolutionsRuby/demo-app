@@ -1,10 +1,58 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @doctor %>
-
-<div>
-  <%= link_to "Edit this doctor", edit_doctor_path(@doctor) %> |
-  <%= link_to "Back to doctors", doctors_path %>
-
-  <%= button_to "Destroy this doctor", @doctor, method: :delete %>
+<div class="container-fluid rounded p-4 space">
+    <div class="d-flex justify-content-between ">
+      <h2>Doctor Details</h2>
+      <div>
+        <%= link_to edit_administrator_doctor_path(@doctor.id), class: "btn border hover", role: "button", data: { turbo_frame: "_top" } do %>
+          <h6 class="text-right mt-1 fw">Edit Profile</h6>
+        <% end %>
+      </div>
+    </div>
+  <div class="row my-3">
+    <div class="col-md-4 image-contain bg-white py-2">
+      <div class="row mt-2">
+          <%= image_tag @doctor.avatar_doctor.url %>
+      </div>      
+    </div>
+    <div class="col-md-8">
+      <div class="p-3 py-5 bg-white border-10">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <%= link_to administrator_doctors_path, class: 'd-flex flex-row align-items-center back unstyled-link' do %>
+            <i class="fa fa-long-arrow-left mb-2 mx-2"></i>
+            <h6 class="text-back">Back to home</h6>
+          <% end %>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6 ">
+            <strong class='form-label'>Name</strong>
+            <p><%= @doctor.full_name %></p>
+          </div>
+          <div class="col-md-6">
+            <strong class='form-label'>Age</strong>
+            <p><%= @doctor.age %></p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <strong class='form-label'>Email</strong>
+            <p><%= @doctor.email %></p>
+          </div>
+          <div class="col-md-6">
+            <strong class='form-label'>Gender</strong>
+            <p><%= @doctor.gender %></p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <strong class='form-label'>Address</strong>
+            <p><%= @doctor.address %></p>
+          </div>
+          <div class="col-md-6">
+            <strong class='form-label'>Phone number</strong>
+            <p><%= @doctor.phone_number %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+

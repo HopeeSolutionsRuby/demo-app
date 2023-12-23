@@ -1,0 +1,27 @@
+<div class="modal fade" id="editModal<%=doctor.id%>" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="doctorModalLabel">Upload Picture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="doctor-admin">
+        <div class="avatar-wrapper">
+          <img class="profile-pic" src="" />
+          <div class="upload-button">
+            <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+          </div>
+          
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <div class="form-actions" style="text-align: right">
+          <%= form.submit 'Save' , class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

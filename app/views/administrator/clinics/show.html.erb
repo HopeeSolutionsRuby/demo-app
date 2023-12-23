@@ -10,17 +10,7 @@
   <div class="row my-3">
     <div class="col-md-4 image-contain bg-white py-2">
       <div class="row mt-2">
-        <% if @clinic.pictures.present? %>
-          <% @clinic.pictures.each do |image| %>
-            <div class="col-md-6 my-3">
-              <%= image_tag image.url, class: 'img-fluid rounded mb-2 img-clinic'%>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="col-md-12 d-flex justify-content-center align-items-center  ">
-            <%= image_tag 'noimage', class: 'img-fluid rounded px-3 mx-5 my-3', style: 'max-height: 290px; max-width: 290px' %>
-          </div>
-        <% end %>
+        
       </div>      
     </div>
     <div class="col-md-8">
