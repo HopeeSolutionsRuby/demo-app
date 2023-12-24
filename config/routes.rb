@@ -17,6 +17,5 @@ Rails.application.routes.draw do
     resources :clinic_exports, only: [:index]
     resources :statistics, only: %i[index]
     resources :customers, only: %i[index]
-
   end
 end
