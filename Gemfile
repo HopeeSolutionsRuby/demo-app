@@ -4,6 +4,10 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+gem 'chartkick'
+
+gem 'groupdate', '~> 6.4'
+gem 'pry', '~> 0.14.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.2'
 
@@ -68,6 +72,8 @@ gem 'carrierwave'
 
 gem 'ransack'
 
+gem 'select2-rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
 
@@ -88,6 +94,8 @@ group :development, :test do
   gem 'debug', platforms: %i[mri windows]
 
   gem 'letter_opener'
+
+  gem 'gruff'
 end
 
 group :development do

@@ -1,0 +1,13 @@
+<%= turbo_stream.append "search", data: { turbo_action: 'append' } do %>
+  <div id="customer-table-container">
+    <%= render partial: 'administrator/customers/table', locals: { customers: @customers } %>
+  </div>
+<% end %>
+
+<%= turbo_stream.replace :pagination do %>
+  <% if @pagy.next.present? %>
+    <%= turbo_frame_tag :pagination,
+                loading: :lazy,
+        src: administrator_customers_path(format: :turbo_stream, page: @pagy.next) %>
+  <% end %>
+<% end %>

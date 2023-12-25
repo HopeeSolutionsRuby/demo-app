@@ -81,48 +81,6 @@ export default class extends Controller {
         }
       }
 
-      function setProgressMaxValue(e) {
-        var pBar = document.getElementById('file-progress');
-
-        if (e.lengthComputable) {
-          pBar.max = e.total;
-        }
-      }
-
-      function updateFileProgress(e) {
-        var pBar = document.getElementById('file-progress');
-
-        if (e.lengthComputable) {
-          pBar.value = e.loaded;
-        }
-      }
-
-      function uploadFile(file) {
-
-        var xhr = new XMLHttpRequest(),
-          fileInput = document.getElementById('class-roster-file'),
-          pBar = document.getElementById('file-progress'),
-          fileSizeLimit = 1024; // In MB
-        if (xhr.upload) {
-          // Check if file is less than x MB
-          if (file.size <= fileSizeLimit * 1024 * 1024) {
-            // Progress bar
-            pBar.style.display = 'inline';
-            xhr.upload.addEventListener('loadstart', setProgressMaxValue, false);
-            xhr.upload.addEventListener('progress', updateFileProgress, false);
-
-            // Start upload
-            xhr.open('POST', document.getElementById('file-upload-form').action, true);
-            xhr.setRequestHeader('X-File-Name', file.name);
-            xhr.setRequestHeader('X-File-Size', file.size);
-            xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-            xhr.send(file);
-          } else {
-            output('Please upload a smaller file (< ' + fileSizeLimit + ' MB).');
-          }
-        }
-      }
-
       // Check for the various File API support.
       if (window.File && window.FileList && window.FileReader) {
         Init();

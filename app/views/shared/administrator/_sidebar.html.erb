@@ -21,16 +21,20 @@
           </a>
         </li>
         <li class="nav-item w-100">
+<<<<<<< HEAD
           <a href="#" class="nav-link align-middle w-100">
+=======
+          <%= link_to administrator_customers_path, class: "nav-link align-middle w-100 mx-1" do %>
+>>>>>>> aba0368 ([issue 44] CRUD customers and search)
             <i class="fa-solid fa-users"></i>
-            <span class="hide-icon" style="margin-left: 7px;">Customers</span>
-          </a>
+            <span class="ms-1 hide-icon">Customers</span>
+          <% end %>
         </li>
         <li class="nav-item w-100">
-          <a href="#" class="nav-link align-middle w-100">
+          <a href="/administrator/tags" class="nav-link align-middle w-100 mx-1">
             <i class="fa-solid fa-tag"></i>
-            <span class="ms-2 hide-icon">Taggings</span>
-         </a>
+            <span class="ms-1 hide-icon">Tagging</span>
+          </a>
         </li>
         <li class="nav-item w-100">
           <a href="#" class="nav-link align-middle w-100 mx-1">
@@ -42,8 +46,8 @@
     </div>
     <div class="nav-footer" style="border-top: 1px solid #dbdee4;position: fixed; bottom: 0;height:40px;left:0;width:250px">
       <button class="mx-3 toggle-button" style="margin-top: 2px; border: none; background-color: transparent;" data-controller="toggle-button" id="toggleButton">
-        <i class="fa-solid fa-arrow-left change-icon" style="margin-top: 10px;">
-          <span class="ms-2 hide-icon"> Collapse View</span>
+        <i class="fa-solid fa-arrow-left change-icon" style="margin-top: 10px; color: #737881;">
+          <span class="ms-2 hide-icon" style="color: #737881;"> Collapse View</span>
         </i>
       </button>
     </div>
