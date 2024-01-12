@@ -1,5 +1,5 @@
 # Clinic management system
-
+test
 # 1. Prerequisites
 - Ruby 3.2.2
 - Rails 7.1.2
